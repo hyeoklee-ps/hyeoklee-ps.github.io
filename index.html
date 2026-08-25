@@ -1,0 +1,1163 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#1F6F78">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="블로그 작업대">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icon-192.png">
+<link rel="apple-touch-icon" href="icon-192.png">
+<title>블로그 작업대</title>
+</head>
+<body>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@500;600;700&family=IBM+Plex+Sans+KR:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600;700&display=swap">
+<style>
+  :root{
+    --ink:#1B1E1C;
+    --ink-soft:#52584F;
+    --ink-faint:#8A9086;
+    --paper:#ECEFEA;
+    --paper-raised:#F8FAF6;
+    --paper-sunken:#E1E5DD;
+    --line:#CDD3C6;
+    --accent:#1F6F78;
+    --accent-strong:#14535A;
+    --accent-soft:#D9EDEC;
+    --good:#2F7D4A;
+    --good-soft:#DCEEE0;
+    --warn:#B87A1E;
+    --warn-soft:#F3E7D2;
+    --bad:#B8422E;
+    --bad-soft:#F4DFD8;
+    --shadow: 0 1px 2px rgba(27,30,28,0.06), 0 6px 20px -8px rgba(27,30,28,0.18);
+    --radius: 10px;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --ink:#E9ECE6;
+      --ink-soft:#A8AFA1;
+      --ink-faint:#6E7468;
+      --paper:#141713;
+      --paper-raised:#1B1F1A;
+      --paper-sunken:#10130F;
+      --line:#33382F;
+      --accent:#4FB8BE;
+      --accent-strong:#7DD3D8;
+      --accent-soft:#1E3A3A;
+      --good:#5CB980;
+      --good-soft:#1E332A;
+      --warn:#E0A94A;
+      --warn-soft:#3A2E1A;
+      --bad:#E27860;
+      --bad-soft:#3A241F;
+      --shadow: 0 1px 2px rgba(0,0,0,0.3), 0 8px 24px -8px rgba(0,0,0,0.5);
+    }
+  }
+  :root[data-theme="dark"]{
+    --ink:#E9ECE6;
+    --ink-soft:#A8AFA1;
+    --ink-faint:#6E7468;
+    --paper:#141713;
+    --paper-raised:#1B1F1A;
+    --paper-sunken:#10130F;
+    --line:#33382F;
+    --accent:#4FB8BE;
+    --accent-strong:#7DD3D8;
+    --accent-soft:#1E3A3A;
+    --good:#5CB980;
+    --good-soft:#1E332A;
+    --warn:#E0A94A;
+    --warn-soft:#3A2E1A;
+    --bad:#E27860;
+    --bad-soft:#3A241F;
+    --shadow: 0 1px 2px rgba(0,0,0,0.3), 0 8px 24px -8px rgba(0,0,0,0.5);
+  }
+
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    background:var(--paper);
+    color:var(--ink);
+    font-family:"IBM Plex Sans KR","Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+    line-height:1.5;
+    -webkit-font-smoothing:antialiased;
+  }
+  ::selection{ background:var(--accent-soft); color:var(--accent-strong); }
+
+  .app{ max-width:1180px; margin:0 auto; padding:28px 20px 80px; }
+
+  /* ---------- masthead ---------- */
+  .masthead{
+    display:flex; align-items:flex-end; justify-content:space-between; gap:16px;
+    padding:6px 4px 22px;
+    border-bottom:1px solid var(--line);
+    margin-bottom:22px;
+    flex-wrap:wrap;
+  }
+  .masthead-mark{
+    display:flex; align-items:center; gap:10px;
+  }
+  .reg-mark{
+    width:22px; height:22px; flex:none; position:relative;
+    border:1px solid var(--ink-faint); border-radius:50%;
+  }
+  .reg-mark::before,.reg-mark::after{
+    content:""; position:absolute; background:var(--ink-faint);
+  }
+  .reg-mark::before{ left:50%; top:-4px; bottom:-4px; width:1px; transform:translateX(-50%);}
+  .reg-mark::after{ top:50%; left:-4px; right:-4px; height:1px; transform:translateY(-50%);}
+  .kicker{
+    font-family:"IBM Plex Mono",monospace; font-size:11px; letter-spacing:.14em;
+    text-transform:uppercase; color:var(--ink-faint); font-weight:600;
+  }
+  h1{
+    font-family:"Noto Serif KR",serif; font-weight:700;
+    font-size:clamp(24px,3.4vw,32px); margin:2px 0 0; text-wrap:balance;
+    letter-spacing:-.01em;
+  }
+  .tagline{
+    margin:0; color:var(--ink-soft); font-size:14px; max-width:32ch; text-align:right;
+  }
+
+  /* ---------- tabs ---------- */
+  .tabs{ display:flex; gap:4px; margin-bottom:0; }
+  .tab{
+    font-family:"IBM Plex Sans KR",sans-serif; font-weight:600; font-size:14.5px;
+    padding:11px 20px; border:1px solid var(--line); border-bottom:none;
+    border-radius:9px 9px 0 0; background:var(--paper-sunken); color:var(--ink-soft);
+    cursor:pointer; position:relative; top:1px;
+  }
+  .tab.active{
+    background:var(--paper-raised); color:var(--ink); border-color:var(--line);
+  }
+  .tab:not(.active):hover{ color:var(--ink); background:var(--paper); }
+  .tab:focus-visible{ outline:2px solid var(--accent); outline-offset:2px; }
+
+  main{
+    background:var(--paper-raised); border:1px solid var(--line); border-radius:0 10px 10px 10px;
+    box-shadow:var(--shadow); padding:28px; margin-top:-1px;
+  }
+  .panel{ display:none; }
+  .panel.active{ display:block; }
+
+  /* ---------- generic building blocks ---------- */
+  .grid2{ display:grid; grid-template-columns: 1fr 1fr; gap:26px; align-items:start; }
+  @media (max-width:860px){ .grid2{ grid-template-columns:1fr; } }
+
+  .field{ margin-bottom:18px; }
+  .field label{
+    display:flex; justify-content:space-between; align-items:baseline; gap:8px;
+    font-size:13px; font-weight:600; color:var(--ink-soft); margin-bottom:6px;
+  }
+  .field label .count{
+    font-family:"IBM Plex Mono",monospace; font-size:11.5px; color:var(--ink-faint);
+    font-variant-numeric:tabular-nums; font-weight:500;
+  }
+  .field .hint{ font-size:12px; color:var(--ink-faint); margin-top:5px; }
+  input[type="text"], textarea, select{
+    width:100%; font-family:inherit; color:var(--ink);
+    background:var(--paper-sunken); border:1px solid var(--line); border-radius:8px;
+    padding:10px 12px; resize:vertical;
+    /* 16px keeps Android/iOS from zoom-on-focus; the -webkit rules keep text
+       selectable and editable inside embedded webviews, which sometimes
+       inherit a user-select:none from their host and swallow taps. */
+    font-size:16px;
+    -webkit-user-select:text; user-select:text;
+    -webkit-touch-callout:default;
+    touch-action:manipulation;
+    pointer-events:auto;
+    -webkit-appearance:none; appearance:none;
+    opacity:1;
+  }
+  input[type="text"]:focus, textarea:focus, select:focus{
+    outline:none; border-color:var(--accent); box-shadow:0 0 0 3px var(--accent-soft);
+  }
+  textarea{ min-height:150px; line-height:1.6; }
+
+  h2.section-title{
+    font-family:"Noto Serif KR",serif; font-size:17px; font-weight:600; margin:0 0 16px;
+  }
+
+  /* ---------- SEO score dial ---------- */
+  .score-wrap{ display:flex; align-items:center; gap:18px; margin-bottom:20px; }
+  .score-dial{ position:relative; width:104px; height:104px; flex:none; }
+  .score-dial svg{ transform:rotate(-90deg); }
+  .score-num{
+    position:absolute; inset:0; display:flex; align-items:center; justify-content:center;
+    flex-direction:column;
+  }
+  .score-num strong{
+    font-family:"IBM Plex Mono",monospace; font-size:28px; font-variant-numeric:tabular-nums;
+    line-height:1;
+  }
+  .score-num span{ font-size:9.5px; color:var(--ink-faint); letter-spacing:.06em; margin-top:2px;}
+  .score-label-block{ }
+  .score-tier{ font-family:"Noto Serif KR",serif; font-weight:600; font-size:16px; margin:0 0 3px;}
+  .score-sub{ font-size:12.5px; color:var(--ink-soft); margin:0; max-width:34ch; }
+
+  .checks{ display:flex; flex-direction:column; gap:10px; }
+  .check-row{
+    border:1px solid var(--line); border-radius:8px; padding:10px 12px; background:var(--paper);
+  }
+  .check-head{ display:flex; align-items:center; gap:8px; }
+  .dot{ width:8px; height:8px; border-radius:50%; flex:none; }
+  .dot.good{ background:var(--good); }
+  .dot.warn{ background:var(--warn); }
+  .dot.bad{ background:var(--bad); }
+  .dot.neutral{ background:var(--ink-faint); }
+  .check-title{ font-size:13.5px; font-weight:600; flex:1; }
+  .check-detail{ font-size:12.5px; color:var(--ink-soft); margin:6px 0 0; line-height:1.55; }
+  .meter{
+    position:relative; height:6px; border-radius:4px; background:var(--paper-sunken);
+    margin-top:8px; overflow:hidden;
+  }
+  .meter .zone{ position:absolute; top:0; bottom:0; background:var(--good-soft); }
+  .meter .fill{ position:absolute; top:0; bottom:0; left:0; border-radius:4px; transition:width .2s ease; }
+  .meter .fill.good{ background:var(--good); }
+  .meter .fill.warn{ background:var(--warn); }
+  .meter .fill.bad{ background:var(--bad); }
+
+  /* ---------- watermark tool ---------- */
+  .dropzone{
+    display:block; border:1.5px dashed var(--line); border-radius:10px; padding:22px; text-align:center;
+    cursor:pointer; background:var(--paper); transition:border-color .15s, background .15s;
+  }
+  .dropzone.drag{ border-color:var(--accent); background:var(--accent-soft); }
+  .dropzone p{ margin:6px 0 0; font-size:13px; color:var(--ink-soft); }
+  .dropzone strong{ font-family:"Noto Serif KR",serif; font-size:14.5px; }
+  .dropzone:focus-visible{ outline:2px solid var(--accent); outline-offset:2px; }
+  .native-file-fallback{
+    display:block; width:100%; margin-top:8px; font-size:12.5px; color:var(--ink-soft);
+    font-family:inherit;
+  }
+
+  .thumbstrip{ display:flex; flex-wrap:wrap; gap:8px; margin-top:12px; }
+  .thumb{
+    position:relative; width:64px; height:64px; border-radius:7px; overflow:hidden;
+    border:2px solid var(--line); cursor:pointer; background:var(--paper-sunken);
+  }
+  .thumb.selected{ border-color:var(--accent); }
+  .thumb img{ width:100%; height:100%; object-fit:cover; display:block; }
+  .thumb .rm{
+    position:absolute; top:2px; right:2px; width:16px; height:16px; border-radius:50%;
+    background:rgba(0,0,0,.55); color:#fff; border:none; font-size:10px; line-height:16px;
+    padding:0; cursor:pointer;
+  }
+
+  .seg{ display:flex; border:1px solid var(--line); border-radius:8px; overflow:hidden; }
+  .seg button{
+    flex:1; padding:9px 10px; font-size:13px; font-weight:600; font-family:inherit;
+    background:var(--paper-sunken); color:var(--ink-soft); border:none; cursor:pointer;
+    border-right:1px solid var(--line);
+  }
+  .seg button:last-child{ border-right:none; }
+  .seg button.active{ background:var(--accent); color:#fff; }
+
+  .posgrid{
+    display:grid; grid-template-columns:repeat(3,1fr); gap:5px; width:132px;
+  }
+  .posgrid button{
+    width:40px; height:40px; border:1px solid var(--line); background:var(--paper-sunken);
+    border-radius:6px; cursor:pointer; position:relative;
+  }
+  .posgrid button::after{
+    content:""; position:absolute; width:7px; height:7px; border-radius:50%;
+    background:var(--ink-faint); top:50%; left:50%; transform:translate(-50%,-50%);
+  }
+  .posgrid button.active{ background:var(--accent-soft); border-color:var(--accent); }
+  .posgrid button.active::after{ background:var(--accent); }
+
+  .slider-row{ display:flex; align-items:center; gap:10px; }
+  .slider-row input[type=range]{ flex:1; accent-color:var(--accent); }
+  .slider-row .val{
+    font-family:"IBM Plex Mono",monospace; font-size:12px; width:44px; text-align:right;
+    color:var(--ink-soft); font-variant-numeric:tabular-nums;
+  }
+  .row2{ display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+  .swatch-row{ display:flex; align-items:center; gap:10px; }
+  input[type=color]{
+    width:38px; height:32px; padding:0; border:1px solid var(--line); border-radius:6px;
+    background:none; cursor:pointer;
+  }
+
+  .preview-frame{
+    border:1px solid var(--line); border-radius:10px; overflow:hidden; background:
+      repeating-conic-gradient(var(--paper-sunken) 0% 25%, var(--paper) 0% 50%) 0 0/16px 16px;
+    display:flex; align-items:center; justify-content:center; min-height:220px;
+  }
+  .preview-frame canvas{ max-width:100%; display:block; }
+  .preview-empty{ color:var(--ink-faint); font-size:13px; padding:60px 20px; text-align:center; }
+
+  .btn{
+    font-family:inherit; font-weight:600; font-size:13.5px; padding:10px 18px;
+    border-radius:8px; border:1px solid var(--accent); background:var(--accent); color:#fff;
+    cursor:pointer;
+  }
+  .btn:hover{ background:var(--accent-strong); border-color:var(--accent-strong); }
+  .btn.ghost{ background:transparent; color:var(--accent); }
+  .btn.ghost:hover{ background:var(--accent-soft); }
+  .btn:disabled{ opacity:.45; cursor:not-allowed; background:var(--ink-faint); border-color:var(--ink-faint); }
+  .btn-row{ display:flex; gap:10px; margin-top:14px; flex-wrap:wrap; }
+
+  .status-line{
+    font-family:"IBM Plex Mono",monospace; font-size:12px; color:var(--ink-soft);
+    margin-top:10px; min-height:16px;
+  }
+
+  .card{
+    border:1px solid var(--line); border-radius:10px; padding:18px; background:var(--paper);
+    margin-bottom:16px;
+  }
+
+  footer.note{
+    margin-top:18px; font-size:12px; color:var(--ink-faint); text-align:center;
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    *{ transition:none !important; animation:none !important; }
+  }
+</style>
+
+<div class="app">
+  <div class="masthead">
+    <div class="masthead-mark">
+      <span class="reg-mark" aria-hidden="true"></span>
+      <div>
+        <div class="kicker">NAVER BLOG WORKBENCH</div>
+        <h1>블로그 작업대</h1>
+      </div>
+    </div>
+    <p class="tagline">제목과 키워드를 점검하고, 사진에 워터마크를 찍습니다.</p>
+  </div>
+
+  <nav class="tabs" role="tablist">
+    <button class="tab active" data-tab="seo" role="tab" aria-selected="true">제목 · 키워드 분석</button>
+    <button class="tab" data-tab="wm" role="tab" aria-selected="false">이미지 워터마크</button>
+  </nav>
+
+  <main>
+    <!-- ============ SEO PANEL ============ -->
+    <section id="panel-seo" class="panel active">
+      <div class="grid2">
+        <div>
+          <h2 class="section-title">입력</h2>
+
+          <div class="card" style="margin-bottom:18px;">
+            <strong style="font-family:'Noto Serif KR',serif; font-size:14.5px;">임시저장 글 불러오기</strong>
+            <p class="hint" style="margin-top:4px;">네이버 블로그 에디터에서 전체 선택(Ctrl+A) → 복사(Ctrl+C) 후, 이 화면 아무 곳에나 붙여넣기(Ctrl+V)만 하면 됩니다. 제목·본문을 따로 나눠 복사할 필요 없이, 첫 줄을 제목으로 자동 구분해 바로 분석합니다.</p>
+            <p class="status-line" id="pasteStatus"></p>
+          </div>
+
+          <div class="field">
+            <label for="titleInput">블로그 글 제목 <span class="count" id="titleCount">0자</span></label>
+            <input type="text" id="titleInput" name="title" autocomplete="off" autocapitalize="none"
+              enterkeyhint="next" placeholder="예) 제주도 3박4일 여행 코스 A to Z, 숙소부터 맛집까지" />
+          </div>
+
+          <div class="field">
+            <label for="keywordInput">핵심 키워드 <span class="count">쉼표로 구분, 최대 5개</span></label>
+            <input type="text" id="keywordInput" name="keywords" autocomplete="off" autocapitalize="none"
+              enterkeyhint="done" placeholder="예) 제주도여행, 제주 맛집" />
+          </div>
+
+          <div class="field">
+            <label for="bodyInput">본문 내용 <span class="count" id="bodyCount">0자</span></label>
+            <textarea id="bodyInput" name="body" autocomplete="off" autocapitalize="none"
+              placeholder="본문을 붙여넣으면 글자 수·키워드 밀도까지 분석합니다 (선택 입력)"></textarea>
+            <p class="hint">비워두면 제목 기준 항목만 채점합니다.</p>
+          </div>
+        </div>
+
+        <div>
+          <h2 class="section-title">분석 결과</h2>
+          <div class="score-wrap">
+            <div class="score-dial">
+              <svg width="104" height="104" viewBox="0 0 104 104">
+                <circle cx="52" cy="52" r="45" fill="none" stroke="var(--paper-sunken)" stroke-width="9"/>
+                <circle id="scoreArc" cx="52" cy="52" r="45" fill="none" stroke="var(--good)" stroke-width="9"
+                  stroke-linecap="round" stroke-dasharray="282.7" stroke-dashoffset="282.7"/>
+              </svg>
+              <div class="score-num">
+                <strong id="scoreNum">0</strong>
+                <span>/ 100</span>
+              </div>
+            </div>
+            <div class="score-label-block">
+              <p class="score-tier" id="scoreTier">제목을 입력해 보세요</p>
+              <p class="score-sub" id="scoreSub">제목과 핵심 키워드를 입력하면 채점이 시작됩니다.</p>
+            </div>
+          </div>
+
+          <div class="checks" id="checksList"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ WATERMARK PANEL ============ -->
+    <section id="panel-wm" class="panel">
+      <div class="grid2">
+        <div>
+          <h2 class="section-title">사진 &amp; 설정</h2>
+
+          <div class="field">
+            <label id="dropzone" for="fileInput" class="dropzone" tabindex="0">
+              <strong>사진을 눌러서 선택</strong>
+              <p>여러 장을 한 번에 고를 수 있어요 (JPG · PNG · WEBP)</p>
+            </label>
+            <input type="file" id="fileInput" accept="image/*" multiple class="native-file-fallback" />
+            <p class="hint">위 버튼이 열리지 않으면 바로 위 파일 선택 칸을 직접 눌러 주세요.</p>
+            <div class="thumbstrip" id="thumbstrip"></div>
+          </div>
+
+          <div class="card">
+            <div class="field" style="margin-bottom:14px;">
+              <label>워터마크 종류</label>
+              <div class="seg">
+                <button class="active" data-type="text">텍스트</button>
+                <button data-type="logo">로고 이미지</button>
+              </div>
+            </div>
+
+            <div id="textOptions">
+              <div class="field">
+                <label for="wmText">문구</label>
+                <input type="text" id="wmText" name="wmText" autocomplete="off" autocapitalize="none"
+                  enterkeyhint="done" value="© my blog" />
+              </div>
+              <div class="row2">
+                <div class="field">
+                  <label>글꼴</label>
+                  <select id="wmFont">
+                    <option value="'Noto Serif KR',serif">명조 (Noto Serif KR)</option>
+                    <option value="'IBM Plex Sans KR',sans-serif" selected>고딕 (IBM Plex Sans KR)</option>
+                    <option value="'IBM Plex Mono',monospace">모노 스탬프 (IBM Plex Mono)</option>
+                  </select>
+                </div>
+                <div class="field">
+                  <label>굵기</label>
+                  <div class="seg">
+                    <button class="active" data-weight="600">보통</button>
+                    <button data-weight="800">굵게</button>
+                  </div>
+                </div>
+              </div>
+              <div class="field">
+                <label>색상</label>
+                <div class="swatch-row">
+                  <input type="color" id="wmColor" value="#ffffff" />
+                  <span class="hint" style="margin-top:0;">밝은 사진엔 어두운 색, 어두운 사진엔 밝은 색 추천</span>
+                </div>
+              </div>
+            </div>
+
+            <div id="logoOptions" style="display:none;">
+              <div class="field">
+                <label>로고 이미지 <span class="count">투명 배경 PNG 권장</span></label>
+                <input type="file" id="logoInput" accept="image/*" />
+              </div>
+            </div>
+
+            <div class="field">
+              <label>배치 방식</label>
+              <div class="seg">
+                <button class="active" data-mode="single">단일 위치</button>
+                <button data-mode="diagonal">대각선 반복</button>
+              </div>
+            </div>
+
+            <div id="singleOptions" class="field">
+              <label>위치</label>
+              <div class="posgrid" id="posGrid">
+                <button data-pos="top-left"></button><button data-pos="top-center"></button><button data-pos="top-right"></button>
+                <button data-pos="middle-left"></button><button data-pos="center"></button><button data-pos="middle-right"></button>
+                <button data-pos="bottom-left"></button><button data-pos="bottom-center"></button><button data-pos="bottom-right" class="active"></button>
+              </div>
+            </div>
+
+            <div id="tileOptions" class="field" style="display:none;">
+              <label>촘촘한 정도 <span class="val" id="spacingVal">70%</span></label>
+              <div class="slider-row">
+                <input type="range" id="spacingSlider" min="10" max="200" value="70" />
+              </div>
+              <p class="hint">낮을수록 촘촘하게, 높을수록 듬성듬성 배치됩니다. 사진 전체에 대각선으로 반복됩니다.</p>
+            </div>
+
+            <div class="field">
+              <label>크기 <span class="val" id="scaleVal">12%</span></label>
+              <div class="slider-row"><input type="range" id="scaleSlider" min="3" max="40" value="12" /></div>
+            </div>
+            <div class="field">
+              <label>투명도 <span class="val" id="opacityVal">55%</span></label>
+              <div class="slider-row"><input type="range" id="opacitySlider" min="5" max="100" value="55" /></div>
+            </div>
+            <div class="field">
+              <label>회전 <span class="val" id="rotationVal">0°</span></label>
+              <div class="slider-row"><input type="range" id="rotationSlider" min="-90" max="90" value="0" /></div>
+              <p class="hint" id="rotationHint" style="display:none;">대각선 반복에서는 이 값이 텍스트가 흐르는 방향(기울기)을 정합니다.</p>
+            </div>
+            <div class="field" id="paddingField">
+              <label>여백 <span class="val" id="paddingVal">4%</span></label>
+              <div class="slider-row"><input type="range" id="paddingSlider" min="0" max="15" value="4" /></div>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <h2 class="section-title">미리보기</h2>
+          <div class="preview-frame" id="previewFrame">
+            <p class="preview-empty" id="previewEmpty">사진을 올리면 여기서 결과를 바로 볼 수 있어요</p>
+          </div>
+          <div class="btn-row">
+            <button class="btn" id="saveOneBtn" disabled>이 사진 저장</button>
+            <button class="btn ghost" id="saveAllBtn" disabled>전체 저장</button>
+          </div>
+          <p class="status-line" id="statusLine"></p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="note">모든 처리는 이 화면 안에서만 이루어지며, 사진은 서버로 전송되지 않습니다.</footer>
+</div>
+
+<script>
+(function(){
+  "use strict";
+
+  /* ============ tabs ============ */
+  var tabs = document.querySelectorAll(".tab");
+  var panels = { seo: document.getElementById("panel-seo"), wm: document.getElementById("panel-wm") };
+  tabs.forEach(function(t){
+    t.addEventListener("click", function(){
+      tabs.forEach(function(x){ x.classList.remove("active"); x.setAttribute("aria-selected","false"); });
+      t.classList.add("active"); t.setAttribute("aria-selected","true");
+      Object.keys(panels).forEach(function(k){ panels[k].classList.remove("active"); });
+      panels[t.dataset.tab].classList.add("active");
+    });
+  });
+
+  /* ================================================================
+     SEO ANALYZER
+     ================================================================ */
+  var titleInput = document.getElementById("titleInput");
+  var keywordInput = document.getElementById("keywordInput");
+  var bodyInput = document.getElementById("bodyInput");
+  var titleCount = document.getElementById("titleCount");
+  var bodyCount = document.getElementById("bodyCount");
+  var scoreArc = document.getElementById("scoreArc");
+  var scoreNum = document.getElementById("scoreNum");
+  var scoreTier = document.getElementById("scoreTier");
+  var scoreSub = document.getElementById("scoreSub");
+  var checksList = document.getElementById("checksList");
+
+  var ARC_LEN = 282.7;
+
+  function tierColor(pct){
+    if(pct >= 75) return "good";
+    if(pct >= 45) return "warn";
+    return "bad";
+  }
+  function cssVar(name){ return getComputedStyle(document.documentElement).getPropertyValue(name).trim(); }
+
+  function makeCheckRow(status, title, detail, meterHtml){
+    var div = document.createElement("div");
+    div.className = "check-row";
+    div.innerHTML =
+      '<div class="check-head"><span class="dot '+status+'"></span><span class="check-title">'+title+'</span></div>' +
+      '<p class="check-detail">'+detail+'</p>' +
+      (meterHtml || "");
+    return div;
+  }
+
+  function meterBar(pct, status, zoneLeft, zoneWidth){
+    pct = Math.max(0, Math.min(100, pct));
+    var zone = (zoneLeft != null) ? '<div class="zone" style="left:'+zoneLeft+'%;width:'+zoneWidth+'%;"></div>' : "";
+    return '<div class="meter">'+zone+'<div class="fill '+status+'" style="width:'+pct+'%;"></div></div>';
+  }
+
+  function escapeHtml(s){
+    return s.replace(/[&<>"']/g, function(c){
+      return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c];
+    });
+  }
+
+  function analyze(){
+    var title = titleInput.value.trim();
+    var body = bodyInput.value.trim();
+    var keywords = keywordInput.value.split(",").map(function(s){ return s.trim(); }).filter(Boolean).slice(0,5);
+
+    titleCount.textContent = title.length + "자";
+    bodyCount.textContent = body.length + "자";
+
+    checksList.innerHTML = "";
+
+    if(!title){
+      scoreArc.setAttribute("stroke-dashoffset", ARC_LEN);
+      scoreArc.setAttribute("stroke", cssVar("--ink-faint"));
+      scoreNum.textContent = "0";
+      scoreTier.textContent = "제목을 입력해 보세요";
+      scoreSub.textContent = "제목과 핵심 키워드를 입력하면 채점이 시작됩니다.";
+      return;
+    }
+
+    var earned = 0, possible = 0;
+
+    /* 1. title length: 20 pts, ideal 25-40 */
+    possible += 20;
+    var tlen = title.length, tlenStatus, tlenPts, tlenMsg;
+    if(tlen >= 25 && tlen <= 40){ tlenStatus="good"; tlenPts=20; tlenMsg="검색결과에서 잘리지 않는 적정 길이입니다."; }
+    else if(tlen >= 15 && tlen <= 50){ tlenStatus="warn"; tlenPts=12; tlenMsg = tlen<25 ? "조금 더 길어도 좋습니다 (권장 25~40자)." : "PC/모바일 검색결과에서 일부 잘릴 수 있습니다."; }
+    else { tlenStatus="bad"; tlenPts=5; tlenMsg = tlen<15 ? "너무 짧아 정보량이 부족해 보입니다." : "너무 길어 대부분 잘려서 노출됩니다."; }
+    earned += tlenPts;
+    checksList.appendChild(makeCheckRow(tlenStatus, "제목 길이", tlenMsg + " (권장 25~40자)",
+      meterBar(Math.min(100, tlen/55*100), tlenStatus, 25/55*100, (40-25)/55*100)));
+
+    if(keywords.length === 0){
+      checksList.appendChild(makeCheckRow("neutral", "핵심 키워드 미입력", "핵심 키워드를 입력하면 제목·본문 노출 여부를 함께 확인합니다.", ""));
+    } else {
+      /* 2. keyword in title: 20 pts */
+      possible += 20;
+      var inTitle = keywords.filter(function(k){ return title.indexOf(k) !== -1; });
+      var kwPts = keywords.length ? Math.round(20 * inTitle.length / keywords.length) : 0;
+      var kwStatus = inTitle.length === keywords.length ? "good" : (inTitle.length > 0 ? "warn" : "bad");
+      earned += kwPts;
+      checksList.appendChild(makeCheckRow(kwStatus, "제목에 키워드 포함",
+        inTitle.length + " / " + keywords.length + "개 키워드가 제목에 포함되어 있습니다.", ""));
+
+      /* 3. keyword position early in title: 10 pts */
+      possible += 10;
+      var firstIdx = -1;
+      keywords.forEach(function(k){
+        var i = title.indexOf(k);
+        if(i !== -1 && (firstIdx === -1 || i < firstIdx)) firstIdx = i;
+      });
+      var posPts, posStatus, posMsg;
+      if(firstIdx === -1){ posPts=0; posStatus="bad"; posMsg="키워드가 제목에 없어 위치를 확인할 수 없습니다."; }
+      else if(firstIdx <= 10){ posPts=10; posStatus="good"; posMsg="키워드가 제목 앞부분(문자 "+(firstIdx+1)+"번째)에 있어 눈에 잘 띕니다."; }
+      else { posPts=5; posStatus="warn"; posMsg="키워드가 제목 뒤쪽(문자 "+(firstIdx+1)+"번째)에 있습니다. 앞으로 옮기면 더 좋습니다."; }
+      earned += posPts;
+      checksList.appendChild(makeCheckRow(posStatus, "키워드 위치", posMsg, ""));
+
+      /* 4. keyword stuffing in title: 10 pts */
+      possible += 10;
+      var stuffed = keywords.some(function(k){
+        if(!k) return false;
+        var count = title.split(k).length - 1;
+        return count >= 3;
+      });
+      var stfPts = stuffed ? 0 : 10;
+      earned += stfPts;
+      checksList.appendChild(makeCheckRow(stuffed?"bad":"good", "제목 키워드 반복",
+        stuffed ? "같은 키워드가 제목에서 3회 이상 반복되어 스팸으로 보일 수 있습니다." : "제목에서 키워드를 과도하게 반복하지 않았습니다.", ""));
+    }
+
+    /* body-dependent checks */
+    if(body){
+      /* 5. body length: 20 pts */
+      possible += 20;
+      var blen = body.length, blStatus, blPts, blMsg;
+      if(blen >= 1500){ blStatus="good"; blPts=20; blMsg="충분한 정보량입니다."; }
+      else if(blen >= 800){ blStatus="warn"; blPts=14; blMsg="양호하지만 좀 더 보강하면 좋습니다."; }
+      else if(blen >= 300){ blStatus="warn"; blPts=8; blMsg="정보량이 다소 부족합니다."; }
+      else { blStatus="bad"; blPts=2; blMsg="너무 짧아 저품질로 분류될 수 있습니다."; }
+      earned += blPts;
+      checksList.appendChild(makeCheckRow(blStatus, "본문 길이", blMsg + " (권장 1,500자 이상)",
+        meterBar(Math.min(100, blen/2200*100), blStatus, 1500/2200*100, 100-1500/2200*100)));
+
+      if(keywords.length){
+        /* 6. keyword density: 10 pts */
+        possible += 10;
+        var totalOcc = 0;
+        keywords.forEach(function(k){ if(k) totalOcc += body.split(k).length - 1; });
+        var density = body.length ? (totalOcc / body.length * 100) : 0;
+        var dnStatus, dnPts, dnMsg;
+        if(density >= 0.5 && density <= 3){ dnStatus="good"; dnPts=10; dnMsg="키워드 밀도가 자연스러운 범위입니다."; }
+        else if(density > 3 && density <= 5){ dnStatus="warn"; dnPts=5; dnMsg="키워드가 다소 자주 등장합니다. 과최적화 주의."; }
+        else if(density > 5){ dnStatus="bad"; dnPts=0; dnMsg="키워드를 지나치게 반복해 스팸 판정 위험이 있습니다."; }
+        else if(density > 0){ dnStatus="warn"; dnPts=5; dnMsg="키워드 언급이 적습니다. 자연스럽게 몇 번 더 넣어보세요."; }
+        else { dnStatus="bad"; dnPts=0; dnMsg="본문에 핵심 키워드가 한 번도 등장하지 않습니다."; }
+        earned += dnPts;
+        checksList.appendChild(makeCheckRow(dnStatus, "본문 키워드 밀도",
+          dnMsg + " (현재 "+density.toFixed(2)+"%, 권장 0.5~3%)",
+          meterBar(Math.min(100, density/6*100), dnStatus, 0.5/6*100, (3-0.5)/6*100)));
+
+        /* 7. early mention: 10 pts */
+        possible += 10;
+        var lead = body.slice(0, 200);
+        var mentionedEarly = keywords.some(function(k){ return k && lead.indexOf(k) !== -1; });
+        var emPts = mentionedEarly ? 10 : 0;
+        earned += emPts;
+        checksList.appendChild(makeCheckRow(mentionedEarly?"good":"warn", "도입부 키워드 언급",
+          mentionedEarly ? "본문 첫 200자 안에 키워드가 등장해 주제가 빠르게 드러납니다." : "본문 도입부(첫 200자)에 키워드가 없습니다. 첫 문단에 넣어보세요.", ""));
+      }
+    } else {
+      checksList.appendChild(makeCheckRow("neutral", "본문 미입력", "본문을 입력하면 글자 수·키워드 밀도·도입부 언급까지 확인합니다.", ""));
+    }
+
+    var pct = possible ? Math.round(earned / possible * 100) : 0;
+    var status = tierColor(pct);
+    scoreArc.setAttribute("stroke", cssVar("--"+status));
+    scoreArc.setAttribute("stroke-dashoffset", ARC_LEN * (1 - pct/100));
+    scoreNum.textContent = pct;
+    var tierText = pct>=75 ? "발행해도 좋아요" : pct>=45 ? "조금만 더 다듬어보세요" : "보완이 필요해요";
+    scoreTier.textContent = tierText;
+    scoreSub.textContent = body ? "제목·본문 전체 항목을 기준으로 채점했습니다." : "제목 기준 항목만으로 채점했습니다 (본문 입력 시 정밀도가 올라갑니다).";
+  }
+
+  [titleInput, keywordInput, bodyInput].forEach(function(el){
+    el.addEventListener("input", analyze);
+  });
+
+  /* -- draft recognition: split pasted "title + body" into the two fields -- */
+  function splitTitleBody(raw){
+    var lines = raw.replace(/\r\n/g, "\n").split("\n");
+    var idx = 0;
+    while(idx < lines.length && lines[idx].trim() === "") idx++;
+    var title = idx < lines.length ? lines[idx].trim() : "";
+    var rest = lines.slice(idx + 1).join("\n").trim();
+    return { title: title, body: rest };
+  }
+
+  var pasteStatus = document.getElementById("pasteStatus");
+
+  /*
+   * Auto-recognition relies on the native browser "paste" event (ClipboardEvent),
+   * not the async navigator.clipboard.readText() API — the latter needs a
+   * clipboard-read permission grant that this embedded view cannot obtain,
+   * so a button built on it fails every time. The paste event fires on a
+   * plain user-initiated Ctrl+V with no extra permission needed.
+   * A multi-line paste anywhere on this tab (except the keyword field, where
+   * a single pasted keyword should just land normally) is treated as a full
+   * draft: first line -> title, rest -> body, then analyze immediately.
+   */
+  document.addEventListener("paste", function(e){
+    if(!panels.seo.classList.contains("active")) return;
+    if(document.activeElement === keywordInput) return;
+    var cd = e.clipboardData || window.clipboardData;
+    var text = cd ? cd.getData("text") : "";
+    if(!text || !text.trim()) return;
+    var lineCount = text.replace(/\r\n/g, "\n").split("\n").filter(function(l){ return l.trim() !== ""; }).length;
+    if(lineCount < 2) return; // a single line: let it paste normally wherever the cursor is
+    e.preventDefault();
+    var parts = splitTitleBody(text);
+    titleInput.value = parts.title;
+    bodyInput.value = parts.body;
+    analyze();
+    pasteStatus.textContent = "붙여넣은 내용에서 첫 줄을 제목으로 자동 인식해 분석했습니다.";
+  });
+
+  analyze();
+
+  /* ================================================================
+     WATERMARK TOOL
+     ================================================================ */
+  var MAX_DIM = 2000;
+
+  var images = [];        // {id, name, mime, img, w, h}
+  var selectedId = null;
+  var logoImg = null;
+
+  var settings = {
+    type: "text",
+    text: "© my blog",
+    font: "'IBM Plex Sans KR',sans-serif",
+    weight: "600",
+    color: "#ffffff",
+    mode: "single",
+    position: "bottom-right",
+    spacing: 70,
+    scale: 12,
+    opacity: 55,
+    rotation: 0,
+    padding: 4
+  };
+
+  var dropzone = document.getElementById("dropzone");
+  var fileInput = document.getElementById("fileInput");
+  var thumbstrip = document.getElementById("thumbstrip");
+  var previewFrame = document.getElementById("previewFrame");
+  var previewEmpty = document.getElementById("previewEmpty");
+  var saveOneBtn = document.getElementById("saveOneBtn");
+  var saveAllBtn = document.getElementById("saveAllBtn");
+  var statusLine = document.getElementById("statusLine");
+
+  // A <label for="fileInput"> already opens the picker natively on tap/click —
+  // no JS needed for that path (and calling fileInput.click() here too would
+  // double-open it). Keyboard users still need an explicit Enter/Space handler
+  // since a focused <label> doesn't auto-activate its control on its own.
+  dropzone.addEventListener("keydown", function(e){
+    if(e.key === "Enter" || e.key === " "){ e.preventDefault(); fileInput.click(); }
+  });
+  ["dragenter","dragover"].forEach(function(ev){
+    dropzone.addEventListener(ev, function(e){ e.preventDefault(); dropzone.classList.add("drag"); });
+  });
+  ["dragleave","drop"].forEach(function(ev){
+    dropzone.addEventListener(ev, function(e){ e.preventDefault(); dropzone.classList.remove("drag"); });
+  });
+  dropzone.addEventListener("drop", function(e){
+    handleFiles(e.dataTransfer.files);
+  });
+  fileInput.addEventListener("change", function(){ handleFiles(fileInput.files); fileInput.value=""; });
+
+  function handleFiles(fileList){
+    var files = Array.prototype.filter.call(fileList, function(f){ return f.type.indexOf("image/") === 0; });
+    if(!files.length) return;
+    var loaded = 0;
+    files.forEach(function(file){
+      var id = "img_" + Date.now() + "_" + Math.random().toString(36).slice(2,8);
+      var url = URL.createObjectURL(file);
+      var img = new Image();
+      img.onload = function(){
+        var w = img.naturalWidth, h = img.naturalHeight;
+        if(Math.max(w,h) > MAX_DIM){
+          var s = MAX_DIM / Math.max(w,h);
+          w = Math.round(w*s); h = Math.round(h*s);
+        }
+        images.push({ id: id, name: file.name, mime: file.type === "image/png" ? "image/png" : "image/jpeg", img: img, w: w, h: h, url: url });
+        if(selectedId === null) selectedId = id;
+        renderThumbs();
+        renderPreview();
+        updateButtons();
+      };
+      img.src = url;
+    });
+  }
+
+  function renderThumbs(){
+    thumbstrip.innerHTML = "";
+    images.forEach(function(entry){
+      var div = document.createElement("div");
+      div.className = "thumb" + (entry.id === selectedId ? " selected" : "");
+      div.innerHTML = '<img src="'+entry.url+'" alt="" /><button class="rm" title="삭제" aria-label="삭제">✕</button>';
+      div.querySelector("img").addEventListener("click", function(){
+        selectedId = entry.id; renderThumbs(); renderPreview();
+      });
+      div.querySelector(".rm").addEventListener("click", function(e){
+        e.stopPropagation();
+        images = images.filter(function(x){ return x.id !== entry.id; });
+        if(selectedId === entry.id) selectedId = images.length ? images[0].id : null;
+        renderThumbs(); renderPreview(); updateButtons();
+      });
+      thumbstrip.appendChild(div);
+    });
+  }
+
+  function updateButtons(){
+    var has = images.length > 0;
+    saveOneBtn.disabled = !has;
+    saveAllBtn.disabled = !has;
+  }
+
+  /* -- watermark type / mode toggles -- */
+  document.querySelectorAll('.seg [data-type]').forEach(function(btn){
+    btn.addEventListener("click", function(){
+      document.querySelectorAll('.seg [data-type]').forEach(function(b){ b.classList.remove("active"); });
+      btn.classList.add("active");
+      settings.type = btn.dataset.type;
+      document.getElementById("textOptions").style.display = settings.type === "text" ? "" : "none";
+      document.getElementById("logoOptions").style.display = settings.type === "logo" ? "" : "none";
+      renderPreview();
+    });
+  });
+  document.querySelectorAll('.seg [data-weight]').forEach(function(btn){
+    btn.addEventListener("click", function(){
+      document.querySelectorAll('.seg [data-weight]').forEach(function(b){ b.classList.remove("active"); });
+      btn.classList.add("active");
+      settings.weight = btn.dataset.weight;
+      renderPreview();
+    });
+  });
+  document.querySelectorAll('.seg [data-mode]').forEach(function(btn){
+    btn.addEventListener("click", function(){
+      document.querySelectorAll('.seg [data-mode]').forEach(function(b){ b.classList.remove("active"); });
+      btn.classList.add("active");
+      settings.mode = btn.dataset.mode;
+      document.getElementById("singleOptions").style.display = settings.mode === "single" ? "" : "none";
+      document.getElementById("tileOptions").style.display = settings.mode === "diagonal" ? "" : "none";
+      document.getElementById("paddingField").style.display = settings.mode === "single" ? "" : "none";
+      document.getElementById("rotationHint").style.display = settings.mode === "diagonal" ? "" : "none";
+      if(settings.mode === "diagonal" && settings.rotation === 0){
+        settings.rotation = -30;
+        var rSlider = document.getElementById("rotationSlider");
+        rSlider.value = -30;
+        document.getElementById("rotationVal").textContent = "-30°";
+      }
+      renderPreview();
+    });
+  });
+  document.querySelectorAll('#posGrid button').forEach(function(btn){
+    btn.addEventListener("click", function(){
+      document.querySelectorAll('#posGrid button').forEach(function(b){ b.classList.remove("active"); });
+      btn.classList.add("active");
+      settings.position = btn.dataset.pos;
+      renderPreview();
+    });
+  });
+
+  document.getElementById("wmText").addEventListener("input", function(e){ settings.text = e.target.value; renderPreview(); });
+  document.getElementById("wmFont").addEventListener("change", function(e){ settings.font = e.target.value; renderPreview(); });
+  document.getElementById("wmColor").addEventListener("input", function(e){ settings.color = e.target.value; renderPreview(); });
+
+  document.getElementById("logoInput").addEventListener("change", function(e){
+    var f = e.target.files[0];
+    if(!f) return;
+    var img = new Image();
+    img.onload = function(){ logoImg = img; renderPreview(); };
+    img.src = URL.createObjectURL(f);
+  });
+
+  function bindSlider(sliderId, valId, key, suffix){
+    var slider = document.getElementById(sliderId);
+    var val = document.getElementById(valId);
+    slider.addEventListener("input", function(){
+      settings[key] = Number(slider.value);
+      val.textContent = slider.value + suffix;
+      renderPreview();
+    });
+  }
+  bindSlider("spacingSlider","spacingVal","spacing","%");
+  bindSlider("scaleSlider","scaleVal","scale","%");
+  bindSlider("opacitySlider","opacityVal","opacity","%");
+  bindSlider("rotationSlider","rotationVal","rotation","°");
+  bindSlider("paddingSlider","paddingVal","padding","%");
+
+  /* -- core render: draws watermark onto a fresh canvas, returns canvas -- */
+  function renderToCanvas(entry){
+    var canvas = document.createElement("canvas");
+    canvas.width = entry.w; canvas.height = entry.h;
+    var ctx = canvas.getContext("2d");
+    ctx.drawImage(entry.img, 0, 0, entry.w, entry.h);
+
+    var W = entry.w, H = entry.h;
+    var opacity = settings.opacity / 100;
+    var rotRad = settings.rotation * Math.PI / 180;
+
+    function drawMarkCentered(c, cx, cy){
+      c.save();
+      c.translate(cx, cy);
+      c.rotate(rotRad);
+      c.globalAlpha = opacity;
+      if(settings.type === "text" && settings.text){
+        var fontSize = Math.max(8, W * (settings.scale/100));
+        c.font = settings.weight + " " + fontSize + "px " + settings.font;
+        c.fillStyle = settings.color;
+        c.textAlign = "center";
+        c.textBaseline = "middle";
+        c.fillText(settings.text, 0, 0);
+      } else if(settings.type === "logo" && logoImg){
+        var lw = W * (settings.scale/100);
+        var lh = lw * (logoImg.naturalHeight/logoImg.naturalWidth);
+        c.drawImage(logoImg, -lw/2, -lh/2, lw, lh);
+      }
+      c.restore();
+    }
+
+    function markBox(){
+      if(settings.type === "text" && settings.text){
+        var fontSize = Math.max(8, W * (settings.scale/100));
+        var m = ctx.font = settings.weight + " " + fontSize + "px " + settings.font;
+        var tw = ctx.measureText(settings.text).width;
+        return { w: tw, h: fontSize * 1.25 };
+      } else if(settings.type === "logo" && logoImg){
+        var lw = W * (settings.scale/100);
+        var lh = lw * (logoImg.naturalHeight/logoImg.naturalWidth);
+        return { w: lw, h: lh };
+      }
+      return { w: 0, h: 0 };
+    }
+
+    if(settings.mode === "single"){
+      var pad = W * (settings.padding/100);
+      var box = markBox();
+      var alignX = settings.position.indexOf("left")!==-1 ? "left" : settings.position.indexOf("right")!==-1 ? "right" : "center";
+      var alignY = settings.position.indexOf("top")!==-1 ? "top" : settings.position.indexOf("bottom")!==-1 ? "bottom" : "middle";
+      var cx = alignX==="left" ? pad + box.w/2 : alignX==="right" ? W - pad - box.w/2 : W/2;
+      var cy = alignY==="top" ? pad + box.h/2 : alignY==="bottom" ? H - pad - box.h/2 : H/2;
+      drawMarkCentered(ctx, cx, cy);
+    } else {
+      // diagonal scatter: repeat the mark across the whole photo, running along a diagonal.
+      var box2 = markBox();
+      if(box2.w > 0 && box2.h > 0){
+        var gap = Math.max(box2.w, box2.h) * (settings.spacing/100);
+        var pitchX = Math.max(8, box2.w + gap);
+        var pitchY = Math.max(8, box2.h + gap);
+        var diag = Math.sqrt(W*W + H*H);
+        var cols = Math.ceil(diag / pitchX) + 2;
+        var rows = Math.ceil(diag / pitchY) + 2;
+        var totalMarks = (2*rows+1) * (2*cols+1);
+        var CAP = 6000; // guard against pathologically dense settings freezing the tab
+        if(totalMarks > CAP){
+          var growFactor = Math.sqrt(totalMarks / CAP);
+          pitchX *= growFactor; pitchY *= growFactor;
+          cols = Math.ceil(diag / pitchX) + 2;
+          rows = Math.ceil(diag / pitchY) + 2;
+        }
+
+        ctx.save();
+        ctx.translate(W/2, H/2);
+        ctx.rotate(rotRad);
+        ctx.globalAlpha = opacity;
+        if(settings.type === "text" && settings.text){
+          var fs = Math.max(8, W * (settings.scale/100));
+          ctx.font = settings.weight + " " + fs + "px " + settings.font;
+          ctx.fillStyle = settings.color;
+          ctx.textAlign = "center";
+          ctx.textBaseline = "middle";
+        }
+        var lwD, lhD;
+        if(settings.type === "logo" && logoImg){
+          lwD = W * (settings.scale/100);
+          lhD = lwD * (logoImg.naturalHeight/logoImg.naturalWidth);
+        }
+        for(var r = -rows; r <= rows; r++){
+          var rowShift = (Math.abs(r) % 2 === 1) ? pitchX / 2 : 0; // brick-offset stagger, feels scattered rather than gridded
+          for(var c = -cols; c <= cols; c++){
+            var mx = c * pitchX + rowShift;
+            var my = r * pitchY;
+            if(settings.type === "text" && settings.text){
+              ctx.fillText(settings.text, mx, my);
+            } else if(settings.type === "logo" && logoImg){
+              ctx.drawImage(logoImg, mx - lwD/2, my - lhD/2, lwD, lhD);
+            }
+          }
+        }
+        ctx.restore();
+      }
+    }
+
+    return canvas;
+  }
+
+  var previewDebounce = null;
+  function renderPreview(){
+    clearTimeout(previewDebounce);
+    previewDebounce = setTimeout(function(){
+      var entry = images.find(function(x){ return x.id === selectedId; });
+      previewFrame.innerHTML = "";
+      if(!entry){
+        previewFrame.appendChild(previewEmpty);
+        return;
+      }
+      var canvas = renderToCanvas(entry);
+      previewFrame.appendChild(canvas);
+    }, 120);
+  }
+
+  /* -- saving -- */
+  function canvasToBlob(canvas, mime){
+    return new Promise(function(resolve){
+      canvas.toBlob(function(blob){ resolve(blob); }, mime, 0.92);
+    });
+  }
+
+  function baseName(name){
+    var i = name.lastIndexOf(".");
+    return i > 0 ? name.slice(0,i) : name;
+  }
+  function ext(mime){ return mime === "image/png" ? "png" : "jpg"; }
+
+  function setStatus(msg){ statusLine.textContent = msg; }
+
+  /*
+   * Two save paths, so one build runs both as an Artifact and as a plain page
+   * saved on the phone: inside the Claude viewer only the downloads capability
+   * can hand a file over, while a standalone page uses an ordinary <a download>.
+   * Resolved once, because claude.use() is only meaningful in the viewer.
+   */
+  var saverPromise = null;
+  function getSaver(){
+    if(saverPromise) return saverPromise;
+    saverPromise = (async function(){
+      if(window.claude && typeof window.claude.use === "function"){
+        try{
+          var api = await window.claude.use("downloads");
+          if(api) return { kind: "claude", api: api };
+        } catch(e){ /* fall through to the plain-page path */ }
+      }
+      return { kind: "anchor" };
+    })();
+    return saverPromise;
+  }
+
+  function anchorSave(blob, filename){
+    var url = URL.createObjectURL(blob);
+    var a = document.createElement("a");
+    a.href = url; a.download = filename;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    setTimeout(function(){ URL.revokeObjectURL(url); }, 4000);
+  }
+
+  async function saveEntry(entry, saver){
+    var canvas = renderToCanvas(entry);
+    var blob = await canvasToBlob(canvas, entry.mime);
+    var filename = baseName(entry.name) + "_watermark." + ext(entry.mime);
+    if(saver.kind === "anchor"){
+      anchorSave(blob, filename);
+      return true;
+    }
+    try{
+      await saver.api.save({ filename: filename, data: blob });
+      return true;
+    } catch(err){
+      if(err && err.code === "rate_limited"){
+        await new Promise(function(r){ setTimeout(r, 700); });
+        return saveEntry(entry, saver);
+      }
+      if(err && err.code === "declined"){ throw err; }
+      console.warn("save failed", filename, err);
+      return false;
+    }
+  }
+
+  saveOneBtn.addEventListener("click", async function(){
+    var entry = images.find(function(x){ return x.id === selectedId; });
+    if(!entry) return;
+    var saver = await getSaver();
+    setStatus("저장 중…");
+    try{
+      var ok = await saveEntry(entry, saver);
+      setStatus(ok ? "저장 완료: " + entry.name : "저장하지 못했습니다.");
+    } catch(e){
+      setStatus("저장을 취소했습니다.");
+    }
+  });
+
+  saveAllBtn.addEventListener("click", async function(){
+    if(!images.length) return;
+    var saver = await getSaver();
+    var done = 0, failed = 0;
+    for(var i=0;i<images.length;i++){
+      setStatus("저장 중… (" + (i+1) + "/" + images.length + ")");
+      try{
+        var ok = await saveEntry(images[i], saver);
+        if(ok) done++; else failed++;
+        if(saver.kind === "anchor"){
+          // give the browser a beat between downloads, or Android drops some
+          await new Promise(function(r){ setTimeout(r, 400); });
+        }
+      } catch(e){
+        setStatus("저장을 취소했습니다. (" + done + "/" + images.length + " 완료)");
+        return;
+      }
+    }
+    setStatus(done + "개 저장 완료" + (failed ? ", " + failed + "개 실패" : ""));
+  });
+
+})();
+</script>
+
+<script>
+if ("serviceWorker" in navigator) {
+  window.addEventListener("load", function () {
+    navigator.serviceWorker.register("sw.js").catch(function () {});
+  });
+}
+</script>
+</body>
+</html>
