@@ -124,13 +124,20 @@
   }
 
   /* ---------- tabs ---------- */
-  .tabs{ display:flex; gap:4px; margin-bottom:0; }
+  /* Four tabs overflow a phone, so the strip scrolls sideways rather than
+     wrapping — that keeps `main`'s top-left square corner meeting the row. */
+  .tabs{
+    display:flex; gap:4px; margin-bottom:0; overflow-x:auto;
+    scrollbar-width:none; -ms-overflow-style:none;
+  }
+  .tabs::-webkit-scrollbar{ display:none; }
   .tab{
     font-family:"IBM Plex Sans KR",sans-serif; font-weight:600; font-size:14.5px;
-    padding:11px 20px; border:1px solid var(--line); border-bottom:none;
+    padding:11px 18px; border:1px solid var(--line); border-bottom:none;
     border-radius:9px 9px 0 0; background:var(--paper-sunken); color:var(--ink-soft);
-    cursor:pointer; position:relative; top:1px;
+    cursor:pointer; position:relative; top:1px; flex:none; white-space:nowrap;
   }
+  @media (max-width:560px){ .tab{ padding:10px 13px; font-size:13.5px; } }
   .tab.active{
     background:var(--paper-raised); color:var(--ink); border-color:var(--line);
   }
@@ -312,6 +319,60 @@
     margin-top:18px; font-size:12px; color:var(--ink-faint); text-align:center;
   }
 
+  /* ---------- pre-publish check ---------- */
+  .manual-list{ display:flex; flex-direction:column; gap:2px; }
+  .manual-item{
+    display:flex; align-items:flex-start; gap:10px; padding:10px 12px;
+    border:1px solid var(--line); border-radius:8px; background:var(--paper);
+    cursor:pointer; margin-bottom:6px;
+  }
+  .manual-item input{ margin:2px 0 0; width:17px; height:17px; accent-color:var(--accent); flex:none; }
+  .manual-item span{ font-size:13.5px; line-height:1.5; }
+  .manual-item.done span{ color:var(--ink-faint); text-decoration:line-through; }
+
+  .tagbox{
+    border:1px solid var(--line); border-radius:10px; background:var(--paper);
+    padding:12px; min-height:120px; display:flex; flex-wrap:wrap; gap:7px; align-content:flex-start;
+  }
+  .tag{
+    font-size:13px; font-weight:600; padding:7px 12px; border-radius:99px;
+    border:1px solid var(--accent); background:var(--accent); color:#fff;
+    cursor:pointer; font-family:inherit;
+  }
+  .tag.off{ background:transparent; color:var(--ink-faint); border-color:var(--line); }
+
+  /* ---------- resize tool ---------- */
+  .summary-row{ display:flex; align-items:center; gap:12px; flex-wrap:wrap; }
+  .sum-label{ display:block; font-size:11px; color:var(--ink-faint); letter-spacing:.04em; }
+  .summary-row strong{
+    font-family:"IBM Plex Mono",monospace; font-size:17px; font-variant-numeric:tabular-nums;
+  }
+  .sum-arrow{ color:var(--ink-faint); font-size:16px; }
+  .sum-save{
+    margin-left:auto; font-weight:700; font-size:14px; color:var(--good);
+    background:var(--good-soft); padding:5px 11px; border-radius:99px;
+  }
+  .rz-item{
+    display:flex; align-items:center; gap:11px; padding:9px 11px; margin-bottom:7px;
+    border:1px solid var(--line); border-radius:9px; background:var(--paper);
+  }
+  .rz-item img{
+    width:46px; height:46px; object-fit:cover; border-radius:6px; flex:none;
+    background:var(--paper-sunken);
+  }
+  .rz-meta{ flex:1; min-width:0; }
+  .rz-name{
+    font-size:12.5px; font-weight:600; white-space:nowrap; overflow:hidden;
+    text-overflow:ellipsis;
+  }
+  .rz-size{
+    font-family:"IBM Plex Mono",monospace; font-size:11.5px; color:var(--ink-soft);
+    font-variant-numeric:tabular-nums; margin-top:3px;
+  }
+  .rz-cut{ font-weight:700; font-size:12.5px; color:var(--good); flex:none; }
+  .rz-cut.none{ color:var(--ink-faint); }
+  .rz-item .btn{ padding:7px 11px; font-size:12px; flex:none; }
+
   /* Landscape on a phone is short, not small: keep the two-column split but
      claw back vertical space so the input boxes and the score stay on screen. */
   @media (max-height: 560px) and (orientation: landscape){
@@ -348,8 +409,10 @@
   </div>
 
   <nav class="tabs" role="tablist">
-    <button class="tab active" data-tab="seo" role="tab" aria-selected="true">제목 · 키워드 분석</button>
-    <button class="tab" data-tab="wm" role="tab" aria-selected="false">이미지 워터마크</button>
+    <button class="tab active" data-tab="seo" role="tab" aria-selected="true">제목 · 키워드</button>
+    <button class="tab" data-tab="check" role="tab" aria-selected="false">발행 전 점검</button>
+    <button class="tab" data-tab="wm" role="tab" aria-selected="false">워터마크</button>
+    <button class="tab" data-tab="resize" role="tab" aria-selected="false">사진 줄이기</button>
   </nav>
 
   <main>
@@ -397,6 +460,36 @@
           </div>
 
           <div class="checks" id="checksList"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ PRE-PUBLISH CHECK PANEL ============ -->
+    <section id="panel-check" class="panel">
+      <div class="grid2">
+        <div>
+          <h2 class="section-title">발행 전 점검</h2>
+          <p class="hint" style="margin:-8px 0 14px;">
+            <b>제목 · 키워드</b> 탭에 붙여넣은 글을 그대로 점검합니다. 다시 붙여넣을 필요 없습니다.
+          </p>
+          <button type="button" class="btn" id="runCheckBtn" style="width:100%; padding:13px;">점검하기</button>
+          <p class="status-line" id="checkStatus"></p>
+          <div class="checks" id="checkList" style="margin-top:12px;"></div>
+
+          <h2 class="section-title" style="margin-top:24px;">직접 확인할 것</h2>
+          <div class="manual-list" id="manualList"></div>
+        </div>
+
+        <div>
+          <h2 class="section-title">추천 해시태그</h2>
+          <p class="hint" style="margin:-8px 0 12px;">키워드와 제목에서 뽑았습니다. 태그를 눌러 뺐다 넣었다 할 수 있습니다.</p>
+          <div class="tagbox" id="tagBox">
+            <p class="preview-empty" style="padding:26px 10px;">먼저 점검하기를 눌러 주세요</p>
+          </div>
+          <div class="btn-row">
+            <button class="btn" id="copyTagsBtn" disabled>선택한 태그 복사</button>
+          </div>
+          <p class="status-line" id="tagStatus"></p>
         </div>
       </div>
     </section>
@@ -523,6 +616,62 @@
         </div>
       </div>
     </section>
+
+    <!-- ============ RESIZE PANEL ============ -->
+    <section id="panel-resize" class="panel">
+      <div class="grid2">
+        <div>
+          <h2 class="section-title">사진 &amp; 설정</h2>
+
+          <div class="field">
+            <label id="rzDrop" for="rzFileInput" class="dropzone">
+              <strong>사진을 눌러서 선택</strong>
+              <p>여러 장을 한 번에 고를 수 있어요</p>
+            </label>
+            <input type="file" id="rzFileInput" accept="image/*" multiple class="native-file-fallback" />
+          </div>
+
+          <div class="card">
+            <div class="field">
+              <label>가로·세로 최대 크기</label>
+              <select id="rzMaxDim">
+                <option value="1000">블로그 본문용 — 긴 변 1000px (가장 가벼움)</option>
+                <option value="1600" selected>넉넉하게 — 긴 변 1600px (권장)</option>
+                <option value="2000">고화질 — 긴 변 2000px</option>
+                <option value="0">크기 그대로 두고 용량만 줄이기</option>
+              </select>
+              <p class="hint">긴 변만 맞추고 비율은 그대로 유지합니다. 원본보다 커지지는 않습니다.</p>
+            </div>
+
+            <div class="field">
+              <label>화질 <span class="val" id="rzQualityVal">80%</span></label>
+              <div class="slider-row"><input type="range" id="rzQuality" min="40" max="95" value="80" /></div>
+              <p class="hint">80% 정도면 눈으로 차이를 느끼기 어려우면서 용량이 크게 줄어듭니다.</p>
+            </div>
+          </div>
+
+          <div class="btn-row">
+            <button class="btn" id="rzSaveAllBtn" disabled>전체 저장</button>
+            <button class="btn ghost" id="rzClearBtn" disabled>목록 비우기</button>
+          </div>
+          <p class="status-line" id="rzStatus"></p>
+        </div>
+
+        <div>
+          <h2 class="section-title">결과</h2>
+          <div class="card" id="rzSummary" style="display:none;">
+            <div class="summary-row">
+              <div><span class="sum-label">원본 합계</span><strong id="rzTotalBefore">-</strong></div>
+              <div class="sum-arrow">→</div>
+              <div><span class="sum-label">줄인 후</span><strong id="rzTotalAfter">-</strong></div>
+              <div class="sum-save" id="rzTotalSaved">-</div>
+            </div>
+          </div>
+          <div id="rzList"></div>
+          <p class="preview-empty" id="rzEmpty">사진을 올리면 얼마나 줄었는지 여기에 표시됩니다</p>
+        </div>
+      </div>
+    </section>
   </main>
 
   <footer class="note">모든 처리는 이 화면 안에서만 이루어지며, 사진은 서버로 전송되지 않습니다.</footer>
@@ -534,13 +683,21 @@
 
   /* ============ tabs ============ */
   var tabs = document.querySelectorAll(".tab");
-  var panels = { seo: document.getElementById("panel-seo"), wm: document.getElementById("panel-wm") };
+  var panels = {
+    seo: document.getElementById("panel-seo"),
+    check: document.getElementById("panel-check"),
+    wm: document.getElementById("panel-wm"),
+    resize: document.getElementById("panel-resize")
+  };
+  var onTabShow = {}; // panel key -> callback, registered by the tools below
   tabs.forEach(function(t){
     t.addEventListener("click", function(){
       tabs.forEach(function(x){ x.classList.remove("active"); x.setAttribute("aria-selected","false"); });
       t.classList.add("active"); t.setAttribute("aria-selected","true");
       Object.keys(panels).forEach(function(k){ panels[k].classList.remove("active"); });
-      panels[t.dataset.tab].classList.add("active");
+      var key = t.dataset.tab;
+      panels[key].classList.add("active");
+      if(onTabShow[key]) onTabShow[key]();
     });
   });
 
@@ -766,6 +923,232 @@
   });
 
   analyze();
+
+  /* ================================================================
+     PRE-PUBLISH CHECK + HASHTAGS
+     reads the same draft the SEO tab holds, so nothing is pasted twice
+     ================================================================ */
+  var checkList = document.getElementById("checkList");
+  var checkStatus = document.getElementById("checkStatus");
+  var manualList = document.getElementById("manualList");
+  var tagBox = document.getElementById("tagBox");
+  var copyTagsBtn = document.getElementById("copyTagsBtn");
+  var tagStatus = document.getElementById("tagStatus");
+
+  /* Wording that reads as ad copy. Naver's ranking rules aren't public, so this
+     is "worth a second look", never a verdict. */
+  var HYPE_WORDS = ["최저가","최고의","완벽한","100%","무조건","반드시 사","꼭 사","강추","클릭","지금 바로",
+                    "놓치지 마","한정판매","마감임박","역대급","대박","초특가","돈버는","보장합니다"];
+  var SPONSOR_WORDS = ["협찬","원고료","소정의","제공받","제공 받","무상","유료광고","광고입니다","체험단"];
+
+  function countOccurrences(hay, needle){
+    if(!needle) return 0;
+    return hay.split(needle).length - 1;
+  }
+
+  function runCheck(){
+    var raw = postInput.value;
+    var parts = splitTitleBody(raw);
+    var title = parts.title, body = parts.body;
+    var keywords = keywordInput.value.split(",").map(function(s){ return s.trim(); }).filter(Boolean).slice(0,5);
+
+    checkList.innerHTML = "";
+
+    if(!raw.trim()){
+      checkStatus.textContent = "먼저 '제목 · 키워드' 탭에서 글을 붙여넣어 주세요.";
+      tagBox.innerHTML = '<p class="preview-empty" style="padding:26px 10px;">글을 붙여넣으면 태그를 만들어 드립니다</p>';
+      copyTagsBtn.disabled = true;
+      return;
+    }
+    checkStatus.textContent = "";
+
+    /* 1. length */
+    var blen = body.length || title.length;
+    if(blen >= 1500){
+      checkList.appendChild(makeCheckRow("good","글 길이 충분", blen.toLocaleString()+"자입니다. 정보량이 넉넉합니다.",""));
+    } else if(blen >= 700){
+      checkList.appendChild(makeCheckRow("warn","글 길이 보통", blen.toLocaleString()+"자입니다. 1,500자 이상이면 더 좋습니다.",""));
+    } else {
+      checkList.appendChild(makeCheckRow("bad","글이 짧음", blen.toLocaleString()+"자입니다. 내용을 더 채우는 걸 권합니다.",""));
+    }
+
+    /* 2. paragraph breaks — a wall of text is hard to read on mobile */
+    var paras = body.split(/\n\s*\n/).filter(function(p){ return p.trim(); });
+    var longest = 0;
+    paras.forEach(function(p){ if(p.length > longest) longest = p.length; });
+    if(paras.length >= 4 && longest <= 400){
+      checkList.appendChild(makeCheckRow("good","문단 나눔 좋음", paras.length+"개 문단으로 나뉘어 모바일에서 읽기 편합니다.",""));
+    } else if(paras.length <= 1){
+      checkList.appendChild(makeCheckRow("bad","문단 나눔 없음","줄바꿈 없이 이어져 있습니다. 3~5줄마다 한 번씩 끊어 주세요.",""));
+    } else {
+      checkList.appendChild(makeCheckRow("warn","문단을 더 나누면 좋음",
+        "가장 긴 문단이 "+longest+"자입니다. 문단당 300자 안쪽을 권합니다.",""));
+    }
+
+    /* 3. subheadings — short standalone lines read as section titles */
+    var lines = body.split("\n").map(function(l){ return l.trim(); }).filter(Boolean);
+    var shortLines = lines.filter(function(l){ return l.length > 0 && l.length <= 30 && !/[.!?]$/.test(l); }).length;
+    if(shortLines >= 3){
+      checkList.appendChild(makeCheckRow("good","소제목 있음", "짧은 제목 형태의 줄이 "+shortLines+"개 있습니다.",""));
+    } else {
+      checkList.appendChild(makeCheckRow("warn","소제목 부족",
+        "중간 소제목을 3개 이상 넣으면 훑어보기 좋고 체류시간에도 도움이 됩니다.",""));
+    }
+
+    /* 4. keyword over-repetition */
+    if(keywords.length){
+      var worst = null, worstN = 0;
+      keywords.forEach(function(k){
+        var n = countOccurrences(raw, k);
+        if(n > worstN){ worstN = n; worst = k; }
+      });
+      var density = raw.length ? (worstN * (worst ? worst.length : 0) / raw.length * 100) : 0;
+      if(density > 5){
+        checkList.appendChild(makeCheckRow("bad","키워드 반복 과다",
+          '"'+worst+'"가 '+worstN+'회 등장합니다. 과도한 반복은 스팸으로 보일 수 있어 줄이는 게 좋습니다.',""));
+      } else if(worstN === 0){
+        checkList.appendChild(makeCheckRow("bad","키워드 미등장","글 안에 핵심 키워드가 한 번도 없습니다.",""));
+      } else {
+        checkList.appendChild(makeCheckRow("good","키워드 반복 적정",
+          '"'+worst+'" '+worstN+'회로 자연스러운 수준입니다.',""));
+      }
+    }
+
+    /* 5. ad-flavoured wording */
+    var foundHype = HYPE_WORDS.filter(function(w){ return raw.indexOf(w) !== -1; });
+    if(foundHype.length){
+      checkList.appendChild(makeCheckRow("warn","광고처럼 보일 수 있는 표현",
+        foundHype.slice(0,5).map(escapeHtml).join(", ") + " — 꼭 필요한 말인지 한 번 확인해 보세요.",""));
+    } else {
+      checkList.appendChild(makeCheckRow("good","과장 표현 없음","광고성으로 읽힐 만한 표현이 보이지 않습니다.",""));
+    }
+
+    /* 6. sponsorship disclosure */
+    var hasSponsor = SPONSOR_WORDS.some(function(w){ return raw.indexOf(w) !== -1; });
+    checkList.appendChild(makeCheckRow(hasSponsor ? "good" : "neutral", "협찬·광고 표기",
+      hasSponsor
+        ? "협찬 관련 문구가 있습니다. 잘 보이는 위치인지 확인해 주세요."
+        : "협찬·체험단·원고료를 받은 글이라면 표기가 의무입니다. 해당 없으면 넘어가세요.", ""));
+
+    /* 7. external links */
+    var links = (raw.match(/https?:\/\/[^\s]+/g) || []);
+    var outbound = links.filter(function(u){ return u.indexOf("naver.com") === -1; });
+    if(outbound.length >= 3){
+      checkList.appendChild(makeCheckRow("warn","외부 링크 많음",
+        "네이버 외부 링크가 "+outbound.length+"개입니다. 너무 많으면 홍보성으로 비칠 수 있습니다.",""));
+    } else {
+      checkList.appendChild(makeCheckRow("good","외부 링크 적정", "외부 링크 "+outbound.length+"개입니다.",""));
+    }
+
+    buildTags(title, body, keywords);
+  }
+
+  /* ---- hashtags ---- */
+  var PARTICLES = /(으로|에서|에게|까지|부터|보다|이나|라도|마저|조차|처럼|한테|이라고|와|과|은|는|이|가|을|를|의|도|만|에|로|랑|및)$/;
+  function cleanWord(w){
+    var s = w.replace(/[^0-9A-Za-z가-힣]/g, "");
+    if(s.length > 2) s = s.replace(PARTICLES, "");
+    return s;
+  }
+
+  function buildTags(title, body, keywords){
+    var seen = Object.create(null);
+    var tags = [];
+    function add(w){
+      var s = cleanWord(w);
+      if(s.length < 2 || s.length > 18) return;
+      if(seen[s]) return;
+      seen[s] = 1;
+      tags.push(s);
+    }
+    keywords.forEach(function(k){ add(k.replace(/\s+/g, "")); });
+    title.split(/\s+/).forEach(add);
+    // most-repeated body words, as a light "what is this post about" signal
+    var freq = Object.create(null);
+    body.split(/\s+/).forEach(function(w){
+      var s = cleanWord(w);
+      if(s.length < 2 || s.length > 12) return;
+      freq[s] = (freq[s] || 0) + 1;
+    });
+    Object.keys(freq).sort(function(a,b){ return freq[b]-freq[a]; }).slice(0, 12).forEach(function(w){
+      if(freq[w] >= 3) add(w);
+    });
+
+    tags = tags.slice(0, 18);
+    tagBox.innerHTML = "";
+    if(!tags.length){
+      tagBox.innerHTML = '<p class="preview-empty" style="padding:26px 10px;">태그로 쓸 만한 단어를 찾지 못했습니다</p>';
+      copyTagsBtn.disabled = true;
+      return;
+    }
+    tags.forEach(function(t, i){
+      var b = document.createElement("button");
+      b.type = "button";
+      b.className = "tag" + (i >= 10 ? " off" : ""); // first 10 on by default
+      b.textContent = "#" + t;
+      b.addEventListener("click", function(){ b.classList.toggle("off"); updateTagCount(); });
+      tagBox.appendChild(b);
+    });
+    copyTagsBtn.disabled = false;
+    updateTagCount();
+  }
+
+  function selectedTags(){
+    return [].slice.call(tagBox.querySelectorAll(".tag:not(.off)")).map(function(b){ return b.textContent; });
+  }
+  function updateTagCount(){
+    var n = selectedTags().length;
+    tagStatus.textContent = n ? n + "개 선택됨 (네이버는 최대 30개)" : "태그를 하나 이상 선택해 주세요";
+  }
+
+  copyTagsBtn.addEventListener("click", async function(){
+    var text = selectedTags().join(" ");
+    if(!text){ tagStatus.textContent = "선택된 태그가 없습니다."; return; }
+    try{
+      await navigator.clipboard.writeText(text);
+      tagStatus.textContent = "복사했습니다. 네이버 태그 칸에 붙여넣으세요.";
+    } catch(e){
+      tagStatus.textContent = "복사가 막혔습니다. 태그를 길게 눌러 직접 복사해 주세요.";
+    }
+  });
+
+  /* ---- manual checklist, remembered on this device only ---- */
+  var MANUAL_ITEMS = [
+    "대표 이미지(썸네일)를 지정했다",
+    "사진에 워터마크를 넣었다",
+    "사진 용량을 줄여서 올렸다",
+    "맞춤법 검사를 돌렸다",
+    "글 주제에 맞는 카테고리를 골랐다",
+    "공개 설정과 발행 시간을 확인했다"
+  ];
+  var MANUAL_KEY = "blogWorkbench.manualChecks";
+  function loadManual(){
+    try{ return JSON.parse(localStorage.getItem(MANUAL_KEY)) || {}; }catch(e){ return {}; }
+  }
+  function saveManual(state){
+    try{ localStorage.setItem(MANUAL_KEY, JSON.stringify(state)); }catch(e){}
+  }
+  (function renderManual(){
+    var state = loadManual();
+    MANUAL_ITEMS.forEach(function(text, i){
+      var label = document.createElement("label");
+      label.className = "manual-item" + (state[i] ? " done" : "");
+      var cb = document.createElement("input");
+      cb.type = "checkbox";
+      cb.checked = !!state[i];
+      var span = document.createElement("span");
+      span.textContent = text;
+      cb.addEventListener("change", function(){
+        label.classList.toggle("done", cb.checked);
+        var s = loadManual(); s[i] = cb.checked; saveManual(s);
+      });
+      label.appendChild(cb); label.appendChild(span);
+      manualList.appendChild(label);
+    });
+  })();
+
+  document.getElementById("runCheckBtn").addEventListener("click", runCheck);
+  onTabShow.check = runCheck;
 
   /* ================================================================
      WATERMARK TOOL
@@ -1162,6 +1545,188 @@
       }
     }
     setStatus(done + "개 저장 완료" + (failed ? ", " + failed + "개 실패" : ""));
+  });
+
+  /* ================================================================
+     PHOTO SHRINKER
+     Re-encoding through a canvas also drops EXIF, so GPS coordinates from
+     the phone's camera never reach the blog.
+     ================================================================ */
+  var rzFileInput = document.getElementById("rzFileInput");
+  var rzMaxDim = document.getElementById("rzMaxDim");
+  var rzQuality = document.getElementById("rzQuality");
+  var rzQualityVal = document.getElementById("rzQualityVal");
+  var rzList = document.getElementById("rzList");
+  var rzEmpty = document.getElementById("rzEmpty");
+  var rzSummary = document.getElementById("rzSummary");
+  var rzStatus = document.getElementById("rzStatus");
+  var rzSaveAllBtn = document.getElementById("rzSaveAllBtn");
+  var rzClearBtn = document.getElementById("rzClearBtn");
+
+  var rzItems = []; // {id,name,file,img,url,origBytes,outBlob,outW,outH}
+  var rzRunToken = 0;
+
+  function fmtBytes(n){
+    if(n < 1024) return n + " B";
+    if(n < 1024*1024) return (n/1024).toFixed(0) + " KB";
+    return (n/(1024*1024)).toFixed(2) + " MB";
+  }
+
+  rzQuality.addEventListener("input", function(){
+    rzQualityVal.textContent = rzQuality.value + "%";
+    scheduleRz();
+  });
+  rzMaxDim.addEventListener("change", scheduleRz);
+
+  rzFileInput.addEventListener("change", function(){
+    var files = Array.prototype.filter.call(rzFileInput.files, function(f){ return f.type.indexOf("image/") === 0; });
+    rzFileInput.value = "";
+    if(!files.length) return;
+    files.forEach(function(file){
+      var url = URL.createObjectURL(file);
+      var img = new Image();
+      img.onload = function(){
+        rzItems.push({
+          id: "rz_" + Date.now() + "_" + Math.random().toString(36).slice(2,8),
+          name: file.name, img: img, url: url, origBytes: file.size,
+          mime: file.type === "image/png" ? "image/png" : "image/jpeg",
+          outBlob: null, outW: 0, outH: 0
+        });
+        rzClearBtn.disabled = false;
+        scheduleRz();
+      };
+      img.onerror = function(){ URL.revokeObjectURL(url); };
+      img.src = url;
+    });
+  });
+
+  var rzTimer = null;
+  function scheduleRz(){
+    clearTimeout(rzTimer);
+    rzTimer = setTimeout(processAll, 150);
+  }
+
+  function shrinkOne(item, maxDim, quality){
+    return new Promise(function(resolve){
+      var w = item.img.naturalWidth, h = item.img.naturalHeight;
+      if(maxDim > 0 && Math.max(w, h) > maxDim){
+        var s = maxDim / Math.max(w, h);
+        w = Math.round(w * s); h = Math.round(h * s);
+      }
+      var canvas = document.createElement("canvas");
+      canvas.width = w; canvas.height = h;
+      var ctx = canvas.getContext("2d");
+      ctx.imageSmoothingQuality = "high";
+      ctx.drawImage(item.img, 0, 0, w, h);
+      canvas.toBlob(function(blob){
+        item.outBlob = blob; item.outW = w; item.outH = h;
+        resolve(item);
+      }, item.mime, quality / 100);
+    });
+  }
+
+  async function processAll(){
+    if(!rzItems.length){
+      rzList.innerHTML = ""; rzEmpty.style.display = ""; rzSummary.style.display = "none";
+      rzSaveAllBtn.disabled = true; rzClearBtn.disabled = true;
+      return;
+    }
+    var token = ++rzRunToken;
+    var maxDim = Number(rzMaxDim.value);
+    var quality = Number(rzQuality.value);
+    rzStatus.textContent = "처리 중…";
+    for(var i = 0; i < rzItems.length; i++){
+      await shrinkOne(rzItems[i], maxDim, quality);
+      if(token !== rzRunToken) return; // a newer settings change superseded this run
+    }
+    rzStatus.textContent = "";
+    renderRz();
+  }
+
+  function renderRz(){
+    rzEmpty.style.display = "none";
+    rzSummary.style.display = "";
+    rzList.innerHTML = "";
+    var totalBefore = 0, totalAfter = 0;
+
+    rzItems.forEach(function(item){
+      if(!item.outBlob) return;
+      totalBefore += item.origBytes;
+      totalAfter += item.outBlob.size;
+      var cut = item.origBytes ? Math.round((1 - item.outBlob.size / item.origBytes) * 100) : 0;
+
+      var row = document.createElement("div");
+      row.className = "rz-item";
+
+      var thumb = document.createElement("img");
+      thumb.src = item.url; thumb.alt = "";
+
+      var meta = document.createElement("div");
+      meta.className = "rz-meta";
+      var nm = document.createElement("div");
+      nm.className = "rz-name"; nm.textContent = item.name;
+      var sz = document.createElement("div");
+      sz.className = "rz-size";
+      sz.textContent = fmtBytes(item.origBytes) + " → " + fmtBytes(item.outBlob.size) +
+        "  ·  " + item.outW + "×" + item.outH;
+      meta.appendChild(nm); meta.appendChild(sz);
+
+      var cutEl = document.createElement("div");
+      cutEl.className = "rz-cut" + (cut <= 0 ? " none" : "");
+      cutEl.textContent = cut > 0 ? "-" + cut + "%" : "그대로";
+
+      var btn = document.createElement("button");
+      btn.type = "button"; btn.className = "btn ghost"; btn.textContent = "저장";
+      btn.addEventListener("click", function(){ saveRz([item]); });
+
+      row.appendChild(thumb); row.appendChild(meta); row.appendChild(cutEl); row.appendChild(btn);
+      rzList.appendChild(row);
+    });
+
+    document.getElementById("rzTotalBefore").textContent = fmtBytes(totalBefore);
+    document.getElementById("rzTotalAfter").textContent = fmtBytes(totalAfter);
+    var saved = totalBefore ? Math.round((1 - totalAfter / totalBefore) * 100) : 0;
+    document.getElementById("rzTotalSaved").textContent = saved > 0 ? saved + "% 절약" : "변화 없음";
+    rzSaveAllBtn.disabled = false;
+  }
+
+  function rzFilename(item){
+    var base = baseName(item.name);
+    return base + "_resized." + (item.mime === "image/png" ? "png" : "jpg");
+  }
+
+  async function saveRz(items){
+    var saver = await getSaver();
+    var done = 0;
+    for(var i = 0; i < items.length; i++){
+      var item = items[i];
+      if(!item.outBlob) continue;
+      rzStatus.textContent = "저장 중… (" + (i+1) + "/" + items.length + ")";
+      try{
+        if(saver.kind === "anchor"){
+          anchorSave(item.outBlob, rzFilename(item));
+          await new Promise(function(r){ setTimeout(r, 400); });
+          done++;
+        } else {
+          await saver.api.save({ filename: rzFilename(item), data: item.outBlob });
+          done++;
+        }
+      } catch(err){
+        if(err && err.code === "declined"){
+          rzStatus.textContent = "저장을 취소했습니다. (" + done + "개 완료)";
+          return;
+        }
+      }
+    }
+    rzStatus.textContent = done + "개 저장 완료";
+  }
+
+  rzSaveAllBtn.addEventListener("click", function(){ saveRz(rzItems); });
+  rzClearBtn.addEventListener("click", function(){
+    rzItems.forEach(function(it){ try{ URL.revokeObjectURL(it.url); }catch(e){} });
+    rzItems = [];
+    rzStatus.textContent = "";
+    processAll();
   });
 
 })();
