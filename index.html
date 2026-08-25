@@ -461,6 +461,58 @@
     font-size:12.5px; line-height:1.65; color:var(--ink-faint);
     margin:16px 0 0; padding-top:13px; border-top:1px solid var(--line);
   }
+  /* ---------------- search trend ---------------- */
+  .seg{
+    display:flex; gap:0; margin:4px 0 10px; border:1px solid var(--line);
+    border-radius:9px; overflow:hidden; background:var(--paper-raised);
+  }
+  .seg-btn{
+    flex:1; padding:11px 6px; border:none; background:none; cursor:pointer;
+    font-family:inherit; font-size:13px; font-weight:600; color:var(--ink-soft);
+    border-right:1px solid var(--line); white-space:nowrap;
+  }
+  .seg-btn:last-child{ border-right:none; }
+  .seg-btn.active{ background:var(--accent); color:#fff; }
+
+  .trend-cat{ margin-bottom:24px; }
+  .trend-cat h3{
+    margin:0 0 3px; font-size:15px; font-weight:700;
+  }
+  .trend-cat .cat-note{
+    margin:0 0 12px; font-size:12.5px; color:var(--ink-faint); line-height:1.5;
+  }
+  .kw-row{
+    display:flex; align-items:center; gap:11px; padding:11px 12px;
+    border:1px solid var(--line); border-radius:9px; background:var(--paper-raised);
+    margin-bottom:7px;
+  }
+  .kw-rank{
+    flex:none; width:22px; height:22px; border-radius:6px; font-size:12px;
+    font-weight:700; display:flex; align-items:center; justify-content:center;
+    background:var(--paper-sunken); color:var(--ink-soft);
+    font-variant-numeric:tabular-nums;
+  }
+  .kw-row:nth-child(1) .kw-rank{ background:var(--accent-soft); color:var(--accent-strong); }
+  .kw-main{ flex:1; min-width:0; }
+  .kw-name{ font-size:14.5px; font-weight:600; margin:0; }
+  .kw-name .low{
+    font-size:11px; font-weight:500; color:var(--ink-faint); margin-left:5px;
+  }
+  .kw-spark{ display:block; margin-top:5px; width:100%; height:20px; }
+  .kw-delta{
+    flex:none; text-align:right; font-size:15px; font-weight:700;
+    font-variant-numeric:tabular-nums; min-width:64px;
+  }
+  .kw-delta.up{ color:var(--good); }
+  .kw-delta.down{ color:var(--bad); }
+  .kw-delta.flat{ color:var(--ink-faint); }
+  .kw-delta small{ display:block; font-size:10.5px; font-weight:500; color:var(--ink-faint); }
+  .trend-more{
+    width:100%; padding:10px; margin-top:2px; border:1px dashed var(--line);
+    border-radius:9px; background:none; color:var(--ink-soft);
+    font-family:inherit; font-size:13px; font-weight:600; cursor:pointer;
+  }
+
   .topic-card.done{ opacity:.62; }
   .topic-card.done .topic-name{
     text-decoration:line-through; text-decoration-color:var(--ink-faint);
@@ -519,7 +571,8 @@
   </div>
 
   <nav class="tabs" role="tablist">
-    <button class="tab active" data-tab="inbox" role="tab" aria-selected="true">초안함</button>
+    <button class="tab active" data-tab="inbox" role="tab" aria-selected="true">추천 주제</button>
+    <button class="tab" data-tab="trend" role="tab" aria-selected="false">검색어 트렌드</button>
     <button class="tab" data-tab="seo" role="tab" aria-selected="false">제목 · 키워드</button>
     <button class="tab" data-tab="check" role="tab" aria-selected="false">발행 전 점검</button>
     <button class="tab" data-tab="wm" role="tab" aria-selected="false">워터마크</button>
@@ -541,6 +594,24 @@
       </div>
       <div id="inboxList"></div>
       <p class="inbox-note" id="inboxNote"></p>
+    </section>
+
+    <!-- ============ SEARCH TREND PANEL ============ -->
+    <section id="panel-trend" class="panel">
+      <div class="inbox-head">
+        <div>
+          <h2 class="section-title" style="margin:0;">시술명 검색어 트렌드</h2>
+          <p class="hint" id="trendMeta" style="margin:4px 0 0;">불러오는 중…</p>
+        </div>
+      </div>
+      <div class="seg" id="trendSeg" role="tablist">
+        <button type="button" class="seg-btn active" data-metric="yoySameMonth">전년 동월 대비</button>
+        <button type="button" class="seg-btn" data-metric="yoyAnnual">전년 대비</button>
+        <button type="button" class="seg-btn" data-metric="mom">전월 대비</button>
+      </div>
+      <p class="hint" id="trendMetricNote" style="margin:0 0 16px;"></p>
+      <div id="trendList"></div>
+      <p class="inbox-note" id="trendNote"></p>
     </section>
 
     <!-- ============ SEO PANEL ============ -->
@@ -812,6 +883,7 @@
   var tabs = document.querySelectorAll(".tab");
   var panels = {
     inbox: document.getElementById("panel-inbox"),
+    trend: document.getElementById("panel-trend"),
     seo: document.getElementById("panel-seo"),
     check: document.getElementById("panel-check"),
     wm: document.getElementById("panel-wm"),
@@ -1087,6 +1159,145 @@
   inboxReloadBtn.addEventListener("click", loadInbox);
   onTabShow.inbox = function(){ if(!inboxLoaded) loadInbox(); };
   loadInbox();
+
+  /* ================================================================
+     SEARCH TREND
+     Which procedures people are actually searching for, and which way
+     each is moving. Values from Naver are relative, not absolute
+     search counts — comparable inside a category, never across two.
+     ================================================================ */
+  var trendList = document.getElementById("trendList");
+  var trendMeta = document.getElementById("trendMeta");
+  var trendNote = document.getElementById("trendNote");
+  var trendMetricNote = document.getElementById("trendMetricNote");
+  var trendSeg = document.getElementById("trendSeg");
+  var trendData = null;
+  var trendLoaded = false;
+  var trendMetric = "yoySameMonth";
+  var trendExpanded = {};
+
+  var METRIC_LABEL = {
+    mom: "전월 대비",
+    yoySameMonth: "전년 동월 대비",
+    yoyAnnual: "전년 대비"
+  };
+  var METRIC_NOTE = {
+    mom: "직전 완결 월과 그 앞 달을 비교합니다. 성형·시술 검색은 겨울에 몰리고 여름에 빠지므로, 한 달 사이 등락은 계절 영향이 큽니다.",
+    yoySameMonth: "직전 완결 월을 1년 전 같은 달과 비교합니다. 계절이 상쇄되어 실제 증감을 보기에 가장 적합합니다.",
+    yoyAnnual: "최근 12개월 평균을 그 앞 12개월 평균과 비교합니다. 가장 완만하고, 한두 달의 이상치에 흔들리지 않습니다."
+  };
+
+  /* A 24-month sparkline. Drawn as an inline polyline rather than a chart
+     library — it only has to show the shape of the curve. */
+  function sparkline(series){
+    if(!series || series.length < 2) return "";
+    var vals = series.map(function(p){ return p.v; });
+    var max = Math.max.apply(null, vals), min = Math.min.apply(null, vals);
+    var span = (max - min) || 1;
+    var W = 100, H = 20, pad = 2;
+    var pts = vals.map(function(v, i){
+      var x = (i / (vals.length - 1)) * W;
+      var y = H - pad - ((v - min) / span) * (H - pad * 2);
+      return x.toFixed(1) + "," + y.toFixed(1);
+    }).join(" ");
+    return '<svg class="kw-spark" viewBox="0 0 ' + W + ' ' + H +
+      '" preserveAspectRatio="none" aria-hidden="true">' +
+      '<polyline points="' + pts + '" fill="none" stroke="currentColor" ' +
+      'stroke-width="1.2" stroke-linejoin="round" stroke-linecap="round" ' +
+      'opacity="0.45" vector-effect="non-scaling-stroke" /></svg>';
+  }
+
+  function deltaHtml(value, label){
+    if(value === null || value === undefined){
+      return '<div class="kw-delta flat">–<small>' + escapeHtml(label) + "</small></div>";
+    }
+    var cls = value > 2 ? "up" : (value < -2 ? "down" : "flat");
+    var sign = value > 0 ? "+" : "";
+    return '<div class="kw-delta ' + cls + '">' + sign + Math.round(value) + "%" +
+      "<small>" + escapeHtml(label) + "</small></div>";
+  }
+
+  function renderCategory(cat){
+    var wrap = document.createElement("div");
+    wrap.className = "trend-cat";
+    var open = !!trendExpanded[cat.key];
+    var shown = open ? cat.keywords : cat.keywords.slice(0, 5);
+
+    var rows = shown.map(function(k){
+      return '<div class="kw-row">' +
+        '<div class="kw-rank">' + k.rank + "</div>" +
+        '<div class="kw-main">' +
+          '<p class="kw-name">' + escapeHtml(k.keyword) +
+            (k.lowVolume ? '<span class="low">검색량 적음</span>' : "") + "</p>" +
+          sparkline(k.series) +
+        "</div>" +
+        deltaHtml(k[trendMetric], METRIC_LABEL[trendMetric]) +
+      "</div>";
+    }).join("");
+
+    var more = cat.keywords.length > 5
+      ? '<button type="button" class="trend-more" data-cat="' + escapeHtml(cat.key) + '">' +
+        (open ? "접기" : "6위~" + cat.keywords.length + "위 더 보기") + "</button>"
+      : "";
+
+    wrap.innerHTML =
+      "<h3>" + escapeHtml(cat.label) + "</h3>" +
+      '<p class="cat-note">' + escapeHtml(cat.note || "") + "</p>" +
+      rows + more;
+    return wrap;
+  }
+
+  function renderTrend(){
+    trendList.innerHTML = "";
+    if(!trendData || !trendData.categories) return;
+    trendMetricNote.textContent = METRIC_NOTE[trendMetric] || "";
+    var frag = document.createDocumentFragment();
+    trendData.categories.forEach(function(c){
+      if(c.keywords && c.keywords.length) frag.appendChild(renderCategory(c));
+    });
+    trendList.appendChild(frag);
+  }
+
+  trendSeg.addEventListener("click", function(e){
+    var btn = e.target.closest(".seg-btn");
+    if(!btn) return;
+    trendSeg.querySelectorAll(".seg-btn").forEach(function(b){ b.classList.remove("active"); });
+    btn.classList.add("active");
+    trendMetric = btn.dataset.metric;
+    renderTrend();
+  });
+
+  trendList.addEventListener("click", function(e){
+    var btn = e.target.closest(".trend-more");
+    if(!btn) return;
+    var key = btn.dataset.cat;
+    trendExpanded[key] = !trendExpanded[key];
+    renderTrend();
+  });
+
+  async function loadTrend(){
+    trendMeta.textContent = "불러오는 중…";
+    try{
+      var res = await fetch("trends.json", { cache: "no-store" });
+      if(!res.ok) throw new Error("http " + res.status);
+      trendData = await res.json();
+    } catch(err){
+      trendMeta.textContent = "아직 트렌드 자료가 없습니다";
+      trendList.innerHTML = '<div class="inbox-empty">' +
+        "주 1회 자동으로 갱신됩니다.<br>네이버 검색어트렌드 API 연결이 필요합니다." +
+        "</div>";
+      trendLoaded = true;
+      return;
+    }
+    var m = trendData.latestMonth || "";
+    trendMeta.textContent = (m ? m.replace("-", "년 ") + "월까지 · " : "") +
+      "진행 중인 이번 달은 제외";
+    trendNote.textContent = trendData.notice || "";
+    renderTrend();
+    trendLoaded = true;
+  }
+
+  onTabShow.trend = function(){ if(!trendLoaded) loadTrend(); };
 
   /* ================================================================
      SEO ANALYZER
