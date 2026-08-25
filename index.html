@@ -461,6 +461,36 @@
     font-size:12.5px; line-height:1.65; color:var(--ink-faint);
     margin:16px 0 0; padding-top:13px; border-top:1px solid var(--line);
   }
+  /* ---------------- watermark presets ---------------- */
+  .preset-bar{
+    border:1px solid var(--line); border-radius:var(--radius);
+    background:var(--paper-raised); padding:13px 14px; margin-bottom:18px;
+  }
+  .preset-head{
+    display:flex; align-items:center; justify-content:space-between;
+    gap:10px; margin-bottom:10px;
+  }
+  .preset-title{ font-size:14px; font-weight:700; }
+  .preset-head .btn{ flex:none; padding:8px 13px; font-size:13px; }
+  .preset-chips{ display:flex; flex-wrap:wrap; gap:7px; }
+  .preset-chip{
+    display:inline-flex; align-items:center; gap:0; padding:0; overflow:hidden;
+    border:1px solid var(--line); border-radius:999px; background:var(--paper);
+  }
+  .preset-chip.active{ border-color:var(--accent); background:var(--accent-soft); }
+  .preset-chip .use{
+    border:none; background:none; cursor:pointer; font-family:inherit;
+    font-size:13px; font-weight:600; color:var(--ink); padding:7px 4px 7px 13px;
+    max-width:150px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;
+  }
+  .preset-chip.active .use{ color:var(--accent-strong); }
+  .preset-chip .del{
+    border:none; background:none; cursor:pointer; color:var(--ink-faint);
+    font-size:14px; line-height:1; padding:7px 11px 7px 6px;
+  }
+  .preset-chip .del:hover{ color:var(--bad); }
+  .preset-empty{ font-size:13px; color:var(--ink-faint); line-height:1.6; }
+
   /* ---------------- search trend ---------------- */
   .seg{
     display:flex; gap:0; margin:4px 0 10px; border:1px solid var(--line);
@@ -572,10 +602,10 @@
 
   <nav class="tabs" role="tablist">
     <button class="tab active" data-tab="inbox" role="tab" aria-selected="true">추천 주제</button>
-    <button class="tab" data-tab="trend" role="tab" aria-selected="false">검색어 트렌드</button>
+    <button class="tab" data-tab="wm" role="tab" aria-selected="false">워터마크</button>
     <button class="tab" data-tab="seo" role="tab" aria-selected="false">제목 · 키워드</button>
     <button class="tab" data-tab="check" role="tab" aria-selected="false">발행 전 점검</button>
-    <button class="tab" data-tab="wm" role="tab" aria-selected="false">워터마크</button>
+    <button class="tab" data-tab="trend" role="tab" aria-selected="false">검색어 트렌드</button>
     <button class="tab" data-tab="resize" role="tab" aria-selected="false">사진 줄이기</button>
   </nav>
 
@@ -694,6 +724,15 @@
 
     <!-- ============ WATERMARK PANEL ============ -->
     <section id="panel-wm" class="panel">
+      <div class="preset-bar">
+        <div class="preset-head">
+          <span class="preset-title">즐겨찾는 설정</span>
+          <button type="button" class="btn ghost" id="presetSaveBtn">현재 설정 저장</button>
+        </div>
+        <div class="preset-chips" id="presetChips"></div>
+        <p class="hint" id="presetHint" style="margin:8px 0 0;"></p>
+      </div>
+
       <div class="grid2">
         <div>
           <h2 class="section-title">사진 &amp; 설정</h2>
@@ -1901,9 +1940,23 @@
   document.getElementById("logoInput").addEventListener("change", function(e){
     var f = e.target.files[0];
     if(!f) return;
-    var img = new Image();
-    img.onload = function(){ logoImg = img; renderPreview(); };
-    img.src = URL.createObjectURL(f);
+    // Read as a data URI rather than an object URL: an object URL dies with the
+    // page, and a preset that only remembers the numbers but forgets the logo
+    // is not much of a preset.
+    var reader = new FileReader();
+    reader.onload = function(){
+      logoDataUrl = reader.result;
+      var img = new Image();
+      img.onload = function(){ logoImg = img; renderPreview(); };
+      img.src = logoDataUrl;
+    };
+    reader.onerror = function(){
+      logoDataUrl = null;
+      var img = new Image();
+      img.onload = function(){ logoImg = img; renderPreview(); };
+      img.src = URL.createObjectURL(f);
+    };
+    reader.readAsDataURL(f);
   });
 
   function bindSlider(sliderId, valId, key, suffix){
@@ -1920,6 +1973,184 @@
   bindSlider("opacitySlider","opacityVal","opacity","%");
   bindSlider("rotationSlider","rotationVal","rotation","°");
   bindSlider("paddingSlider","paddingVal","padding","%");
+
+  /* ================================================================
+     WATERMARK PRESETS
+     Every control above writes into one `settings` object, so a preset
+     is just a copy of it. Applying one has to push those values back
+     out to every control — sliders, segmented buttons, the position
+     grid, the colour swatch — or the panel would show one thing and
+     draw another.
+
+     A logo is a picked File, which cannot be stored as-is, so it is
+     kept as a data URI. Big logos are dropped rather than risking a
+     localStorage quota error that would lose every preset at once.
+     ================================================================ */
+  var PRESET_KEY = "blogWorkbench.wmPresets";
+  var LAST_KEY = "blogWorkbench.wmLast";
+  var LOGO_LIMIT = 400 * 1024;   // data URI 기준. localStorage 는 보통 5MB 안팎.
+  var presetChips = document.getElementById("presetChips");
+  var presetHint = document.getElementById("presetHint");
+  var presetSaveBtn = document.getElementById("presetSaveBtn");
+  var presets = [];
+  var activePreset = null;
+  var logoDataUrl = null;
+
+  function readStore(key, fallback){
+    try{
+      var raw = localStorage.getItem(key);
+      return raw ? JSON.parse(raw) : fallback;
+    } catch(e){ return fallback; }
+  }
+  function writeStore(key, value){
+    try{ localStorage.setItem(key, JSON.stringify(value)); return true; }
+    catch(e){ return false; }
+  }
+
+  var SETTING_KEYS = ["type","text","font","weight","color","mode",
+                      "position","spacing","scale","opacity","rotation","padding"];
+
+  function snapshot(){
+    var s = {};
+    SETTING_KEYS.forEach(function(k){ s[k] = settings[k]; });
+    if(settings.type === "logo" && logoDataUrl && logoDataUrl.length <= LOGO_LIMIT){
+      s.logo = logoDataUrl;
+    }
+    return s;
+  }
+
+  function setSeg(attr, value){
+    document.querySelectorAll('.seg [data-' + attr + ']').forEach(function(b){
+      b.classList.toggle("active", b.dataset[attr] === String(value));
+    });
+  }
+  function setSlider(id, valId, value, suffix){
+    var el = document.getElementById(id);
+    el.value = value;
+    document.getElementById(valId).textContent = value + suffix;
+  }
+
+  function applySettings(s){
+    SETTING_KEYS.forEach(function(k){
+      if(s[k] !== undefined && s[k] !== null) settings[k] = s[k];
+    });
+
+    document.getElementById("wmText").value = settings.text;
+    document.getElementById("wmFont").value = settings.font;
+    document.getElementById("wmColor").value = settings.color;
+    setSeg("type", settings.type);
+    setSeg("weight", settings.weight);
+    setSeg("mode", settings.mode);
+    document.querySelectorAll("#posGrid button").forEach(function(b){
+      b.classList.toggle("active", b.dataset.pos === settings.position);
+    });
+    setSlider("spacingSlider","spacingVal",settings.spacing,"%");
+    setSlider("scaleSlider","scaleVal",settings.scale,"%");
+    setSlider("opacitySlider","opacityVal",settings.opacity,"%");
+    setSlider("rotationSlider","rotationVal",settings.rotation,"°");
+    setSlider("paddingSlider","paddingVal",settings.padding,"%");
+
+    // 종류·배치에 따라 보이는 항목이 달라진다.
+    document.getElementById("textOptions").style.display = settings.type === "text" ? "" : "none";
+    document.getElementById("logoOptions").style.display = settings.type === "logo" ? "" : "none";
+    document.getElementById("singleOptions").style.display = settings.mode === "single" ? "" : "none";
+    document.getElementById("tileOptions").style.display = settings.mode === "diagonal" ? "" : "none";
+    document.getElementById("paddingField").style.display = settings.mode === "single" ? "" : "none";
+    document.getElementById("rotationHint").style.display = settings.mode === "diagonal" ? "" : "none";
+
+    if(s.logo){
+      logoDataUrl = s.logo;
+      var im = new Image();
+      im.onload = function(){ logoImg = im; renderPreview(); };
+      im.src = s.logo;
+    }
+    renderPreview();
+  }
+
+  function renderPresets(){
+    presetChips.innerHTML = "";
+    if(!presets.length){
+      presetChips.innerHTML = '<p class="preset-empty">자주 쓰는 문구와 수치를 맞춰 놓고 ' +
+        "<b>현재 설정 저장</b>을 누르면 다음부터 한 번에 불러올 수 있습니다.</p>";
+      return;
+    }
+    presets.forEach(function(p, i){
+      var chip = document.createElement("span");
+      chip.className = "preset-chip" + (activePreset === p.name ? " active" : "");
+      chip.innerHTML =
+        '<button type="button" class="use" data-i="' + i + '">' + escapeHtml(p.name) + "</button>" +
+        '<button type="button" class="del" data-i="' + i + '" aria-label="' +
+        escapeHtml(p.name) + ' 삭제" title="삭제">✕</button>';
+      presetChips.appendChild(chip);
+    });
+  }
+
+  presetChips.addEventListener("click", function(e){
+    var use = e.target.closest(".use");
+    if(use){
+      var p = presets[Number(use.dataset.i)];
+      if(!p) return;
+      applySettings(p.settings);
+      activePreset = p.name;
+      renderPresets();
+      presetHint.textContent = '"' + p.name + '" 설정을 불러왔습니다.';
+      return;
+    }
+    var del = e.target.closest(".del");
+    if(del){
+      var idx = Number(del.dataset.i);
+      var gone = presets[idx];
+      if(!gone) return;
+      presets.splice(idx, 1);
+      if(activePreset === gone.name) activePreset = null;
+      writeStore(PRESET_KEY, presets);
+      renderPresets();
+      presetHint.textContent = '"' + gone.name + '" 을(를) 지웠습니다.';
+    }
+  });
+
+  presetSaveBtn.addEventListener("click", function(){
+    var suggested = settings.type === "text" && settings.text
+      ? settings.text.slice(0, 14)
+      : "설정 " + (presets.length + 1);
+    var name = window.prompt("이 설정의 이름을 정해 주세요", suggested);
+    if(name === null) return;
+    name = name.trim() || suggested;
+
+    var s = snapshot();
+    var existing = presets.findIndex(function(p){ return p.name === name; });
+    if(existing >= 0){
+      presets[existing] = { name: name, settings: s };
+    } else {
+      presets.push({ name: name, settings: s });
+    }
+    activePreset = name;
+
+    if(writeStore(PRESET_KEY, presets)){
+      var dropped = settings.type === "logo" && logoDataUrl && !s.logo;
+      presetHint.textContent = dropped
+        ? '"' + name + '" 저장됨. 로고 파일이 커서 수치만 저장했습니다 — 불러온 뒤 로고를 다시 골라 주세요.'
+        : '"' + name + '" 저장됨. 이 기기에만 보관됩니다.';
+    } else {
+      presets.pop();
+      presetHint.textContent = "저장 공간이 부족해 저장하지 못했습니다. 사용하지 않는 설정을 지워 주세요.";
+    }
+    renderPresets();
+  });
+
+  /* 마지막으로 쓴 설정은 이름을 붙이지 않아도 자동으로 되살린다 —
+     "매번 새로 맞추지 않아도 되게" 의 절반은 이쪽이다. */
+  function rememberLast(){ writeStore(LAST_KEY, snapshot()); }
+
+  presets = readStore(PRESET_KEY, []) || [];
+  if(!Array.isArray(presets)) presets = [];
+  renderPresets();
+
+  var last = readStore(LAST_KEY, null);
+  if(last && typeof last === "object"){
+    applySettings(last);
+    presetHint.textContent = "지난번에 쓰던 설정을 그대로 불러왔습니다.";
+  }
 
   /* -- core render: draws watermark onto a fresh canvas, returns canvas -- */
   function renderToCanvas(entry){
@@ -2032,6 +2263,9 @@
   function renderPreview(){
     clearTimeout(previewDebounce);
     previewDebounce = setTimeout(function(){
+      // Piggyback on the existing debounce: settings are saved once the user
+      // stops dragging, not on every intermediate slider value.
+      rememberLast();
       var entry = images.find(function(x){ return x.id === selectedId; });
       previewFrame.innerHTML = "";
       if(!entry){
