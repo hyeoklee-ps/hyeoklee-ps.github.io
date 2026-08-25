@@ -2120,9 +2120,26 @@
 </script>
 
 <script>
+/* The service worker is cache-first, which is what makes the app open
+   instantly offline — but it also means an installed copy will serve last
+   week's page indefinitely. Waiting for the user to fully quit and reopen
+   the app is not a reasonable update mechanism, so when a new worker takes
+   control we reload once and pick it up immediately.
+
+   hadController guards the very first install, where control is claimed for
+   the first time and there is nothing stale to replace. */
 if ("serviceWorker" in navigator) {
   window.addEventListener("load", function () {
-    navigator.serviceWorker.register("sw.js").catch(function () {});
+    var hadController = !!navigator.serviceWorker.controller;
+    var reloaded = false;
+    navigator.serviceWorker.addEventListener("controllerchange", function () {
+      if (!hadController || reloaded) return;
+      reloaded = true;
+      window.location.reload();
+    });
+    navigator.serviceWorker.register("sw.js").then(function (reg) {
+      if (reg && reg.update) reg.update();
+    }).catch(function () {});
   });
 }
 </script>
