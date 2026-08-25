@@ -158,25 +158,20 @@
     font-variant-numeric:tabular-nums; font-weight:500;
   }
   .field .hint{ font-size:12px; color:var(--ink-faint); margin-top:5px; }
+  /* Deliberately plain: only standard properties, nothing that could stop a
+     mobile browser handing taps and keystrokes to the control. 16px avoids
+     Android/iOS zoom-on-focus. */
   input[type="text"], textarea, select{
-    width:100%; font-family:inherit; color:var(--ink);
+    width:100%; font-family:inherit; font-size:16px; color:var(--ink);
     background:var(--paper-sunken); border:1px solid var(--line); border-radius:8px;
-    padding:10px 12px; resize:vertical;
-    /* 16px keeps Android/iOS from zoom-on-focus; the -webkit rules keep text
-       selectable and editable inside embedded webviews, which sometimes
-       inherit a user-select:none from their host and swallow taps. */
-    font-size:16px;
-    -webkit-user-select:text; user-select:text;
-    -webkit-touch-callout:default;
-    touch-action:manipulation;
-    pointer-events:auto;
-    -webkit-appearance:none; appearance:none;
-    opacity:1;
+    padding:12px; resize:vertical;
   }
   input[type="text"]:focus, textarea:focus, select:focus{
     outline:none; border-color:var(--accent); box-shadow:0 0 0 3px var(--accent-soft);
   }
-  textarea{ min-height:150px; line-height:1.6; }
+  textarea{ min-height:170px; line-height:1.6; }
+  .paste-row{ display:flex; gap:8px; margin-bottom:8px; }
+  .paste-row .btn{ flex:1; padding:13px 10px; font-size:14.5px; }
 
   h2.section-title{
     font-family:"Noto Serif KR",serif; font-size:17px; font-weight:600; margin:0 0 16px;
@@ -346,29 +341,20 @@
         <div>
           <h2 class="section-title">입력</h2>
 
-          <div class="card" style="margin-bottom:18px;">
-            <strong style="font-family:'Noto Serif KR',serif; font-size:14.5px;">임시저장 글 불러오기</strong>
-            <p class="hint" style="margin-top:4px;">네이버 블로그 에디터에서 전체 선택(Ctrl+A) → 복사(Ctrl+C) 후, 이 화면 아무 곳에나 붙여넣기(Ctrl+V)만 하면 됩니다. 제목·본문을 따로 나눠 복사할 필요 없이, 첫 줄을 제목으로 자동 구분해 바로 분석합니다.</p>
-            <p class="status-line" id="pasteStatus"></p>
-          </div>
-
-          <div class="field">
-            <label for="titleInput">블로그 글 제목 <span class="count" id="titleCount">0자</span></label>
-            <input type="text" id="titleInput" name="title" autocomplete="off" autocapitalize="none"
-              enterkeyhint="next" placeholder="예) 제주도 3박4일 여행 코스 A to Z, 숙소부터 맛집까지" />
-          </div>
-
           <div class="field">
             <label for="keywordInput">핵심 키워드 <span class="count">쉼표로 구분, 최대 5개</span></label>
-            <input type="text" id="keywordInput" name="keywords" autocomplete="off" autocapitalize="none"
-              enterkeyhint="done" placeholder="예) 제주도여행, 제주 맛집" />
+            <input type="text" id="keywordInput" placeholder="예) 제주도여행, 제주 맛집" />
           </div>
 
           <div class="field">
-            <label for="bodyInput">본문 내용 <span class="count" id="bodyCount">0자</span></label>
-            <textarea id="bodyInput" name="body" autocomplete="off" autocapitalize="none"
-              placeholder="본문을 붙여넣으면 글자 수·키워드 밀도까지 분석합니다 (선택 입력)"></textarea>
-            <p class="hint">비워두면 제목 기준 항목만 채점합니다.</p>
+            <label for="postInput">블로그 글 <span class="count" id="postCount">0자</span></label>
+            <div class="paste-row">
+              <button type="button" class="btn" id="pasteBtn">📋 붙여넣기</button>
+              <button type="button" class="btn ghost" id="clearBtn">지우기</button>
+            </div>
+            <textarea id="postInput" placeholder="네이버 에디터에서 전체 복사한 글을 여기에 붙여넣으세요. 위 붙여넣기 버튼을 눌러도 됩니다."></textarea>
+            <p class="hint">제목·본문을 나눌 필요 없습니다. 붙여넣은 글의 <b>첫 줄을 제목</b>, 나머지를 본문으로 보고 자동 분석합니다.</p>
+            <p class="status-line" id="pasteStatus"></p>
           </div>
         </div>
 
@@ -543,11 +529,9 @@
   /* ================================================================
      SEO ANALYZER
      ================================================================ */
-  var titleInput = document.getElementById("titleInput");
   var keywordInput = document.getElementById("keywordInput");
-  var bodyInput = document.getElementById("bodyInput");
-  var titleCount = document.getElementById("titleCount");
-  var bodyCount = document.getElementById("bodyCount");
+  var postInput = document.getElementById("postInput");
+  var postCount = document.getElementById("postCount");
   var scoreArc = document.getElementById("scoreArc");
   var scoreNum = document.getElementById("scoreNum");
   var scoreTier = document.getElementById("scoreTier");
@@ -585,13 +569,25 @@
     });
   }
 
+  /* First non-empty line is the title, everything after it is the body — so one
+     paste of a whole draft is all the input this needs. */
+  function splitTitleBody(raw){
+    var lines = String(raw == null ? "" : raw).replace(/\r\n/g, "\n").split("\n");
+    var idx = 0;
+    while(idx < lines.length && lines[idx].trim() === "") idx++;
+    var title = idx < lines.length ? lines[idx].trim() : "";
+    var rest = lines.slice(idx + 1).join("\n").trim();
+    return { title: title, body: rest };
+  }
+
   function analyze(){
-    var title = titleInput.value.trim();
-    var body = bodyInput.value.trim();
+    var raw = postInput.value;
+    var parts = splitTitleBody(raw);
+    var title = parts.title;
+    var body = parts.body;
     var keywords = keywordInput.value.split(",").map(function(s){ return s.trim(); }).filter(Boolean).slice(0,5);
 
-    titleCount.textContent = title.length + "자";
-    bodyCount.textContent = body.length + "자";
+    postCount.textContent = raw.length + "자";
 
     checksList.innerHTML = "";
 
@@ -599,8 +595,8 @@
       scoreArc.setAttribute("stroke-dashoffset", ARC_LEN);
       scoreArc.setAttribute("stroke", cssVar("--ink-faint"));
       scoreNum.textContent = "0";
-      scoreTier.textContent = "제목을 입력해 보세요";
-      scoreSub.textContent = "제목과 핵심 키워드를 입력하면 채점이 시작됩니다.";
+      scoreTier.textContent = "글을 붙여넣어 보세요";
+      scoreSub.textContent = "블로그 글을 붙여넣으면 첫 줄을 제목으로 보고 바로 채점합니다.";
       return;
     }
 
@@ -695,7 +691,7 @@
           mentionedEarly ? "본문 첫 200자 안에 키워드가 등장해 주제가 빠르게 드러납니다." : "본문 도입부(첫 200자)에 키워드가 없습니다. 첫 문단에 넣어보세요.", ""));
       }
     } else {
-      checksList.appendChild(makeCheckRow("neutral", "본문 미입력", "본문을 입력하면 글자 수·키워드 밀도·도입부 언급까지 확인합니다.", ""));
+      checksList.appendChild(makeCheckRow("neutral", "제목 한 줄만 있음", "첫 줄 아래로 본문까지 함께 붙여넣으면 글자 수·키워드 밀도·도입부 언급까지 확인합니다.", ""));
     }
 
     var pct = possible ? Math.round(earned / possible * 100) : 0;
@@ -705,49 +701,50 @@
     scoreNum.textContent = pct;
     var tierText = pct>=75 ? "발행해도 좋아요" : pct>=45 ? "조금만 더 다듬어보세요" : "보완이 필요해요";
     scoreTier.textContent = tierText;
-    scoreSub.textContent = body ? "제목·본문 전체 항목을 기준으로 채점했습니다." : "제목 기준 항목만으로 채점했습니다 (본문 입력 시 정밀도가 올라갑니다).";
+    scoreSub.textContent = body ? "첫 줄을 제목으로, 나머지를 본문으로 보고 채점했습니다." : "제목(첫 줄) 기준 항목만으로 채점했습니다.";
   }
 
-  [titleInput, keywordInput, bodyInput].forEach(function(el){
-    el.addEventListener("input", analyze);
-  });
-
-  /* -- draft recognition: split pasted "title + body" into the two fields -- */
-  function splitTitleBody(raw){
-    var lines = raw.replace(/\r\n/g, "\n").split("\n");
-    var idx = 0;
-    while(idx < lines.length && lines[idx].trim() === "") idx++;
-    var title = idx < lines.length ? lines[idx].trim() : "";
-    var rest = lines.slice(idx + 1).join("\n").trim();
-    return { title: title, body: rest };
-  }
+  /* Nothing intercepts typing or the native paste — both text boxes are left
+     entirely to the browser, and analysis just listens for the resulting
+     "input" event. */
+  keywordInput.addEventListener("input", analyze);
+  postInput.addEventListener("input", analyze);
 
   var pasteStatus = document.getElementById("pasteStatus");
+  var pasteBtn = document.getElementById("pasteBtn");
+  var clearBtn = document.getElementById("clearBtn");
 
   /*
-   * Auto-recognition relies on the native browser "paste" event (ClipboardEvent),
-   * not the async navigator.clipboard.readText() API — the latter needs a
-   * clipboard-read permission grant that this embedded view cannot obtain,
-   * so a button built on it fails every time. The paste event fires on a
-   * plain user-initiated Ctrl+V with no extra permission needed.
-   * A multi-line paste anywhere on this tab (except the keyword field, where
-   * a single pasted keyword should just land normally) is treated as a full
-   * draft: first line -> title, rest -> body, then analyze immediately.
+   * On a real https origin navigator.clipboard.readText() is available, so the
+   * whole draft can be loaded without typing a single character. Chrome shows a
+   * one-time "paste" confirmation. Falls back to asking for a manual paste when
+   * the API is missing or the viewer declines.
    */
-  document.addEventListener("paste", function(e){
-    if(!panels.seo.classList.contains("active")) return;
-    if(document.activeElement === keywordInput) return;
-    var cd = e.clipboardData || window.clipboardData;
-    var text = cd ? cd.getData("text") : "";
-    if(!text || !text.trim()) return;
-    var lineCount = text.replace(/\r\n/g, "\n").split("\n").filter(function(l){ return l.trim() !== ""; }).length;
-    if(lineCount < 2) return; // a single line: let it paste normally wherever the cursor is
-    e.preventDefault();
-    var parts = splitTitleBody(text);
-    titleInput.value = parts.title;
-    bodyInput.value = parts.body;
+  pasteBtn.addEventListener("click", async function(){
+    try{
+      if(!navigator.clipboard || !navigator.clipboard.readText){
+        throw new Error("no clipboard api");
+      }
+      var text = await navigator.clipboard.readText();
+      if(!text || !text.trim()){
+        pasteStatus.textContent = "클립보드가 비어 있습니다. 네이버에서 글을 복사한 뒤 다시 눌러 주세요.";
+        return;
+      }
+      postInput.value = text;
+      analyze();
+      var t = splitTitleBody(text).title;
+      pasteStatus.textContent = '불러왔습니다. 제목으로 인식: "' + (t.length > 24 ? t.slice(0,24) + "…" : t) + '"';
+    } catch(err){
+      pasteStatus.textContent = "자동 붙여넣기가 거부되었습니다. 아래 칸을 길게 눌러 '붙여넣기'를 선택해 주세요.";
+      try{ postInput.focus(); } catch(e){}
+    }
+  });
+
+  clearBtn.addEventListener("click", function(){
+    postInput.value = "";
+    pasteStatus.textContent = "";
     analyze();
-    pasteStatus.textContent = "붙여넣은 내용에서 첫 줄을 제목으로 자동 인식해 분석했습니다.";
+    try{ postInput.focus(); } catch(e){}
   });
 
   analyze();
