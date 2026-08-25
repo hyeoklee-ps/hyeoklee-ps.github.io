@@ -1,5 +1,5 @@
 /* Offline cache for the toolkit. Bump CACHE when index.html changes. */
-const CACHE = "blog-workbench-v6";
+const CACHE = "blog-workbench-v7";
 const ASSETS = ["./", "./index.html", "./manifest.webmanifest", "./icon-192.png", "./icon-512.png"];
 
 self.addEventListener("install", (e) => {
@@ -20,6 +20,19 @@ self.addEventListener("fetch", (e) => {
   // Google Fonts are optional: never let a failed font request break the page.
   if (new URL(req.url).origin !== self.location.origin) {
     e.respondWith(fetch(req).catch(() => new Response("", { status: 200 })));
+    return;
+  }
+  // The draft list changes twice a week and everything else here is cache-first.
+  // Serving last week's drafts from cache would be worse than showing none, so
+  // this one file is network-first, falling back to cache only when offline.
+  if (new URL(req.url).pathname.endsWith("/drafts.json")) {
+    e.respondWith(
+      fetch(req).then((res) => {
+        const copy = res.clone();
+        caches.open(CACHE).then((c) => c.put(req, copy)).catch(() => {});
+        return res;
+      }).catch(() => caches.match(req))
+    );
     return;
   }
   e.respondWith(

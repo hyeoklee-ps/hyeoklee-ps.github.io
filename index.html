@@ -373,9 +373,80 @@
   .rz-cut.none{ color:var(--ink-faint); }
   .rz-item .btn{ padding:7px 11px; font-size:12px; flex:none; }
 
+  /* ---------------- draft inbox ---------------- */
+  .inbox-head{
+    display:flex; align-items:flex-start; justify-content:space-between;
+    gap:12px; margin-bottom:16px;
+  }
+  .inbox-head .btn{ flex:none; padding:9px 14px; font-size:13px; }
+  .draft-card{
+    border:1px solid var(--line); border-radius:var(--radius);
+    background:var(--paper-raised); margin-bottom:16px; overflow:hidden;
+  }
+  .draft-top{ padding:15px 16px 14px; }
+  .draft-badges{ display:flex; flex-wrap:wrap; gap:6px; margin-bottom:9px; }
+  .badge{
+    font-size:11.5px; font-weight:600; padding:3px 9px; border-radius:999px;
+    background:var(--accent-soft); color:var(--accent-strong); white-space:nowrap;
+  }
+  .badge.meta{ background:var(--paper-sunken); color:var(--ink-soft); font-weight:500; }
+  .badge.warn{ background:var(--warn-soft); color:var(--warn); }
+  .badge.good{ background:var(--good-soft); color:var(--good); }
+  .draft-subject{ font-size:15px; font-weight:700; margin:0 0 12px; line-height:1.4; }
+
+  .title-pick{ display:flex; flex-direction:column; gap:7px; margin-bottom:13px; }
+  .title-opt{
+    display:flex; align-items:flex-start; gap:9px; padding:10px 12px; cursor:pointer;
+    border:1px solid var(--line); border-radius:8px; background:var(--paper);
+    font-size:14px; line-height:1.45;
+  }
+  .title-opt input{ margin:3px 0 0; flex:none; accent-color:var(--accent); }
+  .title-opt.sel{ border-color:var(--accent); background:var(--accent-soft); }
+
+  .draft-actions{ display:flex; gap:8px; flex-wrap:wrap; }
+  .draft-actions .btn{ flex:1 1 140px; padding:12px 10px; font-size:14px; }
+
+  .draft-body{
+    border-top:1px solid var(--line); padding:14px 16px; background:var(--paper);
+    font-size:14.5px; line-height:1.75; white-space:pre-wrap; word-break:break-word;
+    max-height:260px; overflow:auto;
+  }
+  .draft-body.open{ max-height:none; }
+  .draft-body h4{
+    margin:16px 0 6px; font-size:14.5px; font-weight:700; color:var(--accent-strong);
+  }
+  .draft-body h4:first-child{ margin-top:0; }
+  .draft-more{
+    width:100%; border:none; border-top:1px solid var(--line); background:var(--paper-sunken);
+    color:var(--ink-soft); font-family:inherit; font-size:13px; font-weight:600;
+    padding:10px; cursor:pointer;
+  }
+  .draft-sec{ border-top:1px solid var(--line); padding:13px 16px; }
+  .draft-sec h4{ margin:0 0 8px; font-size:12.5px; font-weight:700;
+                 letter-spacing:.04em; text-transform:uppercase; color:var(--ink-faint); }
+  .draft-sec ul{ margin:0; padding-left:17px; font-size:13.5px; line-height:1.7;
+                 color:var(--ink-soft); }
+  .draft-sec ul li{ margin-bottom:3px; }
+  .draft-tags{ display:flex; flex-wrap:wrap; gap:6px; }
+  .draft-tags span{
+    font-size:12.5px; padding:4px 10px; border-radius:999px;
+    background:var(--paper-sunken); color:var(--ink-soft);
+  }
+  .ad-hit{
+    font-size:13px; line-height:1.65; padding:9px 11px; border-radius:7px;
+    background:var(--warn-soft); color:var(--ink); margin-bottom:7px;
+  }
+  .ad-hit b{ color:var(--warn); }
+  .ad-hit .ctx{ display:block; color:var(--ink-soft); font-size:12px; margin-top:3px; }
+  .inbox-empty{
+    border:1px dashed var(--line); border-radius:var(--radius); padding:34px 20px;
+    text-align:center; color:var(--ink-soft); font-size:14px; line-height:1.7;
+  }
+
   /* Landscape on a phone is short, not small: keep the two-column split but
      claw back vertical space so the input boxes and the score stay on screen. */
   @media (max-height: 560px) and (orientation: landscape){
+    .draft-body{ max-height:180px; }
     .app{ padding:12px 16px 32px; }
     .masthead{ padding-bottom:12px; margin-bottom:14px; }
     h1{ font-size:20px; }
@@ -409,15 +480,28 @@
   </div>
 
   <nav class="tabs" role="tablist">
-    <button class="tab active" data-tab="seo" role="tab" aria-selected="true">제목 · 키워드</button>
+    <button class="tab active" data-tab="inbox" role="tab" aria-selected="true">초안함</button>
+    <button class="tab" data-tab="seo" role="tab" aria-selected="false">제목 · 키워드</button>
     <button class="tab" data-tab="check" role="tab" aria-selected="false">발행 전 점검</button>
     <button class="tab" data-tab="wm" role="tab" aria-selected="false">워터마크</button>
     <button class="tab" data-tab="resize" role="tab" aria-selected="false">사진 줄이기</button>
   </nav>
 
   <main>
+    <!-- ============ DRAFT INBOX PANEL ============ -->
+    <section id="panel-inbox" class="panel active">
+      <div class="inbox-head">
+        <div>
+          <h2 class="section-title" style="margin:0;">이번 회차 초안</h2>
+          <p class="hint" id="inboxMeta" style="margin:4px 0 0;">불러오는 중…</p>
+        </div>
+        <button type="button" class="btn ghost" id="inboxReloadBtn">새로고침</button>
+      </div>
+      <div id="inboxList"></div>
+    </section>
+
     <!-- ============ SEO PANEL ============ -->
-    <section id="panel-seo" class="panel active">
+    <section id="panel-seo" class="panel">
       <div class="grid2">
         <div>
           <h2 class="section-title">입력</h2>
@@ -684,6 +768,7 @@
   /* ============ tabs ============ */
   var tabs = document.querySelectorAll(".tab");
   var panels = {
+    inbox: document.getElementById("panel-inbox"),
     seo: document.getElementById("panel-seo"),
     check: document.getElementById("panel-check"),
     wm: document.getElementById("panel-wm"),
@@ -700,6 +785,192 @@
       if(onTabShow[key]) onTabShow[key]();
     });
   });
+
+  /* ================================================================
+     DRAFT INBOX
+     Reads drafts.json, written next to this page by the research
+     pipeline on the Mac. The file is fetched with cache:"no-store"
+     and excluded from the service worker, because everything else
+     here is cache-first and a week-old draft list is worse than none.
+     ================================================================ */
+  var inboxList = document.getElementById("inboxList");
+  var inboxMeta = document.getElementById("inboxMeta");
+  var inboxReloadBtn = document.getElementById("inboxReloadBtn");
+  var inboxLoaded = false;
+
+  /* "## 소제목" is how the generator marks headings. Naver's editor has no
+     markdown, so headings become real elements on screen and plain lines on
+     copy — pasting "## " into a post would just look like a typo. */
+  function draftBodyHtml(body){
+    return String(body || "").split("\n").map(function(line){
+      var m = /^\s*#{2,3}\s+(.*)$/.exec(line);
+      if(m) return "<h4>" + escapeHtml(m[1]) + "</h4>";
+      return escapeHtml(line);
+    }).join("\n");
+  }
+  function draftBodyPlain(body){
+    return String(body || "").split("\n").map(function(line){
+      var m = /^\s*#{2,3}\s+(.*)$/.exec(line);
+      return m ? m[1] : line;
+    }).join("\n").trim();
+  }
+
+  function selectedTitle(card){
+    var picked = card.querySelector('.title-opt input:checked');
+    return picked ? picked.value : "";
+  }
+
+  async function copyText(text, btn, okLabel){
+    var original = btn.textContent;
+    try{
+      if(!navigator.clipboard || !navigator.clipboard.writeText) throw new Error("no clipboard");
+      await navigator.clipboard.writeText(text);
+      btn.textContent = okLabel || "복사했습니다";
+    } catch(err){
+      btn.textContent = "복사 실패 — 길게 눌러 복사";
+    }
+    setTimeout(function(){ btn.textContent = original; }, 1800);
+  }
+
+  function renderDraft(d){
+    var card = document.createElement("div");
+    card.className = "draft-card";
+
+    var badges = ['<span class="badge">' + escapeHtml(d.area || "") + "</span>"];
+    if(d.paperCount) badges.push('<span class="badge meta">논문 ' + d.paperCount + "편</span>");
+    if(d.chars) badges.push('<span class="badge meta">' + d.chars + "자</span>");
+    if(d.naver && d.naver.available && d.naver.medianTotal != null){
+      badges.push('<span class="badge meta">기존 글 ' +
+        Number(d.naver.medianTotal).toLocaleString() + "건</span>");
+    }
+    if(d.naver && d.naver.trend){
+      badges.push('<span class="badge meta">관심 ' + escapeHtml(d.naver.trend) + "</span>");
+    }
+    var ad = d.adCheck || {count:0, hits:[]};
+    badges.push(ad.count
+      ? '<span class="badge warn">의료광고 확인 ' + ad.count + "건</span>"
+      : '<span class="badge good">의료광고 점검 통과</span>');
+
+    var titles = (d.titles || []).map(function(t, i){
+      return '<label class="title-opt' + (i === 0 ? " sel" : "") + '">' +
+        '<input type="radio" name="title-' + d.id + '" value="' + escapeHtml(t) + '"' +
+        (i === 0 ? " checked" : "") + " />" +
+        "<span>" + escapeHtml(t) + "</span></label>";
+    }).join("");
+
+    var html =
+      '<div class="draft-top">' +
+        '<div class="draft-badges">' + badges.join("") + "</div>" +
+        '<p class="draft-subject">' + escapeHtml(d.topic || "") + "</p>" +
+        (titles ? '<div class="title-pick">' + titles + "</div>" : "") +
+        '<div class="draft-actions">' +
+          '<button type="button" class="btn" data-act="title">제목 복사</button>' +
+          '<button type="button" class="btn" data-act="body">본문 복사</button>' +
+          '<button type="button" class="btn ghost" data-act="tags">태그 복사</button>' +
+        "</div>" +
+      "</div>";
+
+    if(d.error){
+      html += '<div class="draft-sec"><h4>생성 실패</h4><p class="hint" style="margin:0;">' +
+        escapeHtml(d.error) + "</p></div>";
+    } else {
+      html += '<div class="draft-body">' + draftBodyHtml(d.body) + "</div>" +
+              '<button type="button" class="draft-more">전체 보기</button>';
+    }
+
+    if(ad.count){
+      html += '<div class="draft-sec"><h4>발행 전 확인 — 의료법 제56조</h4>' +
+        ad.hits.map(function(h){
+          return '<div class="ad-hit"><b>[' + escapeHtml(h.clause) + " " + escapeHtml(h.kind) +
+            "]</b> " + escapeHtml(h.why) +
+            '<span class="ctx">"' + escapeHtml(h.matched) + '" — ' + escapeHtml(h.context) + "</span></div>";
+        }).join("") +
+        '<p class="hint" style="margin:6px 0 0;">기계적 자가점검입니다. 법률 자문이나 사전심의를 대체하지 않습니다.</p>' +
+        "</div>";
+    }
+    if((d.tags || []).length){
+      html += '<div class="draft-sec"><h4>해시태그</h4><div class="draft-tags">' +
+        d.tags.map(function(t){ return "<span>" + escapeHtml(t) + "</span>"; }).join("") +
+        "</div></div>";
+    }
+    if((d.images || []).length){
+      html += '<div class="draft-sec"><h4>직접 준비하면 좋을 이미지</h4><ul>' +
+        d.images.map(function(x){ return "<li>" + escapeHtml(x) + "</li>"; }).join("") +
+        "</ul></div>";
+    }
+    if((d.sources || []).length){
+      html += '<div class="draft-sec"><h4>근거 논문</h4><ul>' +
+        d.sources.map(function(x){ return "<li>" + escapeHtml(x) + "</li>"; }).join("") +
+        "</ul></div>";
+    }
+    card.innerHTML = html;
+
+    card.addEventListener("change", function(e){
+      if(e.target.name !== "title-" + d.id) return;
+      card.querySelectorAll(".title-opt").forEach(function(l){ l.classList.remove("sel"); });
+      var lbl = e.target.closest(".title-opt");
+      if(lbl) lbl.classList.add("sel");
+    });
+
+    card.addEventListener("click", function(e){
+      var more = e.target.closest(".draft-more");
+      if(more){
+        var body = card.querySelector(".draft-body");
+        var open = body.classList.toggle("open");
+        more.textContent = open ? "접기" : "전체 보기";
+        return;
+      }
+      var btn = e.target.closest("[data-act]");
+      if(!btn) return;
+      var act = btn.dataset.act;
+      if(act === "title") copyText(selectedTitle(card), btn, "제목 복사됨");
+      else if(act === "body") copyText(draftBodyPlain(d.body), btn, "본문 복사됨");
+      else if(act === "tags") copyText((d.tags || []).join(" "), btn, "태그 복사됨");
+    });
+
+    return card;
+  }
+
+  function inboxEmpty(message){
+    inboxList.innerHTML = '<div class="inbox-empty">' + message + "</div>";
+  }
+
+  async function loadInbox(){
+    inboxMeta.textContent = "불러오는 중…";
+    inboxList.innerHTML = "";
+    var data;
+    try{
+      var res = await fetch("drafts.json", { cache: "no-store" });
+      if(!res.ok) throw new Error("http " + res.status);
+      data = await res.json();
+    } catch(err){
+      inboxMeta.textContent = "아직 초안이 없습니다";
+      inboxEmpty(
+        "맥미니의 초안 파이프라인이 아직 글을 올리지 않았습니다.<br>" +
+        "주 2회 자동 실행되며, 실행되면 이 자리에 후보 초안이 나타납니다."
+      );
+      inboxLoaded = true;
+      return;
+    }
+
+    var drafts = (data && data.drafts) || [];
+    inboxMeta.textContent = drafts.length
+      ? (data.runDate || "") + " · 후보 " + drafts.length + "개 — 마음에 드는 글을 골라 복사하세요"
+      : "이번 회차에 생성된 초안이 없습니다";
+    if(!drafts.length){
+      inboxEmpty("이번 회차에 생성된 초안이 없습니다.");
+      inboxLoaded = true;
+      return;
+    }
+    var frag = document.createDocumentFragment();
+    drafts.forEach(function(d){ frag.appendChild(renderDraft(d)); });
+    inboxList.appendChild(frag);
+    inboxLoaded = true;
+  }
+
+  inboxReloadBtn.addEventListener("click", loadInbox);
+  onTabShow.inbox = function(){ if(!inboxLoaded) loadInbox(); };
+  loadInbox();
 
   /* ================================================================
      SEO ANALYZER
