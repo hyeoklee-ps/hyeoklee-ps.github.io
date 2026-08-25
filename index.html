@@ -427,11 +427,50 @@
   .draft-sec ul{ margin:0; padding-left:17px; font-size:13.5px; line-height:1.7;
                  color:var(--ink-soft); }
   .draft-sec ul li{ margin-bottom:3px; }
+  .draft-sec ul.mla li{
+    padding-left:2px; text-indent:-14px; margin-bottom:8px; line-height:1.6;
+  }
   .draft-tags{ display:flex; flex-wrap:wrap; gap:6px; }
   .draft-tags span{
     font-size:12.5px; padding:4px 10px; border-radius:999px;
     background:var(--paper-sunken); color:var(--ink-soft);
   }
+
+  /* topic-first: the card is a subject you choose, and the draft is what
+     unfolds underneath it once you do. */
+  .topic-card{ cursor:pointer; }
+  .topic-card.open{ cursor:default; border-color:var(--accent); }
+  .topic-head{ padding:15px 16px; }
+  .topic-row{ display:flex; align-items:flex-start; gap:12px; }
+  .topic-name{ flex:1; font-size:16px; font-weight:700; line-height:1.4; margin:0; }
+  .topic-score{
+    flex:none; text-align:center; min-width:52px; padding:5px 8px; border-radius:8px;
+    background:var(--accent-soft); color:var(--accent-strong);
+  }
+  .topic-score b{ display:block; font-size:17px; font-variant-numeric:tabular-nums; }
+  .topic-score span{ font-size:10.5px; letter-spacing:.03em; }
+  .topic-why{
+    margin:9px 0 0; font-size:13px; line-height:1.6; color:var(--ink-soft);
+  }
+  .topic-open{
+    margin-top:12px; width:100%; padding:12px; font-size:14.5px;
+  }
+  .inbox-actions{ display:flex; gap:8px; margin:4px 0 18px; }
+  .inbox-actions .btn{ flex:1; padding:12px 10px; font-size:14px; }
+  .inbox-note{
+    font-size:12.5px; line-height:1.65; color:var(--ink-faint);
+    margin:16px 0 0; padding-top:13px; border-top:1px solid var(--line);
+  }
+  .topic-card.done{ opacity:.62; }
+  .topic-card.done .topic-name{
+    text-decoration:line-through; text-decoration-color:var(--ink-faint);
+  }
+  .done-btn{
+    background:none; border:1px solid var(--line); border-radius:999px;
+    color:var(--ink-faint); font-family:inherit; font-size:12px; font-weight:600;
+    padding:4px 11px; cursor:pointer; flex:none;
+  }
+  .done-btn.on{ border-color:var(--good); color:var(--good); background:var(--good-soft); }
   .ad-hit{
     font-size:13px; line-height:1.65; padding:9px 11px; border-radius:7px;
     background:var(--warn-soft); color:var(--ink); margin-bottom:7px;
@@ -492,12 +531,16 @@
     <section id="panel-inbox" class="panel active">
       <div class="inbox-head">
         <div>
-          <h2 class="section-title" style="margin:0;">이번 회차 초안</h2>
+          <h2 class="section-title" style="margin:0;">추천 주제</h2>
           <p class="hint" id="inboxMeta" style="margin:4px 0 0;">불러오는 중…</p>
         </div>
-        <button type="button" class="btn ghost" id="inboxReloadBtn">새로고침</button>
+      </div>
+      <div class="inbox-actions">
+        <button type="button" class="btn" id="inboxNextBtn">다른 주제 3개 보기</button>
+        <button type="button" class="btn ghost" id="inboxReloadBtn">목록 새로 받기</button>
       </div>
       <div id="inboxList"></div>
+      <p class="inbox-note" id="inboxNote"></p>
     </section>
 
     <!-- ============ SEO PANEL ============ -->
@@ -787,16 +830,36 @@
   });
 
   /* ================================================================
-     DRAFT INBOX
-     Reads drafts.json, written next to this page by the research
-     pipeline on the Mac. The file is fetched with cache:"no-store"
-     and excluded from the service worker, because everything else
-     here is cache-first and a week-old draft list is worse than none.
+     TOPIC INBOX
+     Reads pool.json, written next to this page by the research
+     pipeline on the Mac. You browse subjects three at a time and open
+     the one you want; the draft is already written underneath, so
+     choosing costs nothing and never leaves you waiting.
+
+     Fetched with cache:"no-store" and excluded from the service
+     worker, because everything else here is cache-first and a stale
+     topic list is worse than none.
      ================================================================ */
   var inboxList = document.getElementById("inboxList");
   var inboxMeta = document.getElementById("inboxMeta");
+  var inboxNote = document.getElementById("inboxNote");
   var inboxReloadBtn = document.getElementById("inboxReloadBtn");
+  var inboxNextBtn = document.getElementById("inboxNextBtn");
+  var PAGE_SIZE = 3;
+  var inboxTopics = [];
+  var inboxPage = 0;
   var inboxLoaded = false;
+
+  /* Which topics you have already written up. The pipeline can't know this —
+     the page is static and nothing travels back to the Mac — so it lives on
+     this device. Without it the same top three would greet you forever. */
+  var WROTE_KEY = "blogWorkbench.wroteTopics";
+  var wrote = {};
+  try{ wrote = JSON.parse(localStorage.getItem(WROTE_KEY) || "{}") || {}; }
+  catch(e){ wrote = {}; }
+  function saveWrote(){
+    try{ localStorage.setItem(WROTE_KEY, JSON.stringify(wrote)); } catch(e){}
+  }
 
   /* "## 소제목" is how the generator marks headings. Naver's editor has no
      markdown, so headings become real elements on screen and plain lines on
@@ -815,11 +878,6 @@
     }).join("\n").trim();
   }
 
-  function selectedTitle(card){
-    var picked = card.querySelector('.title-opt input:checked');
-    return picked ? picked.value : "";
-  }
-
   async function copyText(text, btn, okLabel){
     var original = btn.textContent;
     try{
@@ -832,55 +890,30 @@
     setTimeout(function(){ btn.textContent = original; }, 1800);
   }
 
-  function renderDraft(d){
-    var card = document.createElement("div");
-    card.className = "draft-card";
-
-    var badges = ['<span class="badge">' + escapeHtml(d.area || "") + "</span>"];
-    if(d.paperCount) badges.push('<span class="badge meta">논문 ' + d.paperCount + "편</span>");
-    if(d.chars) badges.push('<span class="badge meta">' + d.chars + "자</span>");
-    if(d.naver && d.naver.available && d.naver.medianTotal != null){
-      badges.push('<span class="badge meta">기존 글 ' +
-        Number(d.naver.medianTotal).toLocaleString() + "건</span>");
-    }
-    if(d.naver && d.naver.trend){
-      badges.push('<span class="badge meta">관심 ' + escapeHtml(d.naver.trend) + "</span>");
-    }
-    var ad = d.adCheck || {count:0, hits:[]};
-    badges.push(ad.count
-      ? '<span class="badge warn">의료광고 확인 ' + ad.count + "건</span>"
-      : '<span class="badge good">의료광고 점검 통과</span>');
-
-    var titles = (d.titles || []).map(function(t, i){
+  function draftHtml(t){
+    var d = t;
+    var html = "";
+    var titles = (d.titles || []).map(function(x, i){
       return '<label class="title-opt' + (i === 0 ? " sel" : "") + '">' +
-        '<input type="radio" name="title-' + d.id + '" value="' + escapeHtml(t) + '"' +
+        '<input type="radio" name="title-' + d.key + '" value="' + escapeHtml(x) + '"' +
         (i === 0 ? " checked" : "") + " />" +
-        "<span>" + escapeHtml(t) + "</span></label>";
+        "<span>" + escapeHtml(x) + "</span></label>";
     }).join("");
 
-    var html =
-      '<div class="draft-top">' +
-        '<div class="draft-badges">' + badges.join("") + "</div>" +
-        '<p class="draft-subject">' + escapeHtml(d.topic || "") + "</p>" +
-        (titles ? '<div class="title-pick">' + titles + "</div>" : "") +
-        '<div class="draft-actions">' +
-          '<button type="button" class="btn" data-act="title">제목 복사</button>' +
-          '<button type="button" class="btn" data-act="body">본문 복사</button>' +
-          '<button type="button" class="btn ghost" data-act="tags">태그 복사</button>' +
-        "</div>" +
-      "</div>";
+    html += '<div class="draft-sec">' +
+      (titles ? '<h4>제목 고르기</h4><div class="title-pick">' + titles + "</div>" : "") +
+      '<div class="draft-actions">' +
+        '<button type="button" class="btn" data-act="title">제목 복사</button>' +
+        '<button type="button" class="btn" data-act="body">본문 복사</button>' +
+      "</div></div>";
 
-    if(d.error){
-      html += '<div class="draft-sec"><h4>생성 실패</h4><p class="hint" style="margin:0;">' +
-        escapeHtml(d.error) + "</p></div>";
-    } else {
-      html += '<div class="draft-body">' + draftBodyHtml(d.body) + "</div>" +
-              '<button type="button" class="draft-more">전체 보기</button>';
-    }
+    html += '<div class="draft-body">' + draftBodyHtml(d.body) + "</div>" +
+            '<button type="button" class="draft-more">전체 보기</button>';
 
+    var ad = d.adCheck || {count:0, hits:[]};
     if(ad.count){
       html += '<div class="draft-sec"><h4>발행 전 확인 — 의료법 제56조</h4>' +
-        ad.hits.map(function(h){
+        (ad.hits || []).map(function(h){
           return '<div class="ad-hit"><b>[' + escapeHtml(h.clause) + " " + escapeHtml(h.kind) +
             "]</b> " + escapeHtml(h.why) +
             '<span class="ctx">"' + escapeHtml(h.matched) + '" — ' + escapeHtml(h.context) + "</span></div>";
@@ -890,7 +923,7 @@
     }
     if((d.tags || []).length){
       html += '<div class="draft-sec"><h4>해시태그</h4><div class="draft-tags">' +
-        d.tags.map(function(t){ return "<span>" + escapeHtml(t) + "</span>"; }).join("") +
+        d.tags.map(function(x){ return "<span>" + escapeHtml(x) + "</span>"; }).join("") +
         "</div></div>";
     }
     if((d.images || []).length){
@@ -899,75 +932,158 @@
         "</ul></div>";
     }
     if((d.sources || []).length){
-      html += '<div class="draft-sec"><h4>근거 논문</h4><ul>' +
+      html += '<div class="draft-sec"><h4>근거 논문 (MLA)</h4><ul class="mla">' +
         d.sources.map(function(x){ return "<li>" + escapeHtml(x) + "</li>"; }).join("") +
         "</ul></div>";
     }
-    card.innerHTML = html;
+    return html;
+  }
+
+  function renderTopic(t){
+    var card = document.createElement("div");
+    card.className = "draft-card topic-card";
+
+    var badges = ['<span class="badge">' + escapeHtml(t.area || "") + "</span>"];
+    if(t.chars) badges.push('<span class="badge meta">' + t.chars + "자 초안 준비됨</span>");
+    if(t.paperCount) badges.push('<span class="badge meta">논문 ' + t.paperCount + "편</span>");
+    var ad = t.adCheck || {count:0};
+    badges.push(ad.count
+      ? '<span class="badge warn">의료광고 확인 ' + ad.count + "건</span>"
+      : '<span class="badge good">의료광고 점검 통과</span>');
+
+    var isDone = !!wrote[t.key];
+    if(isDone) card.classList.add("done");
+
+    card.innerHTML =
+      '<div class="topic-head">' +
+        '<div class="draft-badges">' + badges.join("") +
+          '<button type="button" class="done-btn' + (isDone ? " on" : "") +
+          '" data-act="done">' + (isDone ? "✓ 썼음" : "썼음 표시") + "</button>" +
+        "</div>" +
+        '<div class="topic-row">' +
+          '<p class="topic-name">' + escapeHtml(t.topic || "") + "</p>" +
+          '<div class="topic-score"><b>' + (t.score == null ? "-" : t.score) +
+            "</b><span>추천도</span></div>" +
+        "</div>" +
+        ((t.reasons || []).length
+          ? '<p class="topic-why">' + escapeHtml(t.reasons.join(" · ")) + "</p>" : "") +
+        '<button type="button" class="btn topic-open">이 주제로 쓰기</button>' +
+      "</div>";
+
+    var opened = false;
+    card.addEventListener("click", function(e){
+      var openBtn = e.target.closest(".topic-open");
+      if(openBtn && !opened){
+        opened = true;
+        card.classList.add("open");
+        openBtn.remove();
+        card.insertAdjacentHTML("beforeend", draftHtml(t));
+        return;
+      }
+      var more = e.target.closest(".draft-more");
+      if(more){
+        var body = card.querySelector(".draft-body");
+        var isOpen = body.classList.toggle("open");
+        more.textContent = isOpen ? "접기" : "전체 보기";
+        return;
+      }
+      var btn = e.target.closest("[data-act]");
+      if(!btn) return;
+      if(btn.dataset.act === "title"){
+        var picked = card.querySelector('.title-opt input:checked');
+        copyText(picked ? picked.value : "", btn, "제목 복사됨");
+      } else if(btn.dataset.act === "body"){
+        copyText(draftBodyPlain(t.body), btn, "본문 복사됨");
+      } else if(btn.dataset.act === "done"){
+        if(wrote[t.key]){ delete wrote[t.key]; } else { wrote[t.key] = true; }
+        saveWrote();
+        var on = !!wrote[t.key];
+        btn.classList.toggle("on", on);
+        btn.textContent = on ? "✓ 썼음" : "썼음 표시";
+        card.classList.toggle("done", on);
+      }
+    });
 
     card.addEventListener("change", function(e){
-      if(e.target.name !== "title-" + d.id) return;
+      if(e.target.name !== "title-" + t.key) return;
       card.querySelectorAll(".title-opt").forEach(function(l){ l.classList.remove("sel"); });
       var lbl = e.target.closest(".title-opt");
       if(lbl) lbl.classList.add("sel");
     });
 
-    card.addEventListener("click", function(e){
-      var more = e.target.closest(".draft-more");
-      if(more){
-        var body = card.querySelector(".draft-body");
-        var open = body.classList.toggle("open");
-        more.textContent = open ? "접기" : "전체 보기";
-        return;
-      }
-      var btn = e.target.closest("[data-act]");
-      if(!btn) return;
-      var act = btn.dataset.act;
-      if(act === "title") copyText(selectedTitle(card), btn, "제목 복사됨");
-      else if(act === "body") copyText(draftBodyPlain(d.body), btn, "본문 복사됨");
-      else if(act === "tags") copyText((d.tags || []).join(" "), btn, "태그 복사됨");
-    });
-
     return card;
+  }
+
+  function renderPage(){
+    inboxList.innerHTML = "";
+    if(!inboxTopics.length){ return; }
+    var total = Math.ceil(inboxTopics.length / PAGE_SIZE);
+    inboxPage = ((inboxPage % total) + total) % total;
+    var slice = inboxTopics.slice(inboxPage * PAGE_SIZE, inboxPage * PAGE_SIZE + PAGE_SIZE);
+    var frag = document.createDocumentFragment();
+    slice.forEach(function(t){ frag.appendChild(renderTopic(t)); });
+    inboxList.appendChild(frag);
+    inboxNextBtn.textContent = total > 1
+      ? "다른 주제 3개 보기 (" + (inboxPage + 1) + "/" + total + ")"
+      : "다른 주제 3개 보기";
+    inboxNextBtn.disabled = total <= 1;
   }
 
   function inboxEmpty(message){
     inboxList.innerHTML = '<div class="inbox-empty">' + message + "</div>";
+    inboxNextBtn.disabled = true;
   }
 
   async function loadInbox(){
     inboxMeta.textContent = "불러오는 중…";
     inboxList.innerHTML = "";
+    inboxNote.textContent = "";
     var data;
     try{
-      var res = await fetch("drafts.json", { cache: "no-store" });
+      var res = await fetch("pool.json", { cache: "no-store" });
       if(!res.ok) throw new Error("http " + res.status);
       data = await res.json();
     } catch(err){
-      inboxMeta.textContent = "아직 초안이 없습니다";
+      inboxMeta.textContent = "아직 주제 풀이 없습니다";
       inboxEmpty(
-        "맥미니의 초안 파이프라인이 아직 글을 올리지 않았습니다.<br>" +
-        "주 2회 자동 실행되며, 실행되면 이 자리에 후보 초안이 나타납니다."
+        "맥미니의 주제 파이프라인이 아직 실행되지 않았습니다.<br>" +
+        "주 1회 논문과 검색 동향을 반영해 주제를 갱신하며,<br>" +
+        "실행되면 이 자리에 추천 주제가 나타납니다."
       );
       inboxLoaded = true;
       return;
     }
 
-    var drafts = (data && data.drafts) || [];
-    inboxMeta.textContent = drafts.length
-      ? (data.runDate || "") + " · 후보 " + drafts.length + "개 — 마음에 드는 글을 골라 복사하세요"
-      : "이번 회차에 생성된 초안이 없습니다";
-    if(!drafts.length){
-      inboxEmpty("이번 회차에 생성된 초안이 없습니다.");
+    inboxTopics = (data && data.topics) || [];
+    // Already-written topics keep their place in the pool but move behind the
+    // rest, so the first page is always something you have not used yet.
+    inboxTopics.sort(function(a, b){
+      var da = wrote[a.key] ? 1 : 0, db = wrote[b.key] ? 1 : 0;
+      return da !== db ? da - db : (b.score || 0) - (a.score || 0);
+    });
+    inboxPage = 0;
+    if(!inboxTopics.length){
+      inboxMeta.textContent = "준비된 초안이 없습니다";
+      inboxEmpty("주제는 있지만 초안이 아직 작성되지 않았습니다.");
       inboxLoaded = true;
       return;
     }
-    var frag = document.createDocumentFragment();
-    drafts.forEach(function(d){ frag.appendChild(renderDraft(d)); });
-    inboxList.appendChild(frag);
+
+    var when = (data.updated || "").slice(0, 10);
+    inboxMeta.textContent =
+      (when ? when + " 갱신 · " : "") +
+      "주제 " + (data.topicCount || inboxTopics.length) + "개 중 초안 준비 " +
+      inboxTopics.length + "개";
+    inboxNote.textContent = data.notice || "";
+    renderPage();
     inboxLoaded = true;
   }
 
+  inboxNextBtn.addEventListener("click", function(){
+    inboxPage += 1;
+    renderPage();
+    inboxList.scrollIntoView({ block: "start", behavior: "smooth" });
+  });
   inboxReloadBtn.addEventListener("click", loadInbox);
   onTabShow.inbox = function(){ if(!inboxLoaded) loadInbox(); };
   loadInbox();
