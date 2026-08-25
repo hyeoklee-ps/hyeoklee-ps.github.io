@@ -312,6 +312,24 @@
     margin-top:18px; font-size:12px; color:var(--ink-faint); text-align:center;
   }
 
+  /* Landscape on a phone is short, not small: keep the two-column split but
+     claw back vertical space so the input boxes and the score stay on screen. */
+  @media (max-height: 560px) and (orientation: landscape){
+    .app{ padding:12px 16px 32px; }
+    .masthead{ padding-bottom:12px; margin-bottom:14px; }
+    h1{ font-size:20px; }
+    .tagline{ display:none; }
+    main{ padding:16px; }
+    .grid2{ gap:16px; }
+    textarea{ min-height:110px; }
+    .score-wrap{ margin-bottom:14px; }
+    .score-dial{ width:76px; height:76px; }
+    .score-dial svg{ width:76px; height:76px; }
+    .score-num strong{ font-size:21px; }
+    h2.section-title{ margin-bottom:10px; }
+    .preview-frame{ min-height:140px; }
+  }
+
   @media (prefers-reduced-motion: reduce){
     *{ transition:none !important; animation:none !important; }
   }
