@@ -1,5 +1,5 @@
 /* Offline cache for the toolkit. Bump CACHE when index.html changes. */
-const CACHE = "blog-workbench-v11";
+const CACHE = "blog-workbench-v12";
 const ASSETS = ["./", "./index.html", "./manifest.webmanifest", "./icon-192.png", "./icon-512.png"];
 
 self.addEventListener("install", (e) => {
@@ -17,6 +17,9 @@ self.addEventListener("activate", (e) => {
 self.addEventListener("fetch", (e) => {
   const req = e.request;
   if (req.method !== "GET") return;
+  // /video/ 는 별도의 앱(영상 작업대)이고 자체 서비스워커를 씁니다.
+  // 이 워커는 cache-first 라서, 여기서 손대면 그쪽 앱이 옛 버전에 갇힙니다.
+  if (new URL(req.url).pathname.startsWith("/video/")) return;
   // Google Fonts are optional: never let a failed font request break the page.
   if (new URL(req.url).origin !== self.location.origin) {
     e.respondWith(fetch(req).catch(() => new Response("", { status: 200 })));
