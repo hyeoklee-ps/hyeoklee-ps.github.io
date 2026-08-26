@@ -38,8 +38,17 @@ export default {
         const v = upstream.headers.get(k);
         if (v) headers.set(k, v);
       }
-      // 모델 파일은 내용이 바뀌지 않으므로 오래 캐시합니다.
-      headers.set('cache-control', 'public, max-age=31536000, immutable');
+      // ★ 모델 파일은 안 바뀌니 오래 캐시하고 싶지만, 'public' + 'immutable' 은
+      //   위험한 조합입니다. 같은 URL 에 서로 다른 Range 로 여러 번 요청하는
+      //   도중(진행률 표시 방식) 응답 하나가 어그러지면 — 캐시 하나가 잘못된
+      //   "전체 길이"로 저장된 채, 캐시를 공유하는 다른 요청·다른 사용자까지
+      //   전부 빈 몸통을 받게 되고, 'immutable' 이라 브라우저가 다시는
+      //   확인하러 가지 않습니다 (테스트 중 로컬 캐시에서 재현: 한 번 어긋난
+      //   뒤로는 재요청마다 "Failed to fetch" 였습니다). 'private' 로 공유
+      //   캐시(다른 사람과 겹치는 캐시)에는 안 들어가게 하고, 'no-transform' 으로
+      //   중간에서 인코딩을 바꾸지 못하게 해서 이 위험을 줄입니다 — 폰 자신의
+      //   캐시는 여전히 씁니다.
+      headers.set('cache-control', 'private, max-age=31536000, immutable, no-transform');
       headers.set('access-control-allow-origin', '*');
 
       return new Response(upstream.body, { status: upstream.status, headers });
