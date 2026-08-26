@@ -2,6 +2,7 @@
   "name": "블로그 작업대",
   "short_name": "블로그작업대",
   "description": "네이버 블로그 제목·키워드 SEO 분석과 사진 워터마크 도구",
+  "id": "/index.html",
   "start_url": "./index.html",
   "scope": "./",
   "display": "standalone",
