@@ -1,0 +1,17 @@
+{
+  // Cloudflare Worker 설정.
+  //
+  // 이 저장소는 GitHub Pages 로도 서비스됩니다 (블로그 작업대 = 루트).
+  // Cloudflare 는 그중 video/ 폴더만 가져다 자기 도메인의 루트로 서비스합니다.
+  // 이렇게 도메인을 분리해야 영상 작업대를 별도 앱으로 설치할 수 있습니다
+  // (같은 도메인이면 블로그 앱의 scope 가 "/" 라서 크롬이 같은 앱으로 봅니다).
+  //
+  // 이 파일이 없으면 저장소 루트가 그대로 서비스되어 블로그 앱이 뜹니다.
+  "name": "video-workbench",
+  "compatibility_date": "2026-08-01",
+  "assets": {
+    "directory": "./video",
+    // 없는 경로는 index.html 로 — 단일 페이지 앱이라 새로고침해도 깨지지 않습니다.
+    "not_found_handling": "single-page-application"
+  }
+}
