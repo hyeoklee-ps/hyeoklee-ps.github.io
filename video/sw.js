@@ -7,7 +7,7 @@
  *
  *   배포할 때마다 CACHE 값을 올려주세요.
  */
-const CACHE = 'vw-v8';
+const CACHE = 'vw-v9';
 
 const SHELL = ['./', './index.html', './manifest.webmanifest'];
 
@@ -30,6 +30,15 @@ self.addEventListener('fetch', (e) => {
 
   const url = new URL(req.url);
   if (url.origin !== self.location.origin) return;
+
+  // ★ /hf/ 는 음성인식 모델 파일 중계입니다(worker.js) — 한 번 받으면
+  //   절대 안 바뀌는 내용(모델+리비전으로 정해짐)인데, 위 network-first
+  //   규칙을 그대로 적용하면 "이미 받아둔 300MB짜리 모델"도 새 영상을
+  //   불러올 때마다(=다시 받아쓰기 할 때마다) 매번 새로 내려받습니다
+  //   (실사용자 신고로 확인, 2026-08-28). 이 경로는 아예 건드리지 않고
+  //   브라우저 기본 캐시(+ worker.js 가 이미 immutable 로 표시해둔 것)에
+  //   맡깁니다 — 블로그 작업대 sw.js 의 /video/ 예외와 같은 이유입니다.
+  if (url.pathname.startsWith('/hf/')) return;
 
   e.respondWith((async () => {
     try {
