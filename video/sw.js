@@ -7,7 +7,7 @@
  *
  *   배포할 때마다 CACHE 값을 올려주세요.
  */
-const CACHE = 'vw-v9';
+const CACHE = 'vw-v10';
 
 const SHELL = ['./', './index.html', './manifest.webmanifest'];
 
