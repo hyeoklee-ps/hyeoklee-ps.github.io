@@ -416,6 +416,9 @@
     margin:16px 0 6px; font-size:14.5px; font-weight:700; color:var(--accent-strong);
   }
   .draft-body h4:first-child{ margin-top:0; }
+  /* 상담 질문 코너의 Q 줄. 본문은 pre-wrap 이라 블록 요소를 끼우면 줄간격이
+     흐트러지므로, 줄바꿈을 건드리지 않는 인라인 요소로만 강조한다. */
+  .draft-body .faq-q{ color:var(--accent-strong); font-weight:700; }
   .draft-more{
     width:100%; border:none; border-top:1px solid var(--line); background:var(--paper-sunken);
     color:var(--ink-soft); font-family:inherit; font-size:13px; font-weight:600;
@@ -430,6 +433,7 @@
   .draft-sec ul.mla li{
     padding-left:2px; text-indent:-14px; margin-bottom:8px; line-height:1.6;
   }
+  .src-actions{ margin-top:10px; }
   .draft-tags{ display:flex; flex-wrap:wrap; gap:6px; }
   .draft-tags span{
     font-size:12.5px; padding:4px 10px; border-radius:999px;
@@ -979,6 +983,8 @@
     return String(body || "").split("\n").map(function(line){
       var m = /^\s*#{2,3}\s+(.*)$/.exec(line);
       if(m) return "<h4>" + escapeHtml(m[1]) + "</h4>";
+      var q = /^\s*Q\s*[.\uFF0E:]\s*(.+)$/.exec(line);
+      if(q) return '<b class="faq-q">Q. ' + escapeHtml(q[1]) + "</b>";
       return escapeHtml(line);
     }).join("\n");
   }
@@ -987,6 +993,12 @@
       var m = /^\s*#{2,3}\s+(.*)$/.exec(line);
       return m ? m[1] : line;
     }).join("\n").trim();
+  }
+
+  /* 글 맨 아래에 붙일 용도라 제목 줄을 함께 넣는다 — MLA 항목만 덩그러니
+     놓이면 블로그에서는 잘린 문장처럼 보인다. */
+  function draftSourcesPlain(list){
+    return "[참고 문헌]\n" + (list || []).join("\n");
   }
 
   async function copyText(text, btn, okLabel){
@@ -1045,7 +1057,9 @@
     if((d.sources || []).length){
       html += '<div class="draft-sec"><h4>근거 논문 (MLA)</h4><ul class="mla">' +
         d.sources.map(function(x){ return "<li>" + escapeHtml(x) + "</li>"; }).join("") +
-        "</ul></div>";
+        '</ul><div class="draft-actions src-actions">' +
+        '<button type="button" class="btn" data-act="sources">근거 논문 복사</button>' +
+        "</div></div>";
     }
     return html;
   }
@@ -1105,6 +1119,8 @@
         copyText(picked ? picked.value : "", btn, "제목 복사됨");
       } else if(btn.dataset.act === "body"){
         copyText(draftBodyPlain(t.body), btn, "본문 복사됨");
+      } else if(btn.dataset.act === "sources"){
+        copyText(draftSourcesPlain(t.sources), btn, "근거 논문 복사됨");
       } else if(btn.dataset.act === "done"){
         if(wrote[t.key]){ delete wrote[t.key]; } else { wrote[t.key] = true; }
         saveWrote();
