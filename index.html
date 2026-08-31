@@ -547,22 +547,38 @@
     font-family:inherit; font-size:13px; font-weight:600; cursor:pointer;
   }
 
-  .topic-card.done{ opacity:.62; }
-  .topic-card.done .topic-name{
-    text-decoration:line-through; text-decoration-color:var(--ink-faint);
+  /* 썼거나 마음에 들지 않는 주제는 흐리게 두지 않고 목록에서 뺀다. 흐리게만 두면
+     화면이 지워야 할 것들로 계속 차오르고, 남은 주제를 세기도 어렵다. */
+  .topic-card.leaving{
+    opacity:0; transform:translateY(-6px);
+    transition:opacity .18s ease, transform .18s ease;
   }
-  .done-btn{
+  .done-btn, .drop-btn{
     background:none; border:1px solid var(--line); border-radius:999px;
     color:var(--ink-faint); font-family:inherit; font-size:12px; font-weight:600;
     padding:4px 11px; cursor:pointer; flex:none;
   }
-  .done-btn.on{ border-color:var(--good); color:var(--good); background:var(--good-soft); }
+  .done-btn:hover{ border-color:var(--good); color:var(--good); }
+  .drop-btn:hover{ border-color:var(--warn); color:var(--warn); }
+  .inbox-status{
+    display:flex; align-items:center; gap:10px; flex-wrap:wrap;
+    margin:-10px 0 16px; padding:9px 12px; border-radius:9px;
+    background:var(--paper-sunken); color:var(--ink-soft); font-size:13px;
+  }
+  .link-btn{
+    background:none; border:none; padding:0; cursor:pointer; flex:none;
+    color:var(--accent-strong); font-family:inherit; font-size:13px; font-weight:700;
+    text-decoration:underline; text-underline-offset:3px;
+  }
   .ad-hit{
     font-size:13px; line-height:1.65; padding:9px 11px; border-radius:7px;
     background:var(--warn-soft); color:var(--ink); margin-bottom:7px;
   }
   .ad-hit b{ color:var(--warn); }
   .ad-hit .ctx{ display:block; color:var(--ink-soft); font-size:12px; margin-top:3px; }
+  @media (prefers-reduced-motion: reduce){
+    .topic-card.leaving{ transition:none; }
+  }
   .inbox-empty{
     border:1px dashed var(--line); border-radius:var(--radius); padding:34px 20px;
     text-align:center; color:var(--ink-soft); font-size:14px; line-height:1.7;
@@ -625,6 +641,10 @@
       <div class="inbox-actions">
         <button type="button" class="btn" id="inboxNextBtn">다른 주제 3개 보기</button>
         <button type="button" class="btn ghost" id="inboxReloadBtn">목록 새로 받기</button>
+      </div>
+      <div class="inbox-status" id="inboxStatus" hidden>
+        <span id="inboxStatusText"></span>
+        <button type="button" class="link-btn" id="inboxUndoBtn">되돌리기</button>
       </div>
       <div id="inboxList"></div>
       <p class="inbox-note" id="inboxNote"></p>
@@ -960,20 +980,45 @@
   var inboxNote = document.getElementById("inboxNote");
   var inboxReloadBtn = document.getElementById("inboxReloadBtn");
   var inboxNextBtn = document.getElementById("inboxNextBtn");
+  var inboxStatus = document.getElementById("inboxStatus");
+  var inboxStatusText = document.getElementById("inboxStatusText");
+  var inboxUndoBtn = document.getElementById("inboxUndoBtn");
+  var inboxMetaBase = "";
   var PAGE_SIZE = 3;
   var inboxTopics = [];
   var inboxPage = 0;
   var inboxLoaded = false;
 
-  /* Which topics you have already written up. The pipeline can't know this —
-     the page is static and nothing travels back to the Mac — so it lives on
-     this device. Without it the same top three would greet you forever. */
-  var WROTE_KEY = "blogWorkbench.wroteTopics";
-  var wrote = {};
-  try{ wrote = JSON.parse(localStorage.getItem(WROTE_KEY) || "{}") || {}; }
-  catch(e){ wrote = {}; }
-  function saveWrote(){
-    try{ localStorage.setItem(WROTE_KEY, JSON.stringify(wrote)); } catch(e){}
+  /* 목록에서 뺀 주제. 쓴 것("wrote")과 안 쓸 것("drop")을 나눠 적어 두는데,
+     화면에서 사라지는 결과는 같지만 나중에 "뭘 실제로 썼는지"를 구분할 수 있어야
+     한다. 이 상태는 파이프라인이 알 길이 없다 — 정적 페이지라 맥으로 돌아갈 경로가
+     없으므로 이 기기에만 남는다.
+
+     빠진 자리는 다음 순위 주제가 저절로 메운다. 풀에는 23개가 들어 있고 화면은
+     한 번에 3개만 보여 주므로, "날린 갯수만큼 보충"이 목록을 거르는 것만으로
+     이루어진다. */
+  var HIDDEN_KEY = "blogWorkbench.hiddenTopics";
+  var WROTE_KEY = "blogWorkbench.wroteTopics";   // 예전 이름. 한 번만 옮겨 온다.
+  var hidden = {};
+  try{ hidden = JSON.parse(localStorage.getItem(HIDDEN_KEY) || "{}") || {}; }
+  catch(e){ hidden = {}; }
+  (function migrate(){
+    var old;
+    try{ old = JSON.parse(localStorage.getItem(WROTE_KEY) || "null"); }
+    catch(e){ old = null; }
+    if(!old) return;
+    Object.keys(old).forEach(function(k){
+      if(old[k] && !hidden[k]) hidden[k] = { how: "wrote", at: "" };
+    });
+    saveHidden();
+    try{ localStorage.removeItem(WROTE_KEY); } catch(e){}
+  })();
+  function saveHidden(){
+    try{ localStorage.setItem(HIDDEN_KEY, JSON.stringify(hidden)); } catch(e){}
+  }
+  function hiddenCount(){ return Object.keys(hidden).length; }
+  function visibleTopics(){
+    return inboxTopics.filter(function(t){ return !hidden[t.key]; });
   }
 
   /* "## 소제목" is how the generator marks headings. Naver's editor has no
@@ -1076,14 +1121,11 @@
       ? '<span class="badge warn">의료광고 확인 ' + ad.count + "건</span>"
       : '<span class="badge good">의료광고 점검 통과</span>');
 
-    var isDone = !!wrote[t.key];
-    if(isDone) card.classList.add("done");
-
     card.innerHTML =
       '<div class="topic-head">' +
         '<div class="draft-badges">' + badges.join("") +
-          '<button type="button" class="done-btn' + (isDone ? " on" : "") +
-          '" data-act="done">' + (isDone ? "✓ 썼음" : "썼음 표시") + "</button>" +
+          '<button type="button" class="done-btn" data-act="done">✓ 썼음</button>' +
+          '<button type="button" class="drop-btn" data-act="drop">✕ 삭제</button>' +
         "</div>" +
         '<div class="topic-row">' +
           '<p class="topic-name">' + escapeHtml(t.topic || "") + "</p>" +
@@ -1122,12 +1164,9 @@
       } else if(btn.dataset.act === "sources"){
         copyText(draftSourcesPlain(t.sources), btn, "근거 논문 복사됨");
       } else if(btn.dataset.act === "done"){
-        if(wrote[t.key]){ delete wrote[t.key]; } else { wrote[t.key] = true; }
-        saveWrote();
-        var on = !!wrote[t.key];
-        btn.classList.toggle("on", on);
-        btn.textContent = on ? "✓ 썼음" : "썼음 표시";
-        card.classList.toggle("done", on);
+        hideTopic(t, "wrote", card);
+      } else if(btn.dataset.act === "drop"){
+        hideTopic(t, "drop", card);
       }
     });
 
@@ -1141,12 +1180,64 @@
     return card;
   }
 
+  /* 주제 하나를 목록에서 뺀다. 카드가 사라지면 그 자리는 다음 순위 주제가 곧바로
+     메운다 — 남은 갯수를 세어 가며 화면을 다시 그리기 때문이다. */
+  var lastHidden = null;
+  function hideTopic(t, how, card){
+    hidden[t.key] = { how: how, at: new Date().toISOString() };
+    saveHidden();
+    lastHidden = { key: t.key, topic: t.topic, how: how };
+    var redraw = function(){ renderPage(); showStatus(); };
+    if(card && !matchMedia("(prefers-reduced-motion: reduce)").matches){
+      card.classList.add("leaving");
+      setTimeout(redraw, 180);
+    } else {
+      redraw();
+    }
+  }
+
+  function restore(key){
+    if(key){ delete hidden[key]; }
+    else { hidden = {}; }
+    saveHidden();
+    lastHidden = null;
+    renderPage();
+    showStatus();
+  }
+
+  function showStatus(){
+    var n = hiddenCount();
+    if(!n && !lastHidden){ inboxStatus.hidden = true; return; }
+    inboxStatus.hidden = false;
+    if(lastHidden){
+      inboxStatusText.textContent =
+        "「" + lastHidden.topic + "」을(를) " +
+        (lastHidden.how === "wrote" ? "썼음으로 표시하고 " : "") +
+        "목록에서 뺐습니다. 숨긴 주제 " + n + "개";
+      inboxUndoBtn.textContent = "되돌리기";
+      inboxUndoBtn.dataset.key = lastHidden.key;
+    } else {
+      inboxStatusText.textContent = "숨긴 주제 " + n + "개";
+      inboxUndoBtn.textContent = "전체 되돌리기";
+      inboxUndoBtn.dataset.key = "";
+    }
+    inboxUndoBtn.hidden = !n;
+  }
+
   function renderPage(){
     inboxList.innerHTML = "";
-    if(!inboxTopics.length){ return; }
-    var total = Math.ceil(inboxTopics.length / PAGE_SIZE);
+    var list = visibleTopics();
+    if(!list.length){
+      inboxEmpty(hiddenCount()
+        ? "남은 주제를 모두 처리하셨습니다.<br>다음 갱신(월 · 목 아침)에 주제가 다시 채워집니다.<br>" +
+          "지금 다시 보고 싶으시면 위의 전체 되돌리기를 누르세요."
+        : "주제는 있지만 초안이 아직 작성되지 않았습니다.");
+      updateMeta();
+      return;
+    }
+    var total = Math.ceil(list.length / PAGE_SIZE);
     inboxPage = ((inboxPage % total) + total) % total;
-    var slice = inboxTopics.slice(inboxPage * PAGE_SIZE, inboxPage * PAGE_SIZE + PAGE_SIZE);
+    var slice = list.slice(inboxPage * PAGE_SIZE, inboxPage * PAGE_SIZE + PAGE_SIZE);
     var frag = document.createDocumentFragment();
     slice.forEach(function(t){ frag.appendChild(renderTopic(t)); });
     inboxList.appendChild(frag);
@@ -1154,6 +1245,13 @@
       ? "다른 주제 3개 보기 (" + (inboxPage + 1) + "/" + total + ")"
       : "다른 주제 3개 보기";
     inboxNextBtn.disabled = total <= 1;
+    updateMeta();
+  }
+
+  function updateMeta(){
+    if(!inboxMetaBase) return;
+    var left = visibleTopics().length;
+    inboxMeta.textContent = inboxMetaBase + " · 남은 주제 " + left + "개";
   }
 
   function inboxEmpty(message){
@@ -1174,7 +1272,7 @@
       inboxMeta.textContent = "아직 주제 풀이 없습니다";
       inboxEmpty(
         "맥미니의 주제 파이프라인이 아직 실행되지 않았습니다.<br>" +
-        "주 1회 논문과 검색 동향을 반영해 주제를 갱신하며,<br>" +
+        "주 2회(월 · 목) 논문과 검색 동향을 반영해 주제를 갱신하며,<br>" +
         "실행되면 이 자리에 추천 주제가 나타납니다."
       );
       inboxLoaded = true;
@@ -1182,12 +1280,8 @@
     }
 
     inboxTopics = (data && data.topics) || [];
-    // Already-written topics keep their place in the pool but move behind the
-    // rest, so the first page is always something you have not used yet.
-    inboxTopics.sort(function(a, b){
-      var da = wrote[a.key] ? 1 : 0, db = wrote[b.key] ? 1 : 0;
-      return da !== db ? da - db : (b.score || 0) - (a.score || 0);
-    });
+    // 숨긴 주제는 렌더링에서 걸러지므로 여기서는 점수 순으로만 세운다.
+    inboxTopics.sort(function(a, b){ return (b.score || 0) - (a.score || 0); });
     inboxPage = 0;
     if(!inboxTopics.length){
       inboxMeta.textContent = "준비된 초안이 없습니다";
@@ -1197,12 +1291,13 @@
     }
 
     var when = (data.updated || "").slice(0, 10);
-    inboxMeta.textContent =
+    inboxMetaBase =
       (when ? when + " 갱신 · " : "") +
       "주제 " + (data.topicCount || inboxTopics.length) + "개 중 초안 준비 " +
       inboxTopics.length + "개";
     inboxNote.textContent = data.notice || "";
     renderPage();
+    showStatus();
     inboxLoaded = true;
   }
 
@@ -1210,6 +1305,9 @@
     inboxPage += 1;
     renderPage();
     inboxList.scrollIntoView({ block: "start", behavior: "smooth" });
+  });
+  inboxUndoBtn.addEventListener("click", function(){
+    restore(inboxUndoBtn.dataset.key || "");
   });
   inboxReloadBtn.addEventListener("click", loadInbox);
   onTabShow.inbox = function(){ if(!inboxLoaded) loadInbox(); };
