@@ -584,6 +584,103 @@
     text-align:center; color:var(--ink-soft); font-size:14px; line-height:1.7;
   }
 
+  /* ---------- medical diagram generator + library ---------- */
+  .chip-row{ display:flex; flex-wrap:wrap; gap:7px; margin-top:2px; }
+  .preset-chip-btn{
+    font-family:inherit; font-size:12.5px; font-weight:600; padding:6px 12px;
+    border-radius:999px; border:1px solid var(--line); background:var(--paper-sunken);
+    color:var(--ink-soft); cursor:pointer;
+  }
+  .preset-chip-btn.active{ border-color:var(--accent); background:var(--accent-soft); color:var(--accent-strong); }
+  .check-chip{
+    display:inline-flex; align-items:center; gap:6px; font-size:12.5px; font-weight:600;
+    padding:6px 11px; border-radius:999px; border:1px solid var(--line);
+    background:var(--paper-sunken); color:var(--ink-soft); cursor:pointer;
+  }
+  .check-chip input{ accent-color:var(--accent); margin:0; }
+
+  .spec-view{
+    border:1px solid var(--line); border-radius:10px; padding:16px; background:var(--paper);
+    font-size:13.5px; line-height:1.75;
+  }
+  .spec-view h4{
+    margin:0 0 8px; font-size:12.5px; font-weight:700; letter-spacing:.04em;
+    text-transform:uppercase; color:var(--ink-faint);
+  }
+  .spec-row{ display:flex; gap:8px; margin-bottom:3px; }
+  .spec-row .k{ flex:none; width:78px; color:var(--ink-faint); font-weight:600; }
+  .spec-check{ margin:0 0 12px; padding-left:0; list-style:none; }
+  .spec-check li{ padding:2px 0; }
+  .spec-check li::before{ content:"✓ "; color:var(--good); font-weight:700; }
+  .spec-empty-note{ color:var(--ink-faint); font-style:italic; }
+  .spec-json-edit{
+    width:100%; min-height:260px; font-family:"IBM Plex Mono",monospace; font-size:12px;
+    line-height:1.6; background:var(--paper-sunken); border:1px solid var(--line);
+    border-radius:8px; padding:12px; color:var(--ink); resize:vertical;
+  }
+
+  .qa-issue{
+    font-size:13px; line-height:1.6; padding:10px 12px; border-radius:8px;
+    margin-bottom:7px; background:var(--warn-soft); color:var(--ink);
+  }
+  .qa-issue.high{ background:var(--bad-soft); }
+  .qa-issue .sev{ font-weight:700; margin-right:4px; }
+  .qa-issue.high .sev{ color:var(--bad); }
+  .qa-issue.medium .sev{ color:var(--warn); }
+  .qa-issue.low .sev{ color:var(--ink-soft); }
+  .qa-pass{
+    display:flex; align-items:center; gap:8px; padding:12px 14px; border-radius:8px;
+    background:var(--good-soft); color:var(--good); font-weight:700; font-size:13.5px;
+  }
+
+  .dg-image-frame{
+    border:1px solid var(--line); border-radius:10px; overflow:hidden; margin:14px 0;
+    background:var(--paper-sunken);
+  }
+  .dg-image-frame img{ display:block; width:100%; height:auto; }
+
+  /* ---------- diagram library ---------- */
+  .lib-toolbar{ display:flex; flex-wrap:wrap; gap:8px; margin-bottom:14px; }
+  .lib-toolbar input[type="text"]{ flex:1 1 200px; }
+  .lib-toolbar select{ flex:1 1 120px; width:auto; }
+  .lib-grid{
+    display:grid; grid-template-columns:repeat(auto-fill, minmax(190px, 1fr)); gap:14px;
+  }
+  .lib-card{
+    border:1px solid var(--line); border-radius:10px; overflow:hidden; background:var(--paper);
+    display:flex; flex-direction:column;
+  }
+  .lib-card .thumb{
+    aspect-ratio:4/3; background:var(--paper-sunken); overflow:hidden;
+    display:flex; align-items:center; justify-content:center;
+  }
+  .lib-card .thumb img{ width:100%; height:100%; object-fit:cover; display:block; }
+  .lib-card .thumb .ph{ color:var(--ink-faint); font-size:12px; }
+  .lib-card-body{ padding:11px 12px; display:flex; flex-direction:column; gap:6px; flex:1; }
+  .lib-card-title{ font-size:13.5px; font-weight:700; line-height:1.4; margin:0; }
+  .lib-card-meta{ font-size:11.5px; color:var(--ink-faint); }
+  .lib-card-tags{ display:flex; flex-wrap:wrap; gap:4px; }
+  .lib-card-tags span{
+    font-size:10.5px; padding:2px 7px; border-radius:999px;
+    background:var(--paper-sunken); color:var(--ink-soft);
+  }
+  .lib-card-actions{ display:flex; gap:6px; margin-top:auto; padding-top:4px; flex-wrap:wrap; }
+  .lib-card-actions .btn{ flex:1 1 auto; padding:7px 8px; font-size:12px; }
+  .lib-verified{
+    display:inline-flex; align-items:center; gap:4px; font-size:11px; font-weight:700;
+    color:var(--good);
+  }
+  .lib-empty{
+    grid-column:1/-1; border:1px dashed var(--line); border-radius:var(--radius);
+    padding:34px 20px; text-align:center; color:var(--ink-soft); font-size:14px; line-height:1.7;
+  }
+  .version-row{
+    display:flex; align-items:center; gap:10px; padding:8px 10px; border:1px solid var(--line);
+    border-radius:8px; margin-bottom:7px; font-size:12.5px;
+  }
+  .version-row img{ width:44px; height:44px; object-fit:cover; border-radius:6px; flex:none; }
+  .version-row .meta{ flex:1; color:var(--ink-soft); }
+
   /* Landscape on a phone is short, not small: keep the two-column split but
      claw back vertical space so the input boxes and the score stay on screen. */
   @media (max-height: 560px) and (orientation: landscape){
@@ -627,6 +724,8 @@
     <button class="tab" data-tab="check" role="tab" aria-selected="false">발행 전 점검</button>
     <button class="tab" data-tab="trend" role="tab" aria-selected="false">검색어 트렌드</button>
     <button class="tab" data-tab="resize" role="tab" aria-selected="false">사진 줄이기</button>
+    <button class="tab" data-tab="diagram" role="tab" aria-selected="false">의료 모식도</button>
+    <button class="tab" data-tab="library" role="tab" aria-selected="false">모식도 라이브러리</button>
   </nav>
 
   <main>
@@ -933,6 +1032,222 @@
         </div>
       </div>
     </section>
+    <!-- ============ MEDICAL DIAGRAM GENERATOR ============ -->
+    <section id="panel-diagram" class="panel">
+      <div class="inbox-head">
+        <div>
+          <h2 class="section-title" style="margin:0;">의료 모식도</h2>
+          <p class="hint" id="dgApiHint" style="margin:4px 0 0;">불러오는 중…</p>
+        </div>
+      </div>
+
+      <div class="grid2">
+        <div>
+          <h2 class="section-title">입력</h2>
+
+          <div class="field">
+            <label for="dgTopic">주제</label>
+            <input type="text" id="dgTopic" placeholder="예) 경결막 눈밑지방재배치와 하안검 수술의 차이" />
+          </div>
+          <div class="field">
+            <label for="dgPurpose">그림 목적</label>
+            <input type="text" id="dgPurpose" placeholder="예) 수술 방법의 차이를 환자에게 설명" />
+          </div>
+          <div class="field">
+            <label for="dgType">그림 유형</label>
+            <select id="dgType">
+              <option>해부학적 시상단면</option>
+              <option>해부학적 관상단면</option>
+              <option>해부학적 정면</option>
+              <option>수술 과정</option>
+              <option>수술 전/후 비교</option>
+              <option>구조 비교</option>
+              <option>층별 해부학</option>
+              <option>자유 형식</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="dgRegion">대상 부위</label>
+            <select id="dgRegion">
+              <option>눈</option>
+              <option>코</option>
+              <option>중안면</option>
+              <option>안면거상</option>
+              <option>지방흡입</option>
+              <option>필러</option>
+              <option>보톡스</option>
+              <option>흉터</option>
+              <option value="__custom__">기타 (직접 입력)</option>
+            </select>
+            <input type="text" id="dgRegionCustom" placeholder="부위를 직접 입력"
+                   style="margin-top:8px; display:none;" />
+          </div>
+          <div class="field">
+            <label for="dgViewpoint">시점</label>
+            <select id="dgViewpoint">
+              <option>정면</option>
+              <option>측면</option>
+              <option>시상단면</option>
+              <option>관상단면</option>
+              <option>사선</option>
+              <option value="__custom__">자유 입력</option>
+            </select>
+            <input type="text" id="dgViewpointCustom" placeholder="시점을 직접 입력"
+                   style="margin-top:8px; display:none;" />
+          </div>
+          <div class="field">
+            <label for="dgLabelLevel">라벨 수준</label>
+            <select id="dgLabelLevel">
+              <option>라벨 없음</option>
+              <option>최소</option>
+              <option selected>적당히</option>
+              <option>상세</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="dgStyle">스타일</label>
+            <select id="dgStyle">
+              <option selected>성형외과 해부학</option>
+              <option>수술 모식도</option>
+              <option>논문 Figure 스타일</option>
+              <option>환자 설명용</option>
+              <option>블로그용 간결한 삽화</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label>구조 프리셋 <span class="count">고르면 참고 구조 목록에 반영</span></label>
+            <div class="chip-row" id="dgPresetChips"></div>
+          </div>
+
+          <div class="field">
+            <label for="dgInstruction">추가 지시 <span class="count">선택</span></label>
+            <textarea id="dgInstruction" style="min-height:64px;"
+              placeholder="예) 왼쪽 패널에는 경결막 접근, 오른쪽에는 피부 절개 접근을 나란히"></textarea>
+          </div>
+
+          <div class="field">
+            <label>Reference 이미지 <span class="count">선택</span></label>
+            <input type="file" id="dgRefFile" accept="image/*" />
+            <div class="chip-row" id="dgRefPurposeRow" style="margin-top:8px; display:none;">
+              <label class="check-chip"><input type="checkbox" id="dgRefAnatomy" checked />해부학 구조 참고</label>
+              <label class="check-chip"><input type="checkbox" id="dgRefComposition" />구도 참고</label>
+              <label class="check-chip"><input type="checkbox" id="dgRefStyle" />스타일 참고</label>
+              <label class="check-chip"><input type="checkbox" id="dgRefFull" />전체 참고</label>
+            </div>
+            <p class="hint" id="dgRefName"></p>
+          </div>
+
+          <div class="field">
+            <label for="dgMaxIter">최대 반복 횟수</label>
+            <select id="dgMaxIter">
+              <option>1</option><option>2</option><option selected>3</option><option>4</option><option>5</option>
+            </select>
+          </div>
+
+          <div class="btn-row">
+            <button type="button" class="btn" id="dgSpecBtn">설계안 만들기</button>
+          </div>
+          <p class="status-line" id="dgStatus"></p>
+        </div>
+
+        <div>
+          <h2 class="section-title">라이브러리 확인</h2>
+          <div id="dgSimilar" class="preview-empty">주제를 입력하고 설계안을 만들면, 비슷한 그림이 이미
+            있는지 먼저 확인합니다.</div>
+
+          <h2 class="section-title" style="margin-top:22px;">Medical Diagram Specification</h2>
+          <div id="dgSpecView" class="preview-empty">아직 만든 설계안이 없습니다.</div>
+          <div class="btn-row" id="dgSpecActions" style="display:none;">
+            <button type="button" class="btn ghost" id="dgSpecEditBtn">설계안 수정</button>
+            <button type="button" class="btn" id="dgGenerateBtn">이 설계로 이미지 생성</button>
+          </div>
+
+          <div id="dgResult"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ MEDICAL DIAGRAM LIBRARY ============ -->
+    <section id="panel-library" class="panel">
+      <div class="inbox-head">
+        <div>
+          <h2 class="section-title" style="margin:0;">모식도 라이브러리</h2>
+          <p class="hint" id="libMeta" style="margin:4px 0 0;">불러오는 중…</p>
+        </div>
+      </div>
+
+      <div class="lib-toolbar">
+        <input type="text" id="libSearch" placeholder="검색 (예: 하안검)" />
+        <select id="libRegionFilter">
+          <option value="">부위 전체</option>
+          <option>눈</option><option>코</option><option>중안면</option>
+          <option>안면거상</option><option>지방흡입</option><option>필러</option>
+          <option>보톡스</option><option>흉터</option><option>기타</option>
+        </select>
+        <select id="libTypeFilter">
+          <option value="">유형 전체</option>
+          <option value="해부학">해부학</option>
+          <option value="수술">수술</option>
+          <option value="비교">비교</option>
+          <option value="전후">전후</option>
+          <option value="과정">과정</option>
+        </select>
+        <select id="libViewpointFilter">
+          <option value="">시점 전체</option>
+          <option>정면</option><option>측면</option><option>시상단면</option><option>관상단면</option>
+        </select>
+        <select id="libStatusFilter">
+          <option value="">상태 전체</option>
+          <option value="DRAFT">DRAFT</option>
+          <option value="REVIEWED">REVIEWED</option>
+          <option value="VERIFIED">VERIFIED</option>
+        </select>
+        <button type="button" class="btn ghost" id="libReloadBtn">새로고침</button>
+      </div>
+
+      <div id="libGrid" class="lib-grid"></div>
+
+      <div id="libDetail"></div>
+
+      <h2 class="section-title" style="margin-top:28px;">해부학 Reference</h2>
+      <p class="hint" style="margin:-6px 0 12px;">해부학 교과서 그림, 논문 figure, 직접 만든 스케치를
+        출처와 함께 보관합니다. AI가 생성한 그림과는 명확히 구분됩니다.</p>
+
+      <div class="field" style="max-width:520px;">
+        <label for="refTitle">제목</label>
+        <input type="text" id="refTitle" placeholder="예) Lower eyelid sagittal anatomy" />
+      </div>
+      <div class="grid2" style="max-width:640px;">
+        <div class="field">
+          <label for="refSource">출처</label>
+          <input type="text" id="refSource" placeholder="예) Plastic and Reconstructive Surgery, 2024" />
+        </div>
+        <div class="field">
+          <label for="refDoi">DOI / PMID</label>
+          <input type="text" id="refDoi" placeholder="선택" />
+        </div>
+      </div>
+      <div class="field" style="max-width:520px;">
+        <label for="refTags">태그 <span class="count">쉼표로 구분</span></label>
+        <input type="text" id="refTags" placeholder="예) lower eyelid, orbital fat, infraorbital rim" />
+      </div>
+      <div class="field" style="max-width:520px;">
+        <label for="refNotes">메모</label>
+        <textarea id="refNotes" style="min-height:56px;"></textarea>
+      </div>
+      <div class="field" style="max-width:520px;">
+        <label for="refFile">이미지 <span class="count">선택</span></label>
+        <input type="file" id="refFile" accept="image/*" />
+      </div>
+      <div class="btn-row">
+        <button type="button" class="btn" id="refSaveBtn">Reference 저장</button>
+      </div>
+      <p class="status-line" id="refStatus"></p>
+
+      <div id="refList" class="lib-grid" style="margin-top:14px;"></div>
+    </section>
+
   </main>
 
   <footer class="note">모든 처리는 이 화면 안에서만 이루어지며, 사진은 서버로 전송되지 않습니다.</footer>
@@ -950,7 +1265,9 @@
     seo: document.getElementById("panel-seo"),
     check: document.getElementById("panel-check"),
     wm: document.getElementById("panel-wm"),
-    resize: document.getElementById("panel-resize")
+    resize: document.getElementById("panel-resize"),
+    diagram: document.getElementById("panel-diagram"),
+    library: document.getElementById("panel-library")
   };
   var onTabShow = {}; // panel key -> callback, registered by the tools below
   tabs.forEach(function(t){
@@ -2674,6 +2991,744 @@
     rzStatus.textContent = "";
     processAll();
   });
+
+
+  /* ================================================================
+     MEDICAL DIAGRAM GENERATOR + LIBRARY
+     ----------------------------------------------------------------
+     This app has no backend of its own (static GitHub Pages). Every
+     call below goes to a separate, purpose-built Cloudflare Worker
+     (see diagram-worker/ in the source project) that holds the Gemini
+     key server-side. DIAGRAM_API_BASE is empty until that Worker is
+     deployed — every call fails with a clear "설정되지 않았습니다"
+     message rather than a raw network error until then.
+
+     Provider-specific code lives entirely in the Worker. This module
+     only knows four calls — medicalDiagramSpecify / Generator / Editor
+     / Reviewer — so switching providers later never touches this file.
+     ================================================================ */
+  var DIAGRAM_API_BASE = "";   // 예: "https://blog-diagram-api.<계정>.workers.dev"
+  var DIAGRAM_API_TOKEN = "";  // wrangler secret put SHARED_TOKEN 에 넣은 값과 동일하게
+
+  function dgConfigured(){ return !!DIAGRAM_API_BASE; }
+
+  async function dgFetch(path, options){
+    if(!dgConfigured()){
+      var err = new Error("의료 모식도 API 가 아직 설정되지 않았습니다. diagram-worker 를 배포한 뒤 " +
+        "index.html 의 DIAGRAM_API_BASE 를 채워 주세요.");
+      err.code = "not_configured";
+      throw err;
+    }
+    var headers = Object.assign({ "content-type": "application/json" }, (options && options.headers) || {});
+    if(DIAGRAM_API_TOKEN) headers["x-diagram-token"] = DIAGRAM_API_TOKEN;
+    var res;
+    try{
+      res = await fetch(DIAGRAM_API_BASE + path, Object.assign({}, options, { headers: headers }));
+    } catch(networkErr){
+      var e2 = new Error("네트워크 오류로 요청이 실패했습니다. 연결을 확인하고 다시 시도해 주세요.");
+      e2.code = "network";
+      throw e2;
+    }
+    var data = null;
+    try{ data = await res.json(); } catch(parseErr){ data = null; }
+    if(!res.ok){
+      var msg = (data && data.error && data.error.message) || ("요청이 실패했습니다 (HTTP " + res.status + ")");
+      var e3 = new Error(msg);
+      e3.code = (data && data.error && data.error.code) || "http_" + res.status;
+      e3.status = res.status;
+      throw e3;
+    }
+    return data;
+  }
+
+  function medicalDiagramSpecify(input){
+    return dgFetch("/api/spec", { method: "POST", body: JSON.stringify(input) })
+      .then(function(d){ return d.specification; });
+  }
+  function medicalDiagramGenerator(specification, referenceImages){
+    return dgFetch("/api/generate", {
+      method: "POST",
+      body: JSON.stringify({ specification: specification, referenceImages: referenceImages || [] }),
+    });
+  }
+  function medicalDiagramEditor(args){
+    return dgFetch("/api/edit", { method: "POST", body: JSON.stringify(args) });
+  }
+  function medicalDiagramReviewer(imageKey, specification){
+    return dgFetch("/api/qa", {
+      method: "POST",
+      body: JSON.stringify({ imageKey: imageKey, specification: specification }),
+    }).then(function(d){ return d.qa; });
+  }
+  function medicalDiagramTags(specification){
+    return dgFetch("/api/tags", { method: "POST", body: JSON.stringify({ specification: specification }) })
+      .then(function(d){ return d.tags || []; });
+  }
+
+  /* ---------------------------------------------------------- 오류 표시 */
+  function dgShowError(container, err, retry){
+    var msg = (err && err.message) || "알 수 없는 오류가 발생했습니다.";
+    container.innerHTML =
+      '<div class="ad-hit"><b>문제가 발생했습니다</b><span class="ctx">' + escapeHtml(msg) + "</span></div>";
+    if(retry){
+      var btn = document.createElement("button");
+      btn.type = "button"; btn.className = "btn ghost"; btn.style.marginTop = "8px";
+      btn.textContent = "다시 시도";
+      btn.addEventListener("click", retry);
+      container.appendChild(btn);
+    }
+  }
+
+  /* ---------------------------------------------------------- 프리셋 (D) */
+  var DIAGRAM_PRESETS = [
+    { key: "lower_eyelid", label: "Lower eyelid", structures: [
+      "globe", "cornea", "lower eyelid", "conjunctiva", "tarsus", "orbicularis oculi",
+      "orbital septum", "orbital fat", "infraorbital rim", "maxilla", "zygoma", "skin", "midface soft tissue" ] },
+    { key: "upper_eyelid", label: "Upper eyelid", structures: [
+      "globe", "upper eyelid", "levator aponeurosis", "Muller muscle", "orbital septum",
+      "preaponeurotic fat", "supratarsal crease", "orbicularis oculi", "brow", "skin" ] },
+    { key: "rhinoplasty", label: "Rhinoplasty", structures: [
+      "nasal bone", "upper lateral cartilage", "lower lateral cartilage", "septal cartilage",
+      "nasal tip", "dorsum", "skin-soft tissue envelope", "columella" ] },
+    { key: "septoplasty", label: "Septoplasty", structures: [
+      "septal cartilage", "vomer", "perpendicular plate of ethmoid", "nasal mucosa",
+      "inferior turbinate", "nasal cavity" ] },
+    { key: "nasal_valve", label: "Nasal valve", structures: [
+      "internal nasal valve", "external nasal valve", "upper lateral cartilage",
+      "lower lateral cartilage", "septum", "nasal ala" ] },
+    { key: "facelift", label: "Facelift", structures: [
+      "SMAS", "platysma", "parotid fascia", "facial nerve branches (schematic only)",
+      "subcutaneous fat", "skin", "zygomatic ligament", "mandibular ligament" ] },
+    { key: "midface_lift", label: "Midface lift", structures: [
+      "SOOF", "orbicularis oculi", "zygomatic-cutaneous ligament", "malar fat pad",
+      "infraorbital rim", "maxilla", "nasolabial fold" ] },
+    { key: "facial_fat_compartment", label: "Facial fat compartment", structures: [
+      "superficial fat compartments", "deep fat compartments", "SMAS", "buccal fat pad",
+      "nasolabial fat", "malar fat" ] },
+    { key: "filler_anatomy", label: "Filler anatomy", structures: [
+      "facial artery", "angular artery", "danger zones", "subcutaneous plane",
+      "supraperiosteal plane", "target fat compartment" ] },
+    { key: "scar_treatment", label: "Scar treatment", structures: [
+      "epidermis", "dermis", "subcutaneous layer", "scar tissue", "collagen alignment" ] },
+  ];
+
+  function presetChipsHtml(selected){
+    return DIAGRAM_PRESETS.map(function(p){
+      return '<button type="button" class="preset-chip-btn' +
+        (selected.indexOf(p.key) >= 0 ? " active" : "") + '" data-preset="' + p.key + '">' +
+        escapeHtml(p.label) + "</button>";
+    }).join("");
+  }
+
+  /* ---------------------------------------------------------- 스펙 조립/표시 */
+  function dgGatherInput(){
+    var region = document.getElementById("dgRegion").value;
+    if(region === "__custom__") region = document.getElementById("dgRegionCustom").value.trim();
+    var viewpoint = document.getElementById("dgViewpoint").value;
+    if(viewpoint === "__custom__") viewpoint = document.getElementById("dgViewpointCustom").value.trim();
+    var structures = [];
+    document.querySelectorAll("#dgPresetChips .preset-chip-btn.active").forEach(function(btn){
+      var preset = DIAGRAM_PRESETS.filter(function(p){ return p.key === btn.dataset.preset; })[0];
+      if(preset) structures = structures.concat(preset.structures);
+    });
+    return {
+      topic: document.getElementById("dgTopic").value.trim(),
+      purpose: document.getElementById("dgPurpose").value.trim(),
+      diagramType: document.getElementById("dgType").value,
+      bodyRegion: region,
+      viewpoint: viewpoint,
+      labelLevel: document.getElementById("dgLabelLevel").value,
+      style: document.getElementById("dgStyle").value,
+      userInstruction: document.getElementById("dgInstruction").value.trim(),
+      presetStructures: structures,
+      referenceNote: dgRefImage ? "업로드된 참고 이미지 있음 (" + dgRefPurposeText() + ")" : "",
+    };
+  }
+
+  function dgRefPurposeText(){
+    var flags = [];
+    if(document.getElementById("dgRefAnatomy").checked) flags.push("해부학 구조");
+    if(document.getElementById("dgRefComposition").checked) flags.push("구도");
+    if(document.getElementById("dgRefStyle").checked) flags.push("스타일");
+    if(document.getElementById("dgRefFull").checked) flags.push("전체");
+    return flags.join(", ") || "참고 목적 미지정";
+  }
+
+  function renderSpecHtml(spec){
+    var html = '<div class="spec-view">';
+    html += "<h4>Medical Diagram Specification</h4>";
+    if(spec.title) html += '<div class="spec-row"><span class="k">제목</span><span>' + escapeHtml(spec.title) + "</span></div>";
+    if(spec.viewpoint) html += '<div class="spec-row"><span class="k">관점</span><span>' + escapeHtml(spec.body_region || "") + " " + escapeHtml(spec.viewpoint) + "</span></div>";
+    if(spec.diagram_type) html += '<div class="spec-row"><span class="k">유형</span><span>' + escapeHtml(spec.diagram_type) + "</span></div>";
+
+    var structs = (spec.anatomical_structures || []).concat(spec.bony_landmarks || []);
+    if(structs.length){
+      html += "<p style='margin:12px 0 4px; font-weight:700;'>주요 구조</p><ul class='spec-check'>" +
+        structs.map(function(s){ return "<li>" + escapeHtml(s.name || s) + "</li>"; }).join("") + "</ul>";
+    }
+    if(spec.composition && (spec.composition.left_panel || spec.composition.right_panel)){
+      if(spec.composition.left_panel){
+        html += "<p style='margin:10px 0 3px; font-weight:700;'>왼쪽</p><p>" + escapeHtml(spec.composition.left_panel) + "</p>";
+      }
+      if(spec.composition.right_panel){
+        html += "<p style='margin:10px 0 3px; font-weight:700;'>오른쪽</p><p>" + escapeHtml(spec.composition.right_panel) + "</p>";
+      }
+    }
+    if((spec.surgical_access || []).length){
+      html += "<p style='margin:10px 0 3px; font-weight:700;'>수술 접근</p><p>" + escapeHtml(spec.surgical_access.join(", ")) + "</p>";
+    }
+    if((spec.prohibited_elements || []).length){
+      html += "<p style='margin:10px 0 3px; font-weight:700;'>넣지 않을 것</p><p>" + escapeHtml(spec.prohibited_elements.join(", ")) + "</p>";
+    }
+    html += "</div>";
+    return html;
+  }
+
+  /* ---------------------------------------------------------- 상태 */
+  var dgCurrentSpec = null;
+  var dgRefImage = null;      // { base64, mimeType, purpose }
+  var dgCurrentResult = null; // { id, version, imageUrl, mimeType, prompt }
+  var dgIteration = 0;
+  var libraryIndexCache = [];
+
+  var dgTopic = document.getElementById("dgTopic");
+  var dgRegionSel = document.getElementById("dgRegion");
+  var dgRegionCustom = document.getElementById("dgRegionCustom");
+  var dgViewpointSel = document.getElementById("dgViewpoint");
+  var dgViewpointCustom = document.getElementById("dgViewpointCustom");
+  var dgPresetChips = document.getElementById("dgPresetChips");
+  var dgRefFile = document.getElementById("dgRefFile");
+  var dgRefPurposeRow = document.getElementById("dgRefPurposeRow");
+  var dgRefName = document.getElementById("dgRefName");
+  var dgSpecBtn = document.getElementById("dgSpecBtn");
+  var dgStatus = document.getElementById("dgStatus");
+  var dgSimilar = document.getElementById("dgSimilar");
+  var dgSpecView = document.getElementById("dgSpecView");
+  var dgSpecActions = document.getElementById("dgSpecActions");
+  var dgSpecEditBtn = document.getElementById("dgSpecEditBtn");
+  var dgGenerateBtn = document.getElementById("dgGenerateBtn");
+  var dgResult = document.getElementById("dgResult");
+  var dgApiHint = document.getElementById("dgApiHint");
+
+  dgApiHint.textContent = dgConfigured()
+    ? "이미지 생성 서버에 연결되어 있습니다."
+    : "이미지 생성 서버가 아직 설정되지 않았습니다 — 설계안까지는 만들 수 없고, " +
+      "diagram-worker 를 배포해야 스펙 생성 · 이미지 생성이 동작합니다.";
+
+  dgPresetChips.innerHTML = presetChipsHtml([]);
+  dgPresetChips.addEventListener("click", function(e){
+    var btn = e.target.closest(".preset-chip-btn");
+    if(!btn) return;
+    btn.classList.toggle("active");
+  });
+
+  dgRegionSel.addEventListener("change", function(){
+    dgRegionCustom.style.display = dgRegionSel.value === "__custom__" ? "block" : "none";
+  });
+  dgViewpointSel.addEventListener("change", function(){
+    dgViewpointCustom.style.display = dgViewpointSel.value === "__custom__" ? "block" : "none";
+  });
+
+  dgRefFile.addEventListener("change", function(){
+    var file = dgRefFile.files && dgRefFile.files[0];
+    if(!file){ dgRefImage = null; dgRefPurposeRow.style.display = "none"; dgRefName.textContent = ""; return; }
+    var reader = new FileReader();
+    reader.onload = function(){
+      var dataUrl = String(reader.result || "");
+      var m = /^data:([^;]+);base64,(.*)$/.exec(dataUrl);
+      if(!m){ dgRefName.textContent = "이미지를 읽지 못했습니다."; return; }
+      dgRefImage = { mimeType: m[1], base64: m[2] };
+      dgRefPurposeRow.style.display = "flex";
+      dgRefName.textContent = file.name + " 업로드됨";
+    };
+    reader.onerror = function(){ dgRefName.textContent = "이미지를 읽지 못했습니다."; };
+    reader.readAsDataURL(file);
+  });
+
+  function libraryHay(item){
+    return [item.title, item.bodyRegion, (item.tags || []).join(" ")].join(" ").toLowerCase();
+  }
+  function findLibraryDiagramsForTopic(topicText){
+    var words = (topicText || "").toLowerCase().split(/[^\wㄱ-힣]+/).filter(function(w){ return w.length > 1; });
+    if(!words.length) return [];
+    return libraryIndexCache.map(function(item){
+      var hay = libraryHay(item);
+      var hits = words.filter(function(w){ return hay.indexOf(w) >= 0; }).length;
+      return { item: item, hits: hits };
+    }).filter(function(x){ return x.hits > 0; })
+      .sort(function(a, b){ return b.hits - a.hits; })
+      .slice(0, 3).map(function(x){ return x.item; });
+  }
+
+  function renderSimilar(matches){
+    if(!matches.length){
+      dgSimilar.className = "preview-empty";
+      dgSimilar.textContent = "비슷한 그림을 찾지 못했습니다. 새로 만듭니다.";
+      return;
+    }
+    dgSimilar.className = "";
+    dgSimilar.innerHTML =
+      '<p class="hint" style="margin:0 0 8px;">관련된 그림 ' + matches.length + '개를 라이브러리에서 찾았습니다 — ' +
+      "새로 생성하기 전에 재사용을 검토해 보세요.</p>" +
+      matches.map(function(m){
+        return '<div class="lib-card" style="margin-bottom:8px;"><div class="thumb">' +
+          (m.thumbnailUrl ? '<img src="' + escapeHtml(m.thumbnailUrl) + '" alt="">' : '<span class="ph">이미지 없음</span>') +
+          '</div><div class="lib-card-body"><p class="lib-card-title">' + escapeHtml(m.title || "") + "</p>" +
+          (m.status === "VERIFIED" ? '<span class="lib-verified">✓ VERIFIED</span>' : "") + "</div></div>";
+      }).join("");
+  }
+
+  dgSpecBtn.addEventListener("click", async function(){
+    var input = dgGatherInput();
+    if(!input.topic){ dgStatus.textContent = "주제를 입력해 주세요."; return; }
+
+    var matches = findLibraryDiagramsForTopic(input.topic + " " + input.bodyRegion);
+    renderSimilar(matches);
+
+    dgStatus.textContent = "설계안을 만드는 중…";
+    dgSpecBtn.disabled = true;
+    try{
+      var spec = await medicalDiagramSpecify(input);
+      dgCurrentSpec = spec;
+      dgIteration = 0;
+      dgSpecView.className = "";
+      dgSpecView.innerHTML = renderSpecHtml(spec);
+      dgSpecActions.style.display = "flex";
+      dgResult.innerHTML = "";
+      dgStatus.textContent = "설계안이 준비됐습니다. 마음에 들면 이미지를 생성하세요.";
+    } catch(err){
+      dgStatus.textContent = "";
+      dgShowError(dgSpecView, err, function(){ dgSpecBtn.click(); });
+    } finally {
+      dgSpecBtn.disabled = false;
+    }
+  });
+
+  dgSpecEditBtn.addEventListener("click", function(){
+    if(!dgCurrentSpec) return;
+    var editing = dgSpecView.querySelector(".spec-json-edit");
+    if(editing){
+      try{
+        dgCurrentSpec = JSON.parse(editing.value);
+        dgSpecView.innerHTML = renderSpecHtml(dgCurrentSpec);
+        dgSpecEditBtn.textContent = "설계안 수정";
+      } catch(e){
+        dgStatus.textContent = "JSON 형식이 올바르지 않습니다: " + e.message;
+      }
+      return;
+    }
+    dgSpecView.innerHTML = '<textarea class="spec-json-edit">' +
+      escapeHtml(JSON.stringify(dgCurrentSpec, null, 2)) + "</textarea>";
+    dgSpecEditBtn.textContent = "이 내용 적용";
+  });
+
+  function dgFilenameSlug(spec, version, ext){
+    var base = (spec && (spec.body_region || spec.title) || "diagram")
+      .toLowerCase().replace(/[^a-z0-9가-힣]+/g, "-").replace(/^-+|-+$/g, "");
+    return (base || "diagram") + "-v" + (version || 1) + "." + ext;
+  }
+
+  function renderQaHtml(qa){
+    if(!qa || qa.status === "PASS"){
+      return '<div class="qa-pass">✓ Medical QA 통과' + (qa && qa.overall_score ? " (" + qa.overall_score + "점)" : "") + "</div>";
+    }
+    var html = '<div class="ad-hit"><b>⚠ 해부학 수정 필요</b>' +
+      (qa.overall_score != null ? '<span class="ctx">종합 ' + qa.overall_score + "점</span>" : "") + "</div>";
+    (qa.issues || []).forEach(function(issue){
+      var sevLabel = issue.severity === "high" ? "🔴 높은 중요도" : issue.severity === "medium" ? "🟡 중간 중요도" : "🟢 낮은 중요도";
+      html += '<div class="qa-issue ' + (issue.severity || "low") + '"><span class="sev">' + sevLabel + "</span>" +
+        escapeHtml(issue.description || "") + "</div>";
+    });
+    return html;
+  }
+
+  function renderResult(result, qa){
+    var maxIter = Number(document.getElementById("dgMaxIter").value) || 3;
+    var html = '<div class="dg-image-frame"><img src="' + escapeHtml(DIAGRAM_API_BASE + result.imageUrl) +
+      '" alt="' + escapeHtml((dgCurrentSpec && dgCurrentSpec.title) || "모식도") + '"></div>';
+    html += renderQaHtml(qa);
+
+    var needsEdit = qa && qa.status === "NEEDS_EDIT";
+    if(needsEdit && dgIteration < maxIter){
+      html += '<div class="btn-row"><button type="button" class="btn" id="dgAutoFixBtn">' +
+        "발견된 문제로 자동 수정 (" + (dgIteration + 1) + "/" + maxIter + ")</button></div>";
+    } else if(needsEdit){
+      html += '<p class="hint">최대 반복 횟수(' + maxIter + "회)에 도달했습니다. 아래에서 직접 수정하거나 " +
+        "이대로 저장할 수 있습니다.</p>";
+    }
+
+    html += '<h2 class="section-title" style="margin-top:20px;">이미지 수정</h2>';
+    html += '<div class="chip-row" id="dgEditTargets">' +
+      ["뼈", "근육", "지방", "피부", "수술 접근", "화살표", "라벨", "구도", "색상", "기타"].map(function(t){
+        return '<label class="check-chip"><input type="checkbox" value="' + t + '" />' + t + "</label>";
+      }).join("") + "</div>";
+    html += '<div class="field" style="margin-top:8px;"><textarea id="dgEditInstruction" style="min-height:56px;" ' +
+      'placeholder="예) 하안와연과 상악골의 위치 관계를 실제 해부학에 맞게 수정해줘."></textarea></div>';
+    html += '<div class="btn-row"><button type="button" class="btn ghost" id="dgTargetedEditBtn">부분 수정</button>' +
+      '<button type="button" class="btn ghost" id="dgRegenerateBtn">전체 재생성</button></div>';
+
+    html += '<h2 class="section-title" style="margin-top:20px;">내보내기</h2>';
+    html += '<div class="chip-row">' +
+      [1200, 1600, 2000].map(function(px){
+        return '<button type="button" class="btn ghost dg-export-btn" data-px="' + px + '" data-fmt="webp">' + px + "px WebP</button>";
+      }).join("") +
+      '<button type="button" class="btn ghost dg-export-btn" data-px="2000" data-fmt="png">원본 PNG</button>' +
+      "</div>";
+    html += '<p class="status-line" id="dgExportStatus"></p>';
+
+    html += '<div class="btn-row" style="margin-top:16px;">' +
+      '<button type="button" class="btn" id="dgSaveLibraryBtn">라이브러리에 저장</button></div>';
+    html += '<p class="status-line" id="dgSaveStatus"></p>';
+
+    dgResult.innerHTML = html;
+    wireResultButtons(qa);
+  }
+
+  function wireResultButtons(qa){
+    var autoFix = document.getElementById("dgAutoFixBtn");
+    if(autoFix){
+      autoFix.addEventListener("click", function(){
+        var suggestion = (qa.issues || []).map(function(i){ return i.suggested_edit; }).filter(Boolean).join(" / ");
+        runEdit(suggestion || "해부학적 정확성을 개선해 주세요.", []);
+      });
+    }
+    document.getElementById("dgTargetedEditBtn").addEventListener("click", function(){
+      var targets = [].slice.call(document.querySelectorAll("#dgEditTargets input:checked")).map(function(c){ return c.value; });
+      var instruction = document.getElementById("dgEditInstruction").value.trim();
+      if(!instruction){ document.getElementById("dgSaveStatus").textContent = "수정 지시를 입력해 주세요."; return; }
+      runEdit(instruction, targets);
+    });
+    document.getElementById("dgRegenerateBtn").addEventListener("click", function(){
+      dgGenerateBtn.click();
+    });
+    document.querySelectorAll(".dg-export-btn").forEach(function(btn){
+      btn.addEventListener("click", function(){ exportCurrentImage(Number(btn.dataset.px), btn.dataset.fmt); });
+    });
+    document.getElementById("dgSaveLibraryBtn").addEventListener("click", saveCurrentToLibrary);
+  }
+
+  async function runEdit(instruction, targets){
+    var status = document.getElementById("dgSaveStatus");
+    status.textContent = "수정하는 중…";
+    try{
+      var res = await medicalDiagramEditor({
+        id: dgCurrentResult.id,
+        sourceImageKey: dgCurrentResult.id + "/v" + dgCurrentResult.version + "." +
+          (dgCurrentResult.mimeType.indexOf("png") >= 0 ? "png" : "jpg"),
+        nextVersion: dgCurrentResult.version + 1,
+        editInstruction: instruction,
+        editTargets: targets,
+      });
+      dgIteration += 1;
+      dgCurrentResult = res;
+      status.textContent = "수정 완료. 다시 검토합니다…";
+      var qa = await medicalDiagramReviewer(res.imageUrl.replace(/^\/?files\//, ""), dgCurrentSpec);
+      renderResult(res, qa);
+    } catch(err){
+      dgShowError(document.getElementById("dgResult"), err, null);
+    }
+  }
+
+  dgGenerateBtn.addEventListener("click", async function(){
+    if(!dgCurrentSpec) return;
+    dgStatus.textContent = "이미지를 생성하는 중… (시간이 걸릴 수 있습니다)";
+    dgGenerateBtn.disabled = true;
+    dgIteration = 0;
+    try{
+      var refImages = dgRefImage ? [dgRefImage] : [];
+      var result = await medicalDiagramGenerator(dgCurrentSpec, refImages);
+      dgCurrentResult = result;
+      dgStatus.textContent = "생성 완료. Medical QA 검토 중…";
+      var qa = await medicalDiagramReviewer(result.imageUrl.replace(/^\/?files\//, ""), dgCurrentSpec);
+      dgStatus.textContent = "";
+      renderResult(result, qa);
+    } catch(err){
+      dgStatus.textContent = "";
+      dgShowError(dgResult, err, function(){ dgGenerateBtn.click(); });
+    } finally {
+      dgGenerateBtn.disabled = false;
+    }
+  });
+
+  /* ---------------------------------------------------------- 내보내기 (F) */
+  function exportCurrentImage(px, fmt){
+    var status = document.getElementById("dgExportStatus");
+    if(!dgCurrentResult){ status.textContent = "먼저 이미지를 생성하세요."; return; }
+    var img = dgResult.querySelector(".dg-image-frame img");
+    var canvas = document.createElement("canvas");
+    var scale = px / img.naturalWidth;
+    canvas.width = px;
+    canvas.height = Math.round(img.naturalHeight * scale) || px;
+    var ctx = canvas.getContext("2d");
+    ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+    var mime = fmt === "png" ? "image/png" : "image/webp";
+    var filename = dgFilenameSlug(dgCurrentSpec, dgCurrentResult.version, fmt);
+    canvas.toBlob(function(blob){
+      if(!blob){ status.textContent = "내보내기에 실패했습니다."; return; }
+      var url = URL.createObjectURL(blob);
+      var a = document.createElement("a");
+      a.href = url; a.download = filename;
+      document.body.appendChild(a); a.click(); a.remove();
+      setTimeout(function(){ URL.revokeObjectURL(url); }, 4000);
+      status.textContent = filename + " 저장됨";
+    }, mime, 0.92);
+  }
+
+  /* ---------------------------------------------------------- 라이브러리 저장 */
+  async function saveCurrentToLibrary(){
+    var status = document.getElementById("dgSaveStatus");
+    if(!dgCurrentResult || !dgCurrentSpec){ status.textContent = "먼저 이미지를 생성하세요."; return; }
+    status.textContent = "저장하는 중…";
+    try{
+      var tags = await medicalDiagramTags(dgCurrentSpec).catch(function(){ return []; });
+      var id = dgCurrentResult.id;
+      var item = {
+        title: dgCurrentSpec.title || document.getElementById("dgTopic").value,
+        body_region: dgCurrentSpec.body_region,
+        diagram_type: dgCurrentSpec.diagram_type,
+        viewpoint: dgCurrentSpec.viewpoint,
+        image_url: dgCurrentResult.imageUrl,
+        thumbnail_url: dgCurrentResult.imageUrl,
+        specification: dgCurrentSpec,
+        tags: tags,
+        status: "DRAFT",
+        appendVersion: {
+          image_url: dgCurrentResult.imageUrl,
+          specification: dgCurrentSpec,
+          prompt: dgCurrentResult.prompt,
+          editInstruction: null,
+        },
+      };
+      await dgFetch("/api/library/" + id, { method: "PUT", body: JSON.stringify(item) });
+      status.textContent = "라이브러리에 저장했습니다.";
+      libraryLoaded = false;
+    } catch(err){
+      dgShowError(document.getElementById("dgResult"), err, saveCurrentToLibrary);
+    }
+  }
+
+  /* ================================================================
+     LIBRARY PANEL
+     ================================================================ */
+  var libGrid = document.getElementById("libGrid");
+  var libMeta = document.getElementById("libMeta");
+  var libSearch = document.getElementById("libSearch");
+  var libRegionFilter = document.getElementById("libRegionFilter");
+  var libTypeFilter = document.getElementById("libTypeFilter");
+  var libViewpointFilter = document.getElementById("libViewpointFilter");
+  var libStatusFilter = document.getElementById("libStatusFilter");
+  var libReloadBtn = document.getElementById("libReloadBtn");
+  var libDetail = document.getElementById("libDetail");
+  var libraryLoaded = false;
+
+  function libraryQuery(){
+    var params = [];
+    if(libSearch.value.trim()) params.push("q=" + encodeURIComponent(libSearch.value.trim()));
+    if(libRegionFilter.value) params.push("region=" + encodeURIComponent(libRegionFilter.value));
+    if(libTypeFilter.value) params.push("type=" + encodeURIComponent(libTypeFilter.value));
+    if(libViewpointFilter.value) params.push("viewpoint=" + encodeURIComponent(libViewpointFilter.value));
+    if(libStatusFilter.value) params.push("status=" + encodeURIComponent(libStatusFilter.value));
+    return params.length ? "?" + params.join("&") : "";
+  }
+
+  function renderLibCard(item){
+    var thumb = item.thumbnailUrl
+      ? '<img src="' + escapeHtml(DIAGRAM_API_BASE + item.thumbnailUrl) + '" alt="">'
+      : '<span class="ph">이미지 없음</span>';
+    return '<div class="lib-card" data-id="' + escapeHtml(item.id) + '">' +
+      '<div class="thumb">' + thumb + "</div>" +
+      '<div class="lib-card-body">' +
+      '<p class="lib-card-title">' + escapeHtml(item.title || "(제목 없음)") + "</p>" +
+      '<p class="lib-card-meta">' + escapeHtml(item.bodyRegion || "") + " / " + escapeHtml(item.viewpoint || "") + "</p>" +
+      '<div class="lib-card-tags">' + (item.tags || []).slice(0, 4).map(function(t){ return "<span>#" + escapeHtml(t) + "</span>"; }).join("") + "</div>" +
+      (item.status === "VERIFIED" ? '<span class="lib-verified">✓ VERIFIED MEDICAL DIAGRAM</span>' : "") +
+      '<div class="lib-card-actions">' +
+      '<button type="button" class="btn ghost" data-act="use">사용</button>' +
+      '<button type="button" class="btn ghost" data-act="remix">수정</button>' +
+      '<button type="button" class="btn ghost" data-act="delete">삭제</button>' +
+      "</div></div></div>";
+  }
+
+  async function loadLibrary(){
+    libMeta.textContent = "불러오는 중…";
+    try{
+      var data = await dgFetch("/api/library" + libraryQuery());
+      libraryIndexCache = data.items || [];
+      libMeta.textContent = libraryIndexCache.length + "개";
+      libGrid.innerHTML = libraryIndexCache.length
+        ? libraryIndexCache.map(renderLibCard).join("")
+        : '<div class="lib-empty">아직 저장된 모식도가 없습니다. "의료 모식도" 탭에서 만든 뒤 저장해 보세요.</div>';
+    } catch(err){
+      libMeta.textContent = "";
+      dgShowError(libGrid, err, loadLibrary);
+    }
+    libraryLoaded = true;
+  }
+
+  [libRegionFilter, libTypeFilter, libViewpointFilter, libStatusFilter].forEach(function(sel){
+    sel.addEventListener("change", loadLibrary);
+  });
+  var libSearchTimer = null;
+  libSearch.addEventListener("input", function(){
+    clearTimeout(libSearchTimer);
+    libSearchTimer = setTimeout(loadLibrary, 300);
+  });
+  libReloadBtn.addEventListener("click", loadLibrary);
+
+  function renderVersionHistory(item){
+    if(!(item.versions || []).length) return "";
+    return '<h2 class="section-title" style="margin-top:16px;">이전 버전</h2>' +
+      item.versions.map(function(v, i){
+        return '<div class="version-row">' +
+          (v.image_url ? '<img src="' + escapeHtml(DIAGRAM_API_BASE + v.image_url) + '">' : "") +
+          '<div class="meta">v' + (i + 1) + " · " + escapeHtml((v.timestamp || "").slice(0, 16)) +
+          (v.editInstruction ? " · " + escapeHtml(v.editInstruction) : "") + "</div>" +
+          '<button type="button" class="btn ghost" data-restore="' + i + '">이 버전 복원</button>' +
+          "</div>";
+      }).join("");
+  }
+
+  async function openLibraryDetail(id){
+    try{
+      var data = await dgFetch("/api/library/" + id);
+      var item = data.item;
+      libDetail.innerHTML =
+        '<div class="card">' +
+        '<h2 class="section-title" style="margin-top:0;">' + escapeHtml(item.title || "") + "</h2>" +
+        (item.status === "VERIFIED"
+          ? '<span class="lib-verified">✓ VERIFIED MEDICAL DIAGRAM</span>'
+          : '<button type="button" class="btn ghost" id="libVerifyBtn">✓ 해부학 검증 완료</button>') +
+        renderSpecHtml(item.specification || {}) +
+        renderVersionHistory(item) +
+        '</div>';
+      var verifyBtn = document.getElementById("libVerifyBtn");
+      if(verifyBtn){
+        verifyBtn.addEventListener("click", async function(){
+          await dgFetch("/api/library/" + id, { method: "PUT", body: JSON.stringify({ status: "VERIFIED" }) });
+          openLibraryDetail(id);
+          loadLibrary();
+        });
+      }
+      libDetail.querySelectorAll("[data-restore]").forEach(function(btn){
+        btn.addEventListener("click", async function(){
+          var v = item.versions[Number(btn.dataset.restore)];
+          await dgFetch("/api/library/" + id, {
+            method: "PUT",
+            body: JSON.stringify({ image_url: v.image_url, specification: v.specification }),
+          });
+          openLibraryDetail(id);
+        });
+      });
+    } catch(err){
+      dgShowError(libDetail, err, function(){ openLibraryDetail(id); });
+    }
+  }
+
+  libGrid.addEventListener("click", function(e){
+    var card = e.target.closest(".lib-card");
+    if(!card) return;
+    var id = card.dataset.id;
+    var act = e.target.closest("[data-act]");
+    if(!act){ openLibraryDetail(id); return; }
+    if(act.dataset.act === "use"){
+      var item = libraryIndexCache.filter(function(x){ return x.id === id; })[0];
+      var url = item ? DIAGRAM_API_BASE + item.thumbnailUrl : "";
+      copyText(url, act, "URL 복사됨");
+    } else if(act.dataset.act === "remix"){
+      dgFetch("/api/library/" + id).then(function(data){
+        var item = data.item;
+        document.querySelector('.tab[data-tab="diagram"]').click();
+        dgTopic.value = "(" + (item.title || "") + " 기반) ";
+        dgRefImage = { mimeType: "image/png", base64: null, sourceLibraryId: id };
+        dgRefName.textContent = item.title + " 을(를) 참고 이미지로 사용합니다.";
+        dgRefPurposeRow.style.display = "flex";
+      }).catch(function(err){ dgShowError(libDetail, err, null); });
+    } else if(act.dataset.act === "delete"){
+      dgFetch("/api/library/" + id, { method: "DELETE" }).then(function(){
+        loadLibrary();
+      }).catch(function(err){
+        if(err.code === "verified_protected"){
+          if(confirm("VERIFIED 항목입니다. 정말 삭제할까요?")){
+            dgFetch("/api/library/" + id + "?force=1", { method: "DELETE" }).then(loadLibrary)
+              .catch(function(e2){ dgShowError(libGrid, e2, null); });
+          }
+        } else {
+          dgShowError(libGrid, err, null);
+        }
+      });
+    }
+  });
+
+  onTabShow.diagram = function(){
+    if(!libraryLoaded) loadLibrary();
+  };
+  onTabShow.library = function(){
+    if(!libraryLoaded) loadLibrary();
+    loadReferences();
+  };
+
+  /* ---------------------------------------------------------- Reference 라이브러리 */
+  var refTitle = document.getElementById("refTitle");
+  var refSource = document.getElementById("refSource");
+  var refDoi = document.getElementById("refDoi");
+  var refTags = document.getElementById("refTags");
+  var refNotes = document.getElementById("refNotes");
+  var refFile = document.getElementById("refFile");
+  var refSaveBtn = document.getElementById("refSaveBtn");
+  var refStatus = document.getElementById("refStatus");
+  var refList = document.getElementById("refList");
+  var refImageData = null;
+  var referencesLoaded = false;
+
+  refFile.addEventListener("change", function(){
+    var file = refFile.files && refFile.files[0];
+    if(!file){ refImageData = null; return; }
+    var reader = new FileReader();
+    reader.onload = function(){ refImageData = String(reader.result || ""); };
+    reader.readAsDataURL(file);
+  });
+
+  refSaveBtn.addEventListener("click", async function(){
+    if(!refTitle.value.trim()){ refStatus.textContent = "제목을 입력해 주세요."; return; }
+    refStatus.textContent = "저장하는 중…";
+    var id = "ref_" + Date.now().toString(36);
+    try{
+      await dgFetch("/api/references/" + id, {
+        method: "PUT",
+        body: JSON.stringify({
+          title: refTitle.value.trim(), source: refSource.value.trim(), doi: refDoi.value.trim(),
+          tags: refTags.value.split(",").map(function(t){ return t.trim(); }).filter(Boolean),
+          notes: refNotes.value.trim(), imageDataUrl: refImageData,
+        }),
+      });
+      refStatus.textContent = "저장했습니다.";
+      [refTitle, refSource, refDoi, refTags, refNotes].forEach(function(el){ el.value = ""; });
+      refFile.value = ""; refImageData = null;
+      loadReferences();
+    } catch(err){
+      dgShowError(refList, err, null);
+      refStatus.textContent = "";
+    }
+  });
+
+  async function loadReferences(){
+    try{
+      var data = await dgFetch("/api/references");
+      var items = data.items || [];
+      refList.innerHTML = items.length
+        ? items.map(function(r){
+            return '<div class="lib-card"><div class="lib-card-body">' +
+              '<p class="lib-card-title">' + escapeHtml(r.title || "") + "</p>" +
+              '<p class="lib-card-meta">' + escapeHtml(r.source || "") + "</p>" +
+              '<div class="lib-card-tags">' + (r.tags || []).map(function(t){ return "<span>#" + escapeHtml(t) + "</span>"; }).join("") + "</div>" +
+              "</div></div>";
+          }).join("")
+        : '<div class="lib-empty">등록된 레퍼런스가 없습니다.</div>';
+    } catch(err){
+      dgShowError(refList, err, loadReferences);
+    }
+    referencesLoaded = true;
+  }
 
 })();
 </script>
