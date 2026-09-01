@@ -3229,20 +3229,47 @@
     dgViewpointCustom.style.display = dgViewpointSel.value === "__custom__" ? "block" : "none";
   });
 
+  var DG_REF_MAX_SIDE = 512; // FLUX.2 dev 가 512 해상도로 도는 것과 맞춘다.
+  // 폰 카메라 원본을 그대로 올리면 실제 요청 크기가 커져, 서버가 예상하는
+  // 요금(1타일 기준)보다 더 청구될 수 있다 — 그림 1개당 0.2달러 한도를
+  // 지키려면 여기서 줄여 보내는 게 중요하다.
+  function resizeRefImage(file){
+    return new Promise(function(resolve, reject){
+      var reader = new FileReader();
+      reader.onload = function(){
+        var img = new Image();
+        img.onload = function(){
+          var scale = Math.min(1, DG_REF_MAX_SIDE / Math.max(img.naturalWidth, img.naturalHeight));
+          var w = Math.max(1, Math.round(img.naturalWidth * scale));
+          var h = Math.max(1, Math.round(img.naturalHeight * scale));
+          var canvas = document.createElement("canvas");
+          canvas.width = w; canvas.height = h;
+          canvas.getContext("2d").drawImage(img, 0, 0, w, h);
+          var dataUrl = canvas.toDataURL("image/jpeg", 0.85);
+          var m = /^data:([^;]+);base64,(.*)$/.exec(dataUrl);
+          if(!m){ reject(new Error("이미지를 처리하지 못했습니다.")); return; }
+          resolve({ mimeType: m[1], base64: m[2] });
+        };
+        img.onerror = function(){ reject(new Error("이미지를 읽지 못했습니다.")); };
+        img.src = String(reader.result || "");
+      };
+      reader.onerror = function(){ reject(new Error("이미지를 읽지 못했습니다.")); };
+      reader.readAsDataURL(file);
+    });
+  }
+
   dgRefFile.addEventListener("change", function(){
     var file = dgRefFile.files && dgRefFile.files[0];
     if(!file){ dgRefImage = null; dgRefPurposeRow.style.display = "none"; dgRefName.textContent = ""; return; }
-    var reader = new FileReader();
-    reader.onload = function(){
-      var dataUrl = String(reader.result || "");
-      var m = /^data:([^;]+);base64,(.*)$/.exec(dataUrl);
-      if(!m){ dgRefName.textContent = "이미지를 읽지 못했습니다."; return; }
-      dgRefImage = { mimeType: m[1], base64: m[2] };
+    dgRefName.textContent = "처리 중…";
+    resizeRefImage(file).then(function(img){
+      dgRefImage = img;
       dgRefPurposeRow.style.display = "flex";
-      dgRefName.textContent = file.name + " 업로드됨";
-    };
-    reader.onerror = function(){ dgRefName.textContent = "이미지를 읽지 못했습니다."; };
-    reader.readAsDataURL(file);
+      dgRefName.textContent = file.name + " 업로드됨 (512px 이하로 줄임)";
+    }).catch(function(err){
+      dgRefImage = null;
+      dgRefName.textContent = err.message || "이미지를 읽지 못했습니다.";
+    });
   });
 
   function libraryHay(item){
