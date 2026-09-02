@@ -125,17 +125,9 @@
       ],
       "chars": 4524,
       "adCheck": {
-        "ok": false,
-        "count": 1,
-        "hits": [
-          {
-            "clause": "7호",
-            "kind": "최상급·과장",
-            "why": "우월성을 단정하는 표현",
-            "matched": "유일한",
-            "context": "…rontalis muscle) — 눈썹을 위로 올리는 유일한 근육입니다. 우리가 눈이 무거울 때 무의식적으로 이마…"
-          }
-        ]
+        "ok": true,
+        "count": 0,
+        "hits": []
       }
     },
     {
@@ -326,17 +318,9 @@
       ],
       "chars": 3500,
       "adCheck": {
-        "ok": false,
-        "count": 1,
-        "hits": [
-          {
-            "clause": "2호",
-            "kind": "효과 보장",
-            "why": "치료 결과를 보장하거나 단정하는 표현",
-            "matched": "무조건",
-            "context": "…넣을 곳과 오히려 빼야 할 곳을 먼저 나눕니다.**  무조건 채우기만 하면 얼굴이 넓어집니다.  관자놀이와 앞볼,…"
-          }
-        ]
+        "ok": true,
+        "count": 0,
+        "hits": []
       }
     },
     {
