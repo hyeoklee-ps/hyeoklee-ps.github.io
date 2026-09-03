@@ -610,14 +610,13 @@
   .spec-row{ display:flex; gap:8px; margin-bottom:3px; }
   .spec-row .k{ flex:none; width:78px; color:var(--ink-faint); font-weight:600; }
   .spec-check{ margin:0 0 12px; padding-left:0; list-style:none; }
-  .spec-check li{ padding:2px 0; }
-  .spec-check li::before{ content:"✓ "; color:var(--good); font-weight:700; }
+  .spec-check li{ padding:3px 0; }
+  .spec-check label{ display:flex; align-items:center; gap:8px; cursor:pointer; }
+  .spec-check input[type="checkbox"]{ accent-color:var(--good); margin:0; flex:none; width:16px; height:16px; }
+  .spec-check li.spec-struct-off label{ color:var(--ink-faint); text-decoration:line-through; }
   .spec-empty-note{ color:var(--ink-faint); font-style:italic; }
-  .spec-json-edit{
-    width:100%; min-height:260px; font-family:"IBM Plex Mono",monospace; font-size:12px;
-    line-height:1.6; background:var(--paper-sunken); border:1px solid var(--line);
-    border-radius:8px; padding:12px; color:var(--ink); resize:vertical;
-  }
+  .spec-revise-panel{ margin-top:14px; padding-top:14px; border-top:1px dashed var(--line); }
+  .spec-revise-panel textarea{ min-height:64px; }
 
   .qa-issue{
     font-size:13px; line-height:1.6; padding:10px 12px; border-radius:8px;
@@ -3045,6 +3044,12 @@
     return dgFetch("/api/spec", { method: "POST", body: JSON.stringify(input) })
       .then(function(d){ return d.specification; });
   }
+  function medicalDiagramReviseSpec(specification, instruction){
+    return dgFetch("/api/spec-revise", {
+      method: "POST",
+      body: JSON.stringify({ specification: specification, instruction: instruction }),
+    }).then(function(d){ return d.specification; });
+  }
   function medicalDiagramGenerator(specification, referenceImages){
     return dgFetch("/api/generate", {
       method: "POST",
@@ -3168,10 +3173,21 @@
     if(spec.viewpoint) html += '<div class="spec-row"><span class="k">관점</span><span>' + escapeHtml(spec.body_region || "") + " " + escapeHtml(spec.viewpoint) + "</span></div>";
     if(spec.diagram_type) html += '<div class="spec-row"><span class="k">유형</span><span>' + escapeHtml(spec.diagram_type) + "</span></div>";
 
-    var structs = (spec.anatomical_structures || []).concat(spec.bony_landmarks || []);
-    if(structs.length){
-      html += "<p style='margin:12px 0 4px; font-weight:700;'>주요 구조</p><ul class='spec-check'>" +
-        structs.map(function(s){ return "<li>" + escapeHtml(s.name || s) + "</li>"; }).join("") + "</ul>";
+    var structRows = ["anatomical_structures", "bony_landmarks"].reduce(function(acc, arrName){
+      return acc.concat((spec[arrName] || []).map(function(s, idx){
+        return { arrName: arrName, idx: idx, name: s.name || s };
+      }));
+    }, []);
+    if(structRows.length){
+      html += "<p style='margin:12px 0 4px; font-weight:700;'>주요 구조</p>" +
+        "<p class='hint' style='margin:0 0 6px;'>필요 없는 구조물은 체크를 풀면 이미지에서 빠집니다.</p>" +
+        "<ul class='spec-check'>" +
+        structRows.map(function(r){
+          var off = dgDisabledStructures.has(r.arrName + ":" + r.idx);
+          return "<li" + (off ? " class='spec-struct-off'" : "") + '><label><input type="checkbox" class="spec-struct-toggle" ' +
+            'data-arr="' + r.arrName + '" data-idx="' + r.idx + '"' + (off ? "" : " checked") + "> " +
+            escapeHtml(r.name) + "</label></li>";
+        }).join("") + "</ul>";
     }
     if(spec.composition && (spec.composition.left_panel || spec.composition.right_panel)){
       if(spec.composition.left_panel){
@@ -3191,8 +3207,48 @@
     return html;
   }
 
+  /* 체크 해제된 구조물을 실제 생성 요청에서 빼고, 대신 "넣지 않을 것"에
+   * 명시적으로 추가한다 — dgCurrentSpec 자체는 건드리지 않으므로 체크를
+   * 다시 켜면 그대로 복원된다. */
+  function dgSpecForGeneration(){
+    if(!dgCurrentSpec) return dgCurrentSpec;
+    var spec = JSON.parse(JSON.stringify(dgCurrentSpec));
+    var removedNames = [];
+    ["anatomical_structures", "bony_landmarks"].forEach(function(arrName){
+      var arr = spec[arrName] || [];
+      spec[arrName] = arr.filter(function(item, idx){
+        if(dgDisabledStructures.has(arrName + ":" + idx)){
+          removedNames.push(item.name || item);
+          return false;
+        }
+        return true;
+      });
+    });
+    if(removedNames.length){
+      var existing = spec.prohibited_elements || [];
+      spec.prohibited_elements = existing.concat(
+        removedNames.filter(function(n){ return existing.indexOf(n) === -1; })
+      );
+    }
+    return spec;
+  }
+
+  function wireSpecStructureToggles(){
+    dgSpecView.querySelectorAll(".spec-struct-toggle").forEach(function(cb){
+      cb.addEventListener("change", function(){
+        var key = cb.dataset.arr + ":" + cb.dataset.idx;
+        if(cb.checked) dgDisabledStructures.delete(key);
+        else dgDisabledStructures.add(key);
+        var li = cb.closest("li");
+        if(li) li.classList.toggle("spec-struct-off", !cb.checked);
+      });
+    });
+  }
+
   /* ---------------------------------------------------------- 상태 */
   var dgCurrentSpec = null;
+  var dgDisabledStructures = new Set(); // "anatomical_structures:2" 같은 키 — 체크 해제된 구조물
+  var dgLastGenSpec = null;   // 마지막 생성/수정에 실제로 사용한(구조물 필터링 반영) spec — QA는 이 기준으로 본다
   var dgRefImage = null;      // { base64, mimeType, purpose }
   var dgCurrentResult = null; // { id, version, imageUrl, mimeType, prompt }
   var dgIteration = 0;
@@ -3387,9 +3443,11 @@
     try{
       var spec = await medicalDiagramSpecify(input);
       dgCurrentSpec = spec;
+      dgDisabledStructures.clear();
       dgIteration = 0;
       dgSpecView.className = "";
       dgSpecView.innerHTML = renderSpecHtml(spec);
+      wireSpecStructureToggles();
       dgSpecActions.style.display = "flex";
       dgResult.innerHTML = "";
       dgStatus.textContent = "설계안이 준비됐습니다. 마음에 들면 이미지를 생성하세요.";
@@ -3401,22 +3459,45 @@
     }
   });
 
+  /* "설계안 수정" — 예전엔 원본 JSON을 직접 고치게 했지만, 이제는 자연어로
+   * 요청을 적으면 Gemini가 같은 스키마를 지키며 spec을 고쳐 준다. 구조물
+   * 목록이 바뀔 수 있으니 체크 상태(dgDisabledStructures)는 초기화한다. */
   dgSpecEditBtn.addEventListener("click", function(){
     if(!dgCurrentSpec) return;
-    var editing = dgSpecView.querySelector(".spec-json-edit");
-    if(editing){
+    if(dgSpecView.querySelector(".spec-revise-panel")) return;
+    var panel = document.createElement("div");
+    panel.className = "spec-revise-panel";
+    panel.innerHTML =
+      '<p class="hint" style="margin:0 0 8px;">설계안에서 바꾸고 싶은 점을 말로 적어 주세요. ' +
+      '예) "인중 라벨을 추가해줘", "왼쪽 패널 설명을 더 자세히 써줘", "절개선을 점선 대신 실선으로"</p>' +
+      '<div class="field"><textarea id="dgSpecReviseInput"></textarea></div>' +
+      '<div class="btn-row" style="margin-top:8px;">' +
+        '<button type="button" class="btn" id="dgSpecReviseApplyBtn">이 내용으로 수정</button>' +
+        '<button type="button" class="btn ghost" id="dgSpecReviseCancelBtn">취소</button>' +
+      "</div>" +
+      '<p class="status-line" id="dgSpecReviseStatus"></p>';
+    dgSpecView.appendChild(panel);
+    document.getElementById("dgSpecReviseInput").focus();
+    document.getElementById("dgSpecReviseCancelBtn").addEventListener("click", function(){ panel.remove(); });
+    document.getElementById("dgSpecReviseApplyBtn").addEventListener("click", async function(){
+      var instruction = document.getElementById("dgSpecReviseInput").value.trim();
+      var status = document.getElementById("dgSpecReviseStatus");
+      if(!instruction){ status.textContent = "수정할 내용을 입력해 주세요."; return; }
+      var applyBtn = document.getElementById("dgSpecReviseApplyBtn");
+      applyBtn.disabled = true;
+      status.textContent = "수정하는 중…";
       try{
-        dgCurrentSpec = JSON.parse(editing.value);
+        var revised = await medicalDiagramReviseSpec(dgCurrentSpec, instruction);
+        dgCurrentSpec = revised;
+        dgDisabledStructures.clear();
         dgSpecView.innerHTML = renderSpecHtml(dgCurrentSpec);
-        dgSpecEditBtn.textContent = "설계안 수정";
-      } catch(e){
-        dgStatus.textContent = "JSON 형식이 올바르지 않습니다: " + e.message;
+        wireSpecStructureToggles();
+        dgStatus.textContent = "설계안이 수정됐습니다. 마음에 들면 이미지를 생성하세요.";
+      } catch(err){
+        status.textContent = dgFriendlyErrorMessage(err);
+        applyBtn.disabled = false;
       }
-      return;
-    }
-    dgSpecView.innerHTML = '<textarea class="spec-json-edit">' +
-      escapeHtml(JSON.stringify(dgCurrentSpec, null, 2)) + "</textarea>";
-    dgSpecEditBtn.textContent = "이 내용 적용";
+    });
   });
 
   function dgFilenameSlug(spec, version, ext){
@@ -3519,7 +3600,7 @@
       dgIteration += 1;
       dgCurrentResult = res;
       status.textContent = "수정 완료. 다시 검토합니다…";
-      var qa = await medicalDiagramReviewer(res.imageUrl.replace(/^\/?files\//, ""), dgCurrentSpec);
+      var qa = await medicalDiagramReviewer(res.imageUrl.replace(/^\/?files\//, ""), dgLastGenSpec || dgCurrentSpec);
       renderResult(res, qa);
     } catch(err){
       // 수정 요청이 실패해도 이미 입력한 텍스트·이전 이미지를 그대로 두고
@@ -3536,10 +3617,12 @@
     dgIteration = 0;
     try{
       var refImages = dgRefImage ? [dgRefImage] : [];
-      var result = await medicalDiagramGenerator(dgCurrentSpec, refImages);
+      var genSpec = dgSpecForGeneration();
+      dgLastGenSpec = genSpec;
+      var result = await medicalDiagramGenerator(genSpec, refImages);
       dgCurrentResult = result;
       dgStatus.textContent = "생성 완료. Medical QA 검토 중…";
-      var qa = await medicalDiagramReviewer(result.imageUrl.replace(/^\/?files\//, ""), dgCurrentSpec);
+      var qa = await medicalDiagramReviewer(result.imageUrl.replace(/^\/?files\//, ""), genSpec);
       dgStatus.textContent = "";
       renderResult(result, qa);
     } catch(err){

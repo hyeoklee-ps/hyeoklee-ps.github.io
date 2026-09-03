@@ -1,5 +1,5 @@
 /* Offline cache for the toolkit. Bump CACHE when index.html changes. */
-const CACHE = "blog-workbench-v20";
+const CACHE = "blog-workbench-v21";
 const ASSETS = ["./", "./index.html", "./manifest.webmanifest", "./icon-192.png", "./icon-512.png"];
 
 self.addEventListener("install", (e) => {
