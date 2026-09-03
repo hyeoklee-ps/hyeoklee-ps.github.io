@@ -3066,8 +3066,15 @@
   }
 
   /* ---------------------------------------------------------- 오류 표시 */
-  function dgShowError(container, err, retry){
+  function dgFriendlyErrorMessage(err){
     var msg = (err && err.message) || "알 수 없는 오류가 발생했습니다.";
+    if(/high demand|overloaded|503/i.test(msg)){
+      return "지금 이미지 생성 모델이 혼잡합니다(일시적 현상, fal.ai 쪽 문제). 잠시 후 다시 시도해 주세요.";
+    }
+    return msg;
+  }
+  function dgShowError(container, err, retry){
+    var msg = dgFriendlyErrorMessage(err);
     container.innerHTML =
       '<div class="ad-hit"><b>문제가 발생했습니다</b><span class="ctx">' + escapeHtml(msg) + "</span></div>";
     if(retry){
@@ -3515,7 +3522,10 @@
       var qa = await medicalDiagramReviewer(res.imageUrl.replace(/^\/?files\//, ""), dgCurrentSpec);
       renderResult(res, qa);
     } catch(err){
-      dgShowError(document.getElementById("dgResult"), err, null);
+      // 수정 요청이 실패해도 이미 입력한 텍스트·이전 이미지를 그대로 두고
+      // 상태 줄에만 오류를 표시한다 — 예전엔 이 자리에서 전체 패널을
+      // 지워 버려 사용자가 입력하던 내용을 통째로 잃었다.
+      status.textContent = dgFriendlyErrorMessage(err) + " 입력한 내용은 그대로 있으니 다시 눌러 주세요.";
     }
   }
 
@@ -3533,8 +3543,16 @@
       dgStatus.textContent = "";
       renderResult(result, qa);
     } catch(err){
-      dgStatus.textContent = "";
-      dgShowError(dgResult, err, function(){ dgGenerateBtn.click(); });
+      if(dgCurrentResult){
+        // "전체 재생성" 실패 — 직전 결과 화면(이미지·수정 입력창)을 그대로
+        // 두고 상태 줄에만 오류를 알린다. 여기서 dgResult를 지우면 방금까지
+        // 보던 이미지와 입력하던 수정 텍스트가 통째로 사라져 마치 처음
+        // 화면으로 되돌아간 것처럼 보인다.
+        dgStatus.textContent = dgFriendlyErrorMessage(err) + " (기존 결과는 그대로 있습니다. 잠시 후 다시 시도해 주세요.)";
+      } else {
+        dgStatus.textContent = "";
+        dgShowError(dgResult, err, function(){ dgGenerateBtn.click(); });
+      }
     } finally {
       dgGenerateBtn.disabled = false;
     }
