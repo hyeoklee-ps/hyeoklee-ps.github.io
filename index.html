@@ -3207,29 +3207,22 @@
     return html;
   }
 
-  /* 체크 해제된 구조물을 실제 생성 요청에서 빼고, 대신 "넣지 않을 것"에
-   * 명시적으로 추가한다 — dgCurrentSpec 자체는 건드리지 않으므로 체크를
-   * 다시 켜면 그대로 복원된다. */
+  /* 체크 해제된 구조물을 실제 생성 요청에서 뺀다. dgCurrentSpec 자체는 건드리지
+   * 않으므로 체크를 다시 켜면 그대로 복원된다.
+   *
+   * 뺀 구조물의 "이름"은 일부러 금지 목록에 넣지 않는다 — 확산모델(FLUX)은
+   * 프롬프트에 등장한 이름을 그리려 들기 때문에, 빼달라고 이름을 적는 순간
+   * 오히려 그려질 위험이 있다. 대신 서버가 "이 목록이 전부"라고 못박는
+   * 방식으로 배제한다(worker.js 의 프롬프트 규칙 2-2). */
   function dgSpecForGeneration(){
     if(!dgCurrentSpec) return dgCurrentSpec;
     var spec = JSON.parse(JSON.stringify(dgCurrentSpec));
-    var removedNames = [];
     ["anatomical_structures", "bony_landmarks"].forEach(function(arrName){
       var arr = spec[arrName] || [];
       spec[arrName] = arr.filter(function(item, idx){
-        if(dgDisabledStructures.has(arrName + ":" + idx)){
-          removedNames.push(item.name || item);
-          return false;
-        }
-        return true;
+        return !dgDisabledStructures.has(arrName + ":" + idx);
       });
     });
-    if(removedNames.length){
-      var existing = spec.prohibited_elements || [];
-      spec.prohibited_elements = existing.concat(
-        removedNames.filter(function(n){ return existing.indexOf(n) === -1; })
-      );
-    }
     return spec;
   }
 
