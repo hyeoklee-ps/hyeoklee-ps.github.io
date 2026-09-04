@@ -1116,7 +1116,8 @@
           <div class="field">
             <label for="dgStyle">스타일</label>
             <select id="dgStyle">
-              <option selected>성형외과 해부학</option>
+              <option selected>임상 사진(실사)</option>
+              <option>성형외과 해부학</option>
               <option>수술 모식도</option>
               <option>논문 Figure 스타일</option>
               <option>환자 설명용</option>
@@ -3063,7 +3064,13 @@
   function medicalDiagramGenerator(specification, referenceImages){
     return dgFetch("/api/generate", {
       method: "POST",
-      body: JSON.stringify({ specification: specification, referenceImages: referenceImages || [] }),
+      body: JSON.stringify({
+        specification: specification,
+        referenceImages: referenceImages || [],
+        // 화풍은 서버가 이 값으로 정한다. 예전에는 보내지 않아서, 무엇을 골라도
+        // 서버에 박혀 있던 "교과서 일러스트"가 나왔다.
+        style: document.getElementById("dgStyle").value,
+      }),
     });
   }
   function medicalDiagramEditor(args){
@@ -3404,7 +3411,9 @@
     dgViewpointCustom.style.display = dgViewpointSel.value === "__custom__" ? "block" : "none";
   });
 
-  var DG_REF_MAX_SIDE = 512; // FLUX.2 dev 가 512 해상도로 도는 것과 맞춘다.
+  // 생성 해상도(1024)와 맞춘다. 예전 512는 Cloudflare 시절 잔재였는데,
+  // 참고 사진을 절반으로 뭉개서 보내니 화풍·디테일이 거의 전달되지 않았다.
+  var DG_REF_MAX_SIDE = 1024;
   // 폰 카메라 원본을 그대로 올리면 실제 요청 크기가 커져, 서버가 예상하는
   // 요금(1타일 기준)보다 더 청구될 수 있다 — 그림 1개당 0.2달러 한도를
   // 지키려면 여기서 줄여 보내는 게 중요하다.
@@ -3440,7 +3449,7 @@
     resizeRefImage(file).then(function(img){
       dgRefImage = img;
       dgRefPurposeRow.style.display = "flex";
-      dgRefName.textContent = file.name + " 업로드됨 (512px 이하로 줄임)";
+      dgRefName.textContent = file.name + " 업로드됨 (1024px 이하로 줄임)";
     }).catch(function(err){
       dgRefImage = null;
       dgRefName.textContent = err.message || "이미지를 읽지 못했습니다.";
@@ -3695,6 +3704,8 @@
         nextVersion: dgCurrentResult.version + 1,
         editInstruction: instruction,
         editTargets: targets,
+        // 서버가 생성 때와 같은 가로세로 비율을 유지하려면 스펙이 필요하다.
+        specification: dgLastGenSpec || dgCurrentSpec,
       });
       dgIteration += 1;
       dgCurrentResult = res;
