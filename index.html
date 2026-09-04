@@ -3058,7 +3058,7 @@
     return dgFetch("/api/spec-revise", {
       method: "POST",
       body: JSON.stringify({ specification: specification, instruction: instruction }),
-    }).then(function(d){ return d.specification; });
+    });  // { specification, changedFields }
   }
   function medicalDiagramGenerator(specification, referenceImages){
     return dgFetch("/api/generate", {
@@ -3537,9 +3537,15 @@
       applyBtn.disabled = true;
       status.textContent = "수정하는 중…";
       try{
-        var revised = await medicalDiagramReviseSpec(dgCurrentSpec, instruction);
-        dgCurrentSpec = revised;
-        dgDisabledStructures.clear();
+        var res = await medicalDiagramReviseSpec(dgCurrentSpec, instruction);
+        dgCurrentSpec = res.specification;
+        // 구조물 목록이 실제로 바뀐 경우에만 체크 상태를 초기화한다 —
+        // 체크 상태는 배열의 순번으로 기억하므로 목록이 바뀌면 어긋난다.
+        // 반대로 목록이 그대로면 애써 꺼 둔 체크를 유지해 준다.
+        var structsChanged = (res.changedFields || []).some(function(f){
+          return f === "anatomical_structures" || f === "bony_landmarks";
+        });
+        if(structsChanged) dgDisabledStructures.clear();
         dgSpecView.innerHTML = renderSpecHtml(dgCurrentSpec);
         wireSpecStructureToggles();
         wireSpecInlineEdits();
