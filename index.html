@@ -617,6 +617,16 @@
   .spec-empty-note{ color:var(--ink-faint); font-style:italic; }
   .spec-revise-panel{ margin-top:14px; padding-top:14px; border-top:1px dashed var(--line); }
   .spec-revise-panel textarea{ min-height:64px; }
+  /* 그 자리에서 고칠 수 있는 값 — 눌러서 바로 편집. */
+  .spec-edit{
+    border-bottom:1px dashed var(--line); border-radius:2px; padding:1px 2px;
+    cursor:text; outline:none; display:inline-block; min-width:2em;
+  }
+  .spec-edit:hover{ background:var(--paper-sunken); }
+  .spec-edit:focus{
+    background:var(--paper-sunken); border-bottom-color:var(--accent);
+    box-shadow:0 0 0 2px var(--accent-soft, rgba(31,111,120,.18));
+  }
 
   .qa-issue{
     font-size:13px; line-height:1.6; padding:10px 12px; border-radius:8px;
@@ -3169,9 +3179,11 @@
   function renderSpecHtml(spec){
     var html = '<div class="spec-view">';
     html += "<h4>Medical Diagram Specification</h4>";
-    if(spec.title) html += '<div class="spec-row"><span class="k">제목</span><span>' + escapeHtml(spec.title) + "</span></div>";
-    if(spec.viewpoint) html += '<div class="spec-row"><span class="k">관점</span><span>' + escapeHtml(spec.body_region || "") + " " + escapeHtml(spec.viewpoint) + "</span></div>";
-    if(spec.diagram_type) html += '<div class="spec-row"><span class="k">유형</span><span>' + escapeHtml(spec.diagram_type) + "</span></div>";
+    html += '<p class="hint" style="margin:0 0 10px;">밑줄 친 부분은 눌러서 바로 고칠 수 있습니다. ' +
+      "직접 고친 내용은 AI를 거치지 않고 그대로 반영됩니다.</p>";
+    if(spec.title) html += '<div class="spec-row"><span class="k">제목</span>' + specEditable("title", spec.title) + "</div>";
+    if(spec.viewpoint) html += '<div class="spec-row"><span class="k">관점</span>' + specEditable("viewpoint", spec.viewpoint) + "</div>";
+    if(spec.diagram_type) html += '<div class="spec-row"><span class="k">유형</span>' + specEditable("diagram_type", spec.diagram_type) + "</div>";
 
     var structRows = ["anatomical_structures", "bony_landmarks"].reduce(function(acc, arrName){
       return acc.concat((spec[arrName] || []).map(function(s, idx){
@@ -3189,22 +3201,66 @@
             escapeHtml(r.name) + "</label></li>";
         }).join("") + "</ul>";
     }
+    if(spec.composition && spec.composition.layout){
+      html += "<p style='margin:10px 0 3px; font-weight:700;'>구도</p><p>" + specEditable("composition.layout", spec.composition.layout) + "</p>";
+    }
     if(spec.composition && (spec.composition.left_panel || spec.composition.right_panel)){
       if(spec.composition.left_panel){
-        html += "<p style='margin:10px 0 3px; font-weight:700;'>왼쪽</p><p>" + escapeHtml(spec.composition.left_panel) + "</p>";
+        html += "<p style='margin:10px 0 3px; font-weight:700;'>왼쪽</p><p>" + specEditable("composition.left_panel", spec.composition.left_panel) + "</p>";
       }
       if(spec.composition.right_panel){
-        html += "<p style='margin:10px 0 3px; font-weight:700;'>오른쪽</p><p>" + escapeHtml(spec.composition.right_panel) + "</p>";
+        html += "<p style='margin:10px 0 3px; font-weight:700;'>오른쪽</p><p>" + specEditable("composition.right_panel", spec.composition.right_panel) + "</p>";
       }
     }
     if((spec.surgical_access || []).length){
-      html += "<p style='margin:10px 0 3px; font-weight:700;'>수술 접근</p><p>" + escapeHtml(spec.surgical_access.join(", ")) + "</p>";
+      html += "<p style='margin:10px 0 3px; font-weight:700;'>수술 접근</p><p>" +
+        specEditable("surgical_access", spec.surgical_access.join(", "), "list") + "</p>";
     }
     if((spec.prohibited_elements || []).length){
-      html += "<p style='margin:10px 0 3px; font-weight:700;'>넣지 않을 것</p><p>" + escapeHtml(spec.prohibited_elements.join(", ")) + "</p>";
+      html += "<p style='margin:10px 0 3px; font-weight:700;'>넣지 않을 것</p><p>" +
+        specEditable("prohibited_elements", spec.prohibited_elements.join(", "), "list") + "</p>";
     }
     html += "</div>";
     return html;
+  }
+
+  /* 화면의 값을 그 자리에서 고칠 수 있게 만든다. 여기서 고친 내용은 Gemini를
+   * 거치지 않고 dgCurrentSpec 에 그대로 들어가므로, 자연어로 부탁하는 것보다
+   * 결과가 정확하다(모델이 의도를 다르게 해석할 여지가 없다). */
+  function specEditable(path, value, kind){
+    return '<span class="spec-edit" contenteditable="true" spellcheck="false" data-path="' + path +
+      '" data-kind="' + (kind || "text") + '">' + escapeHtml(value) + "</span>";
+  }
+
+  /* "composition.left_panel" 같은 경로에 값을 써 넣는다. kind 가 list 면
+   * 쉼표로 나눠 배열로 되돌린다(항목 안에 쉼표를 쓰지 않는다는 전제). */
+  function setSpecByPath(path, kind, text){
+    if(!dgCurrentSpec) return;
+    var parts = path.split(".");
+    var obj = dgCurrentSpec;
+    for(var i = 0; i < parts.length - 1; i++){
+      if(typeof obj[parts[i]] !== "object" || obj[parts[i]] === null) obj[parts[i]] = {};
+      obj = obj[parts[i]];
+    }
+    var last = parts[parts.length - 1];
+    if(kind === "list"){
+      obj[last] = text.split(",").map(function(s){ return s.trim(); }).filter(Boolean);
+    } else {
+      obj[last] = text.trim();
+    }
+  }
+
+  function wireSpecInlineEdits(){
+    dgSpecView.querySelectorAll(".spec-edit").forEach(function(el){
+      el.addEventListener("blur", function(){
+        setSpecByPath(el.dataset.path, el.dataset.kind, el.textContent);
+        dgStatus.textContent = "설계안을 수정했습니다.";
+      });
+      // 엔터로 줄을 늘리는 대신 확정되게 한다 — 한 줄짜리 값들이라서.
+      el.addEventListener("keydown", function(e){
+        if(e.key === "Enter"){ e.preventDefault(); el.blur(); }
+      });
+    });
   }
 
   /* 체크 해제된 구조물을 실제 생성 요청에서 뺀다. dgCurrentSpec 자체는 건드리지
@@ -3441,6 +3497,7 @@
       dgSpecView.className = "";
       dgSpecView.innerHTML = renderSpecHtml(spec);
       wireSpecStructureToggles();
+      wireSpecInlineEdits();
       dgSpecActions.style.display = "flex";
       dgResult.innerHTML = "";
       dgStatus.textContent = "설계안이 준비됐습니다. 마음에 들면 이미지를 생성하세요.";
@@ -3461,8 +3518,8 @@
     var panel = document.createElement("div");
     panel.className = "spec-revise-panel";
     panel.innerHTML =
-      '<p class="hint" style="margin:0 0 8px;">설계안에서 바꾸고 싶은 점을 말로 적어 주세요. ' +
-      '예) "인중 라벨을 추가해줘", "왼쪽 패널 설명을 더 자세히 써줘", "절개선을 점선 대신 실선으로"</p>' +
+      '<p class="hint" style="margin:0 0 8px;">문장을 직접 고칠 때는 위에서 밑줄 친 부분을 바로 누르세요. ' +
+      "여기는 구조를 크게 바꿀 때 씁니다 — 예) \"패널을 3개로 늘려줘\", \"뼈 구조를 빼고 연부조직만 남겨줘\"</p>" +
       '<div class="field"><textarea id="dgSpecReviseInput"></textarea></div>' +
       '<div class="btn-row" style="margin-top:8px;">' +
         '<button type="button" class="btn" id="dgSpecReviseApplyBtn">이 내용으로 수정</button>' +
@@ -3485,6 +3542,7 @@
         dgDisabledStructures.clear();
         dgSpecView.innerHTML = renderSpecHtml(dgCurrentSpec);
         wireSpecStructureToggles();
+        wireSpecInlineEdits();
         dgStatus.textContent = "설계안이 수정됐습니다. 마음에 들면 이미지를 생성하세요.";
       } catch(err){
         status.textContent = dgFriendlyErrorMessage(err);
