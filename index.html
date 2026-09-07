@@ -430,10 +430,6 @@
   .draft-sec ul{ margin:0; padding-left:17px; font-size:13.5px; line-height:1.7;
                  color:var(--ink-soft); }
   .draft-sec ul li{ margin-bottom:3px; }
-  .draft-sec ul.mla li{
-    padding-left:2px; text-indent:-14px; margin-bottom:8px; line-height:1.6;
-  }
-  .src-actions{ margin-top:10px; }
   .draft-tags{ display:flex; flex-wrap:wrap; gap:6px; }
   .draft-tags span{
     font-size:12.5px; padding:4px 10px; border-radius:999px;
@@ -1350,26 +1346,31 @@
   /* "## 소제목" is how the generator marks headings. Naver's editor has no
      markdown, so headings become real elements on screen and plain lines on
      copy — pasting "## " into a post would just look like a typo. */
-  function draftBodyHtml(body){
-    return String(body || "").split("\n").map(function(line){
+  /* 참고 문헌은 본문의 일부로 다룬다. 따로 떼어 두면 글 하나를 옮기는 데 복사를
+     두 번 해야 하고, 실제로 한쪽을 빠뜨린 채 발행되기 쉽다. 화면에 보이는 것과
+     복사되는 것이 어긋나면 안 되므로, 목록 요소가 아니라 본문과 같은 평문 줄로
+     이어 붙인다 (.draft-body 는 pre-wrap 이다). */
+  function draftFullText(body, sources){
+    var text = String(body || "").replace(/\s+$/, "");
+    var list = sources || [];
+    if(list.length) text += "\n\n[참고 문헌]\n" + list.join("\n");
+    return text;
+  }
+  function draftBodyHtml(body, sources){
+    return draftFullText(body, sources).split("\n").map(function(line){
       var m = /^\s*#{2,3}\s+(.*)$/.exec(line);
       if(m) return "<h4>" + escapeHtml(m[1]) + "</h4>";
       var q = /^\s*Q\s*[.\uFF0E:]\s*(.+)$/.exec(line);
       if(q) return '<b class="faq-q">Q. ' + escapeHtml(q[1]) + "</b>";
+      if(/^\[참고 문헌\]$/.test(line.trim())) return '<b class="faq-q">' + escapeHtml(line) + "</b>";
       return escapeHtml(line);
     }).join("\n");
   }
-  function draftBodyPlain(body){
-    return String(body || "").split("\n").map(function(line){
+  function draftBodyPlain(body, sources){
+    return draftFullText(body, sources).split("\n").map(function(line){
       var m = /^\s*#{2,3}\s+(.*)$/.exec(line);
       return m ? m[1] : line;
     }).join("\n").trim();
-  }
-
-  /* 글 맨 아래에 붙일 용도라 제목 줄을 함께 넣는다 — MLA 항목만 덩그러니
-     놓이면 블로그에서는 잘린 문장처럼 보인다. */
-  function draftSourcesPlain(list){
-    return "[참고 문헌]\n" + (list || []).join("\n");
   }
 
   async function copyText(text, btn, okLabel){
@@ -1398,10 +1399,10 @@
       (titles ? '<h4>제목 고르기</h4><div class="title-pick">' + titles + "</div>" : "") +
       '<div class="draft-actions">' +
         '<button type="button" class="btn" data-act="title">제목 복사</button>' +
-        '<button type="button" class="btn" data-act="body">본문 복사</button>' +
+        '<button type="button" class="btn" data-act="body">본문 복사 (참고문헌 포함)</button>' +
       "</div></div>";
 
-    html += '<div class="draft-body">' + draftBodyHtml(d.body) + "</div>" +
+    html += '<div class="draft-body">' + draftBodyHtml(d.body, d.sources) + "</div>" +
             '<button type="button" class="draft-more">전체 보기</button>';
 
     var ad = d.adCheck || {count:0, hits:[]};
@@ -1424,13 +1425,6 @@
       html += '<div class="draft-sec"><h4>직접 준비하면 좋을 이미지</h4><ul>' +
         d.images.map(function(x){ return "<li>" + escapeHtml(x) + "</li>"; }).join("") +
         "</ul></div>";
-    }
-    if((d.sources || []).length){
-      html += '<div class="draft-sec"><h4>근거 논문 (MLA)</h4><ul class="mla">' +
-        d.sources.map(function(x){ return "<li>" + escapeHtml(x) + "</li>"; }).join("") +
-        '</ul><div class="draft-actions src-actions">' +
-        '<button type="button" class="btn" data-act="sources">근거 논문 복사</button>' +
-        "</div></div>";
     }
     return html;
   }
@@ -1486,9 +1480,7 @@
         var picked = card.querySelector('.title-opt input:checked');
         copyText(picked ? picked.value : "", btn, "제목 복사됨");
       } else if(btn.dataset.act === "body"){
-        copyText(draftBodyPlain(t.body), btn, "본문 복사됨");
-      } else if(btn.dataset.act === "sources"){
-        copyText(draftSourcesPlain(t.sources), btn, "근거 논문 복사됨");
+        copyText(draftBodyPlain(t.body, t.sources), btn, "본문+참고문헌 복사됨");
       } else if(btn.dataset.act === "done"){
         hideTopic(t, "wrote", card);
       } else if(btn.dataset.act === "drop"){
