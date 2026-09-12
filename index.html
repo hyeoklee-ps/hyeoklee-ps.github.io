@@ -314,6 +314,14 @@
     border:1px solid var(--line); border-radius:10px; padding:18px; background:var(--paper);
     margin-bottom:16px;
   }
+  .template-steps{ display:grid; gap:10px; margin:14px 0; }
+  .template-step{ display:flex; gap:10px; align-items:flex-start; padding:12px 14px; background:var(--paper-sunken); border-radius:10px; }
+  .template-step b{ flex:0 0 24px; width:24px; height:24px; border-radius:50%; display:grid; place-items:center; background:var(--ink); color:var(--paper); font-size:12px; }
+  .template-step span{ line-height:1.55; }
+  .template-output{ min-height:300px; font-family:'IBM Plex Mono',monospace; font-size:12px; line-height:1.65; }
+  .template-checks{ display:grid; gap:8px; margin-top:12px; }
+  .template-check{ display:flex; gap:8px; align-items:flex-start; font-size:13px; line-height:1.45; }
+  .template-check::before{ content:'✓'; color:var(--good); font-weight:800; }
 
   footer.note{
     margin-top:18px; font-size:12px; color:var(--ink-faint); text-align:center;
@@ -729,6 +737,7 @@
     <button class="tab" data-tab="check" role="tab" aria-selected="false">발행 전 점검</button>
     <button class="tab" data-tab="trend" role="tab" aria-selected="false">검색어 트렌드</button>
     <button class="tab" data-tab="resize" role="tab" aria-selected="false">사진 줄이기</button>
+    <button class="tab" data-tab="template" role="tab" aria-selected="false">작성 템플릿</button>
     <button class="tab" data-tab="diagram" role="tab" aria-selected="false">의료 모식도</button>
     <button class="tab" data-tab="library" role="tab" aria-selected="false">모식도 라이브러리</button>
   </nav>
@@ -752,6 +761,56 @@
       </div>
       <div id="inboxList"></div>
       <p class="inbox-note" id="inboxNote"></p>
+    </section>
+
+    <!-- ============ FACE READER CONTENT TEMPLATE ============ -->
+    <section id="panel-template" class="panel">
+      <div class="inbox-head">
+        <div>
+          <h2 class="section-title" style="margin:0;">Face Reader 의료 콘텐츠 작성 템플릿</h2>
+          <p class="hint" style="margin:4px 0 0;">질문에 먼저 답하고, 근거·한계·저자 정보를 같은 구조로 만드는 SEO/AEO/GEO 작성 규격입니다.</p>
+        </div>
+      </div>
+      <div class="grid2" style="margin-top:18px;">
+        <div>
+          <div class="field"><label for="tplTopic">글 주제</label><input id="tplTopic" placeholder="예) 눈꺼풀 지방 제거" /></div>
+          <div class="field"><label for="tplKeyword">핵심 검색어</label><input id="tplKeyword" placeholder="예) 눈꺼풀 지방제거" /></div>
+          <div class="field"><label for="tplQuestion">환자의 핵심 질문</label><input id="tplQuestion" placeholder="예) 많이 제거할수록 눈이 예뻐지나요?" /></div>
+          <div class="field">
+            <label for="tplIntent">검색 의도</label>
+            <select id="tplIntent"><option>수술 여부 판단</option><option>술식 비교</option><option>부작용·회복</option><option>해부학·원리 이해</option><option>재수술·문제 해결</option></select>
+          </div>
+          <div class="field"><label for="tplInclude">반드시 포함할 내용 <span class="count">선택</span></label><textarea id="tplInclude" style="min-height:76px;" placeholder="예) medial/central fat 차이, hollowing 위험"></textarea></div>
+          <div class="field"><label for="tplEvidence">검증된 근거 <span class="count">논문·교과서만</span></label><textarea id="tplEvidence" style="min-height:92px;" placeholder="확인한 문헌을 붙여넣으세요. 비워 두면 근거를 지어내지 않도록 지시합니다."></textarea></div>
+          <div class="field"><label for="tplLinks">실제로 존재하는 관련 글 <span class="count">제목 + URL</span></label><textarea id="tplLinks" style="min-height:72px;" placeholder="없으면 비워 두세요."></textarea></div>
+          <div class="btn-row">
+            <button type="button" class="btn" id="tplBuildBtn">생성 지시문 만들기</button>
+            <button type="button" class="btn ghost" id="tplCopyBtn" disabled>전체 복사</button>
+          </div>
+          <p class="status-line" id="tplStatus"></p>
+        </div>
+        <div>
+          <h2 class="section-title">고정 본문 구조</h2>
+          <div class="template-steps">
+            <div class="template-step"><b>1</b><span><strong>직접 답변</strong><br>첫 3~5문장에 결론과 판단 기준</span></div>
+            <div class="template-step"><b>2</b><span><strong>이해</strong><br>정의·해부학과 원인·기전</span></div>
+            <div class="template-step"><b>3</b><span><strong>선택</strong><br>적응증, 술식, 대안과 비적응증</span></div>
+            <div class="template-step"><b>4</b><span><strong>안전</strong><br>한계·부작용·개인차</span></div>
+            <div class="template-step"><b>5</b><span><strong>검색 답변</strong><br>FAQ 3개와 핵심 정리</span></div>
+            <div class="template-step"><b>6</b><span><strong>신뢰</strong><br>참고문헌 2~5개, 이미지 캡션, 저자 고지</span></div>
+          </div>
+          <div class="template-checks">
+            <div class="template-check">핵심 검색어는 제목에 정확히 한 번, 본문에는 자연스럽게 사용</div>
+            <div class="template-check">확인하지 않은 논문·DOI·PMID·통계는 생성 금지</div>
+            <div class="template-check">실재하는 글만 내부링크로 연결</div>
+            <div class="template-check">최상급·결과 보장·부작용 없음 표현 금지</div>
+          </div>
+        </div>
+      </div>
+      <div class="field" style="margin-top:22px;">
+        <label for="tplOutput">AI에 그대로 넣을 생성 지시문</label>
+        <textarea id="tplOutput" class="template-output" readonly placeholder="왼쪽 내용을 입력하고 생성 지시문 만들기를 누르세요."></textarea>
+      </div>
     </section>
 
     <!-- ============ SEARCH TREND PANEL ============ -->
@@ -1273,6 +1332,7 @@
     resize: document.getElementById("panel-resize"),
     diagram: document.getElementById("panel-diagram"),
     library: document.getElementById("panel-library")
+    ,template: document.getElementById("panel-template")
   };
   var onTabShow = {}; // panel key -> callback, registered by the tools below
   tabs.forEach(function(t){
@@ -1373,6 +1433,22 @@
     }).join("\n").trim();
   }
 
+  function faceReaderTemplateScore(d){
+    var body = String(d.body || "");
+    var first = body.split(/\n\s*\n/)[0] || "";
+    var checks = [
+      first.length >= 80 && first.length <= 650,
+      /##\s+/.test(body),
+      /자주\s*묻는\s*질문|FAQ/i.test(body),
+      (body.match(/^Q\s*[.．:]/gm) || []).length >= 3,
+      /부작용|합병증|위험/.test(body),
+      /개인차|직접\s*(진찰|상담)|의료진과/.test(body),
+      (d.sources || []).length >= 2,
+      (d.images || []).length >= 3
+    ];
+    return checks.filter(Boolean).length;
+  }
+
   async function copyText(text, btn, okLabel){
     var original = btn.textContent;
     try{
@@ -1436,6 +1512,8 @@
     var badges = ['<span class="badge">' + escapeHtml(t.area || "") + "</span>"];
     if(t.chars) badges.push('<span class="badge meta">' + t.chars + "자 초안 준비됨</span>");
     if(t.paperCount) badges.push('<span class="badge meta">논문 ' + t.paperCount + "편</span>");
+    var tplScore = faceReaderTemplateScore(t);
+    badges.push('<span class="badge ' + (tplScore >= 7 ? "good" : "meta") + '">템플릿 ' + tplScore + '/8</span>');
     var ad = t.adCheck || {count:0};
     badges.push(ad.count
       ? '<span class="badge warn">의료광고 확인 ' + ad.count + "건</span>"
@@ -1754,6 +1832,68 @@
   })();
   onTabShow.inbox = function(){ if(!inboxLoaded) loadInbox(); };
   loadInbox();
+
+  /* ================================================================
+     FACE READER CONTENT TEMPLATE
+     The canonical prompt lives in FACE_READER_PROMPT.md so the same
+     instructions can be consumed by the Mac draft pipeline.
+     ================================================================ */
+  var tplTopic = document.getElementById("tplTopic");
+  var tplKeyword = document.getElementById("tplKeyword");
+  var tplQuestion = document.getElementById("tplQuestion");
+  var tplIntent = document.getElementById("tplIntent");
+  var tplInclude = document.getElementById("tplInclude");
+  var tplEvidence = document.getElementById("tplEvidence");
+  var tplLinks = document.getElementById("tplLinks");
+  var tplOutput = document.getElementById("tplOutput");
+  var tplBuildBtn = document.getElementById("tplBuildBtn");
+  var tplCopyBtn = document.getElementById("tplCopyBtn");
+  var tplStatus = document.getElementById("tplStatus");
+  var tplPromptSource = "";
+
+  async function loadTemplatePrompt(){
+    if(tplPromptSource) return tplPromptSource;
+    var res = await fetch("FACE_READER_PROMPT.md", { cache: "no-store" });
+    if(!res.ok) throw new Error("template http " + res.status);
+    tplPromptSource = await res.text();
+    return tplPromptSource;
+  }
+
+  function fillTemplateVariables(source){
+    var values = {
+      topic: tplTopic.value.trim(),
+      primaryKeyword: tplKeyword.value.trim(),
+      secondaryKeywords: "",
+      searchIntent: tplIntent.value,
+      audience: "성형수술을 고민하며 정확한 판단 기준을 찾는 일반 독자",
+      clinicalQuestion: tplQuestion.value.trim(),
+      mustInclude: tplInclude.value.trim() || "입력 없음 — 근거 없이 추가하지 말 것",
+      mustAvoid: "과장, 결과 보장, 병원·지역·실명 노출, 근거 없는 우위 주장",
+      evidence: tplEvidence.value.trim() || "입력 없음 — 문헌 정보를 만들어내지 말고 추가 검증 필요로 표시할 것",
+      relatedPosts: tplLinks.value.trim() || "입력 없음 — 내부 링크를 만들지 말 것"
+    };
+    return source.replace(/\{\{(\w+)\}\}/g, function(_, key){ return values[key] == null ? "" : values[key]; });
+  }
+
+  tplBuildBtn.addEventListener("click", async function(){
+    if(!tplTopic.value.trim() || !tplKeyword.value.trim() || !tplQuestion.value.trim()){
+      tplStatus.textContent = "글 주제, 핵심 검색어, 환자의 핵심 질문을 입력해 주세요.";
+      return;
+    }
+    tplBuildBtn.disabled = true;
+    tplStatus.textContent = "템플릿을 불러오는 중…";
+    try{
+      tplOutput.value = fillTemplateVariables(await loadTemplatePrompt());
+      tplCopyBtn.disabled = false;
+      tplStatus.textContent = "생성 지시문을 만들었습니다. Claude Code·Codex·다른 생성기에 그대로 넣을 수 있습니다.";
+    } catch(err){
+      tplStatus.textContent = "템플릿 파일을 불러오지 못했습니다. 페이지를 새로고침해 주세요.";
+    }
+    tplBuildBtn.disabled = false;
+  });
+  tplCopyBtn.addEventListener("click", function(){
+    copyText(tplOutput.value, tplCopyBtn, "전체 복사됨");
+  });
 
   /* ================================================================
      SEARCH TREND

@@ -1,0 +1,54 @@
+{
+  "id": "face-reader-medical-content-v1",
+  "name": "Face Reader 의료 콘텐츠 작성 템플릿",
+  "version": "1.0.0",
+  "language": "ko-KR",
+  "purpose": ["Naver SEO", "AEO", "GEO", "patient education"],
+  "author": {
+    "displayName": "Face Reader · 성형외과 전문의",
+    "specialties": "눈성형 · 코성형 · 안면거상",
+    "disclosure": "본 글은 성형외과 전문의가 의학 문헌과 임상 경험을 바탕으로 직접 작성했습니다. 일부 이미지는 해부학적 이해를 돕기 위해 AI를 활용하여 제작한 교육용 이미지입니다."
+  },
+  "requiredInputs": [
+    "topic",
+    "primaryKeyword",
+    "searchIntent",
+    "audience",
+    "clinicalQuestion"
+  ],
+  "optionalInputs": [
+    "secondaryKeywords",
+    "relatedPosts",
+    "mustInclude",
+    "mustAvoid"
+  ],
+  "titleRule": "핵심 검색어를 정확히 한 번 포함하고 환자가 실제로 묻는 질문 또는 판단 문제로 작성한다. 과장, 지역명, 병원명, 최상급 표현은 쓰지 않는다.",
+  "sections": [
+    {"id": "direct_answer", "heading": null, "rule": "첫 3~5문장에 질문의 직접 답, 핵심 키워드, 판단 기준을 제시한다."},
+    {"id": "definition", "heading": "무엇인가요?", "rule": "용어와 해부학을 환자가 이해할 수 있게 설명한다."},
+    {"id": "mechanism", "heading": "왜 이런 차이가 생기나요?", "rule": "원인·기전과 임상적 의미를 연결한다."},
+    {"id": "candidates", "heading": "어떤 분에게 적합한가요?", "rule": "적응증과 환자 선택 기준을 구체적으로 제시한다."},
+    {"id": "procedure", "heading": "수술은 어떻게 진행되나요?", "rule": "술식의 원리와 선택지를 설명하되 개인별 진찰의 필요성을 밝힌다."},
+    {"id": "limitations", "heading": "한계와 주의할 점은 무엇인가요?", "rule": "비적응증, 대안, 결과의 한계를 함께 제시한다."},
+    {"id": "risks", "heading": "가능한 부작용은 무엇인가요?", "rule": "흔한 문제와 중대한 합병증을 균형 있게 설명한다."},
+    {"id": "faq", "heading": "자주 묻는 질문", "rule": "검색 의도와 연결된 실제 질문 3개에 각각 독립적으로 답한다."},
+    {"id": "summary", "heading": "정리하면 무엇을 기억하면 될까요?", "rule": "새로운 주장 없이 핵심 판단 기준 3가지만 정리한다."},
+    {"id": "references", "heading": "참고 문헌", "rule": "교과서·가이드라인·동료평가 논문 2~5개를 실제 확인 후 기재한다."},
+    {"id": "author", "heading": null, "rule": "고정 저자·전문분야·AI 이미지 고지 문구를 넣는다."}
+  ],
+  "imageRule": "이미지마다 검색어를 억지로 반복하지 않는 1~2문장 캡션을 작성하고, 그림이 전달하는 해부학적·임상적 의미를 본문 텍스트에도 포함한다.",
+  "linkRule": "관련 글 2~4개를 문맥 안에서 자연스럽게 연결한다. 존재하지 않는 URL은 만들지 않는다.",
+  "evidenceRule": "수치, 위험도, 기간, 비교 우위, 권고에는 출처를 연결한다. 확인하지 못한 DOI·PMID·논문은 생성하지 않는다.",
+  "medicalSafetyRule": "온라인 정보만으로 진단하거나 결과를 보장하지 않는다. 개인차와 대면 진찰 필요성을 필요한 위치에 한 번 명시한다.",
+  "style": {
+    "tone": "차분하고 전문적이며 환자가 이해하기 쉬운 한국어",
+    "targetLength": "2500~4500자",
+    "paragraphLength": "2~4문장",
+    "keywordPolicy": "자연스럽게 사용하고 반복 횟수 목표를 두지 않는다.",
+    "prohibited": ["최고", "유일", "완벽", "무조건", "부작용 없음", "결과 보장", "근거 없는 비교 우위"]
+  },
+  "output": {
+    "format": "json",
+    "fields": ["titles", "body", "tags", "images", "sources", "relatedLinks", "templateCheck"]
+  }
+}

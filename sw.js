@@ -1,6 +1,6 @@
 /* Offline cache for the toolkit. Bump CACHE when index.html changes. */
-const CACHE = "blog-workbench-v29";
-const ASSETS = ["./", "./index.html", "./manifest.webmanifest", "./icon-192.png", "./icon-512.png"];
+const CACHE = "blog-workbench-v30";
+const ASSETS = ["./", "./index.html", "./manifest.webmanifest", "./icon-192.png", "./icon-512.png", "./face-reader-content-template.json", "./FACE_READER_PROMPT.md"];
 
 self.addEventListener("install", (e) => {
   e.waitUntil(caches.open(CACHE).then((c) => c.addAll(ASSETS)).then(() => self.skipWaiting()));
