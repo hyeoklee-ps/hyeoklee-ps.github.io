@@ -1,7 +1,7 @@
 {
   "id": "face-reader-medical-content-v1",
   "name": "Face Reader 의료 콘텐츠 작성 템플릿",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "language": "ko-KR",
   "purpose": ["Naver SEO", "AEO", "GEO", "patient education"],
   "author": {
@@ -22,6 +22,11 @@
     "mustInclude",
     "mustAvoid"
   ],
+  "defaultReferences": {
+    "눈": "조인창. 눈꺼풀 수술술기. 3판. 군자출판사; 2025.",
+    "코": "서만군. 아시아인 코성형술 아틀라스. 1판. 군자출판사; 2025.",
+    "리프팅": "Jacono AA. The Art and Science of Extended Deep Plane Facelifting and Complementary Facial Rejuvenation Procedures. Quality Medical Publishing; 2021."
+  },
   "titleRule": "핵심 검색어를 정확히 한 번 포함하고 환자가 실제로 묻는 질문 또는 판단 문제로 작성한다. 과장, 지역명, 병원명, 최상급 표현은 쓰지 않는다.",
   "sections": [
     {"id": "direct_answer", "heading": null, "rule": "첫 3~5문장에 질문의 직접 답, 핵심 키워드, 판단 기준을 제시한다."},
@@ -33,7 +38,7 @@
     {"id": "risks", "heading": "가능한 부작용은 무엇인가요?", "rule": "흔한 문제와 중대한 합병증을 균형 있게 설명한다."},
     {"id": "faq", "heading": "자주 묻는 질문", "rule": "검색 의도와 연결된 실제 질문 3개에 각각 독립적으로 답한다."},
     {"id": "summary", "heading": "정리하면 무엇을 기억하면 될까요?", "rule": "새로운 주장 없이 핵심 판단 기준 3가지만 정리한다."},
-    {"id": "references", "heading": "참고 문헌", "rule": "교과서·가이드라인·동료평가 논문 2~5개를 실제 확인 후 기재한다."},
+    {"id": "references", "heading": "참고 문헌", "rule": "교과서·가이드라인·동료평가 논문 2~5개를 우선하고, 분야별 기본 교과서를 포함한다. 교과서를 확인하지 않은 세부 주장에 직접 근거인 것처럼 연결하지 않는다."},
     {"id": "author", "heading": null, "rule": "고정 저자·전문분야·AI 이미지 고지 문구를 넣는다."}
   ],
   "imageRule": "이미지마다 검색어를 억지로 반복하지 않는 1~2문장 캡션을 작성하고, 그림이 전달하는 해부학적·임상적 의미를 본문 텍스트에도 포함한다.",
