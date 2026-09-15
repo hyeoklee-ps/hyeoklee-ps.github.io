@@ -305,6 +305,27 @@
   .btn:disabled{ opacity:.45; cursor:not-allowed; background:var(--ink-faint); border-color:var(--ink-faint); }
   .btn-row{ display:flex; gap:10px; margin-top:14px; flex-wrap:wrap; }
 
+  /* 표 만들기. 칸은 눌러서 고칠 수 있고(붙여 넣기 전에 숫자 하나 고치려고 다시
+     만드는 건 낭비다), 복사는 화면이 아니라 이 칸들에서 바로 읽어 간다. */
+  .tbl-title{ font-weight:700; font-size:15px; margin:18px 0 8px; }
+  .tbl-wrap{ overflow-x:auto; border:1px solid var(--line); border-radius:var(--radius); background:var(--paper-raised); }
+  .tbl-grid{ border-collapse:collapse; width:100%; font-size:13px; }
+  .tbl-grid th, .tbl-grid td{
+    border:1px solid var(--line); padding:8px 10px; text-align:left;
+    min-width:84px; vertical-align:top; line-height:1.5;
+  }
+  .tbl-grid th{ background:var(--paper-sunken); font-weight:600; }
+  .tbl-grid [contenteditable]:focus{ outline:2px solid var(--accent); outline-offset:-2px; }
+  .tbl-grid td.copied, .tbl-grid th.copied{ background:var(--good-soft); }
+  .tbl-caption{ font-size:12px; color:var(--ink-faint); margin:8px 0 0; }
+  .tbl-warn{
+    margin-top:12px; padding:10px 12px; border-radius:8px;
+    background:var(--warn-soft); color:var(--ink); font-size:12.5px; line-height:1.6;
+  }
+  .tbl-how{ margin-top:22px; font-size:12.5px; color:var(--ink-soft); }
+  .tbl-how summary{ cursor:pointer; font-weight:600; color:var(--accent); }
+  .tbl-how ol{ margin:10px 0 0; padding-left:20px; line-height:1.8; }
+
   .status-line{
     font-family:"IBM Plex Mono",monospace; font-size:12px; color:var(--ink-soft);
     margin-top:10px; min-height:16px;
@@ -732,6 +753,7 @@
 
   <nav class="tabs" role="tablist">
     <button class="tab active" data-tab="inbox" role="tab" aria-selected="true">추천 주제</button>
+    <button class="tab" data-tab="table" role="tab" aria-selected="false">표 만들기</button>
     <button class="tab" data-tab="wm" role="tab" aria-selected="false">워터마크</button>
     <button class="tab" data-tab="trend" role="tab" aria-selected="false">검색어 트렌드</button>
   </nav>
@@ -755,6 +777,50 @@
       </div>
       <div id="inboxList"></div>
       <p class="inbox-note" id="inboxNote"></p>
+    </section>
+
+    <!-- ============ TABLE BUILDER ============ -->
+    <section id="panel-table" class="panel">
+      <div class="inbox-head">
+        <div>
+          <h2 class="section-title" style="margin:0;">표 만들기</h2>
+          <p class="hint" style="margin:4px 0 0;">칸 내용을 미리 만들어 둡니다. 표 자체는 스마트에디터로 만드셔야 네이티브 표로 노출됩니다.</p>
+        </div>
+      </div>
+
+      <div class="field">
+        <label for="tblTopic">주제</label>
+        <input type="text" id="tblTopic" placeholder="예) 남자 쌍꺼풀" />
+      </div>
+      <div class="field">
+        <label for="tblKind">표 종류</label>
+        <select id="tblKind">
+          <option>회복 경과</option>
+          <option>수술 방법 비교</option>
+          <option>대상 / 비대상</option>
+          <option>장단점</option>
+          <option>자유</option>
+        </select>
+      </div>
+      <div class="field">
+        <label for="tblNote">추가 설명 <span class="count">(선택)</span></label>
+        <input type="text" id="tblNote" placeholder="예) 절개와 매몰을 나눠서" />
+      </div>
+      <div class="btn-row">
+        <button type="button" class="btn" id="tblRunBtn">표 만들기</button>
+      </div>
+      <p class="hint" id="tblStatus" style="margin-top:10px;"></p>
+
+      <div id="tblResult"></div>
+
+      <details class="tbl-how">
+        <summary>네이버에 붙여 넣는 법</summary>
+        <ol>
+          <li>네이버 블로그 앱 대신 <b>모바일 브라우저</b>에서 글을 열고 <b>PC 버전으로 보기</b>를 켭니다.</li>
+          <li>스마트에디터 툴바의 <b>표</b>로 필요한 크기의 빈 표를 넣습니다.</li>
+          <li>여기서 <b>표 전체 복사</b>를 누르고, 표의 <b>첫 칸</b>에 붙여 넣습니다. 칸마다 흩어지지 않으면 칸을 하나씩 눌러 복사하세요.</li>
+        </ol>
+      </details>
     </section>
 
     <!-- ============ FACE READER CONTENT TEMPLATE ============ -->
@@ -1327,6 +1393,7 @@
     diagram: document.getElementById("panel-diagram"),
     library: document.getElementById("panel-library")
     ,template: document.getElementById("panel-template")
+    ,table: document.getElementById("panel-table")
   };
   var onTabShow = {}; // panel key -> callback, registered by the tools below
   tabs.forEach(function(t){
@@ -4283,6 +4350,127 @@
     }
     referencesLoaded = true;
   }
+
+  /* ================================================================
+     TABLE BUILDER
+
+     네이버 블로그 모바일 편집기에는 표 기능이 없다. "PC 버전으로 보기"로
+     열면 스마트에디터의 표 버튼이 나오므로, 표는 사람이 거기서 만든다 —
+     그래야 네이티브 표 컴포넌트로 들어가고 정상적으로 노출된다. 여기서
+     하는 일은 그 빈 표에 넣을 칸 내용을 미리 만들어 두는 것까지다.
+
+     복사는 화면에 그려진 칸에서 바로 읽는다. 칸이 contenteditable 이라
+     붙여 넣기 전에 숫자 하나를 고쳐도 복사본에 그대로 반영된다.
+     ================================================================ */
+  var tblTopic = document.getElementById("tblTopic");
+  var tblKind = document.getElementById("tblKind");
+  var tblNote = document.getElementById("tblNote");
+  var tblRunBtn = document.getElementById("tblRunBtn");
+  var tblStatus = document.getElementById("tblStatus");
+  var tblResult = document.getElementById("tblResult");
+
+  function tblCells(){
+    var rows = [];
+    tblResult.querySelectorAll(".tbl-grid tr").forEach(function(tr){
+      var cells = [];
+      tr.querySelectorAll("th, td").forEach(function(c){ cells.push(c.textContent.trim()); });
+      if(cells.length) rows.push(cells);
+    });
+    return rows;
+  }
+
+  /* 스마트에디터의 표는 탭으로 다음 칸, 줄바꿈으로 다음 행을 인식한다.
+     칸 안에 탭이나 줄바꿈이 들어가면 그 지점부터 전부 밀리므로 지운다. */
+  function tblToTsv(){
+    return tblCells().map(function(row){
+      return row.map(function(c){ return c.replace(/[\t\r\n]+/g, " "); }).join("\t");
+    }).join("\n");
+  }
+
+  function tblFlash(el){
+    el.classList.add("copied");
+    setTimeout(function(){ el.classList.remove("copied"); }, 700);
+  }
+
+  function tblRender(table, warnings){
+    var html = "";
+    if(table.title){
+      html += '<p class="tbl-title">' + escapeHtml(table.title) + "</p>";
+    }
+    html += '<div class="tbl-wrap"><table class="tbl-grid"><thead><tr>' +
+      table.headers.map(function(h){
+        return '<th contenteditable="true">' + escapeHtml(h) + "</th>";
+      }).join("") +
+      "</tr></thead><tbody>" +
+      table.rows.map(function(r){
+        return "<tr>" + r.map(function(c){
+          return '<td contenteditable="true">' + escapeHtml(c) + "</td>";
+        }).join("") + "</tr>";
+      }).join("") +
+      "</tbody></table></div>";
+
+    if(table.caption){
+      html += '<p class="tbl-caption">' + escapeHtml(table.caption) + "</p>";
+    }
+    if((warnings || []).length){
+      html += '<div class="tbl-warn"><b>발행 전 확인 — 의료법 제56조</b><br>' +
+        warnings.map(escapeHtml).join("<br>") +
+        "<br><span style='color:var(--ink-faint)'>기계적 자가점검입니다. 칸을 눌러 직접 고칠 수 있습니다.</span></div>";
+    }
+    html += '<div class="btn-row">' +
+      '<button type="button" class="btn" data-tbl="tsv">표 전체 복사</button>' +
+      (table.title ? '<button type="button" class="btn ghost" data-tbl="title">제목 복사</button>' : "") +
+      (table.caption ? '<button type="button" class="btn ghost" data-tbl="caption">설명 복사</button>' : "") +
+      "</div>" +
+      '<p class="hint" style="margin-top:8px;">칸을 누르면 그 칸만 복사됩니다. 길게 눌러 내용을 고칠 수도 있습니다.</p>';
+
+    tblResult.innerHTML = html;
+    tblResult._caption = table.caption || "";
+    tblResult._title = table.title || "";
+  }
+
+  tblResult.addEventListener("click", function(e){
+    var btn = e.target.closest("[data-tbl]");
+    if(btn){
+      var kind = btn.dataset.tbl;
+      var text = kind === "tsv" ? tblToTsv()
+        : kind === "title" ? tblResult._title
+        : tblResult._caption;
+      copyText(text, btn, "복사됨");
+      return;
+    }
+    // 칸을 눌렀을 때. 고치는 중(포커스가 이미 그 칸에 있음)이면 복사하지 않는다.
+    var cell = e.target.closest(".tbl-grid th, .tbl-grid td");
+    if(cell && document.activeElement !== cell){
+      var value = cell.textContent.trim();
+      if(value && navigator.clipboard && navigator.clipboard.writeText){
+        navigator.clipboard.writeText(value).then(function(){ tblFlash(cell); }).catch(function(){});
+      }
+    }
+  });
+
+  tblRunBtn.addEventListener("click", async function(){
+    var topic = tblTopic.value.trim();
+    if(!topic){
+      tblStatus.textContent = "주제를 입력해 주세요.";
+      tblTopic.focus();
+      return;
+    }
+    tblRunBtn.disabled = true;
+    tblStatus.textContent = "표를 만드는 중…";
+    tblResult.innerHTML = "";
+    try{
+      var data = await dgFetch("/api/table", {
+        method: "POST",
+        body: JSON.stringify({ topic: topic, kind: tblKind.value, note: tblNote.value.trim() }),
+      });
+      tblRender(data.table, data.warnings);
+      tblStatus.textContent = "";
+    } catch(err){
+      tblStatus.textContent = err.message || "표를 만들지 못했습니다.";
+    }
+    tblRunBtn.disabled = false;
+  });
 
 })();
 </script>
