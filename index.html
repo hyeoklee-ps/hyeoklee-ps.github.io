@@ -1404,11 +1404,15 @@
      두 번 해야 하고, 실제로 한쪽을 빠뜨린 채 발행되기 쉽다. 화면에 보이는 것과
      복사되는 것이 어긋나면 안 되므로, 목록 요소가 아니라 본문과 같은 평문 줄로
      이어 붙인다 (.draft-body 는 pre-wrap 이다). */
+  var FACE_READER_SIGNATURE = "작성자 | 성형외과 전문의 facereader\n전문분야 | 눈성형•코성형•안면거상\n\n본 글은 성형외과 전문의가 의학 문헌과 실제 임상 경험을 바탕으로 직접 작성합니다.\n내용의 이해를 돕기 위해 일부 삽화 및 설명 이미지는 AI를 활용하여 제작하였습니다.\n궁금하신 점이나 추가로 알고 싶은 내용이 있다면 댓글로 남겨주세요. 확인 후 가능한 범위에서 답변드리겠습니다.";
   function draftFullText(body, sources){
-    var text = String(body || "").replace(/\s+$/, "");
+    var text = String(body || "").trim();
+    // Only remove the known trailing author block; preserve unrelated body text.
+    text = text.replace(/(?:^|\n)작성자\s*\|\s*(?:Face Reader · 성형외과 전문의|성형외과 전문의 facereader)\s*\n전문분야\s*\|[^\n]*(?:\n\s*\n(?:본 글은[^\n]*)(?:\n내용의 이해를[^\n]*)?(?:\n궁금하신 점이나[^\n]*)?)?\s*$/, "").trim();
     var list = sources || [];
-    if(list.length) text += "\n\n[참고 문헌]\n" + list.join("\n");
-    return text;
+    if(list.length && !/(?:^|\n)\[참고 문헌\]/.test(text))
+      text += "\n\n[참고 문헌]\n" + list.join("\n");
+    return text + "\n\n" + FACE_READER_SIGNATURE;
   }
   function draftBodyHtml(body, sources){
     return draftFullText(body, sources).split("\n").map(function(line){
