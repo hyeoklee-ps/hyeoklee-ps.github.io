@@ -1497,9 +1497,9 @@
       "</div>" +
       '<details class="tbl-how"><summary>네이버에 붙여 넣는 법</summary><ol>' +
         "<li>네이버 블로그 앱 대신 <b>모바일 브라우저</b>에서 글을 열고 <b>PC 버전으로 보기</b>를 켭니다.</li>" +
-        "<li><b>표 복사</b>를 누르고, 빈 표를 만들지 말고 본문의 <b>[표] 자리에 그대로 붙여 넣습니다</b>.</li>" +
-        "<li>칸 없이 줄글로 들어가면 스마트에디터가 표 붙여넣기를 받지 않은 것입니다. 툴바의 <b>표</b>로 " +
-          width + "칸 × " + (bodyRows.length + 1) + "줄짜리 빈 표를 만든 뒤 <b>칸을 하나씩 눌러</b> 복사해 채우세요.</li>" +
+        "<li><b>표 복사</b>를 누르고, 빈 표를 만들지 말고 <b>본문에 그대로 붙여 넣습니다</b> — 표째로 들어갑니다.</li>" +
+        "<li>그래도 한 칸에 전부 들어가면, 툴바의 <b>표</b>로 " + width + "칸 × " + (bodyRows.length + 1) +
+          "줄짜리 빈 표를 만든 뒤 <b>칸을 하나씩 눌러</b> 복사해 채우세요.</li>" +
       "</ol></details></div>";
   }
 
@@ -1513,6 +1513,10 @@
       return Array.prototype.map.call(tr.querySelectorAll("th, td"), tblCellText).join("\t");
     }).join("\n");
   }
+  /* 스마트에디터는 붙여 넣을 때 text/html 을 먼저 본다. TSV(text/plain)만
+     올리면 탭을 칸 구분으로 읽지 않고 1행1열에 전부 집어넣는다 — 실제로
+     그렇게 됐다. 그래서 같은 표를 html 과 plain 두 벌로 함께 올린다:
+     표를 아는 편집기는 칸을 나눠 받고, 아닌 곳은 TSV 로 받는다. */
   function tblToHtml(tableEl){
     var rows = Array.prototype.map.call(tableEl.querySelectorAll("tr"), function(tr){
       return "<tr>" + Array.prototype.map.call(tr.querySelectorAll("th, td"), function(c){
@@ -1520,56 +1524,10 @@
         return "<" + tag + ">" + escapeHtml(tblCellText(c)) + "</" + tag + ">";
       }).join("") + "</tr>";
     }).join("");
-    // 브라우저가 페이지에서 표를 복사할 때 만드는 모양을 그대로 흉내 낸다.
-    // 편집기의 붙여넣기 파서는 이 fragment 표시를 보고 조각을 찾는다.
-    return "<html><body><!--StartFragment-->" +
-      '<table border="1" style="border-collapse:collapse">' + rows + "</table>" +
-      "<!--EndFragment--></body></html>";
+    return '<table border="1" style="border-collapse:collapse">' + rows + "</table>";
   }
-
-  /* 표를 손으로 만든 HTML 로 올렸더니 스마트에디터가 표로 인정하지 않고
-     태그를 벗겨 칸 내용을 전부 이어 붙인 줄글로 만들었다. 그래서 실제로
-     페이지에 그려진 표를 "선택해서 복사"하는 길을 먼저 쓴다 — 사용자가
-     웹페이지의 표를 긁어서 복사한 것과 클립보드 내용물이 같아지므로,
-     편집기가 아는 형식일 가능성이 가장 높다.
-     화면의 표를 직접 선택하면 폰에서 선택 핸들이 뜨고 칸이 contenteditable
-     이라 편집으로 샐 수 있어서, 화면 밖에 깨끗한 사본을 만들어 선택한다.
-     (display:none 은 선택이 안 되므로 위치만 화면 밖으로 보낸다.) */
-  function copyTableViaSelection(tableEl){
-    var clone = tableEl.cloneNode(true);
-    clone.querySelectorAll("[contenteditable]").forEach(function(c){ c.removeAttribute("contenteditable"); });
-    var holder = document.createElement("div");
-    holder.setAttribute("style", "position:fixed;left:-99999px;top:0;opacity:0;pointer-events:none;");
-    holder.appendChild(clone);
-    document.body.appendChild(holder);
-
-    var sel = window.getSelection();
-    var saved = sel && sel.rangeCount ? sel.getRangeAt(0).cloneRange() : null;
-    var done = false;
-    try{
-      var range = document.createRange();
-      range.selectNode(clone);
-      sel.removeAllRanges();
-      sel.addRange(range);
-      done = document.execCommand("copy");
-    } catch(err){
-      done = false;
-    }
-    try{
-      sel.removeAllRanges();
-      if(saved) sel.addRange(saved);
-    } catch(err2){ /* 선택 복원 실패는 복사 성공과 무관하다 */ }
-    holder.remove();
-    return done;
-  }
-
   async function copyTable(tableEl, btn){
     var original = btn.textContent;
-    if(copyTableViaSelection(tableEl)){
-      btn.textContent = "표 복사됨";
-      setTimeout(function(){ btn.textContent = original; }, 1800);
-      return;
-    }
     var tsv = tblToTsv(tableEl);
     try{
       if(!window.ClipboardItem || !navigator.clipboard || !navigator.clipboard.write) throw new Error("no rich clipboard");
@@ -1594,24 +1552,10 @@
     setTimeout(function(){ el.classList.remove("copied"); }, 700);
   }
   function draftBodyPlain(body, sources){
-    var lines = draftFullText(body, sources).split("\n");
-    var out = [];
-    for(var i = 0; i < lines.length; i++){
-      /* 표는 "[표] …" 한 줄로 줄인다. 파이프 줄을 그대로 복사하면 글에 그
-         모양대로 남는다 — 실제로 그렇게 붙은 것을 확인했다. 표는 표 복사로
-         따로 넣으므로 여기서는 자리와 무엇이 들어갈지만 표시한다. */
-      if(TBL_ROW.test(lines[i]) && TBL_SEP.test(lines[i + 1] || "")){
-        var head = tblRowCells(lines[i]);
-        var j = i + 2;
-        for(; j < lines.length && TBL_ROW.test(lines[j]) && !TBL_SEP.test(lines[j]); j++);
-        out.push("[표] " + head.join(" · "));
-        i = j - 1;
-        continue;
-      }
-      var m = /^\s*#{2,3}\s+(.*)$/.exec(lines[i]);
-      out.push(m ? m[1] : lines[i]);
-    }
-    return out.join("\n").trim();
+    return draftFullText(body, sources).split("\n").map(function(line){
+      var m = /^\s*#{2,3}\s+(.*)$/.exec(line);
+      return m ? m[1] : line;
+    }).join("\n").trim();
   }
 
   function faceReaderTemplateScore(d){
