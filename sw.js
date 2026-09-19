@@ -1,5 +1,5 @@
 /* Offline cache for the toolkit. Bump CACHE when index.html changes. */
-const CACHE = "blog-workbench-v39";
+const CACHE = "blog-workbench-v40";
 const ASSETS = ["./", "./index.html", "./manifest.webmanifest", "./icon-192.png", "./icon-512.png", "./face-reader-content-template.json", "./FACE_READER_PROMPT.md"];
 
 self.addEventListener("install", (e) => {
