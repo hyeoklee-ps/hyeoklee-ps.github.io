@@ -1,94 +1,27 @@
 {
-  "updated": "2026-09-12T15:40:46.585237+09:00",
+  "updated": "2026-09-20T07:24:55.519808+09:00",
   "topicCount": 20,
   "topics": [
-    {
-      "key": "mini_lift",
-      "area": "리프팅",
-      "topic": "미니거상 · 부분거상",
-      "score": 71,
-      "reasons": [
-        "검색량 1위",
-        "전년 대비 -31% (분야 평균 -35%)",
-        "기존 글 9,846건",
-        "리뷰·메타분석 5편",
-        "최근 1년 논문 13편",
-        "연구가 활발해지는 중"
-      ],
-      "evidence": {
-        "recent1y": 13,
-        "recent3y": 22,
-        "reviews6y": 5
-      },
-      "naver": {
-        "medianTotal": 9846,
-        "trend": "하락",
-        "available": true
-      },
-      "paperCount": 15,
-      "draftedAt": "2026-09-07T09:55:46.570404+09:00",
-      "titles": [
-        "미니거상, 어느 정도 처짐까지 가능한가요?",
-        "미니거상과 안면거상, 무엇이 다른가요?",
-        "미니거상 회복, 언제부터 사람을 만날 수 있나요?"
-      ],
-      "body": "피부와 지방이 아직 어느 정도 탄력을 유지하고 있고, 팔자 주름과 볼 처짐이 이제 막 눈에 띄기 시작한 단계까지입니다. 그 선을 넘어 목까지 늘어졌다면 미니거상으로는 부족합니다. 부족한 걸 억지로 당기면 결과가 아니라 흉터만 남습니다.\n\n이 질문을 상담실에서 하루에도 몇 번씩 받습니다. \"저는 아직 젊은데 안면거상까지 해야 하나요?\" 하고 물어보시죠.\n\n## 미니거상은 얼굴의 어디를 당기는 수술인가요?\n\n당기는 건 피부가 아닙니다. 피부 밑에 있는 표재성 근건막계(SMAS)라는 얇은 막을 위로 끌어올립니다. 피부는 그 위에 얹혀 따라 올라오는 겁니다.\n\n여기서 중요한 게 하나 더 있습니다. 얼굴에는 지지인대(retaining ligament)라는 것이 있어요. 피부와 뼈, 근막을 서로 붙들어 매고 있는 끈입니다.\n\n나이가 들면 이 끈이 늘어납니다. 끈이 늘어나면 그 아래 조직이 아래로 흘러내리겠죠. 그래서 팔자 주름이 깊어지고, 턱선 위로 볼살이 접히는 소위 '심술보(jowl)'가 생깁니다.\n\n미니거상은 이 끈을 대부분 그대로 두고 봉합사로 조직을 세로로 끌어올리는 방식입니다. 대표적인 게 최소절개 두개현수거상(MACS lift)이에요. 관련 문헌에서는 인대를 보존하는 이런 방식이 더 안전하고 덜 침습적이지만, 처짐이 심한 경우에는 교정 폭이 제한된다고 설명합니다.\n\n반대로 안면거상, 특히 심층거상(deep plane)은 이 끈을 잘라 풀어 줍니다. 그래야 조직이 크게 움직이니까요.\n\n## 수술방에서 저는 무엇을 보고 미니거상을 정할까요?\n\n세 가지를 봅니다. 그리고 이 판단은 수술 당일이 아니라 상담 때 거의 끝납니다.\n\n1. 목입니다. 환자분께 고개를 살짝 젖혀 보시라고 합니다. 턱밑각(cervicomental angle)이 무뎌져 있고, 활경근(platysma)이 세로 밴드로 튀어나온다면 저는 미니거상을 권하지 않습니다. MACS 계열 수술은 목에 대한 효과가 제한적이라는 게 문헌에서도 반복해서 나오는 지적이고, 제가 수술한 환자들을 직접 본 경험상도 그렇습니다. 목이 문제인 분께 얼굴만 당겨 드리면, 얼굴은 좋아졌는데 목이 더 도드라져 보입니다.\n\n2. 피부를 잡아 봅니다. 광대 아래 볼 피부를 손가락으로 집었다가 놓습니다. 툭 하고 제자리로 돌아오면 미니거상이 잘 듣습니다. 천천히 되돌아오면 이미 늘어난 피부의 양 자체가 많다는 뜻이에요.\n\n3. 볼륨을 봅니다. 처진 게 아니라 꺼진 분들이 계십니다. 관자놀이와 눈밑이 움푹하다면 당기는 것만으로는 해결이 안 됩니다. 이런 경우 저는 지방이식을 함께 계획합니다. 거상술에 지방이식을 더하면 얼굴 볼륨 개선에 도움이 된다는 보고가 꾸준히 나와 있습니다.\n\n혹시 거울 앞에서 볼을 손으로 위로 밀어 올려 보신 적 있으신가요? 그때 좋아지는 게 처짐이고, 밀어 올려도 그대로인 게 꺼짐입니다.\n\n## 미니거상과 안면거상, 무엇이 다른가요?\n\n이해하기 쉽게 표로 정리해 보면 아래와 같습니다.\n\n| 항목 | 미니거상(부분거상) | 안면거상(전체거상) |\n|---|---|---|\n| 절개 | 귀 앞에서 시작해 귀 위쪽까지, 짧게 | 귀 앞부터 귀 뒤, 뒷머리 경계까지 |\n| 지지인대 | 대부분 보존 | 필요한 만큼 절개해 풀어 줌 |\n| 박리 범위 | 제한적 | 넓음 |\n| 목 교정 | 제한적. 별도 시술이 필요할 수 있음 | 함께 교정 가능 |\n| 수술 시간 | 짧음 | 김 |\n| 마취 | 국소·수면으로 가능한 경우 있음 | 대개 전신 또는 깊은 수면 |\n| 한계 | 심한 처짐에는 부족 | 회복 기간과 부담이 큼 |\n\n수술 시간은 그냥 편의의 문제가 아닙니다. 여러 연구를 모아 비교한 분석에서, 미용적 결과와 합병증은 두 방식이 비슷했지만 MACS 쪽 수술 시간이 뚜렷하게 짧았다고 보고됐습니다. 수술 시간이 짧다는 건 마취 부담과 회복에 직접 영향을 줍니다.\n\n즉, 미니거상의 장점은 '더 잘 당겨진다'가 아니라 '덜 부담스럽게 당긴다'입니다. 이 구분이 상담에서 제가 가장 오래 붙잡고 설명하는 지점이에요.\n\n## 저는 어느 쪽이 맞을까요?\n\n미니거상이 잘 맞는 분은 대체로 이렇습니다.\n\n- 30대 후반에서 50대 초반, 피부 탄력이 아직 남아 있는 분\n- 팔자 주름과 볼 처짐이 초기 단계인 분\n- 목선은 비교적 깨끗한 분\n- 회복 기간을 길게 낼 수 없는 분\n\n문헌에서도 중등도의 피부 늘어짐을 가진 30대 중반에서 50대 사이 환자에게 짧은 절개 거상술이 적합하다고 보고 있습니다. 제가 진료실에서 만나는 분들과 크게 다르지 않습니다.\n\n반대로 이런 분께는 미니거상을 권하지 않습니다.\n\n- 목주름과 이중턱이 주된 불만인 분\n- 피부를 집었다 놓았을 때 회복이 눈에 띄게 느린 분\n- 흡연을 끊을 계획이 없는 분. 피부 혈류 문제로 상처가 늦게 아뭅니다\n- 조절되지 않는 고혈압, 출혈 경향, 항응고제 복용 중인 분\n- \"10년 전 얼굴로\" 같은 기대를 갖고 오신 분\n\n여기서 구분이 필요합니다. 늘어진 조직을 제자리로 올리는 것, 흐려진 턱선을 다시 그리는 것. 여기까지는 수술로 만들어 드릴 수 있는 영역입니다. 반면 타고난 광대뼈 위치, 얼굴 폭, 피부 자체의 두께와 질감은 거상술로 바뀌지 않습니다.\n\n## 회복은 어떤 순서로 지나가나요?\n\n시간 순서대로 말씀드리겠습니다. 다만 이건 평균이고, 개인차가 분명히 있습니다.\n\n72시간까지가 가장 붓는 시기입니다. 머리를 높이고 주무시고, 냉찜질을 꾸준히 하셔야 합니다. 저는 이 시기 압박에 신경 쓰라고 교육하고 있고, 다만 너무 세게 조이는 건 권하지 않습니다.\n\n1주 전후로 실밥을 뽑습니다. 이때부터 붓기가 눈에 띄게 빠집니다.\n\n2주쯤이면 가벼운 화장으로 가릴 수 있는 정도가 되는 분이 많습니다. 다만 귀 앞 절개선은 아직 붉습니다.\n\n4주가 지나면 가벼운 운동을 시작해도 되는지 진료를 통해 판단합니다. 무거운 것을 드는 운동은 더 기다립니다.\n\n3개월에서 6개월. 조직이 자리를 잡고 흉터 색이 옅어집니다. 최종 모양은 이때 봅니다.\n\n## 상담에서는 무엇을 물어봐야 할까요?\n\n세 가지는 꼭 확인하고 오세요.\n\n\"제 목 상태로 얼굴만 당겨도 균형이 맞나요?\" 이 질문에 구체적으로 답을 못 듣는다면 다시 생각해 보셔야 합니다.\n\n\"절개선이 정확히 어디서 시작해서 어디서 끝나나요?\" 관자놀이 부위 절개선을 어떻게 두느냐에 따라 구레나룻과 헤어라인이 밀리는 문제가 생길 수 있습니다. 헤어라인을 보존하는 절개법으로 400명을 분석한 연구에서도 이 부분이 만족도의 핵심으로 다뤄졌습니다.\n\n\"저는 지방이식이나 목 시술을 같이 해야 하나요?\"\n\n부작용도 정직하게 말씀드리겠습니다. 혈종, 감염, 상처 회복 지연, 흉터가 넓어지거나 두꺼워지는 비후성 흉터, 좌우 비대칭, 절개 부위 주변의 일시적인 감각 저하가 생길 수 있습니다. 드물지만 안면신경 손상 가능성도 존재합니다. 앞서 말씀드린 400명 연구에서도 흉터 확대와 상처 치유 지연, 비후성 흉터가 일정 비율에서 관찰됐고, 다행히 모두 장기적 후유증 없이 회복됐다고 보고됐습니다. 가능성이 낮다고 해서 없는 일은 아닙니다.\n\n## 자주 묻는 질문\n\nQ. 미니거상은 얼마나 유지되나요?\n정확한 햇수를 숫자로 약속드리기는 어렵습니다. 노화는 수술 뒤에도 계속 진행되니까요. 다만 방향은 말씀드릴 수 있습니다. 유지 기간을 좌우하는 건 수술 이름이 아니라 수술 시점의 피부 탄력, 나이, 체중 변화, 자외선 노출입니다. 탄력이 남아 있을 때 하신 분이 더 오래갑니다. 체중이 크게 늘거나 빠지면 그만큼 빨리 흐트러집니다.\n\nQ. 회복이 짧다던데 실제로 며칠이면 되나요?\n붓기와 멍이 남는 초기 2주는 계획에 넣으셔야 합니다. 앞서 시간 순서로 말씀드린 대로, 72시간이 고비이고 1주 전후 실밥, 2주쯤 화장으로 가릴 수 있는 정도가 일반적인 흐름입니다. 사무직 복귀 시점은 대개 이 무렵부터 상의합니다. 사람을 많이 만나는 일이라면 3주 정도 여유를 두시라고 말씀드립니다. 물론 붓기가 빠지는 속도는 사람마다 다릅니다.\n\nQ. 나중에 안면거상을 다시 해야 하나요?\n꼭 그렇지는 않지만, 가능성은 열어 두셔야 합니다. 미니거상은 지지인대를 대부분 보존하기 때문에 나중에 더 넓은 범위의 거상술을 하는 데 큰 걸림돌이 되지 않습니다. 다만 처음부터 처짐이 심했던 분이 미니거상으로 버티려 하면, 몇 년 안에 다시 고민하시게 됩니다. 그래서 저는 애매한 경계에 있는 분께는 지금 무엇이 부족한지를 먼저 말씀드리고 선택하시게 합니다.\n\n지금 처짐이 어느 단계인지, 목이 함께 문제인지, 꺼진 볼륨이 있는지. 이 세 가지가 갈리면 답도 갈립니다. 미니거상은 작게 하는 안면거상이 아니라 적용 범위가 다른 수술입니다. 결과에는 개인차가 있으니, 거울로 혼자 판단하지 마시고 직접 진찰받으신 뒤 담당 의료진과 충분히 상의해 결정하시기 바랍니다.",
-      "tags": [
-        "#미니거상",
-        "#부분거상",
-        "#안면거상",
-        "#얼굴리프팅",
-        "#팔자주름",
-        "#턱선",
-        "#심술보",
-        "#피부처짐",
-        "#안티에이징",
-        "#성형외과"
-      ],
-      "images": [
-        "글 도입부 | 얼굴 지지인대(retaining ligament)의 위치를 표시한 해부 모식도",
-        "'수술방에서 저는 무엇을 보고' 단락 | 볼 피부를 손가락으로 집었다 놓는 탄력 확인 동작 일러스트",
-        "비교 표 아래 | 미니거상과 안면거상의 절개선 범위를 얼굴 옆모습에 겹쳐 표시한 도해",
-        "'회복은 어떤 순서로' 단락 | 72시간·1주·2주·4주·3개월로 나눈 회복 타임라인 그래픽",
-        "상담 단락 | 상담 때 물어볼 질문 3가지를 정리한 체크리스트 카드"
-      ],
-      "sources": [
-        "Jacono AA. The Art and Science of Extended Deep Plane Facelifting and Complementary Facial Rejuvenation Procedures. Quality Medical Publishing; 2021.",
-        "Pandkhahi, Alireza, et al. \"Comparison of Deep SMAS Lift and MACS in Facelift: A Meta-Analysis.\" Medicina (Kaunas) 62.1 (2026).",
-        "Tarallo, Mauro, et al. \"Retaining Ligaments of the Face: Still Important in Modern Approach in Mid-Face and Neck Lift?.\" J Pers Med 15.12 (2025).",
-        "Hijkoop, Lotte F, et al. \"The minimal access cranial suspension (MACS) lift: A systematic review of literature 18 years after its introduction.\" J Plast Reconstr Aesthet Surg 75.3 (2022): 1187-1196.",
-        "Molina-Burbano, Felipe, et al. \"Fat Grafting to Improve Results of Facelift: Systematic Review of Safety and Effectiveness of Current Treatment Paradigms.\" Aesthet Surg J 41.1 (2021): 1-12.",
-        "Okumuş, Ayhan. \"The Okumus Incision: A Hairline-Preserving Temporozygomatic Approach for Facelift Surgery.\" Aesthetic Plast Surg (2026).",
-        "Kaderi, Sina, et al. \"Temporofacial (TemFa) Lift.\" Aesthetic Plast Surg (2026).",
-        "Morrissette, Margareta, et al. \"In-Office Surgical Procedures for Prejuvenation.\" Facial Plast Surg (2026)."
-      ],
-      "chars": 4284,
-      "adCheck": {
-        "ok": true,
-        "count": 0,
-        "hits": []
-      }
-    },
     {
       "key": "revision_nose",
       "area": "코",
       "topic": "코 재수술 · 구축",
-      "score": 68,
+      "score": 75,
       "reasons": [
-        "검색량 2위",
-        "전년 대비 -35% (분야 평균 -35%)",
-        "기존 글 45,912건",
-        "리뷰·메타분석 355편",
+        "검색량 1위",
+        "전년 대비 -35% (분야 평균 -37%)",
+        "기존 글 46,138건",
+        "리뷰·메타분석 356편",
         "최근 1년 논문 474편",
         "연구가 활발해지는 중"
       ],
       "evidence": {
         "recent1y": 474,
-        "recent3y": 1075,
-        "reviews6y": 355
+        "recent3y": 1078,
+        "reviews6y": 356
       },
       "naver": {
-        "medianTotal": 45912,
+        "medianTotal": 46138,
         "trend": "하락",
         "available": true
       },
@@ -128,21 +61,113 @@
         "Saad, Noah, and Christian L Stallworth. \"Liquid Rhinoplasty.\" Facial Plast Surg Clin North Am 30.3 (2022): 357-364."
       ],
       "chars": 4389,
+      "relatedLinks": [],
+      "templateCheck": {},
       "adCheck": {
         "ok": true,
         "count": 0,
         "hits": []
-      }
+      },
+      "audit": {
+        "score": 95,
+        "ok": true,
+        "checks": {
+          "questionTitle": true,
+          "answerFirst": true,
+          "questionHeadings": true,
+          "readableParagraphs": true,
+          "sourceDepth": true,
+          "imagePlan": true,
+          "internalLinks": false
+        },
+        "metrics": {
+          "questionHeadingCount": 10,
+          "paragraphCount": 46,
+          "medianParagraphChars": 68,
+          "sourceCount": 5,
+          "imageCount": 5,
+          "relatedLinkCount": 0
+        },
+        "issues": [
+          "관련 글 내부링크 후보가 없습니다."
+        ],
+        "note": "내부 품질 점검용 휴리스틱이며 네이버·구글·LLM의 실제 노출 알고리즘 점수를 의미하지 않습니다."
+      },
+      "evidenceQa": {
+        "score": 58,
+        "level": "moderate mix",
+        "ok": true,
+        "counts": {
+          "total": 27,
+          "systematicOrMeta": 1,
+          "trialOrComparative": 0,
+          "recent5y": 27,
+          "withAbstract": 19,
+          "pubmed": 19
+        },
+        "warnings": [
+          "비교연구 또는 임상시험 근거가 확인되지 않았습니다."
+        ],
+        "topEvidence": [
+          {
+            "title": "Prepectoral Versus Subpectoral Implant-Based Breast Reconstruction: A Systemic Review and Meta-analysis.",
+            "year": "2023",
+            "kind": "systematic/meta-analysis",
+            "tier": 4,
+            "source": "pubmed",
+            "hasAbstract": true,
+            "citations": null
+          },
+          {
+            "title": "Indications, safety and aesthetic outcomes of autologous conversion after implant-based breast reconstruction failure: A systematic review and meta-analysis.",
+            "year": "2026",
+            "kind": "review",
+            "tier": 2,
+            "source": "pubmed",
+            "hasAbstract": true,
+            "citations": null
+          },
+          {
+            "title": "A Hybrid Auricular Cartilage-ePTFE Technique for Limited Nasal Lengthening and Augmentation in Selected Primary Han Chinese Rhinoplasty.",
+            "year": "2026",
+            "kind": "other clinical literature",
+            "tier": 2,
+            "source": "pubmed",
+            "hasAbstract": true,
+            "citations": null
+          },
+          {
+            "title": "Normal and Pathological Incidental Breast Implant Findings on Chest Computed Tomography: What the Radiologist Needs to Know.",
+            "year": "2026",
+            "kind": "other clinical literature",
+            "tier": 2,
+            "source": "pubmed",
+            "hasAbstract": true,
+            "citations": null
+          },
+          {
+            "title": "[Aesthetic outcomes of synthetic mesh in single-axillary approach endoscopic implant-based breast reconstruction].",
+            "year": "2026",
+            "kind": "other clinical literature",
+            "tier": 2,
+            "source": "pubmed",
+            "hasAbstract": true,
+            "citations": null
+          }
+        ],
+        "note": "내부 문헌 구성 점검용 휴리스틱이며 개별 연구의 비뚤림 위험·간접성·불일치·비정밀성을 평가하는 GRADE가 아닙니다."
+      },
+      "repairCheck": {}
     },
     {
       "key": "male_rhinoplasty",
       "area": "코",
       "topic": "남자 코성형",
-      "score": 59,
+      "score": 64,
       "reasons": [
-        "검색량 4위",
-        "전년 대비 -33% (분야 평균 -35%)",
-        "기존 글 8,356건",
+        "검색량 3위",
+        "전년 대비 -33% (분야 평균 -37%)",
+        "기존 글 8,364건",
         "리뷰·메타분석 5편",
         "최근 1년 논문 20편"
       ],
@@ -152,7 +177,7 @@
         "reviews6y": 5
       },
       "naver": {
-        "medianTotal": 8356,
+        "medianTotal": 8364,
         "trend": "하락",
         "available": true
       },
@@ -192,21 +217,114 @@
         "Nguyen, Chuong Dinh, et al. \"Optimizing the Septal Donor Site in Asian Rhinoplasty: A Computed Tomography-Based Simulation of the Bony-Cartilaginous Unit and Skull Base Safety.\" Aesthetic Plast Surg 50.15 (2026): 6060-6067."
       ],
       "chars": 4467,
+      "relatedLinks": [],
+      "templateCheck": {},
       "adCheck": {
         "ok": true,
         "count": 0,
         "hits": []
-      }
+      },
+      "audit": {
+        "score": 95,
+        "ok": true,
+        "checks": {
+          "questionTitle": true,
+          "answerFirst": true,
+          "questionHeadings": true,
+          "readableParagraphs": true,
+          "sourceDepth": true,
+          "imagePlan": true,
+          "internalLinks": false
+        },
+        "metrics": {
+          "questionHeadingCount": 15,
+          "paragraphCount": 44,
+          "medianParagraphChars": 75,
+          "sourceCount": 5,
+          "imageCount": 5,
+          "relatedLinkCount": 0
+        },
+        "issues": [
+          "관련 글 내부링크 후보가 없습니다."
+        ],
+        "note": "내부 품질 점검용 휴리스틱이며 네이버·구글·LLM의 실제 노출 알고리즘 점수를 의미하지 않습니다."
+      },
+      "evidenceQa": {
+        "score": 50,
+        "level": "limited mix",
+        "ok": false,
+        "counts": {
+          "total": 16,
+          "systematicOrMeta": 0,
+          "trialOrComparative": 0,
+          "recent5y": 16,
+          "withAbstract": 16,
+          "pubmed": 16
+        },
+        "warnings": [
+          "최근 systematic review/meta-analysis가 포함되지 않았습니다.",
+          "비교연구 또는 임상시험 근거가 확인되지 않았습니다."
+        ],
+        "topEvidence": [
+          {
+            "title": "Cosmetic Surgery in the Gulf Cooperation Council: Societal Shifts, Psychological Implications, and Policy Challenges: A Narrative Review.",
+            "year": "2026",
+            "kind": "review",
+            "tier": 2,
+            "source": "pubmed",
+            "hasAbstract": true,
+            "citations": null
+          },
+          {
+            "title": "From Structure to Aesthetics: The Importance of Nasal Bone Thickness in Rhinoplasty Planning.",
+            "year": "2026",
+            "kind": "other clinical literature",
+            "tier": 2,
+            "source": "pubmed",
+            "hasAbstract": true,
+            "citations": null
+          },
+          {
+            "title": "Optimizing the Septal Donor Site in Asian Rhinoplasty: A Computed Tomography-Based Simulation of the Bony-Cartilaginous Unit and Skull Base Safety.",
+            "year": "2026",
+            "kind": "other clinical literature",
+            "tier": 2,
+            "source": "pubmed",
+            "hasAbstract": true,
+            "citations": null
+          },
+          {
+            "title": "The Use of Conical Powered Burrs in Surgery of the Bony Nasal Pyramid.",
+            "year": "2026",
+            "kind": "other clinical literature",
+            "tier": 2,
+            "source": "pubmed",
+            "hasAbstract": true,
+            "citations": null
+          },
+          {
+            "title": "Innovative Nasal Splitting Technique for Dual Rhinoplasty and Rhinophyma Management: A Case Report and Literature Review.",
+            "year": "2026",
+            "kind": "other clinical literature",
+            "tier": 2,
+            "source": "pubmed",
+            "hasAbstract": true,
+            "citations": null
+          }
+        ],
+        "note": "내부 문헌 구성 점검용 휴리스틱이며 개별 연구의 비뚤림 위험·간접성·불일치·비정밀성을 평가하는 GRADE가 아닙니다."
+      },
+      "repairCheck": {}
     },
     {
       "key": "male_eyelid",
       "area": "눈",
       "topic": "남자 눈성형 (남자 쌍꺼풀·눈매교정)",
-      "score": 54,
+      "score": 59,
       "reasons": [
         "검색량 6위",
-        "전년 대비 -26% (분야 평균 -35%)",
-        "기존 글 7,356건",
+        "전년 대비 -26% (분야 평균 -37%)",
+        "기존 글 7,383건",
         "리뷰·메타분석 4편",
         "최근 1년 논문 6편"
       ],
@@ -216,7 +334,7 @@
         "reviews6y": 4
       },
       "naver": {
-        "medianTotal": 7356,
+        "medianTotal": 7383,
         "trend": "하락",
         "available": true
       },
@@ -255,6 +373,8 @@
         "Berar, Ofri Vorobichik, et al. \"Reoperation for congenital ptosis: characteristics, success rates, and predicting factors.\" Can J Ophthalmol 60.2 (2025): e293-e296."
       ],
       "chars": 4225,
+      "relatedLinks": [],
+      "templateCheck": {},
       "adCheck": {
         "ok": false,
         "count": 1,
@@ -267,28 +387,118 @@
             "context": "…매몰로 하면 금방 풀리나요? 두께에 따라 다릅니다. 무조건 풀린다고 말씀드리진 않아요. 다만 눈꺼풀 지방이 많고…"
           }
         ]
-      }
+      },
+      "audit": {
+        "score": 95,
+        "ok": true,
+        "checks": {
+          "questionTitle": true,
+          "answerFirst": true,
+          "questionHeadings": true,
+          "readableParagraphs": true,
+          "sourceDepth": true,
+          "imagePlan": true,
+          "internalLinks": false
+        },
+        "metrics": {
+          "questionHeadingCount": 11,
+          "paragraphCount": 43,
+          "medianParagraphChars": 78,
+          "sourceCount": 4,
+          "imageCount": 5,
+          "relatedLinkCount": 0
+        },
+        "issues": [
+          "관련 글 내부링크 후보가 없습니다."
+        ],
+        "note": "내부 품질 점검용 휴리스틱이며 네이버·구글·LLM의 실제 노출 알고리즘 점수를 의미하지 않습니다."
+      },
+      "evidenceQa": {
+        "score": 65,
+        "level": "moderate mix",
+        "ok": true,
+        "counts": {
+          "total": 13,
+          "systematicOrMeta": 1,
+          "trialOrComparative": 0,
+          "recent5y": 13,
+          "withAbstract": 13,
+          "pubmed": 13
+        },
+        "warnings": [
+          "비교연구 또는 임상시험 근거가 확인되지 않았습니다."
+        ],
+        "topEvidence": [
+          {
+            "title": "Functional and Aesthetic Outcomes After Upper Blepharoplasty: A Systematic Review and Meta-analysis of Randomized Control Trials.",
+            "year": "2025",
+            "kind": "systematic/meta-analysis",
+            "tier": 4,
+            "source": "pubmed",
+            "hasAbstract": true,
+            "citations": null
+          },
+          {
+            "title": "Assessing Patient Awareness of Sun Exposure and Eyelid Cancer.",
+            "year": "2026",
+            "kind": "other clinical literature",
+            "tier": 2,
+            "source": "pubmed",
+            "hasAbstract": true,
+            "citations": null
+          },
+          {
+            "title": "Evaluation of Pain and Opioid Use in Ptosis and Blepharoplasty Surgery.",
+            "year": "2026",
+            "kind": "other clinical literature",
+            "tier": 2,
+            "source": "pubmed",
+            "hasAbstract": true,
+            "citations": null
+          },
+          {
+            "title": "Motivations, Concerns, and the Role of Social Media in Upper Blepharoplasty Candidates: A Cross-Sectional Survey.",
+            "year": "2026",
+            "kind": "other clinical literature",
+            "tier": 2,
+            "source": "pubmed",
+            "hasAbstract": true,
+            "citations": null
+          },
+          {
+            "title": "Operative protocol for re-do orthognathic surgery.",
+            "year": "2026",
+            "kind": "other clinical literature",
+            "tier": 2,
+            "source": "pubmed",
+            "hasAbstract": true,
+            "citations": null
+          }
+        ],
+        "note": "내부 문헌 구성 점검용 휴리스틱이며 개별 연구의 비뚤림 위험·간접성·불일치·비정밀성을 평가하는 GRADE가 아닙니다."
+      },
+      "repairCheck": {}
     },
     {
       "key": "lower_canthoplasty",
       "area": "눈",
       "topic": "밑트임 (아래 눈꺼풀 하향)",
-      "score": 54,
+      "score": 59,
       "reasons": [
         "검색량 5위",
-        "전년 대비 -37% (분야 평균 -35%)",
-        "기존 글 1,496건",
+        "전년 대비 -37% (분야 평균 -37%)",
+        "기존 글 1,497건",
         "리뷰·메타분석 16편",
         "최근 1년 논문 42편",
         "연구가 활발해지는 중"
       ],
       "evidence": {
         "recent1y": 42,
-        "recent3y": 81,
+        "recent3y": 82,
         "reviews6y": 16
       },
       "naver": {
-        "medianTotal": 1496,
+        "medianTotal": 1497,
         "trend": "하락",
         "available": true
       },
@@ -328,32 +538,123 @@
         "Wang, Yao, et al. \"The Spectrum of Aesthetic Canthal Suspension.\" Facial Plast Surg Clin North Am 29.2 (2021): 275-289."
       ],
       "chars": 3913,
+      "relatedLinks": [],
+      "templateCheck": {},
       "adCheck": {
         "ok": true,
         "count": 0,
         "hits": []
-      }
+      },
+      "audit": {
+        "score": 95,
+        "ok": true,
+        "checks": {
+          "questionTitle": true,
+          "answerFirst": true,
+          "questionHeadings": true,
+          "readableParagraphs": true,
+          "sourceDepth": true,
+          "imagePlan": true,
+          "internalLinks": false
+        },
+        "metrics": {
+          "questionHeadingCount": 9,
+          "paragraphCount": 34,
+          "medianParagraphChars": 108,
+          "sourceCount": 5,
+          "imageCount": 5,
+          "relatedLinkCount": 0
+        },
+        "issues": [
+          "관련 글 내부링크 후보가 없습니다."
+        ],
+        "note": "내부 품질 점검용 휴리스틱이며 네이버·구글·LLM의 실제 노출 알고리즘 점수를 의미하지 않습니다."
+      },
+      "evidenceQa": {
+        "score": 64,
+        "level": "moderate mix",
+        "ok": true,
+        "counts": {
+          "total": 19,
+          "systematicOrMeta": 1,
+          "trialOrComparative": 0,
+          "recent5y": 19,
+          "withAbstract": 18,
+          "pubmed": 19
+        },
+        "warnings": [
+          "비교연구 또는 임상시험 근거가 확인되지 않았습니다."
+        ],
+        "topEvidence": [
+          {
+            "title": "Surgical Correction of Cicatricial Lower Eyelid Retraction: A Systematic Review.",
+            "year": "2024",
+            "kind": "systematic/meta-analysis",
+            "tier": 4,
+            "source": "pubmed",
+            "hasAbstract": true,
+            "citations": null
+          },
+          {
+            "title": "Transconjunctival Lower Blepharoplasty.",
+            "year": "2026",
+            "kind": "review",
+            "tier": 2,
+            "source": "pubmed",
+            "hasAbstract": true,
+            "citations": null
+          },
+          {
+            "title": "Structural Deficit-Guided Reconstruction of an Extended Lower Eyelid-Bicanthal Defect.",
+            "year": "2026",
+            "kind": "other clinical literature",
+            "tier": 2,
+            "source": "pubmed",
+            "hasAbstract": true,
+            "citations": null
+          },
+          {
+            "title": "Surgical outcome of eyelid retraction correction using novel spacer filamentous knitted polyester fabric in thyroid eye disease.",
+            "year": "2026",
+            "kind": "other clinical literature",
+            "tier": 2,
+            "source": "pubmed",
+            "hasAbstract": true,
+            "citations": null
+          },
+          {
+            "title": "[Effect of the amount of inferior rectus muscle recession on lower eyelid position in thyroid eye disease].",
+            "year": "2026",
+            "kind": "other clinical literature",
+            "tier": 2,
+            "source": "pubmed",
+            "hasAbstract": true,
+            "citations": null
+          }
+        ],
+        "note": "내부 문헌 구성 점검용 휴리스틱이며 개별 연구의 비뚤림 위험·간접성·불일치·비정밀성을 평가하는 GRADE가 아닙니다."
+      },
+      "repairCheck": {}
     },
     {
       "key": "epicanthoplasty",
       "area": "눈",
       "topic": "앞트임 · 뒤트임",
-      "score": 53,
+      "score": 59,
       "reasons": [
-        "검색량 3위",
-        "전년 대비 -47% (분야 평균 -35%)",
-        "기존 글 35,881건",
+        "검색량 2위",
+        "전년 대비 -47% (분야 평균 -37%)",
+        "기존 글 36,174건",
         "리뷰·메타분석 31편",
-        "최근 1년 논문 46편",
-        "연구가 활발해지는 중"
+        "최근 1년 논문 44편"
       ],
       "evidence": {
-        "recent1y": 46,
+        "recent1y": 44,
         "recent3y": 106,
         "reviews6y": 31
       },
       "naver": {
-        "medianTotal": 35881,
+        "medianTotal": 36174,
         "trend": "하락",
         "available": true
       },
@@ -392,32 +693,125 @@
         "Wang, Yao, et al. \"The Spectrum of Aesthetic Canthal Suspension.\" Facial Plast Surg Clin North Am 29.2 (2021): 275-289."
       ],
       "chars": 3508,
+      "relatedLinks": [],
+      "templateCheck": {},
       "adCheck": {
         "ok": true,
         "count": 0,
         "hits": []
-      }
+      },
+      "audit": {
+        "score": 95,
+        "ok": true,
+        "checks": {
+          "questionTitle": true,
+          "answerFirst": true,
+          "questionHeadings": true,
+          "readableParagraphs": true,
+          "sourceDepth": true,
+          "imagePlan": true,
+          "internalLinks": false
+        },
+        "metrics": {
+          "questionHeadingCount": 10,
+          "paragraphCount": 36,
+          "medianParagraphChars": 76,
+          "sourceCount": 4,
+          "imageCount": 5,
+          "relatedLinkCount": 0
+        },
+        "issues": [
+          "관련 글 내부링크 후보가 없습니다."
+        ],
+        "note": "내부 품질 점검용 휴리스틱이며 네이버·구글·LLM의 실제 노출 알고리즘 점수를 의미하지 않습니다."
+      },
+      "evidenceQa": {
+        "score": 41,
+        "level": "limited mix",
+        "ok": false,
+        "counts": {
+          "total": 24,
+          "systematicOrMeta": 0,
+          "trialOrComparative": 0,
+          "recent5y": 24,
+          "withAbstract": 15,
+          "pubmed": 16
+        },
+        "warnings": [
+          "최근 systematic review/meta-analysis가 포함되지 않았습니다.",
+          "비교연구 또는 임상시험 근거가 확인되지 않았습니다."
+        ],
+        "topEvidence": [
+          {
+            "title": "Medial canthoplasty for pediatric exposure keratopathy.",
+            "year": "2026",
+            "kind": "other clinical literature",
+            "tier": 2,
+            "source": "pubmed",
+            "hasAbstract": false,
+            "citations": null
+          },
+          {
+            "title": "Risk Factors and Prediction of Medial Canthal Angle Regression after Modified V-Shaped Concealed Flap Canthoplasty.",
+            "year": "2026",
+            "kind": "other clinical literature",
+            "tier": 2,
+            "source": "pubmed",
+            "hasAbstract": true,
+            "citations": null
+          },
+          {
+            "title": "Bilateral sclerocornea in an infant with molecularly confirmed Van den Ende-Gupta syndrome due to a recurrent SCARF2 founder variant: a case report and review of ophthalmic manifestations.",
+            "year": "2026",
+            "kind": "other clinical literature",
+            "tier": 2,
+            "source": "pubmed",
+            "hasAbstract": true,
+            "citations": null
+          },
+          {
+            "title": "Lateral Continuous Blepharo-Canthoplasty: A Combination of Hotz-Celsus and Lateral Canthus Wedge Resection for the Correction of Entropion and Macroblepharon in Dogs (88 Eyes).",
+            "year": "2026",
+            "kind": "other clinical literature",
+            "tier": 2,
+            "source": "pubmed",
+            "hasAbstract": true,
+            "citations": null
+          },
+          {
+            "title": "Patient-centered communication in cosmetic eyelid surgery consultations in China: an observational transcript-based E5 study.",
+            "year": "2026",
+            "kind": "observational study",
+            "tier": 2,
+            "source": "pubmed",
+            "hasAbstract": true,
+            "citations": null
+          }
+        ],
+        "note": "내부 문헌 구성 점검용 휴리스틱이며 개별 연구의 비뚤림 위험·간접성·불일치·비정밀성을 평가하는 GRADE가 아닙니다."
+      },
+      "repairCheck": {}
     },
     {
       "key": "midface_lift",
       "area": "리프팅",
       "topic": "중안면 거상 · 팔자주름",
-      "score": 51,
+      "score": 53,
       "reasons": [
-        "검색량 9위",
-        "전년 대비 -17% (분야 평균 -35%)",
-        "기존 글 5,654건",
+        "검색량 8위",
+        "전년 대비 -17% (분야 평균 -37%)",
+        "기존 글 5,682건",
         "리뷰·메타분석 12편",
         "최근 1년 논문 30편",
         "연구가 활발해지는 중"
       ],
       "evidence": {
         "recent1y": 30,
-        "recent3y": 54,
+        "recent3y": 55,
         "reviews6y": 12
       },
       "naver": {
-        "medianTotal": 5654,
+        "medianTotal": 5682,
         "trend": "하락",
         "available": true
       },
@@ -459,11 +853,560 @@
         "Kim, Kenneth K, and Jin Suk Byun. \"A Morphologic Classification and Surgical Algorithm for Lower Eyelid Asymmetry in Primary Lower Blepharoplasty.\" Plast Reconstr Surg Glob Open 14.8 (2026): e7958."
       ],
       "chars": 4387,
+      "relatedLinks": [],
+      "templateCheck": {},
       "adCheck": {
         "ok": true,
         "count": 0,
         "hits": []
-      }
+      },
+      "audit": {
+        "score": 95,
+        "ok": true,
+        "checks": {
+          "questionTitle": true,
+          "answerFirst": true,
+          "questionHeadings": true,
+          "readableParagraphs": true,
+          "sourceDepth": true,
+          "imagePlan": true,
+          "internalLinks": false
+        },
+        "metrics": {
+          "questionHeadingCount": 11,
+          "paragraphCount": 46,
+          "medianParagraphChars": 83,
+          "sourceCount": 7,
+          "imageCount": 5,
+          "relatedLinkCount": 0
+        },
+        "issues": [
+          "관련 글 내부링크 후보가 없습니다."
+        ],
+        "note": "내부 품질 점검용 휴리스틱이며 네이버·구글·LLM의 실제 노출 알고리즘 점수를 의미하지 않습니다."
+      },
+      "evidenceQa": {
+        "score": 62,
+        "level": "moderate mix",
+        "ok": true,
+        "counts": {
+          "total": 21,
+          "systematicOrMeta": 1,
+          "trialOrComparative": 0,
+          "recent5y": 21,
+          "withAbstract": 18,
+          "pubmed": 19
+        },
+        "warnings": [
+          "비교연구 또는 임상시험 근거가 확인되지 않았습니다."
+        ],
+        "topEvidence": [
+          {
+            "title": "Surgical Correction of Cicatricial Lower Eyelid Retraction: A Systematic Review.",
+            "year": "2024",
+            "kind": "systematic/meta-analysis",
+            "tier": 4,
+            "source": "pubmed",
+            "hasAbstract": true,
+            "citations": null
+          },
+          {
+            "title": "Anatomical-based filler injection techniques for the midcheek groove and infraorbital region: Narrative review.",
+            "year": "2026",
+            "kind": "review",
+            "tier": 2,
+            "source": "pubmed",
+            "hasAbstract": true,
+            "citations": null
+          },
+          {
+            "title": "Structural Deficit-Guided Reconstruction of an Extended Lower Eyelid-Bicanthal Defect.",
+            "year": "2026",
+            "kind": "other clinical literature",
+            "tier": 2,
+            "source": "pubmed",
+            "hasAbstract": true,
+            "citations": null
+          },
+          {
+            "title": "A Morphologic Classification and Surgical Algorithm for Lower Eyelid Asymmetry in Primary Lower Blepharoplasty.",
+            "year": "2026",
+            "kind": "other clinical literature",
+            "tier": 2,
+            "source": "pubmed",
+            "hasAbstract": true,
+            "citations": null
+          },
+          {
+            "title": "Is There a Role for Arnica or Bromelain in the Perioperative Care of Facial Plastic Surgery?",
+            "year": "2026",
+            "kind": "other clinical literature",
+            "tier": 2,
+            "source": "pubmed",
+            "hasAbstract": false,
+            "citations": null
+          }
+        ],
+        "note": "내부 문헌 구성 점검용 휴리스틱이며 개별 연구의 비뚤림 위험·간접성·불일치·비정밀성을 평가하는 GRADE가 아닙니다."
+      },
+      "repairCheck": {}
+    },
+    {
+      "key": "bulbous_nose",
+      "area": "코",
+      "topic": "복코 수술",
+      "score": 48,
+      "reasons": [
+        "검색량 4위",
+        "전년 대비 -49% (분야 평균 -37%)",
+        "기존 글 8,351건",
+        "리뷰·메타분석 15편",
+        "최근 1년 논문 17편",
+        "연구가 활발해지는 중"
+      ],
+      "evidence": {
+        "recent1y": 17,
+        "recent3y": 32,
+        "reviews6y": 15
+      },
+      "naver": {
+        "medianTotal": 8351,
+        "trend": "하락",
+        "available": true
+      },
+      "paperCount": 27,
+      "draftedAt": "2026-09-20T07:26:32.120149+09:00",
+      "titles": [
+        "복코 수술, 코끝 연골만 묶으면 갸름해질까요?",
+        "복코 수술, 피부가 두꺼우면 얼마나 달라질 수 있나요?",
+        "복코 수술, 콧볼축소도 함께 해야 하나요?"
+      ],
+      "body": "코끝 연골을 묶는 것만으로 모양을 다듬을 수 있는 코도 있습니다. 하지만 피부가 두껍거나 연골의 지지력이 약하면 다른 접근이 필요합니다. 저는 코끝을 덮는 조직과 안쪽 버팀대를 함께 살펴 수술 범위를 정합니다. 같은 ‘복코’라도 바꿀 수 있는 폭은 사람마다 달라요.\n\n왜 똑같이 둥근 코끝인데 원인은 다를까요?\n\n‘복코’는 한 가지 구조를 가리키는 진단명이 아닙니다. 코끝이 넓고 둥글게 보이는 모습을 일상적으로 부르는 말입니다. 겉모양이 비슷해도 피부의 두께와 안쪽 연골의 형태는 다를 수 있습니다.\n\n코끝에는 모양을 받치는 아래가쪽연골(lower lateral cartilage)이 있습니다. 그 위를 피부와 부드러운 조직층인 피부·연부조직 외피(skin-soft tissue envelope)가 덮습니다. 연골이 벌어져 있거나 덮개가 두꺼우면 코끝의 경계가 흐릿해질 수 있어요.\n\n두꺼운 덮개 아래에서는 연골을 다듬은 변화가 덜 드러납니다. 또 피부가 줄어든 골격에 충분히 밀착하지 못하면 빈 공간이 남을 수 있습니다. 이를 사강(dead space)이라고 하며, 붓기와 흉터 조직을 함께 고려해야 하는 이유입니다.\n\n해부학 설명 뒤 | 피부와 연골을 구분한 코끝 단면 삽화 | 코끝 윤곽은 안쪽 연골과 바깥 피부·연부조직이 함께 만듭니다.\n\n상담에서는 피부와 연골을 어떻게 구분하나요?\n\n저는 먼저 ‘코끝이 둥글다’는 말이 어느 부위를 뜻하는지 확인합니다. 정면의 코끝 폭과 콧볼 폭을 따로 보고, 옆모습에서는 코끝 높이와 지지 상태를 살핍니다. 아래쪽에서 보이는 콧구멍 모양도 함께 확인해요.\n\n직접 만져보며 피부의 두께와 유연성도 평가합니다. 연골의 윤곽과 버티는 힘을 함께 살펴야 합니다. 사진만으로 피부형과 연골형을 명확히 나누기는 어렵고, 두 요인이 겹쳐 있는 코도 있습니다.\n\n상담 설명 뒤 | 정면·측면·아래쪽 코 도식에 관찰 부위 표시 | 코끝 폭, 콧볼 폭, 코끝 높이는 각각 구분해 평가합니다.\n\n수술로 줄일 수 있는 부분과 남는 부분은 무엇인가요?\n\n연골의 벌어짐이나 위치가 원인이라면 모양을 재배치하는 방향을 검토합니다. 버팀대가 약하다면 지지력을 보완하는 계획도 필요합니다. 즉, 작게 만드는 일과 형태를 받쳐주는 일을 함께 생각해야 합니다.\n\n반면 피부가 두꺼운 코를 얇은 피부처럼 표현하는 데는 한계가 있습니다. 안쪽을 좁혀도 겉에서 보이는 선명도는 기대보다 적을 수 있어요. 저는 이 차이를 수술 전에 먼저 설명하고 목표를 맞춥니다.\n\n‘높이는 그대로 두고 끝만 줄이고 싶다’는 요청도 따로 살핍니다. 현재 높이에서 윤곽을 다듬을 여지가 있는지 확인합니다. 다만 지지력을 보완하는 과정에서 높이나 각도도 영향을 받을 수 있습니다.\n\n연골 묶기와 지지 보강은 언제 나눠 생각하나요?\n\n연골 자체의 힘이 있고 벌어진 모양이 주된 문제라면 봉합(suturing), 즉 실로 연골의 형태를 조절하는 방법을 고려합니다. 단순히 세게 조일수록 좋은 것은 아닙니다. 남길 폭과 자연스러운 곡선을 함께 봐야 하죠.\n\n연골이 약하거나 위치 조절만으로 형태를 유지하기 어렵다면 연골 이식(cartilage grafting)을 검토합니다. 다른 부위의 연골을 옮겨 코끝을 받치는 방법입니다. 필요한 지지 정도와 기존 구조에 따라 범위를 정합니다.\n\n피부 아래 조직을 줄이는 접근도 선택지입니다. 다만 피부의 혈액 공급을 지키는 범위에서 판단해야 합니다. 피부 두께만 보고 조직을 많이 덜어내는 계획으로 이어지지는 않습니다.\n\n이소트레티노인(isotretinoin) 같은 약물은 일부 두꺼운 피부에서 보조적으로 검토됩니다. 제공된 체계적 문헌고찰에서는 초기 개선이 보고됐지만, 장기적인 차이는 줄어들었습니다. 저는 약물을 연골 구조를 교정하는 수술의 대체 수단으로 설명하지 않습니다.\n\n선택지 설명 뒤 | 연골 재배치·지지 보강·조직 조절의 개념도 | 수술 방법은 둥글게 보이는 원인과 필요한 지지력에 따라 달라집니다.\n\n붓기와 흉터는 결과에 어떤 영향을 주나요?\n\n두꺼운 피부에서는 수술 뒤 붓기인 부종(edema)이 오래 이어질 수 있습니다. 피부 아래 흉터 조직도 코끝 윤곽에 영향을 줍니다. 제공된 근거만으로 모든 사람에게 같은 회복 기간을 제시하기는 어렵습니다.\n\n특히 코끝 바로 위가 도톰해지는 앵무새부리 변형(pollybeak deformity)을 살펴야 합니다. 이 모양은 연골 구조와 흉터 조직 등 여러 원인으로 생길 수 있습니다. 겉으로 볼록해 보인다는 이유만으로 같은 치료를 적용하지는 않습니다.\n\n절개 부위의 흉터와 좌우 차이도 설명해야 할 부분입니다. 연골을 지나치게 줄여 지지력이 약해지면 모양과 호흡 기능에 영향을 줄 수 있어요. 저는 좁아지는 정도만큼 남겨둘 구조를 중요하게 봅니다.\n\n약물을 추가할 때도 별도의 판단이 필요합니다. 이소트레티노인은 건조함 등의 부작용을 살펴야 합니다. 초기 변화가 보고됐다는 사실만으로 모든 복코에 필요한 치료라고 볼 수는 없습니다.\n\n수술 범위를 정할 때 자주 묻는 질문은 무엇인가요?\n\nQ. 콧볼은 넓지 않은데 코끝만 동그라면 콧볼축소는 안 해도 되나요?\n코끝과 콧볼은 구분해서 판단합니다. 콧볼축소(alar base reduction)는 콧볼 바닥의 폭과 형태를 조절하는 수술입니다. 코끝의 둥근 모양이 주된 문제라면 콧볼축소를 함께 해야 할 이유가 있는지부터 따져봅니다.\n\nQ. 코끝 연골을 묶기만 해도 복코가 줄어들까요?\n벌어진 연골의 형태가 주된 원인이라면 고려할 수 있습니다. 다만 피부 두께와 연골의 힘에 따라 겉으로 드러나는 변화가 달라집니다. ‘묶기만 하는 수술’이라는 이름보다 제 코의 구조에 맞는지가 먼저입니다.\n\nQ. 피부가 두꺼우면 코끝을 아무리 모아도 티가 잘 안 나나요?\n두꺼운 피부는 안쪽 변화가 드러나는 정도를 제한할 수 있습니다. 그렇다고 변화의 여지가 모두 같다는 뜻은 아닙니다. 저는 줄일 수 있는 폭과 남을 둥근 느낌을 나눠 설명합니다.\n\n상담 전에 어떤 기준을 기억하면 좋을까요?\n\n복코를 볼 때는 ‘얼마나 작게 만들까’보다 ‘무엇 때문에 둥글어 보일까’를 먼저 확인해 보세요. 피부와 연골 중 어느 쪽의 영향이 큰지 알아야 수술 선택도 이해할 수 있습니다.\n\n제가 수술 계획에서 맞추려는 것은 윤곽과 지지력의 균형입니다. 바꾸고 싶은 부분과 피부 때문에 남을 수 있는 부분을 구분해 두면, 기대하는 모양을 더 구체적으로 이야기할 수 있습니다.\n\n참고문헌\n\n[Management of Thick Skin in Rhinoplasty](https://pubmed.ncbi.nlm.nih.gov/39341669/). PMID: 39341669. 피부·연부조직과 붓기, 사강에 관한 근거.\n\n[Rhinoplasty for Thick-Skinned Noses: A Systematic Review](https://pubmed.ncbi.nlm.nih.gov/37369866/). PMID: 37369866. 개인별 수술·관리 계획에 관한 근거.\n\n[Benefits and Safety of Isotretinoin in Rhinoplasty for Thick-Skinned Patients: A Systematic Review](https://pubmed.ncbi.nlm.nih.gov/41145858/). PMID: 41145858. 약물의 단기적 이점과 장기 효과의 한계에 관한 근거.\n\n[Pollybeak deformity: how to avoid, how to cure](https://pubmed.ncbi.nlm.nih.gov/37869952/). PMID: 37869952. 코끝 위 돌출의 원인에 관한 근거.\n\n분야 기본 교과서: 서만군. 아시아인 코성형술 아틀라스. 1판. 군자출판사; 2025. 제공된 서지 정보로 기재했으며, 본문을 직접 확인하지 않아 개별 결론의 근거로 사용하지 않았습니다.\n\n작성자 | 성형외과 전문의 facereader\n전문분야 | 눈성형•코성형•안면거상\n\n본 글은 성형외과 전문의가 의학 문헌과 실제 임상 경험을 바탕으로 직접 작성합니다.\n내용의 이해를 돕기 위해 일부 삽화 및 설명 이미지는 AI를 활용하여 제작하였습니다.\n궁금하신 점이나 추가로 알고 싶은 내용이 있다면 댓글로 남겨주세요. 확인 후 가능한 범위에서 답변드리겠습니다.",
+      "tags": [
+        "복코수술",
+        "복코",
+        "코끝성형",
+        "두꺼운코피부",
+        "코끝연골",
+        "연골묶기",
+        "코끝지지",
+        "콧볼축소",
+        "코성형회복",
+        "코성형상담"
+      ],
+      "images": [],
+      "sources": [
+        "서만군. 아시아인 코성형술 아틀라스. 1판. 군자출판사; 2025.",
+        "Rammal, Almoaidbellah, and Ahmed Mogharbel. \"Benefits and Safety of Isotretinoin in Rhinoplasty for Thick-Skinned Patients: A Systematic Review.\" Aesthetic Plast Surg 50.3 (2026): 991-999.",
+        "Cobo, Roxana, et al. \"Management of Thick Skin in Rhinoplasty.\" Facial Plast Surg Clin North Am 32.4 (2024): 473-493.",
+        "Vahidi, Nima, et al. \"Rhinoplasty for Thick-Skinned Noses: A Systematic Review.\" Aesthetic Plast Surg 47.5 (2023): 2011-2022.",
+        "Aldosari, B. \"Pollybeak deformity: how to avoid, how to cure.\" Eur Rev Med Pharmacol Sci 27.5 Suppl (2023): 80-85."
+      ],
+      "chars": 4021,
+      "relatedLinks": [],
+      "templateCheck": {},
+      "adCheck": {
+        "ok": true,
+        "count": 0,
+        "hits": []
+      },
+      "audit": {
+        "score": 85,
+        "ok": true,
+        "checks": {
+          "questionTitle": true,
+          "answerFirst": true,
+          "questionHeadings": true,
+          "readableParagraphs": true,
+          "sourceDepth": true,
+          "imagePlan": false,
+          "internalLinks": false
+        },
+        "metrics": {
+          "questionHeadingCount": 10,
+          "paragraphCount": 40,
+          "medianParagraphChars": 108,
+          "sourceCount": 4,
+          "imageCount": 0,
+          "relatedLinkCount": 0
+        },
+        "issues": [
+          "해부·수술과정·비교를 설명할 이미지 기획을 2개 이상 두는 것을 검토하세요.",
+          "관련 글 내부링크 후보가 없습니다."
+        ],
+        "note": "내부 품질 점검용 휴리스틱이며 네이버·구글·LLM의 실제 노출 알고리즘 점수를 의미하지 않습니다."
+      },
+      "evidenceQa": {
+        "score": 83,
+        "level": "strong mix",
+        "ok": true,
+        "counts": {
+          "total": 27,
+          "systematicOrMeta": 2,
+          "trialOrComparative": 1,
+          "recent5y": 27,
+          "withAbstract": 20,
+          "pubmed": 20
+        },
+        "warnings": [],
+        "topEvidence": [
+          {
+            "title": "Benefits and Safety of Isotretinoin in Rhinoplasty for Thick-Skinned Patients: A Systematic Review.",
+            "year": "2026",
+            "kind": "systematic/meta-analysis",
+            "tier": 4,
+            "source": "pubmed",
+            "hasAbstract": true,
+            "citations": null
+          },
+          {
+            "title": "Rhinoplasty for Thick-Skinned Noses: A Systematic Review.",
+            "year": "2023",
+            "kind": "systematic/meta-analysis",
+            "tier": 4,
+            "source": "pubmed",
+            "hasAbstract": true,
+            "citations": null
+          },
+          {
+            "title": "Efficacy of Combined Septal Extension and Derotation Grafts in Asian Rhinoplasty: A Quantitative Analysis of Tip Projection and Stability.",
+            "year": "2026",
+            "kind": "clinical/comparative study",
+            "tier": 3,
+            "source": "pubmed",
+            "hasAbstract": true,
+            "citations": null
+          },
+          {
+            "title": "The Lower Lateral Cartilage-Spanning Spring Graft (The Gullwing Effect).",
+            "year": "2026",
+            "kind": "other clinical literature",
+            "tier": 2,
+            "source": "pubmed",
+            "hasAbstract": true,
+            "citations": 1
+          },
+          {
+            "title": "Management and Limitations of Thick Skin in the Secondary Patient.",
+            "year": "2026",
+            "kind": "review",
+            "tier": 2,
+            "source": "pubmed",
+            "hasAbstract": true,
+            "citations": null
+          }
+        ],
+        "note": "내부 문헌 구성 점검용 휴리스틱이며 개별 연구의 비뚤림 위험·간접성·불일치·비정밀성을 평가하는 GRADE가 아닙니다."
+      },
+      "repairCheck": {}
+    },
+    {
+      "key": "nasal_implant_removal",
+      "area": "코",
+      "topic": "코 보형물 제거",
+      "score": 43,
+      "reasons": [
+        "검색량 10위",
+        "전년 대비 -23% (분야 평균 -37%)",
+        "기존 글 1,976건",
+        "리뷰·메타분석 1편"
+      ],
+      "evidence": {
+        "recent1y": 0,
+        "recent3y": 7,
+        "reviews6y": 1
+      },
+      "naver": {
+        "medianTotal": 1976,
+        "trend": "하락",
+        "available": true
+      },
+      "paperCount": 12,
+      "draftedAt": "2026-09-20T07:29:22.432064+09:00",
+      "titles": [
+        "코 보형물 제거, 새 보형물을 넣지 않고 빼기만 해도 되나요?",
+        "코 보형물 제거, 수술 전 코 모양으로 돌아갈 수 있나요?",
+        "코 보형물 제거, 코끝 지지대를 다시 만들어야 하나요?"
+      ],
+      "body": "새 보형물을 넣지 않고 기존 보형물만 빼는 선택도 가능합니다. 저는 제거 후 남을 피부와 코끝의 지지력을 먼저 살핍니다. 감염이나 피부 손상이 있다면 모양보다 그 문제를 먼저 다뤄야 합니다. 같은 실리콘을 빼더라도 이전 수술 범위와 조직 상태에 따라 계획은 달라집니다.\n\n왜 같은 보형물을 빼도 코 모양이 달라지나요?\n\n코 보형물(nasal implant)은 코의 높이나 형태를 보완하는 인공 재료입니다. 콧대를 높이는 재료와 코끝을 받치는 구조물은 역할이 다를 수 있어요. 그래서 ‘코에 넣은 것’을 하나로 묶어 생각하면 제거 범위를 오해하기 쉽습니다.\n\n보형물 주변에는 몸이 만든 막인 피막(capsule)이 생깁니다. 이전 수술로 바뀐 연골과 흉터도 남아 있습니다. 즉, 보형물을 꺼내는 일이 과거의 수술을 모두 되돌리는 일은 아닙니다.\n\n재료가 주변 조직과 붙는 방식도 중요합니다. 작은 구멍이 있는 고밀도 다공성 폴리에틸렌(high-density porous polyethylene, HDPE)은 내부로 조직이 자라 제거가 복잡해질 수 있습니다. 이 재료의 합병증 보고를 실리콘 전체에 그대로 적용할 수는 없습니다.\n\n기전 설명 뒤 | 피부·보형물·피막·코끝 지지 구조의 단면 모식도 | 콧대의 높이와 코끝의 지지는 구분해서 살펴야 합니다.\n\n상담에서는 무엇부터 확인하나요?\n\n저는 먼저 ‘높이가 부담스러운지’, ‘아프거나 붉어지는지’를 나눠 묻습니다. 모양에 대한 불편과 감염이 의심되는 상황은 접근이 다르기 때문입니다. 언제부터 변화가 생겼는지, 반복되는지도 확인합니다.\n\n이전 수술 기록에서는 재료의 종류와 위치를 살핍니다. 콧대 외에 코끝이나 코 안쪽에 무엇을 넣었는지도 중요해요. 겉모습만으로 내부 구조를 모두 알기는 어렵습니다.\n\n진찰에서는 피부 두께와 상처, 보형물이 드러난 부분을 확인합니다. 코끝을 받치는 힘과 코 안쪽 상태도 함께 봅니다. 보형물이 밖으로 드러나는 노출(extrusion)이나 감염이 의심된다면 진료를 미루지 않는 것이 원칙입니다.\n\n제거하면 무엇이 달라지고, 무엇은 남을까요?\n\n보형물이 더한 높이와 부피는 제거로 줄어들 수 있습니다. 다만 ‘실리콘만 빼면 예전 코가 되겠죠?’라는 질문에는 그대로 돌아간다고 답하기 어렵습니다. 이미 바뀐 연골과 흉터까지 함께 사라지는 것은 아니기 때문입니다.\n\n저는 제거 후 예상되는 높이뿐 아니라 표면의 굴곡도 설명합니다. 피부가 얇아졌거나 조직 손상이 있다면 그 흔적이 남을 수 있습니다. 실제 HDPE 합병증 보고에서도 피부가 얇아지는 변화가 지속될 가능성을 지적했습니다.\n\n제거만 할지, 지지 구조도 다시 만들지 어떻게 정하나요?\n\n제거만 하는 방향은 남은 구조로 형태를 유지할 수 있는지부터 판단합니다. 낮아질 콧대를 본인이 받아들일 수 있는지도 함께 살펴야 해요. 새 재료를 원하지 않는다는 뜻과 추가 처치가 필요하지 않다는 판단은 서로 다릅니다.\n\n코끝의 버팀이 부족하거나 손상된 부분이 있다면 구조를 다시 만드는 재건(reconstruction)을 검토합니다. 자신의 조직인 자가조직(autologous tissue)을 사용하는 방법도 있습니다. 갈비뼈의 연골인 늑연골(costal cartilage)을 이용한 재수술이 그중 하나입니다.\n\n제공된 연구에는 감염을 항생제로 치료한 뒤 제거와 늑연골 재건을 함께 시행한 사례들이 있습니다. 별도의 실리콘 재수술 연구에서는 모양에 대한 불만이 주된 수술 이유였습니다. 출발점이 다른 환자군이므로 한 방법을 모든 코에 더 낫다고 말할 수는 없습니다.\n\n저는 감염의 조절 여부와 피부 상태를 보고 수술 범위와 시점을 정합니다. 재료를 뺄 수 있다는 것만으로 재건까지 같은 날 가능하다고 판단하지는 않습니다. 제공된 초록만으로 동시 재건과 나중 재건의 우열을 정할 수도 없습니다.\n\n선택지 설명 뒤 | 제거만 고려하는 경우와 재건을 검토하는 경우의 판단 흐름도 | 남은 지지력, 피부 상태, 감염 여부가 수술 범위를 결정합니다.\n\n회복과 흉터는 어느 정도 예상해야 하나요?\n\n‘빼기만 하니까 회복도 짧겠죠?’라고 생각하기 쉽습니다. 하지만 주변 조직을 분리하는 범위와 재건 여부가 다릅니다. 제공된 초록으로는 제거 수술의 공통 회복 기간을 제시하기 어렵습니다.\n\n붓기와 멍, 출혈, 감염, 흉터는 설명해야 할 수술 위험입니다. 피부 손상이나 표면의 굴곡, 좌우 차이도 고려합니다. 절개 위치와 조직 상태에 따라 흉터 양상도 달라질 수 있어요.\n\n실리콘 제거와 늑연골 재수술 연구에서도 감염과 모양에 대한 불만이 보고됐습니다. 이런 결과를 제거만 받는 사람의 발생률로 옮겨 말하면 부정확합니다. 저는 일상 복귀 시점도 실제 수술 범위와 경과를 보고 안내합니다.\n\n회복 설명 뒤 | 붓기·상처·피부 상태를 확인하는 점검 항목 그림 | 회복은 제거 범위와 재건 여부에 따라 개별적으로 살핍니다.\n\n남길 조직과 제거할 조직은 어떻게 구분하나요?\n\nQ. 콧대 보형물만 빼고 코끝에 넣은 연골은 남겨도 되나요?\n코끝 연골을 함께 제거해야 하는 것은 아닙니다. 저는 그 연골이 지지에 필요한지, 감염이나 변형과 관련되는지 살핍니다. 위치와 상태를 확인한 뒤 남길 범위를 정합니다.\n\nQ. 보형물 주변에 생긴 막도 꼭 같이 제거해야 하나요?\n피막이 있다는 이유만으로 전체 제거를 정하지는 않습니다. 감염과 조직이 당기는 흉터, 주변 피부의 상태를 함께 봅니다. 제거가 필요한 범위와 조직 손상 가능성을 비교해야 합니다.\n\nQ. 오래 넣어둔 실리콘을 빼면 늘어난 피부가 남을까요?\n삽입 기간만으로 피부가 얼마나 남을지 예측하기는 어렵습니다. 보형물 크기와 피부 상태, 흉터를 함께 살펴야 해요. 제공된 초록에는 제거 후 피부가 줄어드는 정도나 기간을 정할 자료가 없습니다.\n\n제거를 결정하기 전, 무엇을 기억하면 될까요?\n\n저는 ‘무엇을 뺄지’와 함께 ‘무엇이 남아 코를 받칠지’를 설명합니다. 제거 이유가 모양인지 감염인지 먼저 구분하세요. 그다음 남은 피부와 지지 구조를 기준으로 제거만 할지, 재건도 검토할지 판단하는 것이 중요합니다.\n\n참고문헌\n\n아래 논문은 제공된 초록 범위에서 참고했습니다. 제거만 하는 모든 환자의 결과나 회복 기간을 설명하는 자료는 아닙니다.\n\n- [Extrusion of High-density Porous Polyethylene Implants in the Nose](https://pubmed.ncbi.nlm.nih.gov/39504408/). PMID: 39504408.\n- [Complications Associated with Alloplastic Materials in Rhinoplasty and Their Operative Management](https://pubmed.ncbi.nlm.nih.gov/37709291/). PMID: 37709291.\n- [Revision Rhinoplasty Using Glued Diced Costal Cartilage Shaped With Mold for Management of Complicated Silicone Rhinoplasty](https://pubmed.ncbi.nlm.nih.gov/37289986/). PMID: 37289986.\n\n작성자 | 성형외과 전문의 facereader\n전문분야 | 눈성형•코성형•안면거상\n\n본 글은 성형외과 전문의가 의학 문헌과 실제 임상 경험을 바탕으로 직접 작성합니다.\n내용의 이해를 돕기 위해 일부 삽화 및 설명 이미지는 AI를 활용하여 제작하였습니다.\n궁금하신 점이나 추가로 알고 싶은 내용이 있다면 댓글로 남겨주세요. 확인 후 가능한 범위에서 답변드리겠습니다.",
+      "tags": [
+        "코 보형물 제거",
+        "실리콘 제거",
+        "코 재수술",
+        "코 보형물",
+        "코끝 연골",
+        "코 피막",
+        "자가연골",
+        "늑연골",
+        "코성형",
+        "Face Reader"
+      ],
+      "images": [],
+      "sources": [
+        "서만군. 아시아인 코성형술 아틀라스. 1판. 군자출판사; 2025.",
+        "Machado, Vanessa Fonseca, et al. \"Extrusion of High-density Porous Polyethylene Implants in the Nose.\" J Craniofac Surg 36.2 (2025): e138-e141.",
+        "Storck, Katharina, et al. \"Complications Associated with Alloplastic Materials in Rhinoplasty and Their Operative Management.\" Facial Plast Surg 40.4 (2024): 485-492.",
+        "Fung, Chak Yuen, et al. \"Revision Rhinoplasty Using Glued Diced Costal Cartilage Shaped With Mold for Management of Complicated Silicone Rhinoplasty.\" Aesthet Surg J 43.11 (2023): 1237-1247."
+      ],
+      "chars": 3705,
+      "relatedLinks": [],
+      "templateCheck": {},
+      "adCheck": {
+        "ok": true,
+        "count": 0,
+        "hits": []
+      },
+      "audit": {
+        "score": 85,
+        "ok": true,
+        "checks": {
+          "questionTitle": true,
+          "answerFirst": true,
+          "questionHeadings": true,
+          "readableParagraphs": true,
+          "sourceDepth": true,
+          "imagePlan": false,
+          "internalLinks": false
+        },
+        "metrics": {
+          "questionHeadingCount": 10,
+          "paragraphCount": 35,
+          "medianParagraphChars": 110,
+          "sourceCount": 3,
+          "imageCount": 0,
+          "relatedLinkCount": 0
+        },
+        "issues": [
+          "해부·수술과정·비교를 설명할 이미지 기획을 2개 이상 두는 것을 검토하세요.",
+          "관련 글 내부링크 후보가 없습니다."
+        ],
+        "note": "내부 품질 점검용 휴리스틱이며 네이버·구글·LLM의 실제 노출 알고리즘 점수를 의미하지 않습니다."
+      },
+      "evidenceQa": {
+        "score": 40,
+        "level": "limited mix",
+        "ok": false,
+        "counts": {
+          "total": 12,
+          "systematicOrMeta": 0,
+          "trialOrComparative": 0,
+          "recent5y": 12,
+          "withAbstract": 7,
+          "pubmed": 7
+        },
+        "warnings": [
+          "최근 systematic review/meta-analysis가 포함되지 않았습니다.",
+          "비교연구 또는 임상시험 근거가 확인되지 않았습니다.",
+          "초록이 있는 문헌 비율이 낮아 본문 작성 근거가 제한적입니다."
+        ],
+        "topEvidence": [
+          {
+            "title": "Simultaneous Traumatic Fracture of Nasal Bone and Silicone Implant: Indications for Early Open Revision Rhinoplasty.",
+            "year": "2025",
+            "kind": "other clinical literature",
+            "tier": 2,
+            "source": "pubmed",
+            "hasAbstract": true,
+            "citations": null
+          },
+          {
+            "title": "Extrusion of High-density Porous Polyethylene Implants in the Nose.",
+            "year": "2025",
+            "kind": "other clinical literature",
+            "tier": 2,
+            "source": "pubmed",
+            "hasAbstract": true,
+            "citations": null
+          },
+          {
+            "title": "Trends in Surgical and Nonsurgical Aesthetic Procedures: A 14-Year Analysis of the International Society of Aesthetic Plastic Surgery-ISAPS.",
+            "year": "2024",
+            "kind": "review",
+            "tier": 2,
+            "source": "pubmed",
+            "hasAbstract": true,
+            "citations": null
+          },
+          {
+            "title": "Frontal Sinus Displacement of Silicone Implant After Previous Rhinoplasty.",
+            "year": "2024",
+            "kind": "other clinical literature",
+            "tier": 2,
+            "source": "pubmed",
+            "hasAbstract": true,
+            "citations": null
+          },
+          {
+            "title": "Complications Associated with Alloplastic Materials in Rhinoplasty and Their Operative Management.",
+            "year": "2024",
+            "kind": "other clinical literature",
+            "tier": 2,
+            "source": "pubmed",
+            "hasAbstract": true,
+            "citations": null
+          }
+        ],
+        "note": "내부 문헌 구성 점검용 휴리스틱이며 개별 연구의 비뚤림 위험·간접성·불일치·비정밀성을 평가하는 GRADE가 아닙니다."
+      },
+      "repairCheck": {}
+    },
+    {
+      "key": "eye_asymmetry",
+      "area": "눈",
+      "topic": "짝눈 · 눈 좌우 비대칭 교정",
+      "score": 40,
+      "reasons": [
+        "검색량 7위",
+        "전년 대비 -45% (분야 평균 -37%)",
+        "기존 글 19,172건",
+        "리뷰·메타분석 10편",
+        "최근 1년 논문 34편"
+      ],
+      "evidence": {
+        "recent1y": 34,
+        "recent3y": 91,
+        "reviews6y": 10
+      },
+      "naver": {
+        "medianTotal": 19172,
+        "trend": "하락",
+        "available": true
+      },
+      "paperCount": 22,
+      "draftedAt": "2026-09-07T12:52:47.519495+09:00",
+      "titles": [
+        "짝눈 교정, 좌우 차이는 무엇을 보고 정하나요?",
+        "짝눈 수술, 눈꺼풀 문제와 뼈 비대칭은 어떻게 구분하나요?",
+        "짝눈 교정 후 좌우가 맞아 보이기까지 얼마나 걸리나요?"
+      ],
+      "body": "좌우 차이의 원인이 어디서 오는지를 먼저 봅니다. 눈꺼풀을 올리는 힘 차이인지, 쌍꺼풀 라인 높이 차이인지, 아니면 눈이 앉아 있는 뼈 자체가 다른지. 이 셋은 수술 방법이 완전히 달라서, 여기를 안 나누고 라인만 맞추면 오히려 차이가 더 도드라집니다.\n\n진료실에서 \"한쪽 눈이 더 작아요\"라고 말씀하시는 분이 정말 많아요. 그런데 실제로 재 보면 눈 크기가 아니라 뜨는 힘이 다른 경우가 절반쯤 됩니다.\n\n## 짝눈은 왜 생기나요?\n\n원인은 크게 셋으로 나뉩니다.\n\n1. 눈꺼풀올림근(levator palpebrae superioris)의 힘 차이. 한쪽 눈꺼풀이 더 내려와 있는 안검하수(ptosis)입니다. 검은자를 덮는 정도가 달라지니 눈 크기가 다르게 보이죠.\n2. 쌍꺼풀 라인과 노출면 차이. 눈을 떴을 때 라인 아래로 보이는 눈꺼풀 면적을 검판노출(tarsal platform show)이라고 합니다. 이 폭이 좌우로 다르면 라인 높이가 같아도 짝짝이로 읽힙니다.\n3. 뼈와 안구 위치 차이. 눈확(orbit)의 깊이, 광대와 위턱의 앞뒤 위치가 좌우로 다른 경우입니다.\n\n관련 문헌에서는 위눈꺼풀 비대칭이 선천적 요인뿐 아니라 뼈·연부조직 비대칭, 안구 위치 차이, 신경이나 기계적 결함에서도 온다고 설명합니다. 즉 눈꺼풀만의 문제가 아닌 경우가 꽤 있다는 뜻이에요.\n\n아래눈꺼풀 쪽은 더 노골적입니다. 하안검 비대칭 환자를 분류한 연구에서는 왼쪽 아래눈확 가장자리가 오른쪽보다 뒤에 있는 비율이 96%였습니다. 사람 얼굴은 원래 좌우가 다릅니다.\n\n## 수술방에서 저는 무엇을 보고 정하나요?\n\n가장 먼저 확인하는 건 눈을 정면으로 떴을 때 동공 중심에서 위눈꺼풀 가장자리까지의 거리(MRD1)입니다. 이 값이 좌우로 벌어져 있으면 라인 문제가 아니라 뜨는 힘 문제입니다.\n\n그다음 이마에 손을 얹고 눈썹을 고정한 채 다시 뜨게 합니다. 이마 힘을 뺐을 때 한쪽이 더 처진다면 숨어 있던 안검하수예요. 눈썹 높이 차이도 이때 대부분 드러납니다.\n\n세 번째로 봅니다. 라인 아래 노출면의 폭, 그리고 눈썹부터 라인까지의 두께(brow fat span)를 좌우로 비교합니다. 이 두 가지가 짝짝이 인상을 만드는 핵심이라는 건 문헌 리뷰에서도 반복해서 강조하는 부분입니다.\n\n마지막은 뼈입니다. 정면 사진에서 양쪽 눈 사이 간격, 눈확 가장자리 위치를 봅니다. 여기서 차이가 크면 저는 상담에서 \"눈꺼풀로 맞출 수 있는 몫\"과 \"뼈에서 오는 몫\"을 나눠서 미리 말씀드립니다. 이 구분을 안 하고 시작하면 나중에 서로 힘들어집니다.\n\n## 라인 교정과 안검하수 교정은 어떻게 다른가요?\n\n| | 라인(쌍꺼풀) 높이 조정 | 눈꺼풀올림근 교정 |\n|---|---|---|\n| 맞추는 대상 | 라인 아래 노출면 폭 | 눈 뜨는 힘, 검은자 노출량 |\n| 적응 대상 | MRD1은 비슷한데 라인만 짝짝이 | MRD1이 좌우로 벌어진 경우 |\n| 강점 | 조정 폭이 예측 가능 | 눈 크기 차이 자체가 줄어듦 |\n| 한계 | 뜨는 힘 차이는 못 고침 | 미세 조정이 어렵고 재수술률이 상대적으로 높음 |\n| 붓기 영향 | 비교적 적음 | 커서 최종 판단이 늦어짐 |\n\n한쪽 힘이 아주 약해 근육을 당겨도 안 되는 경우엔 넓적다리 근막을 이용한 걸기 수술(fascia lata sling)까지 갑니다. 다만 이건 미용 목적보다 기능이 크게 떨어진 경우에 쓰는 방법이고, 문헌상 합병증률이 21.3%, 재수술률이 13.4%로 보고됩니다. 재수술 사유의 상당수가 비대칭과 라인 문제였습니다. 그만큼 좌우를 정확히 맞추는 일 자체가 까다롭다는 뜻입니다.\n\n## 어떤 분께 권하고, 어떤 분께는 권하지 않나요?\n\n권하는 쪽부터 말씀드릴게요.\n\n한쪽 눈꺼풀만 검은자를 더 덮고 있어 인상이 졸려 보이는 분. 라인 높이만 좌우로 다른 분. 이마를 계속 들어 올려 이마 주름이 한쪽만 깊어지는 분. 여기까지는 수술로 좁혀 드릴 수 있는 영역입니다.\n\n반대로 신중하게 접근하는 경우가 있습니다.\n\n얼굴뼈 비대칭이 뚜렷한 분. 눈을 맞춰도 인상의 기울기는 남습니다. 한쪽 이마·눈 주변에 보툴리눔 톡신을 맞은 지 얼마 안 된 분. 톡신 자체가 눈꺼풀 처짐이나 눈썹 비대칭을 만들 수 있어서, 저는 효과가 빠진 뒤에 다시 보자고 말씀드립니다. 그리고 사진에서 1mm 차이를 짚어 내며 완전한 대칭을 원하시는 분. 이 경우엔 수술 전에 기대치부터 맞추지 않으면 결과가 좋아도 만족이 안 됩니다.\n\n어릴 때부터 한쪽 머리뼈 모양이 눈에 띄게 다르고 난시나 사시가 동반된 경우라면, 미용 수술 이전에 안과적 평가가 먼저입니다. 이건 눈꺼풀 문제가 아닙니다.\n\n## 상담에서는 무엇을 확인하고 물어봐야 하나요?\n\n거울을 보면서 스스로 한번 확인해 보세요. 이마를 손으로 누르고 눈을 떠 봅니다. 그때 한쪽이 더 내려온다면 그 정보를 상담에서 꼭 말씀하세요.\n\n그리고 이렇게 물어보시면 됩니다.\n\n\"제 짝눈은 뜨는 힘 차이인가요, 라인 차이인가요, 뼈 차이인가요?\"\n\"수술로 좁힐 수 있는 차이는 몇 mm 정도이고, 남는 차이는 무엇 때문인가요?\"\n\"한쪽만 할 때와 양쪽 다 할 때, 각각 어떤 점이 달라지나요?\"\n\n부작용도 정직하게 짚겠습니다. 짝눈 교정에서 가장 흔한 문제는 교정 후에도 남는 비대칭입니다. 쌍꺼풀 수술 후 합병증 중 비대칭이 가장 흔하다는 건 문헌에서도 공통된 지적이에요. 그 외에 눈이 완전히 감기지 않는 토안(lagophthalmos), 건조감, 라인 모양 이상, 흉터, 부기 지속이 있을 수 있습니다. 눈꺼풀올림근을 다루면 과교정과 저교정 모두 가능하고, 어느 쪽이든 재수술을 고려하게 됩니다. 효과와 회복 속도는 사람마다 다릅니다.\n\n## 수술 후 좌우가 맞아 보이기까지 얼마나 걸리나요?\n\n시간 순서로 정리해 볼게요.\n\n72시간까지는 붓기가 가장 심한 시기입니다. 이때는 좌우가 다르게 보이는 게 정상입니다. 냉찜질과 상체를 올린 자세 유지가 중요해요.\n\n2주 정도면 실밥을 뽑고 눈에 띄는 부기가 줄어듭니다. 다만 라인은 아직 두껍습니다. 세안, 가벼운 외출 같은 일상 동작은 이 무렵부터 부담이 줄지만 회복 속도에는 개인차가 있습니다.\n\n4주에서 8주 사이에 라인이 자리를 잡기 시작합니다. 화장, 렌즈 착용 시점은 경과를 보고 정합니다.\n\n3개월에서 6개월. 저는 이 시점을 최종 판단 기준으로 봅니다. 특히 눈꺼풀올림근을 조정한 경우엔 붓기가 빠지면서 뜨는 정도가 계속 변해요. 그전에 재수술을 결정하지 않습니다.\n\n## 자주 묻는 질문\n\nQ. 제 짝눈은 수술로 완전히 똑같이 맞출 수 있나요?\n완전한 대칭은 목표로 삼지 않습니다. 사람 얼굴은 원래 좌우가 다르고, 아래눈확 위치조차 대부분 좌우가 다르다는 연구 결과가 있습니다. 제가 목표로 하는 건 정면에서 마주 봤을 때 차이가 읽히지 않는 수준입니다. 사진을 확대해 mm 단위로 비교하면 차이는 남습니다. 이 부분을 수술 전에 합의하고 들어가는 게 결과보다 중요할 때가 많아요.\n\nQ. 짝눈이 안검하수 때문인지 어떻게 아나요?\n동공 중심에서 위눈꺼풀 가장자리까지의 거리를 좌우로 재 보면 대부분 갈립니다. 집에서 확인하려면 이마를 손바닥으로 눌러 눈썹을 고정한 뒤 눈을 떠 보세요. 그때 한쪽이 더 덮인다면 뜨는 힘 차이일 가능성이 큽니다. 이마 주름이 한쪽만 깊거나 턱을 살짝 들고 보는 습관이 있다면 그것도 단서예요. 다만 최종 판단은 진료에서 근육 기능을 직접 측정해야 합니다.\n\nQ. 얼굴뼈 자체가 비대칭이면 눈만 맞춰도 소용없나요?\n소용없지는 않습니다. 다만 좁혀지는 폭이 줄어듭니다. 위턱과 광대의 앞뒤 차이가 눈꺼풀 비대칭으로 이어진다는 보고가 있고, 제가 수술한 환자들을 직접 본 경험상 뼈 비대칭이 큰 분은 눈을 맞춰도 인상의 기울기가 어느 정도 남습니다. 그래서 이런 경우엔 좌우를 똑같이 만드는 대신, 덜 도드라지게 만드는 쪽으로 목표를 다시 잡습니다. 이걸 미리 말씀드리지 않으면 수술이 잘돼도 실망하시게 됩니다.\n\n## 정리하면 무엇을 기억하면 될까요?\n\n짝눈은 하나의 문제가 아니라 뜨는 힘, 라인 노출면, 뼈 위치라는 세 층이 겹쳐 있는 상태입니다. 어느 층에서 온 차이인지 나누는 것이 수술 방법보다 먼저이고, 목표는 완전한 대칭이 아니라 마주 봤을 때 읽히지 않는 정도입니다. 회복 과정과 최종 판단 시점, 남을 수 있는 차이에는 개인차가 있으니, 본인 눈이 어느 쪽에 해당하는지는 담당 의료진과 직접 진료를 통해 확인하시기 바랍니다.",
+      "tags": [
+        "#짝눈",
+        "#짝눈교정",
+        "#눈비대칭",
+        "#안검하수",
+        "#쌍꺼풀비대칭",
+        "#눈성형",
+        "#상안검",
+        "#눈매교정",
+        "#좌우비대칭",
+        "#눈꺼풀처짐"
+      ],
+      "images": [
+        "도입부 뒤 | 정면 얼굴에서 좌우 눈의 검은자 노출 정도가 다른 상태를 표시한 도식",
+        "\"짝눈은 왜 생기나요?\" 단락 | 눈꺼풀올림근·검판·눈확 위치를 표시한 위눈꺼풀 단면 해부도",
+        "\"수술방에서 저는 무엇을 보고 정하나요?\" 단락 | 동공 중심에서 위눈꺼풀 가장자리까지의 거리(MRD1) 측정 지점을 화살표로 표시한 그림",
+        "\"라인 교정과 안검하수 교정은 어떻게 다른가요?\" 단락 | 라인 아래 노출면 폭과 눈썹-라인 두께를 좌우 비교해 표시한 도식",
+        "\"수술 후 좌우가 맞아 보이기까지\" 단락 | 72시간·2주·4~8주·3~6개월 회복 단계 타임라인 그래픽"
+      ],
+      "sources": [
+        "조인창. 눈꺼풀 수술술기. 3판. 군자출판사; 2025.",
+        "Holds, John B. \"Management of the Tarsal Fold with Ptosis Management in Aesthetic Blepharoplasty.\" Facial Plast Surg Clin North Am 34.1 (2026): 119-129.",
+        "Chalkias, Ioannis-Nikolaos, et al. \"Factors that affect eyelid show and their importance in upper eyelid blepharoplasty: a systematic review.\" Orbit 44.3 (2025): 363-372.",
+        "Ahmad, Reddin, et al. \"Use of autogenous fascia lata slings in the surgical correction of ptosis: a systematic review of the literature and meta-analysis.\" Br J Oral Maxillofac Surg 62.2 (2024): 128-139.",
+        "Huynh, Elisah M, et al. \"Ophthalmic Manifestations of Unilateral Coronal Synostosis.\" Curr Eye Res 48.10 (2023): 879-886.",
+        "Borba, André, et al. \"Avoiding Complications on the Upper Face Treatment With Botulinum Toxin: A Practical Guide.\" Aesthetic Plast Surg 46.1 (2022): 385-394.",
+        "Kim, Chang Yeom, and Jae Woo Jang. \"The Causes and Management of Asymmetrical Double Eyelids.\" Facial Plast Surg 36.5 (2020): 575-583.",
+        "Kim, Kenneth K, and Jin Suk Byun. \"A Morphologic Classification and Surgical Algorithm for Lower Eyelid Asymmetry in Primary Lower Blepharoplasty.\" Plast Reconstr Surg Glob Open 14.8 (2026): e7958."
+      ],
+      "chars": 4105,
+      "relatedLinks": [],
+      "templateCheck": {},
+      "adCheck": {
+        "ok": true,
+        "count": 0,
+        "hits": []
+      },
+      "audit": {
+        "score": 95,
+        "ok": true,
+        "checks": {
+          "questionTitle": true,
+          "answerFirst": true,
+          "questionHeadings": true,
+          "readableParagraphs": true,
+          "sourceDepth": true,
+          "imagePlan": true,
+          "internalLinks": false
+        },
+        "metrics": {
+          "questionHeadingCount": 10,
+          "paragraphCount": 38,
+          "medianParagraphChars": 96,
+          "sourceCount": 7,
+          "imageCount": 5,
+          "relatedLinkCount": 0
+        },
+        "issues": [
+          "관련 글 내부링크 후보가 없습니다."
+        ],
+        "note": "내부 품질 점검용 휴리스틱이며 네이버·구글·LLM의 실제 노출 알고리즘 점수를 의미하지 않습니다."
+      },
+      "evidenceQa": {
+        "score": 76,
+        "level": "strong mix",
+        "ok": true,
+        "counts": {
+          "total": 22,
+          "systematicOrMeta": 2,
+          "trialOrComparative": 0,
+          "recent5y": 21,
+          "withAbstract": 19,
+          "pubmed": 19
+        },
+        "warnings": [
+          "비교연구 또는 임상시험 근거가 확인되지 않았습니다."
+        ],
+        "topEvidence": [
+          {
+            "title": "Factors that affect eyelid show and their importance in upper eyelid blepharoplasty: a systematic review.",
+            "year": "2025",
+            "kind": "systematic/meta-analysis",
+            "tier": 4,
+            "source": "pubmed",
+            "hasAbstract": true,
+            "citations": null
+          },
+          {
+            "title": "Use of autogenous fascia lata slings in the surgical correction of ptosis: a systematic review of the literature and meta-analysis.",
+            "year": "2024",
+            "kind": "systematic/meta-analysis",
+            "tier": 4,
+            "source": "pubmed",
+            "hasAbstract": true,
+            "citations": null
+          },
+          {
+            "title": "Management of the Tarsal Fold with Ptosis Management in Aesthetic Blepharoplasty.",
+            "year": "2026",
+            "kind": "review",
+            "tier": 2,
+            "source": "pubmed",
+            "hasAbstract": true,
+            "citations": null
+          },
+          {
+            "title": "Epithelial and Topographic Corneal Remodeling After Ptosis and Ectropion Surgery: An MS-39-Based Study.",
+            "year": "2026",
+            "kind": "other clinical literature",
+            "tier": 2,
+            "source": "pubmed",
+            "hasAbstract": true,
+            "citations": null
+          },
+          {
+            "title": "Bilateral advancement flaps in the treatment of divided nevus of the eyelid: A retrospective case series.",
+            "year": "2026",
+            "kind": "other clinical literature",
+            "tier": 2,
+            "source": "pubmed",
+            "hasAbstract": true,
+            "citations": null
+          }
+        ],
+        "note": "내부 문헌 구성 점검용 휴리스틱이며 개별 연구의 비뚤림 위험·간접성·불일치·비정밀성을 평가하는 GRADE가 아닙니다."
+      },
+      "repairCheck": {}
     },
     {
       "key": "xanthelasma",
@@ -471,19 +1414,19 @@
       "topic": "눈꺼풀 황색종 제거",
       "score": 38,
       "reasons": [
-        "검색량 12위",
-        "전년 대비 +110% (분야 평균 -35%)",
-        "기존 글 337건",
+        "검색량 14위",
+        "전년 대비 +110% (분야 평균 -37%)",
+        "기존 글 339건",
         "리뷰·메타분석 5편",
-        "최근 1년 논문 4편"
+        "최근 1년 논문 3편"
       ],
       "evidence": {
-        "recent1y": 4,
-        "recent3y": 19,
+        "recent1y": 3,
+        "recent3y": 18,
         "reviews6y": 5
       },
       "naver": {
-        "medianTotal": 337,
+        "medianTotal": 339,
         "trend": "상승",
         "available": true
       },
@@ -524,11 +1467,103 @@
         "Peng, Jing, et al. \"A comparative study of the efficacy of an ultra-picosecond laser versus an ultra-pulsed CO2 laser in the treatment of xanthelasma palpebrarum.\" Am J Transl Res 17.8 (2025): 6442-6452."
       ],
       "chars": 4260,
+      "relatedLinks": [],
+      "templateCheck": {},
       "adCheck": {
         "ok": true,
         "count": 0,
         "hits": []
-      }
+      },
+      "audit": {
+        "score": 95,
+        "ok": true,
+        "checks": {
+          "questionTitle": true,
+          "answerFirst": true,
+          "questionHeadings": true,
+          "readableParagraphs": true,
+          "sourceDepth": true,
+          "imagePlan": true,
+          "internalLinks": false
+        },
+        "metrics": {
+          "questionHeadingCount": 11,
+          "paragraphCount": 36,
+          "medianParagraphChars": 102,
+          "sourceCount": 6,
+          "imageCount": 5,
+          "relatedLinkCount": 0
+        },
+        "issues": [
+          "관련 글 내부링크 후보가 없습니다."
+        ],
+        "note": "내부 품질 점검용 휴리스틱이며 네이버·구글·LLM의 실제 노출 알고리즘 점수를 의미하지 않습니다."
+      },
+      "evidenceQa": {
+        "score": 54,
+        "level": "limited mix",
+        "ok": false,
+        "counts": {
+          "total": 19,
+          "systematicOrMeta": 0,
+          "trialOrComparative": 1,
+          "recent5y": 19,
+          "withAbstract": 14,
+          "pubmed": 15
+        },
+        "warnings": [
+          "최근 systematic review/meta-analysis가 포함되지 않았습니다."
+        ],
+        "topEvidence": [
+          {
+            "title": "Efficacy and safety of surgical excision vs. 70% trichloroacetic acid topical application in xanthelasma palpebrarum: a split-face randomized clinical trial.",
+            "year": "2026",
+            "kind": "randomized trial",
+            "tier": 4,
+            "source": "pubmed",
+            "hasAbstract": true,
+            "citations": null
+          },
+          {
+            "title": "Aesthetic Surgical Treatment of Large Xanthelasma palpebrarum.",
+            "year": "2024",
+            "kind": "other clinical literature",
+            "tier": 2,
+            "source": "pubmed",
+            "hasAbstract": true,
+            "citations": 1
+          },
+          {
+            "title": "Investigation of systemic inflammatory biomarkers associated with high-density lipoprotein and risk analysis in Xanthelasma Palpebrarum.",
+            "year": "2026",
+            "kind": "other clinical literature",
+            "tier": 2,
+            "source": "pubmed",
+            "hasAbstract": true,
+            "citations": null
+          },
+          {
+            "title": "A comparative study of the efficacy of an ultra-picosecond laser versus an ultra-pulsed CO2 laser in the treatment of xanthelasma palpebrarum.",
+            "year": "2025",
+            "kind": "other clinical literature",
+            "tier": 2,
+            "source": "pubmed",
+            "hasAbstract": true,
+            "citations": null
+          },
+          {
+            "title": "Clinical effect and safety of medicated thread moxibustion on xanthelasma palpebrarum: A retrospective cohort study.",
+            "year": "2025",
+            "kind": "observational study",
+            "tier": 2,
+            "source": "pubmed",
+            "hasAbstract": true,
+            "citations": null
+          }
+        ],
+        "note": "내부 문헌 구성 점검용 휴리스틱이며 개별 연구의 비뚤림 위험·간접성·불일치·비정밀성을 평가하는 GRADE가 아닙니다."
+      },
+      "repairCheck": {}
     },
     {
       "key": "canthal_revision",
@@ -536,20 +1571,20 @@
       "topic": "앞트임 복원 · 트임 재수술",
       "score": 37,
       "reasons": [
-        "검색량 18위",
-        "전년 대비 -5% (분야 평균 -35%)",
-        "기존 글 8,222건",
+        "검색량 19위",
+        "전년 대비 -5% (분야 평균 -37%)",
+        "기존 글 8,263건",
         "리뷰·메타분석 14편",
         "최근 1년 논문 30편",
         "연구가 활발해지는 중"
       ],
       "evidence": {
         "recent1y": 30,
-        "recent3y": 67,
+        "recent3y": 66,
         "reviews6y": 14
       },
       "naver": {
-        "medianTotal": 8222,
+        "medianTotal": 8263,
         "trend": "보합",
         "available": true
       },
@@ -587,225 +1622,267 @@
         "Fineide, Fredrik A, et al. \"Minimizing Postoperative Scars in Epicanthoplasty: A Concise Review.\" J Cosmet Dermatol 24.12 (2025): e70603."
       ],
       "chars": 3646,
+      "relatedLinks": [],
+      "templateCheck": {},
       "adCheck": {
         "ok": true,
         "count": 0,
         "hits": []
-      }
+      },
+      "audit": {
+        "score": 95,
+        "ok": true,
+        "checks": {
+          "questionTitle": true,
+          "answerFirst": true,
+          "questionHeadings": true,
+          "readableParagraphs": true,
+          "sourceDepth": true,
+          "imagePlan": true,
+          "internalLinks": false
+        },
+        "metrics": {
+          "questionHeadingCount": 10,
+          "paragraphCount": 41,
+          "medianParagraphChars": 77,
+          "sourceCount": 3,
+          "imageCount": 5,
+          "relatedLinkCount": 0
+        },
+        "issues": [
+          "관련 글 내부링크 후보가 없습니다."
+        ],
+        "note": "내부 품질 점검용 휴리스틱이며 네이버·구글·LLM의 실제 노출 알고리즘 점수를 의미하지 않습니다."
+      },
+      "evidenceQa": {
+        "score": 76,
+        "level": "strong mix",
+        "ok": true,
+        "counts": {
+          "total": 19,
+          "systematicOrMeta": 2,
+          "trialOrComparative": 0,
+          "recent5y": 19,
+          "withAbstract": 15,
+          "pubmed": 18
+        },
+        "warnings": [
+          "비교연구 또는 임상시험 근거가 확인되지 않았습니다."
+        ],
+        "topEvidence": [
+          {
+            "title": "Meta-analysis of the skin redraping method and the Z-plasty method in the correction of epicanthus.",
+            "year": "2026",
+            "kind": "systematic/meta-analysis",
+            "tier": 4,
+            "source": "pubmed",
+            "hasAbstract": true,
+            "citations": null
+          },
+          {
+            "title": "Periorbital reconstructive techniques following Mohs micrographic surgery or excisions: a systematic review.",
+            "year": "2023",
+            "kind": "systematic/meta-analysis",
+            "tier": 4,
+            "source": "pubmed",
+            "hasAbstract": true,
+            "citations": null
+          },
+          {
+            "title": "[Research progress in repair of post-epicanthoplasty deformity].",
+            "year": "2026",
+            "kind": "review",
+            "tier": 2,
+            "source": "pubmed",
+            "hasAbstract": true,
+            "citations": null
+          },
+          {
+            "title": "Reconstruction of a Multi-subunit Defect of the Lower Eyelid, Medial Canthus, Nasal Sidewall, and Medial Cheek.",
+            "year": "2026",
+            "kind": "other clinical literature",
+            "tier": 2,
+            "source": "pubmed",
+            "hasAbstract": false,
+            "citations": null
+          },
+          {
+            "title": "The Glabellar Star Flap: A Novel Flap for Medial Canthal Reconstruction.",
+            "year": "2026",
+            "kind": "other clinical literature",
+            "tier": 2,
+            "source": "pubmed",
+            "hasAbstract": false,
+            "citations": null
+          }
+        ],
+        "note": "내부 문헌 구성 점검용 휴리스틱이며 개별 연구의 비뚤림 위험·간접성·불일치·비정밀성을 평가하는 GRADE가 아닙니다."
+      },
+      "repairCheck": {}
     },
     {
-      "key": "forehead_reduction",
-      "area": "리프팅",
-      "topic": "이마축소 · 헤어라인 하강술",
-      "score": 37,
+      "key": "donor_cartilage_choice",
+      "area": "코",
+      "topic": "기증늑연골과 자가늑연골 코성형 비교",
+      "score": 35,
       "reasons": [
-        "검색량 8위",
-        "전년 대비 -43% (분야 평균 -35%)",
-        "기존 글 5,575건",
-        "리뷰·메타분석 15편",
-        "최근 1년 논문 13편",
+        "검색량 13위",
+        "전년 대비 -36% (분야 평균 -37%)",
+        "기존 글 201건",
+        "리뷰·메타분석 9편",
+        "최근 1년 논문 18편",
         "연구가 활발해지는 중"
       ],
       "evidence": {
-        "recent1y": 13,
-        "recent3y": 27,
-        "reviews6y": 15
+        "recent1y": 18,
+        "recent3y": 41,
+        "reviews6y": 9
       },
       "naver": {
-        "medianTotal": 5575,
+        "medianTotal": 201,
         "trend": "하락",
         "available": true
       },
-      "paperCount": 19,
-      "draftedAt": "2026-09-08T21:45:19.561772+09:00",
+      "paperCount": 24,
+      "draftedAt": "2026-09-20T07:30:52.893763+09:00",
       "titles": [
-        "이마축소 수술, 얼마나 내릴지는 무엇으로 정하나요?",
-        "이마축소 수술과 모발이식, 어느 쪽이 저에게 맞을까요?",
-        "헤어라인 하강술, 회복은 어떤 순서로 지나가나요?"
+        "기증늑연골과 자가늑연골 코성형, 제 코에는 어느 쪽이 맞을까요?",
+        "기증늑연골과 자가늑연골 코성형, 가슴 흉터가 걱정되면 어떻게 고를까요?",
+        "기증늑연골과 자가늑연골 코성형, 코끝 지지력은 무엇으로 판단하나요?"
       ],
-      "body": "두피가 앞뒤로 얼마나 움직이는지로 정합니다. 원하시는 만큼이 아니라, 그날 두피가 허락하는 만큼입니다. 그래서 저는 손으로 두피를 직접 밀어 본 다음에야 숫자를 말씀드립니다.\n\n\"딱 1cm만 내려 주세요\"라고 짚어서 오시는 분들이 정말 많아요. 그 마음은 충분히 이해합니다. 다만 그 1cm를 정하는 건 이마가 아니라 뒤쪽 두피입니다.\n\n## 이마가 넓어 보이는 건 헤어라인 탓일까요, 이마뼈 탓일까요?\n\n둘 다 원인이 됩니다. 그리고 둘은 수술 방법이 완전히 다릅니다. 이 구분을 못 하면 엉뚱한 수술을 받게 돼요.\n\n1. 헤어라인 자체가 높은 경우. 눈썹에서 머리카락 시작점까지의 거리가 깁니다. 이마 피부와 두피의 경계 위치 문제입니다.\n2. 눈썹뼈가 앞으로 튀어나온 경우. 눈썹뼈 융기(supraorbital bossing)가 심하면 이마가 앞뒤로 두껍고 각져 보입니다.\n3. 이마 중앙이 평평하고 관자 쪽이 파인 경우. 관자 후퇴(temporal recession)가 있으면 헤어라인이 M자로 벌어지며 넓어 보입니다.\n\n남성호르몬은 헤어라인을 위로 올리고 각지게 만듭니다. 동시에 눈썹뼈와 안와연의 앞쪽 돌출을 키웁니다. 관련 문헌에서도 상안면 3분의 1의 이런 변화를 남성적 인상의 핵심으로 설명합니다.\n\n거울 앞에서 한번 확인해 보세요. 손가락을 눈썹 바로 위에 대고 머리카락 시작점까지 몇 마디인지 세어 보시면 됩니다. 이해를 돕기 위해 아래 그림으로 이마 세 구간을 나눠 정리해 두었습니다.\n\n## 수술방에서 저는 무엇을 보고 내릴 양을 정할까요?\n\n두피 이완도를 봅니다. 정확히는 손으로 두피를 앞뒤로 밀었을 때 미끄러지는 정도입니다.\n\n상담에서도 확인하지만, 최종 판단은 수술방에서 합니다. 절개 후 두피판을 박리(undermining)하고 실제로 앞으로 당겨 봐요. 그때 장력 없이 닿는 지점, 거기까지가 그날의 한계입니다. 억지로 더 당기면 흉터가 벌어지고 절개선 주변 모낭이 버티지 못합니다.\n\n두피가 뻣뻣한 분은 모상건막(galea)을 여러 줄 절개해 이완을 더 얻습니다. 그래도 부족하면 뼈 고정을 이용해 앞쪽을 붙잡아 둡니다.\n\n여러 논문을 종합하면 평균적으로 내려오는 양은 1.6cm 정도로 보고됩니다. 제가 수술한 환자분들을 직접 본 경험으로도 이 언저리가 현실적인 중심값입니다. 두피가 부드러운 분은 그보다 더 가고, 뻣뻣한 분은 1cm에 못 미치기도 합니다.\n\n또 하나 꼭 봅니다. 절개선 자리의 모낭 방향이에요. 모낭 각도를 살려 절개하면 나중에 흉터를 뚫고 머리카락이 자라 나옵니다.\n\n## 이마축소 수술과 모발이식, 무엇이 다른가요?\n\n원리부터 다릅니다. 하나는 있는 머리카락을 통째로 내리는 것이고, 하나는 없는 자리에 옮겨 심는 것입니다.\n\n| 구분 | 이마축소(헤어라인 하강술) | 모발이식 |\n|---|---|---|\n| 원리 | 두피를 앞으로 당겨 헤어라인 전체를 내림 | 뒤통수 모낭을 채취해 앞쪽에 심음 |\n| 밀도 | 원래 밀도가 그대로 따라 내려옴 | 심은 개수만큼, 원래 밀도보다는 낮음 |\n| 형태 확인 | 수술 직후 위치가 잡힘 | 자라는 데 시간이 걸림 |\n| 횟수 | 대개 한 번 | 밀도에 따라 두 번 이상 |\n| 흉터 | 헤어라인을 따라 가는 절개선 | 채취부 흉터, 미세 이식 자국 |\n| 한계 | 두피 이완도에 좌우됨 | 관자·굴곡은 유리하나 밀도 한계 |\n\n관련 문헌에서도 헤어라인 하강술의 장점으로 밀도가 채워진다는 점을 듭니다. 저도 상담에서 이 부분을 가장 오래 설명합니다. 옮겨 심은 머리카락과, 원래 그 사람 밀도로 내려온 헤어라인은 결이 다릅니다.\n\n두 방법은 경쟁 관계가 아닙니다. 헤어라인은 수술로 내리고, 양 옆 관자 곡선은 이식으로 다듬는 조합도 자주 씁니다.\n\n## 이마축소 수술, 어떤 분께 맞고 어떤 분께는 권하지 않나요?\n\n가장 잘 맞는 분은 앞쪽 헤어라인이 안정적이고 두피가 잘 움직이는 분입니다. 문헌에서도 같은 조건을 좋은 적응증으로 봅니다.\n\n반면 이런 경우에는 저는 권하지 않습니다.\n\n- 탈모가 진행 중인 분. 지금 내려도 경계가 다시 뒤로 물러납니다.\n- 두피가 거의 밀리지 않는 분. 얻을 수 있는 거리가 너무 짧습니다.\n- 켈로이드 등 흉터 체질, 두피 수술이나 방사선 치료를 받은 적이 있는 분.\n- 조절되지 않는 당뇨, 상처 치유를 늦추는 질환이 있는 분. 흡연 중이신 분도 수술 전후 금연이 전제입니다.\n\n수술로 만들어 드릴 수 있는 영역은 분명합니다. 이마 세로 길이, 헤어라인 높이, M자 굴곡의 일부까지입니다.\n\n타고난 것이라 두피를 당겨도 바뀌지 않는 부분도 말씀드려야죠. 튀어나온 눈썹뼈와 이마뼈 굴곡이 그렇습니다. 이건 뼈를 직접 다루는 별개의 수술 영역입니다. 모발의 굵기와 곱슬 정도도 바꿀 수 없고, 이 특성에 따라 같은 밀도라도 덮이는 느낌이 다릅니다.\n\n## 회복은 어떤 순서로 지나가나요?\n\n시간 순서로 짚어 드릴게요. 개인차는 반드시 있습니다.\n\n~72시간: 이마와 눈 주변 부기가 가장 심한 시기입니다. 상체를 높이고 쉬셔야 합니다.\n~2주: 실밥을 뽑습니다. 부기가 눈에 띄게 빠지고, 앞머리로 절개선을 가릴 수 있는 시기가 대체로 이 무렵입니다.\n~4주: 가벼운 운동을 다시 시작해 볼 수 있습니다. 단 두피에 힘이 들어가는 동작은 아직 이릅니다.\n3~6개월: 절개선의 붉은 기가 옅어집니다. 흉터를 뚫고 나오는 잔머리가 보이기 시작합니다.\n12개월: 최종 흉터와 헤어라인 모양을 판단하는 시점입니다. 문헌에서도 최소 1년은 경과를 봐야 한다고 권합니다.\n\n## 상담에서 무엇을 확인하고 물어보셔야 할까요?\n\n세 가지는 꼭 물어보세요.\n\n\"제 두피 이완도로는 몇 cm 정도가 현실적인가요?\"\n\"절개선을 정확히 어디에 어떤 방식으로 넣으시나요?\"\n\"제 경우 탈모 진행 가능성은 어떻게 보시나요?\"\n\n부작용도 정직하게 짚겠습니다. 대규모 분석에서 전체 합병증 비율은 연구에 따라 1% 이하부터 5.9%까지 폭이 있습니다. 절개선 주변 탈모는 1% 미만, 재수술은 1.3% 정도로 보고됩니다. 모낭염은 25%대로 흔한 편이지만 대개 일시적입니다. 감각 저하는 거의 모든 환자에서 일시적으로 나타난다고 보고됩니다.\n\n혈종, 장액종, 흉터 비대도 가능한 합병증입니다. 이마뼈까지 함께 다루는 경우에는 전두동 부위와 관련된 드문 합병증도 별도로 설명드려야 합니다.\n\n## 자주 묻는 질문\n\nQ. 헤어라인을 따라 절개하면 그 자리에 머리카락이 안 나서 표가 나지 않나요?\n절개선 자체는 남습니다. 다만 모낭 각도를 따라 비스듬히 넣는 방식으로 절개하면, 절개선 뒤쪽 모낭이 살아남아 흉터를 통과해 자랍니다. 그래서 머리카락 사이에 선이 묻히게 됩니다. 보고된 연구에서 절개부 탈모는 1% 미만이었습니다. 그래도 완전히 안 보이게 만드는 것은 아니며, 흉터 형태에는 개인차가 큽니다.\n\nQ. 두피를 당기면 나중에 다시 뒤로 밀려서 이마가 넓어지지 않나요?\n고정만 제대로 되면 당겨 놓은 위치는 대체로 유지됩니다. 문제는 다른 데 있어요. 탈모가 진행 중이면 경계선 자체가 시간이 지나며 뒤로 물러납니다. 그래서 저는 여성형 탈모가 진행 중이거나 가족력이 뚜렷한 분께는 이 수술을 권하지 않습니다. 이런 경우엔 탈모 치료를 먼저 안정시킨 뒤에 다시 상의드립니다.\n\nQ. 수술 후에 정수리 쪽 감각이 오래 둔하다던데 정말인가요?\n사실입니다. 절개선 뒤쪽 두피로 가는 감각신경이 지나가는 자리를 건드리기 때문입니다. 연구에서도 일시적 감각 이상은 거의 모든 환자에게서 보고됩니다. 대개 수개월에 걸쳐 서서히 돌아오고, 머리를 감거나 빗을 때 남의 살 같은 느낌으로 표현하시는 분이 많습니다. 회복 속도는 사람마다 차이가 크고, 일부에서는 오래 남을 수 있습니다.\n\n## 정리하면 무엇을 기억하면 될까요?\n\n이마축소는 원하는 숫자를 정해 놓고 하는 수술이 아니라, 두피가 허락하는 범위 안에서 가장 자연스러운 위치를 찾는 수술입니다. 헤어라인 문제인지 이마뼈 문제인지 먼저 구분하고, 탈모 진행 여부를 확인한 다음, 절개선 방식과 고정 방법까지 듣고 결정하시면 좋겠습니다. 효과와 회복은 사람마다 다르니, 본인의 두피 상태를 직접 확인해 줄 담당 의료진과 충분히 상담하신 뒤 판단하시기 바랍니다.",
+      "body": "가슴에서 연골을 채취하는 부담을 줄이고 싶다면 기증늑연골을 고려할 수 있습니다. 다만 저는 코에서 보강할 위치와 필요한 연골의 양부터 확인합니다. 기증 연골의 처리 방식도 선택을 좌우해요. 같은 재료라도 남아 있는 코의 구조와 피부 상태에 따라 계획이 달라집니다.\n\n연골의 출처와 처리 방식은 왜 구분하나요?\n\n갈비뼈 앞쪽에 이어진 연골을 늑연골(costal cartilage)이라고 합니다. 본인에게서 채취하면 자가늑연골(autologous costal cartilage)입니다. 다른 사람에게서 기증받은 조직을 가공해 사용하면 기증늑연골(costal cartilage allograft)이죠.\n\n기증 연골에는 신선동결 늑연골(fresh-frozen costal cartilage)과 방사선 처리 동종늑연골(irradiated homologous costal cartilage)이 있습니다. 흔히 '냉동 기증늑'이라고 부르는 재료도 이름만 듣고 판단하지 않습니다. 어떤 처리 과정을 거쳤는지 함께 확인해야 합니다.\n\n연골을 코에 옮겨 넣으면 모양이 휘는 변형(warping)이 생길 수 있습니다. 시간이 지나 연골의 부피가 줄어드는 흡수(resorption)도 살펴야 하죠. 두 현상은 서로 다르며, 자가 연골과 기증 연골 모두에서 보고됩니다.\n\n이미지 제안 — 이 단락 뒤 | 자가 채취와 기증 조직의 처리 방식을 구분한 도식 | 연골의 출처와 처리 방식은 따로 확인합니다.\n\n상담에서는 무엇부터 확인하나요?\n\n저는 '자가늑이냐, 기증늑이냐'를 고르기 전에 늑연골이 필요한 이유부터 짚습니다. 코 안의 칸막이인 비중격(nasal septum) 연골로 필요한 보강이 가능한지 봅니다. 이전 수술로 남은 연골이 부족한지도 확인해요.\n\n다음은 연골이 맡을 역할입니다. 콧등의 높이를 더하는 것과 코끝을 받치는 것은 요구 조건이 다릅니다. 필요한 길이와 두께, 고정할 구조를 함께 살펴야 합니다.\n\n가슴 채취에 대한 생각도 묻습니다. '가슴에 흉터가 생기는 게 부담돼요'라는 우려는 선택에 반영할 중요한 정보입니다. 다만 그 선호만으로 코에 필요한 구조적 조건까지 결정되지는 않습니다.\n\n이미지 제안 — 상담 설명 뒤 | 콧등과 코끝 지지 부위를 표시한 코의 단순 해부도 | 연골을 어디에, 어떤 역할로 사용할지 먼저 정합니다.\n\n연골을 보강하면 어디까지 바꿀 수 있나요?\n\n늑연골은 코의 형태를 보완하고 지지 구조를 만드는 데 사용합니다. 저는 필요한 부위에 맞춰 연골의 모양을 다듬고 고정할 계획을 세웁니다. 재료의 출처만큼 배치와 고정도 중요합니다.\n\n다만 연골을 바꾼다고 피부가 늘어나는 정도나 기존 흉터의 성질까지 함께 바뀌지는 않습니다. 원하는 높이와 길이를 주변 조직이 받아들일 수 있는지 봐야 해요. '더 단단한 재료면 더 높일 수 있나요?'라는 질문에도 이 조건부터 설명합니다.\n\n자가 연골과 기증 연골은 각각 언제 고려하나요?\n\n자가늑연골은 본인 조직으로 충분한 연골을 확보해야 할 때 고려합니다. 대신 가슴에서 연골을 채취하는 과정이 추가됩니다. 기증늑연골은 이 채취 부담을 피하려는 경우 검토할 수 있습니다.\n\n비교 논문의 결과도 사용 부위에 맞춰 읽어야 합니다. 콧등을 높이는 수술을 분석한 문헌고찰에서는 자가늑연골과 방사선 처리 기증늑연골 중 어느 쪽의 우위도 입증되지 않았습니다. 이 결과를 코끝 지지력 비교에 그대로 적용하기는 어렵습니다.\n\n신선동결 연골과 자가 연골을 비교한 다른 분석에서는 휘어짐이 각각 1.2%, 3.9%로 보고됐습니다. 다만 서로 다른 연구 집단을 모은 결과이고 추적 기간에도 한계가 있습니다. 저는 이 수치를 '기증늑이 더 낫다'는 결론으로 설명하지 않습니다.\n\n회복과 부작용은 어떻게 달라지나요?\n\n자가늑연골은 코뿐 아니라 가슴 채취 부위도 회복해야 합니다. 가슴 통증과 흉터를 설명하고, 흉터가 두껍게 솟는 비후성 반흔(hypertrophic scar)도 안내합니다. 폐 주변 공간에 공기가 차는 기흉(pneumothorax) 역시 채취 과정에서 고려할 위험입니다.\n\n기증늑연골은 가슴 채취 과정이 생략됩니다. 다만 코의 회복 과정과 감염, 휘어짐, 흡수 가능성은 별개입니다. 가슴을 절개하지 않는다는 점을 코 수술 전체의 부담이 사라진다는 뜻으로 받아들이면 곤란해요.\n\n제공된 비교 연구만으로 개인의 회복 기간을 며칠로 정하기는 어렵습니다. 재수술 여부와 수술 범위도 함께 봐야 합니다. 연구에서 두 군의 차이가 통계적으로 뚜렷하지 않았다는 결과 역시 위험이 같다고 확정하는 뜻은 아닙니다.\n\n이미지 제안 — 부작용 설명 뒤 | 코의 관찰 항목과 가슴 채취 부위의 관찰 항목을 나눈 도식 | 코의 변화와 채취 부위의 회복은 구분해서 살핍니다.\n\n재료를 고르기 전에 어떤 점이 더 궁금하신가요?\n\nQ. 기증늑이랑 자가늑 중에 코끝을 받쳐주는 힘은 어떻게 다른가요?\n제공된 초록만으로 두 재료의 코끝 지지력에 순위를 매기기는 어렵습니다. 연골의 두께와 모양, 고정 방식, 남아 있는 지지 구조를 함께 봐야 합니다. 저는 재료 이름보다 어떤 구조를 만들 것인지 먼저 설명합니다.\n\nQ. 기증늑연골은 몸에서 흡수돼 코끝이 내려갈 수도 있나요?\n흡수로 지지가 약해지면 형태에 영향을 줄 수 있습니다. 다만 흡수가 보고됐다는 사실만으로 코끝이 내려갈 확률을 계산할 수는 없습니다. 신선동결 연골과 자가 연골의 비교 분석에서는 흡수율의 유의한 차이가 확인되지 않았지만, 장기 결과는 더 살펴야 합니다.\n\nQ. 가슴에서 연골을 떼기 싫으면 누구나 기증늑으로 대신할 수 있나요?\n가슴 채취가 부담스럽다면 기증 연골을 논의할 수 있습니다. 다만 필요한 연골의 양과 형태, 사용할 조직의 상태를 확인해야 합니다. 저는 환자분의 선호와 코의 구조적 조건을 함께 놓고 결정합니다.\n\n최종 선택에서 무엇을 기억하면 될까요?\n\n상담에서는 '어느 재료가 더 좋은가요?'와 함께 '제 코의 어느 부분을 받쳐야 하나요?'를 물어보세요. 기증 연골을 고려한다면 처리 방식도 확인하시면 좋습니다. 저는 이 두 가지를 정리한 뒤 가슴 채취 부담과 각 선택의 한계를 설명합니다.\n\n참고문헌\n\n[Fresh Frozen vs Autologous Costal Cartilage in Rhinoplasty: A Meta-Analysis of Complication Rates. PMID: 42212058.](https://pubmed.ncbi.nlm.nih.gov/42212058/)\n\n[A Systematic Review and Meta-Analysis of Autologous vs Irradiated Homologous Costal Cartilage Grafts for Dorsal Augmentation Rhinoplasty. PMID: 39896219.](https://pubmed.ncbi.nlm.nih.gov/39896219/)\n\n[Complications Associated with Autologous Costal Cartilage Used in Rhinoplasty: An Updated Meta-Analysis. PMID: 36071242.](https://pubmed.ncbi.nlm.nih.gov/36071242/)\n\n분야 기본 교과서: 서만군. 아시아인 코성형술 아틀라스. 1판. 군자출판사; 2025.\n교과서 본문은 직접 확인하지 않았으며, 위 비교 결과와 수치는 제공된 논문 초록에 근거했습니다.\n\n작성자 | 성형외과 전문의 facereader\n전문분야 | 눈성형•코성형•안면거상\n\n본 글은 성형외과 전문의가 의학 문헌과 실제 임상 경험을 바탕으로 직접 작성합니다.\n내용의 이해를 돕기 위해 일부 삽화 및 설명 이미지는 AI를 활용하여 제작하였습니다.\n궁금하신 점이나 추가로 알고 싶은 내용이 있다면 댓글로 남겨주세요. 확인 후 가능한 범위에서 답변드리겠습니다.",
       "tags": [
-        "#이마축소",
-        "#헤어라인하강술",
-        "#이마축소수술",
-        "#헤어라인교정",
-        "#넓은이마",
-        "#이마성형",
-        "#모발이식",
-        "#헤어라인모발이식",
-        "#이마리프팅",
-        "#상안면성형"
+        "기증늑연골",
+        "자가늑연골",
+        "늑연골코성형",
+        "코성형",
+        "코재수술",
+        "신선동결늑연골",
+        "방사선처리늑연골",
+        "코끝지지",
+        "늑연골흡수",
+        "늑연골휘어짐"
       ],
-      "images": [
-        "② 이마 세 구간 설명 뒤 | 눈썹-헤어라인 거리와 상안면 3분의 1 구획을 표시한 얼굴 측면·정면 도해",
-        "② 원인 구분 문단 옆 | 헤어라인이 높은 이마와 눈썹뼈가 돌출된 이마를 나란히 그린 비교 일러스트",
-        "③ 두피 이완도 설명 뒤 | 손으로 두피를 앞뒤로 밀어 이완도를 확인하는 동작 일러스트",
-        "③ 절개선 설명 뒤 | 모낭 각도를 따라 넣는 절개선 방향을 확대해 보여 주는 단면 모식도",
-        "회복 순서 단락 뒤 | 72시간·2주·4주·6개월·12개월을 표시한 가로 회복 타임라인 그래픽"
-      ],
+      "images": [],
       "sources": [
-        "Jacono AA. The Art and Science of Extended Deep Plane Facelifting and Complementary Facial Rejuvenation Procedures. Quality Medical Publishing; 2021.",
-        "Arnaoutakis, Demetri. \"Hairline-Lowering Surgery.\" Facial Plast Surg Clin North Am 34.1 (2026): 97-102.",
-        "Cornely, Ronald M, et al. \"Facial Feminization Surgery of the Upper Third of the Face: Surgical Techniques to Optimize Outcomes.\" Ann Plast Surg 97.3S (2026): S203-S209.",
-        "Alabdulkarim, Abdulaziz, et al. \"Forehead Length Reduction Surgery: Quantifying Complications and Outcomes Through Systematic Review and Meta-Analysis.\" Aesthetic Plast Surg 50.9 (2026): 3069-3082.",
-        "Gupta, Nikita, and Carly Clark. \"Forehead Contouring.\" Facial Plast Surg Clin North Am 31.3 (2023): 363-370.",
-        "Rolfes, Bryan. \"Brow Bossing Reduction.\" Otolaryngol Clin North Am 55.4 (2022): 785-795.",
-        "Vila, Peter M, et al. \"Forehead Reduction: A Systematic Review and Meta-Analysis of Outcomes.\" Facial Plast Surg Aesthet Med 24.1 (2022): 34-40.",
-        "Epstein, Jeffrey S, et al. \"Hair Restoration in the Ethnic Patient.\" Facial Plast Surg Clin North Am 30.4 (2022): 457-469."
+        "서만군. 아시아인 코성형술 아틀라스. 1판. 군자출판사; 2025.",
+        "Bohler, Forrest, et al. \"Fresh Frozen vs Autologous Costal Cartilage in Rhinoplasty: A Meta-Analysis of Complication Rates.\" Aesthet Surg J Open Forum 8 (2026): ojag072.",
+        "Liyanage, Dinithi, et al. \"A Systematic Review and Meta-Analysis of Autologous vs Irradiated Homologous Costal Cartilage Grafts for Dorsal Augmentation Rhinoplasty.\" Aesthet Surg J Open Forum 7 (2025): ojae122.",
+        "Chen, Hui, et al. \"Complications Associated with Autologous Costal Cartilage Used in Rhinoplasty: An Updated Meta-Analysis.\" Aesthetic Plast Surg 47.1 (2023): 304-312."
       ],
-      "chars": 3990,
+      "chars": 3807,
+      "relatedLinks": [],
+      "templateCheck": {},
       "adCheck": {
         "ok": true,
         "count": 0,
         "hits": []
-      }
-    },
-    {
-      "key": "eye_asymmetry",
-      "area": "눈",
-      "topic": "짝눈 · 눈 좌우 비대칭 교정",
-      "score": 36,
-      "reasons": [
-        "검색량 7위",
-        "전년 대비 -45% (분야 평균 -35%)",
-        "기존 글 18,916건",
-        "리뷰·메타분석 10편",
-        "최근 1년 논문 34편"
-      ],
-      "evidence": {
-        "recent1y": 34,
-        "recent3y": 90,
-        "reviews6y": 10
       },
-      "naver": {
-        "medianTotal": 18916,
-        "trend": "하락",
-        "available": true
-      },
-      "paperCount": 19,
-      "draftedAt": "2026-09-07T12:52:47.519495+09:00",
-      "titles": [
-        "짝눈 교정, 좌우 차이는 무엇을 보고 정하나요?",
-        "짝눈 수술, 눈꺼풀 문제와 뼈 비대칭은 어떻게 구분하나요?",
-        "짝눈 교정 후 좌우가 맞아 보이기까지 얼마나 걸리나요?"
-      ],
-      "body": "좌우 차이의 원인이 어디서 오는지를 먼저 봅니다. 눈꺼풀을 올리는 힘 차이인지, 쌍꺼풀 라인 높이 차이인지, 아니면 눈이 앉아 있는 뼈 자체가 다른지. 이 셋은 수술 방법이 완전히 달라서, 여기를 안 나누고 라인만 맞추면 오히려 차이가 더 도드라집니다.\n\n진료실에서 \"한쪽 눈이 더 작아요\"라고 말씀하시는 분이 정말 많아요. 그런데 실제로 재 보면 눈 크기가 아니라 뜨는 힘이 다른 경우가 절반쯤 됩니다.\n\n## 짝눈은 왜 생기나요?\n\n원인은 크게 셋으로 나뉩니다.\n\n1. 눈꺼풀올림근(levator palpebrae superioris)의 힘 차이. 한쪽 눈꺼풀이 더 내려와 있는 안검하수(ptosis)입니다. 검은자를 덮는 정도가 달라지니 눈 크기가 다르게 보이죠.\n2. 쌍꺼풀 라인과 노출면 차이. 눈을 떴을 때 라인 아래로 보이는 눈꺼풀 면적을 검판노출(tarsal platform show)이라고 합니다. 이 폭이 좌우로 다르면 라인 높이가 같아도 짝짝이로 읽힙니다.\n3. 뼈와 안구 위치 차이. 눈확(orbit)의 깊이, 광대와 위턱의 앞뒤 위치가 좌우로 다른 경우입니다.\n\n관련 문헌에서는 위눈꺼풀 비대칭이 선천적 요인뿐 아니라 뼈·연부조직 비대칭, 안구 위치 차이, 신경이나 기계적 결함에서도 온다고 설명합니다. 즉 눈꺼풀만의 문제가 아닌 경우가 꽤 있다는 뜻이에요.\n\n아래눈꺼풀 쪽은 더 노골적입니다. 하안검 비대칭 환자를 분류한 연구에서는 왼쪽 아래눈확 가장자리가 오른쪽보다 뒤에 있는 비율이 96%였습니다. 사람 얼굴은 원래 좌우가 다릅니다.\n\n## 수술방에서 저는 무엇을 보고 정하나요?\n\n가장 먼저 확인하는 건 눈을 정면으로 떴을 때 동공 중심에서 위눈꺼풀 가장자리까지의 거리(MRD1)입니다. 이 값이 좌우로 벌어져 있으면 라인 문제가 아니라 뜨는 힘 문제입니다.\n\n그다음 이마에 손을 얹고 눈썹을 고정한 채 다시 뜨게 합니다. 이마 힘을 뺐을 때 한쪽이 더 처진다면 숨어 있던 안검하수예요. 눈썹 높이 차이도 이때 대부분 드러납니다.\n\n세 번째로 봅니다. 라인 아래 노출면의 폭, 그리고 눈썹부터 라인까지의 두께(brow fat span)를 좌우로 비교합니다. 이 두 가지가 짝짝이 인상을 만드는 핵심이라는 건 문헌 리뷰에서도 반복해서 강조하는 부분입니다.\n\n마지막은 뼈입니다. 정면 사진에서 양쪽 눈 사이 간격, 눈확 가장자리 위치를 봅니다. 여기서 차이가 크면 저는 상담에서 \"눈꺼풀로 맞출 수 있는 몫\"과 \"뼈에서 오는 몫\"을 나눠서 미리 말씀드립니다. 이 구분을 안 하고 시작하면 나중에 서로 힘들어집니다.\n\n## 라인 교정과 안검하수 교정은 어떻게 다른가요?\n\n| | 라인(쌍꺼풀) 높이 조정 | 눈꺼풀올림근 교정 |\n|---|---|---|\n| 맞추는 대상 | 라인 아래 노출면 폭 | 눈 뜨는 힘, 검은자 노출량 |\n| 적응 대상 | MRD1은 비슷한데 라인만 짝짝이 | MRD1이 좌우로 벌어진 경우 |\n| 강점 | 조정 폭이 예측 가능 | 눈 크기 차이 자체가 줄어듦 |\n| 한계 | 뜨는 힘 차이는 못 고침 | 미세 조정이 어렵고 재수술률이 상대적으로 높음 |\n| 붓기 영향 | 비교적 적음 | 커서 최종 판단이 늦어짐 |\n\n한쪽 힘이 아주 약해 근육을 당겨도 안 되는 경우엔 넓적다리 근막을 이용한 걸기 수술(fascia lata sling)까지 갑니다. 다만 이건 미용 목적보다 기능이 크게 떨어진 경우에 쓰는 방법이고, 문헌상 합병증률이 21.3%, 재수술률이 13.4%로 보고됩니다. 재수술 사유의 상당수가 비대칭과 라인 문제였습니다. 그만큼 좌우를 정확히 맞추는 일 자체가 까다롭다는 뜻입니다.\n\n## 어떤 분께 권하고, 어떤 분께는 권하지 않나요?\n\n권하는 쪽부터 말씀드릴게요.\n\n한쪽 눈꺼풀만 검은자를 더 덮고 있어 인상이 졸려 보이는 분. 라인 높이만 좌우로 다른 분. 이마를 계속 들어 올려 이마 주름이 한쪽만 깊어지는 분. 여기까지는 수술로 좁혀 드릴 수 있는 영역입니다.\n\n반대로 신중하게 접근하는 경우가 있습니다.\n\n얼굴뼈 비대칭이 뚜렷한 분. 눈을 맞춰도 인상의 기울기는 남습니다. 한쪽 이마·눈 주변에 보툴리눔 톡신을 맞은 지 얼마 안 된 분. 톡신 자체가 눈꺼풀 처짐이나 눈썹 비대칭을 만들 수 있어서, 저는 효과가 빠진 뒤에 다시 보자고 말씀드립니다. 그리고 사진에서 1mm 차이를 짚어 내며 완전한 대칭을 원하시는 분. 이 경우엔 수술 전에 기대치부터 맞추지 않으면 결과가 좋아도 만족이 안 됩니다.\n\n어릴 때부터 한쪽 머리뼈 모양이 눈에 띄게 다르고 난시나 사시가 동반된 경우라면, 미용 수술 이전에 안과적 평가가 먼저입니다. 이건 눈꺼풀 문제가 아닙니다.\n\n## 상담에서는 무엇을 확인하고 물어봐야 하나요?\n\n거울을 보면서 스스로 한번 확인해 보세요. 이마를 손으로 누르고 눈을 떠 봅니다. 그때 한쪽이 더 내려온다면 그 정보를 상담에서 꼭 말씀하세요.\n\n그리고 이렇게 물어보시면 됩니다.\n\n\"제 짝눈은 뜨는 힘 차이인가요, 라인 차이인가요, 뼈 차이인가요?\"\n\"수술로 좁힐 수 있는 차이는 몇 mm 정도이고, 남는 차이는 무엇 때문인가요?\"\n\"한쪽만 할 때와 양쪽 다 할 때, 각각 어떤 점이 달라지나요?\"\n\n부작용도 정직하게 짚겠습니다. 짝눈 교정에서 가장 흔한 문제는 교정 후에도 남는 비대칭입니다. 쌍꺼풀 수술 후 합병증 중 비대칭이 가장 흔하다는 건 문헌에서도 공통된 지적이에요. 그 외에 눈이 완전히 감기지 않는 토안(lagophthalmos), 건조감, 라인 모양 이상, 흉터, 부기 지속이 있을 수 있습니다. 눈꺼풀올림근을 다루면 과교정과 저교정 모두 가능하고, 어느 쪽이든 재수술을 고려하게 됩니다. 효과와 회복 속도는 사람마다 다릅니다.\n\n## 수술 후 좌우가 맞아 보이기까지 얼마나 걸리나요?\n\n시간 순서로 정리해 볼게요.\n\n72시간까지는 붓기가 가장 심한 시기입니다. 이때는 좌우가 다르게 보이는 게 정상입니다. 냉찜질과 상체를 올린 자세 유지가 중요해요.\n\n2주 정도면 실밥을 뽑고 눈에 띄는 부기가 줄어듭니다. 다만 라인은 아직 두껍습니다. 세안, 가벼운 외출 같은 일상 동작은 이 무렵부터 부담이 줄지만 회복 속도에는 개인차가 있습니다.\n\n4주에서 8주 사이에 라인이 자리를 잡기 시작합니다. 화장, 렌즈 착용 시점은 경과를 보고 정합니다.\n\n3개월에서 6개월. 저는 이 시점을 최종 판단 기준으로 봅니다. 특히 눈꺼풀올림근을 조정한 경우엔 붓기가 빠지면서 뜨는 정도가 계속 변해요. 그전에 재수술을 결정하지 않습니다.\n\n## 자주 묻는 질문\n\nQ. 제 짝눈은 수술로 완전히 똑같이 맞출 수 있나요?\n완전한 대칭은 목표로 삼지 않습니다. 사람 얼굴은 원래 좌우가 다르고, 아래눈확 위치조차 대부분 좌우가 다르다는 연구 결과가 있습니다. 제가 목표로 하는 건 정면에서 마주 봤을 때 차이가 읽히지 않는 수준입니다. 사진을 확대해 mm 단위로 비교하면 차이는 남습니다. 이 부분을 수술 전에 합의하고 들어가는 게 결과보다 중요할 때가 많아요.\n\nQ. 짝눈이 안검하수 때문인지 어떻게 아나요?\n동공 중심에서 위눈꺼풀 가장자리까지의 거리를 좌우로 재 보면 대부분 갈립니다. 집에서 확인하려면 이마를 손바닥으로 눌러 눈썹을 고정한 뒤 눈을 떠 보세요. 그때 한쪽이 더 덮인다면 뜨는 힘 차이일 가능성이 큽니다. 이마 주름이 한쪽만 깊거나 턱을 살짝 들고 보는 습관이 있다면 그것도 단서예요. 다만 최종 판단은 진료에서 근육 기능을 직접 측정해야 합니다.\n\nQ. 얼굴뼈 자체가 비대칭이면 눈만 맞춰도 소용없나요?\n소용없지는 않습니다. 다만 좁혀지는 폭이 줄어듭니다. 위턱과 광대의 앞뒤 차이가 눈꺼풀 비대칭으로 이어진다는 보고가 있고, 제가 수술한 환자들을 직접 본 경험상 뼈 비대칭이 큰 분은 눈을 맞춰도 인상의 기울기가 어느 정도 남습니다. 그래서 이런 경우엔 좌우를 똑같이 만드는 대신, 덜 도드라지게 만드는 쪽으로 목표를 다시 잡습니다. 이걸 미리 말씀드리지 않으면 수술이 잘돼도 실망하시게 됩니다.\n\n## 정리하면 무엇을 기억하면 될까요?\n\n짝눈은 하나의 문제가 아니라 뜨는 힘, 라인 노출면, 뼈 위치라는 세 층이 겹쳐 있는 상태입니다. 어느 층에서 온 차이인지 나누는 것이 수술 방법보다 먼저이고, 목표는 완전한 대칭이 아니라 마주 봤을 때 읽히지 않는 정도입니다. 회복 과정과 최종 판단 시점, 남을 수 있는 차이에는 개인차가 있으니, 본인 눈이 어느 쪽에 해당하는지는 담당 의료진과 직접 진료를 통해 확인하시기 바랍니다.",
-      "tags": [
-        "#짝눈",
-        "#짝눈교정",
-        "#눈비대칭",
-        "#안검하수",
-        "#쌍꺼풀비대칭",
-        "#눈성형",
-        "#상안검",
-        "#눈매교정",
-        "#좌우비대칭",
-        "#눈꺼풀처짐"
-      ],
-      "images": [
-        "도입부 뒤 | 정면 얼굴에서 좌우 눈의 검은자 노출 정도가 다른 상태를 표시한 도식",
-        "\"짝눈은 왜 생기나요?\" 단락 | 눈꺼풀올림근·검판·눈확 위치를 표시한 위눈꺼풀 단면 해부도",
-        "\"수술방에서 저는 무엇을 보고 정하나요?\" 단락 | 동공 중심에서 위눈꺼풀 가장자리까지의 거리(MRD1) 측정 지점을 화살표로 표시한 그림",
-        "\"라인 교정과 안검하수 교정은 어떻게 다른가요?\" 단락 | 라인 아래 노출면 폭과 눈썹-라인 두께를 좌우 비교해 표시한 도식",
-        "\"수술 후 좌우가 맞아 보이기까지\" 단락 | 72시간·2주·4~8주·3~6개월 회복 단계 타임라인 그래픽"
-      ],
-      "sources": [
-        "조인창. 눈꺼풀 수술술기. 3판. 군자출판사; 2025.",
-        "Holds, John B. \"Management of the Tarsal Fold with Ptosis Management in Aesthetic Blepharoplasty.\" Facial Plast Surg Clin North Am 34.1 (2026): 119-129.",
-        "Chalkias, Ioannis-Nikolaos, et al. \"Factors that affect eyelid show and their importance in upper eyelid blepharoplasty: a systematic review.\" Orbit 44.3 (2025): 363-372.",
-        "Ahmad, Reddin, et al. \"Use of autogenous fascia lata slings in the surgical correction of ptosis: a systematic review of the literature and meta-analysis.\" Br J Oral Maxillofac Surg 62.2 (2024): 128-139.",
-        "Huynh, Elisah M, et al. \"Ophthalmic Manifestations of Unilateral Coronal Synostosis.\" Curr Eye Res 48.10 (2023): 879-886.",
-        "Borba, André, et al. \"Avoiding Complications on the Upper Face Treatment With Botulinum Toxin: A Practical Guide.\" Aesthetic Plast Surg 46.1 (2022): 385-394.",
-        "Kim, Chang Yeom, and Jae Woo Jang. \"The Causes and Management of Asymmetrical Double Eyelids.\" Facial Plast Surg 36.5 (2020): 575-583.",
-        "Kim, Kenneth K, and Jin Suk Byun. \"A Morphologic Classification and Surgical Algorithm for Lower Eyelid Asymmetry in Primary Lower Blepharoplasty.\" Plast Reconstr Surg Glob Open 14.8 (2026): e7958."
-      ],
-      "chars": 4105,
-      "adCheck": {
+      "audit": {
+        "score": 85,
         "ok": true,
-        "count": 0,
-        "hits": []
-      }
-    },
-    {
-      "key": "proptosis_correction",
-      "area": "눈",
-      "topic": "눈 돌출 교정(안와감압술)",
-      "score": 35,
-      "reasons": [
-        "검색량 20위",
-        "전년 대비 -33% (분야 평균 -35%)",
-        "기존 글 386건",
-        "리뷰·메타분석 213편",
-        "최근 1년 논문 214편"
-      ],
-      "evidence": {
-        "recent1y": 214,
-        "recent3y": 514,
-        "reviews6y": 213
+        "checks": {
+          "questionTitle": true,
+          "answerFirst": true,
+          "questionHeadings": true,
+          "readableParagraphs": true,
+          "sourceDepth": true,
+          "imagePlan": false,
+          "internalLinks": false
+        },
+        "metrics": {
+          "questionHeadingCount": 10,
+          "paragraphCount": 36,
+          "medianParagraphChars": 116,
+          "sourceCount": 3,
+          "imageCount": 0,
+          "relatedLinkCount": 0
+        },
+        "issues": [
+          "해부·수술과정·비교를 설명할 이미지 기획을 2개 이상 두는 것을 검토하세요.",
+          "관련 글 내부링크 후보가 없습니다."
+        ],
+        "note": "내부 품질 점검용 휴리스틱이며 네이버·구글·LLM의 실제 노출 알고리즘 점수를 의미하지 않습니다."
       },
-      "naver": {
-        "medianTotal": 386,
-        "trend": "하락",
-        "available": true
-      },
-      "paperCount": 28,
-      "draftedAt": "2026-09-12T15:46:34.191082+09:00",
-      "titles": [
-        "안와감압술, 뼈를 열지 지방만 뺄지는 무엇으로 정하나요?",
-        "안와감압술과 약물치료, 눈 돌출에는 어느 쪽이 맞을까요?",
-        "안와감압술 후 눈이 자리 잡기까지 얼마나 걸리나요?"
-      ],
-      "body": "돌출된 정도보다, 무엇이 눈을 앞으로 밀고 있느냐로 정합니다. 부어서 굵어진 외안근(extraocular muscle)이 주범이면 뼈를 열어 공간을 만들어야 하고, 늘어난 안와지방(orbital fat)이 주범이면 지방만 덜어내도 눈이 들어갑니다. 둘이 섞여 있으면 둘 다 합니다.\n\n\"그래서 제 눈은 뼈를 여는 건가요?\" CT 사진을 앞에 두고 상담실에서 제일 많이 받는 질문이에요. 이 글은 그 답을 정리한 것입니다.\n\n## 갑상선 눈병증에서 눈은 왜 앞으로 밀려 나올까요?\n\n안와(orbit)가 뒤쪽이 막힌 뼈 깔때기이기 때문입니다. 안에서 무언가 부피가 늘면 눈알은 앞으로밖에 갈 곳이 없습니다.\n\n아래 그림을 보시면 안와 네 벽 안에 눈알, 근육, 지방이 빈틈없이 들어차 있는 게 보이시죠? 이 공간을 늘리는 병이 갑상선 눈병증(thyroid eye disease, TED)입니다. 관련 문헌에서는 이 병을 외안근과 안와지방이 붓는 자가면역 염증으로 설명합니다. 안와 안의 섬유아세포가 자극을 받아 지방으로 바뀌고 염증을 일으키는 거예요.\n\n눈을 미는 것은 크게 세 가지입니다.\n\n1. 외안근 비대. 근육이 굵어지면 눈알 뒤에서 밀어 올립니다. 심하면 시신경을 눌러 시신경병증(optic neuropathy)까지 갑니다.\n2. 안와지방 증가. 근육은 멀쩡한데 지방만 늘어난 분도 적지 않습니다.\n3. 타고난 안와 깊이. 안와가 얕으면 같은 양이 부어도 더 튀어나옵니다. 극단적인 예가 크루존 증후군(Crouzon syndrome)처럼 안와 자체가 얕은 경우입니다.\n\n한 가지 더요. 대부분 그레이브스병(Graves' disease) 항진증과 같이 오지만, 최대 5%는 갑상선 수치가 정상이거나 오히려 저하된 상태에서 생깁니다. 즉 \"저 갑상선은 정상인데요\"라는 말이 이 병을 배제해 주지는 않습니다.\n\n## 안와감압술, 수술 전에 저는 무엇을 보고 결정할까요?\n\nCT 단면에서 근육과 지방의 비율을 먼저 봅니다. 근육이 굵으면 뼈, 지방이 늘었으면 지방, 이게 출발점이에요.\n\n다음은 병의 단계입니다. 이 병은 약하게 시작해 심해지다가 정체기를 거쳐 비활동기(inactive phase)로 들어갑니다. 저는 활동기(active phase)에는 감압술을 하지 않습니다. 염증이 살아 있을 때 뼈를 열면 결과를 예측할 수 없기 때문이에요. 예외는 둘뿐입니다. 시신경이 눌려 시력이 떨어질 때, 그리고 눈꺼풀이 안 닫혀 각막이 헐 때(노출각막병증, exposure keratopathy)입니다. 이때는 미루지 않습니다.\n\n그다음 안구돌출계(Hertel exophthalmometer)로 양쪽을 재고 차이를 봅니다. 눈을 편하게 떴을 때 아래 흰자가 드러나는지, 눈을 감으면 완전히 덮이는지도 확인해요.\n\n흡연 여부도 묻습니다. 흡연은 이 병의 위험인자로 꼽히고, 제가 수술한 환자들을 직접 본 경험상 담배를 계속 피우는 분은 경과가 거칠었습니다. 그래서 수술 전 금연을 조건으로 겁니다.\n\n## 뼈 감압과 지방 감압, 무엇이 다를까요?\n\n여는 곳이 다르고, 들어가는 양과 감수할 위험이 다릅니다. 표로 정리하면 아래와 같습니다.\n\n| 구분 | 뼈 감압(골성 감압) | 지방 감압 |\n|---|---|---|\n| 다루는 곳 | 안와 내벽·하벽·외벽 중 한 곳 이상 제거 | 안와지방만 제거 |\n| 눈이 들어가는 양 | 큼 | 제한적 |\n| 장점 | 근육 비대에도 효과, 시신경 압박 해소 | 복시 위험 상대적으로 낮음, 회복 빠름 |\n| 단점 | 복시(diplopia) 위험, 뺨·윗입술 감각 저하, 붓기 오래감 | 근육이 굵은 경우 효과 부족 |\n\n약물 이야기도 빼놓을 수 없어요. 테프로투무맙(teprotumumab)은 정맥 스테로이드보다 돌출을 더 줄였다는 보고가 있습니다. 다만 청력 저하가 30%에서 보고됐고, 비용과 재발이 걸림돌입니다. 스테로이드에 반응이 없으면 토실리주맙(tocilizumab)이 쓰이기도 합니다. 반면 이미 안정기에 들어가 굳어 버린 돌출은 약으로 돌아오는 폭이 작습니다. 그 영역이 수술의 몫입니다.\n\n## 안와감압술은 어떤 분에게 맞고 어떤 분에게는 권하지 않을까요?\n\n안정기에 들어갔고 갑상선 수치가 잡혀 있는데 돌출이 남은 분에게 맞습니다. 각막이 마르거나, 시신경이 눌리거나, \"화난 사람 같다는 말을 자꾸 들어요\"라는 고민이 그대로면 대상이 됩니다.\n\n반면 이런 분께는 권하지 않습니다. 염증이 아직 활동 중인 분. 담배를 끊을 생각이 없는 분. 갑상선 수치가 오르내리는 분. 방사성 요오드 치료(radioactive iodine therapy)를 앞둔 분은 순서를 먼저 조율합니다.\n\n기대치도 나눠 말씀드려요. 눈을 안으로 들여보내는 것, 여기까지는 수술이 해 드릴 수 있습니다. 다만 굳어 버린 근육 때문에 생긴 눈 움직임 제한, 눈꺼풀이 위로 말려 올라간 안검퇴축(lid retraction)은 감압술이 직접 고치지 못합니다. 이건 사시수술과 눈꺼풀 수술이 따로 맡습니다. 타고나길 얕은 안와 골격도 마찬가지예요. 공간은 만들 수 있지만 얼굴 뼈 비율 자체는 그대로입니다.\n\n## 상담에서 무엇을 물어봐야 할까요?\n\n이 네 가지를 그대로 물어보세요. \"제 CT에서 근육과 지방 중 어느 쪽이 더 커져 있나요?\" \"지금 활동기인가요, 안정기인가요?\" \"어느 벽을 열 계획이고, 그 벽을 고른 이유는요?\" \"복시가 생기면 어떻게 하나요?\"\n\n마지막 질문이 제일 중요합니다. 뼈 감압, 특히 내벽과 하벽을 열면 눈알이 자리를 옮기면서 사물이 둘로 보이는 복시가 생길 수 있어요. 대부분 시간이 지나며 줄지만 남으면 사시수술이 필요합니다. 그 밖에 출혈, 감염, 부비동염, 뺨과 윗입술 감각 저하, 양쪽 눈이 들어간 정도의 차이, 드물게 시력 저하가 있습니다. 저는 이 항목들을 상담에서 하나씩 짚고, 동의서에도 같은 순서로 적습니다.\n\n회복은 이렇게 갑니다. ~72시간: 붓기와 멍이 가장 심한 시기, 냉찜질과 머리 높이기. ~2주: 봉합사 제거, 붓기 절반 정도 빠짐. ~4주: 대략적인 눈 위치가 보이기 시작. 최종 위치는 그 뒤로도 몇 달에 걸쳐 잡히고, 개인차가 큽니다. 눈꺼풀 수술이나 사시수술은 그 이후에 계획합니다.\n\n## 자주 묻는 질문\n\nQ. 갑상선 수치가 정상으로 돌아오면 돌출도 저절로 들어가나요?\n대개 아닙니다. 수치와 눈은 따로 갑니다. 염증이 가라앉으면 붓기 몫은 조금 빠질 수 있어요. 그런데 지방으로 바뀐 조직과 굳은 근육은 그대로 남습니다. 앞서 말씀드렸듯 수치가 정상인 상태에서도 이 병이 생기는 분이 있으니, 수치만 보고 기다리지는 마세요.\n\nQ. 돌출이 심하지 않고 지방만 많은 편인데도 수술 대상이 되나요?\nCT에서 근육이 얇고 지방만 늘어 있다면 지방 감압만으로 대상이 됩니다. 뼈를 열지 않으니 복시 부담이 상대적으로 적어요. 다만 눈이 들어가는 양에는 한계가 있습니다. 그 한계를 상담에서 미리 그려 보고, 그만큼으로 만족하실지 같이 판단합니다. 활동기이거나 흡연 중이면 이 경우에도 미룹니다.\n\nQ. 스테로이드 치료를 받고 있는데 언제쯤 수술이 가능한가요?\n치료 중이라는 건 아직 활동기라는 뜻이라 원칙적으로는 기다립니다. 조건은 세 가지예요. 염증 징후가 가라앉아 임상활동점수(clinical activity score)가 낮게 유지될 것, 갑상선 수치가 안정될 것, 스테로이드가 끊긴 뒤에도 돌출이 더 나빠지지 않을 것. 예외는 시신경 압박과 각막 손상입니다. 이땐 치료 중이라도 감압을 앞당깁니다.\n\n## 정리하면 무엇을 기억하면 될까요?\n\n뼈를 열지 지방만 뺄지는 눈을 미는 것이 근육인지 지방인지로 정하고, 수술 시점은 염증이 꺼졌는지로 정합니다. 눈을 들여보내는 일은 수술이 해 드릴 수 있지만, 복시와 감각 저하 같은 대가가 있고 눈꺼풀과 눈 움직임은 별도의 수술이 필요할 수 있습니다. 본인 CT와 병의 단계를 놓고 담당 의료진과 이 순서대로 짚어 보시길 권합니다.",
-      "tags": [
-        "#안와감압술",
-        "#눈돌출",
-        "#갑상선눈병증",
-        "#그레이브스안병증",
-        "#안구돌출",
-        "#눈돌출교정",
-        "#안와지방감압",
-        "#갑상선안병증",
-        "#복시",
-        "#안와감압수술회복"
-      ],
-      "images": [
-        "② 단 \"아래 그림을 보시면\" 문장 아래 | 안와 단면 모식도: 뼈 깔때기 안에 눈알·외안근·안와지방이 배치된 그림, 뒤가 막힌 구조 표시",
-        "② 단 원인 세 가지 목록 아래 | 정상 안와 vs 근육 비대 vs 지방 증가를 나란히 그린 비교 일러스트",
-        "③ 단 안구돌출계 문장 옆 | 안구돌출계(Hertel exophthalmometer) 측정 방식을 보여주는 도해",
-        "④ 단 표 아래 | 안와 내벽·하벽·외벽 위치를 색으로 구분한 뼈 감압 부위 모식도",
-        "⑥ 단 회복 단계 문장 옆 | 72시간·2주·4주·수개월로 나눈 회복 타임라인 인포그래픽"
-      ],
-      "sources": [
-        "조인창. 눈꺼풀 수술술기. 3판. 군자출판사; 2025.",
-        "Liampou, Eftychia, et al. \"Crouzon Syndrome and Craniosynostosis - A Review for the Twenty-First Century.\" Cleft Palate Craniofac J (2026): 10556656261475439.",
-        "Wiersinga, Wilmar M, et al. \"Thyroid eye disease (Graves' orbitopathy): clinical presentation, epidemiology, pathogenesis, and management.\" Lancet Diabetes Endocrinol 13.7 (2025): 600-614.",
-        "Zong, Yuan, et al. \"Teprotumumab for Thyroid Eye Disease: Mechanism, Clinical Efficacy, and Current Challenges.\" Antibodies (Basel) 14.3 (2025).",
-        "Duarte, Ana F, et al. \"Efficiency and Safety of Tocilizumab for the Treatment of Thyroid Eye Disease: A Systematic Review.\" Ophthalmic Plast Reconstr Surg 40.4 (2024): 367-373.",
-        "Nie, Tina, and Yvette N Lamb. \"Teprotumumab: A Review in Thyroid Eye Disease.\" Drugs 82.17 (2022): 1663-1670.",
-        "Rashad, Ramy, et al. \"Thyroid Eye Disease.\" Life (Basel) 12.12 (2022)."
-      ],
-      "chars": 3846,
-      "adCheck": {
+      "evidenceQa": {
+        "score": 84,
+        "level": "strong mix",
         "ok": true,
-        "count": 0,
-        "hits": []
-      }
+        "counts": {
+          "total": 24,
+          "systematicOrMeta": 4,
+          "trialOrComparative": 1,
+          "recent5y": 23,
+          "withAbstract": 19,
+          "pubmed": 19
+        },
+        "warnings": [],
+        "topEvidence": [
+          {
+            "title": "A Split-Scar Study: Study of Surgical Scar Using Exosomes.",
+            "year": "2026",
+            "kind": "randomized trial",
+            "tier": 4,
+            "source": "pubmed",
+            "hasAbstract": true,
+            "citations": null
+          },
+          {
+            "title": "A comprehensive overview of FFRG and IHCC allograft cartilages in revision rhinoplasty: a systematic review.",
+            "year": "2025",
+            "kind": "systematic/meta-analysis",
+            "tier": 4,
+            "source": "pubmed",
+            "hasAbstract": true,
+            "citations": null
+          },
+          {
+            "title": "Fresh Frozen Cartilage in Rhinoplasty Surgery: A Systematic Review of Outcomes.",
+            "year": "2024",
+            "kind": "systematic/meta-analysis",
+            "tier": 4,
+            "source": "pubmed",
+            "hasAbstract": true,
+            "citations": null
+          },
+          {
+            "title": "Complications Associated with Autologous Costal Cartilage Used in Rhinoplasty: An Updated Meta-Analysis.",
+            "year": "2023",
+            "kind": "systematic/meta-analysis",
+            "tier": 4,
+            "source": "pubmed",
+            "hasAbstract": true,
+            "citations": null
+          },
+          {
+            "title": "Complications associated with irradiated homologous costal cartilage use in rhinoplasty: A systematic review and meta-analysis.",
+            "year": "2022",
+            "kind": "systematic/meta-analysis",
+            "tier": 4,
+            "source": "pubmed",
+            "hasAbstract": true,
+            "citations": null
+          }
+        ],
+        "note": "내부 문헌 구성 점검용 휴리스틱이며 개별 연구의 비뚤림 위험·간접성·불일치·비정밀성을 평가하는 GRADE가 아닙니다."
+      },
+      "repairCheck": {}
     },
     {
       "key": "saddle_nose",
       "area": "코",
       "topic": "안장코·함몰코 교정",
-      "score": 32,
+      "score": 35,
       "reasons": [
-        "검색량 10위",
-        "전년 대비 -47% (분야 평균 -35%)",
+        "검색량 11위",
+        "전년 대비 -47% (분야 평균 -37%)",
         "기존 글 87건",
         "리뷰·메타분석 15편",
-        "최근 1년 논문 19편"
+        "최근 1년 논문 18편"
       ],
       "evidence": {
-        "recent1y": 19,
-        "recent3y": 52,
+        "recent1y": 18,
+        "recent3y": 51,
         "reviews6y": 15
       },
       "naver": {
@@ -853,21 +1930,113 @@
         "Jang, Yong Ju, and Hyun Moon. \"Special Consideration in Rhinoplasty for Deformed Nose of East Asians.\" Facial Plast Surg Clin North Am 29.4 (2021): 611-624."
       ],
       "chars": 4362,
+      "relatedLinks": [],
+      "templateCheck": {},
       "adCheck": {
         "ok": true,
         "count": 0,
         "hits": []
-      }
+      },
+      "audit": {
+        "score": 95,
+        "ok": true,
+        "checks": {
+          "questionTitle": true,
+          "answerFirst": true,
+          "questionHeadings": true,
+          "readableParagraphs": true,
+          "sourceDepth": true,
+          "imagePlan": true,
+          "internalLinks": false
+        },
+        "metrics": {
+          "questionHeadingCount": 11,
+          "paragraphCount": 39,
+          "medianParagraphChars": 89,
+          "sourceCount": 10,
+          "imageCount": 4,
+          "relatedLinkCount": 0
+        },
+        "issues": [
+          "관련 글 내부링크 후보가 없습니다."
+        ],
+        "note": "내부 품질 점검용 휴리스틱이며 네이버·구글·LLM의 실제 노출 알고리즘 점수를 의미하지 않습니다."
+      },
+      "evidenceQa": {
+        "score": 78,
+        "level": "strong mix",
+        "ok": true,
+        "counts": {
+          "total": 21,
+          "systematicOrMeta": 3,
+          "trialOrComparative": 0,
+          "recent5y": 21,
+          "withAbstract": 18,
+          "pubmed": 20
+        },
+        "warnings": [
+          "비교연구 또는 임상시험 근거가 확인되지 않았습니다."
+        ],
+        "topEvidence": [
+          {
+            "title": "Ear, Nose, and Throat Manifestations in Inflammatory Bowel Diseases: A Systematic Review of the Clinical Spectrum.",
+            "year": "2026",
+            "kind": "systematic/meta-analysis",
+            "tier": 4,
+            "source": "pubmed",
+            "hasAbstract": true,
+            "citations": null
+          },
+          {
+            "title": "Otolaryngologic manifestations in granulomatosis with Polyangitis: A systematic review of clinical presentations and renal correlation.",
+            "year": "2026",
+            "kind": "systematic/meta-analysis",
+            "tier": 4,
+            "source": "pubmed",
+            "hasAbstract": true,
+            "citations": null
+          },
+          {
+            "title": "Nasal Septal Abscesses: A Systematic Review.",
+            "year": "2025",
+            "kind": "systematic/meta-analysis",
+            "tier": 4,
+            "source": "pubmed",
+            "hasAbstract": true,
+            "citations": null
+          },
+          {
+            "title": "Qualitative and Quantitative Assessment of Four Artificial Intelligence Systems for Nasal Deformity Analysis in Rhinoplasty.",
+            "year": "2026",
+            "kind": "other clinical literature",
+            "tier": 2,
+            "source": "pubmed",
+            "hasAbstract": true,
+            "citations": null
+          },
+          {
+            "title": "3D-Planned Rib Cartilage Reconstruction for Severe Saddle Nose After Button Battery Injury.",
+            "year": "2026",
+            "kind": "other clinical literature",
+            "tier": 2,
+            "source": "pubmed",
+            "hasAbstract": true,
+            "citations": null
+          }
+        ],
+        "note": "내부 문헌 구성 점검용 휴리스틱이며 개별 연구의 비뚤림 위험·간접성·불일치·비정밀성을 평가하는 GRADE가 아닙니다."
+      },
+      "repairCheck": {}
     },
     {
       "key": "sunken_eyelid",
       "area": "눈",
       "topic": "눈두덩 꺼짐 · 상안검 볼륨 회복",
-      "score": 31,
+      "score": 33,
       "reasons": [
-        "검색량 14위",
-        "전년 대비 -32% (분야 평균 -35%)",
-        "기존 글 287건",
+        "검색량 16위",
+        "전년 대비 -32% (분야 평균 -37%)",
+        "기존 글 289건",
         "리뷰·메타분석 3편",
         "최근 1년 논문 13편",
         "연구가 활발해지는 중"
@@ -878,7 +2047,7 @@
         "reviews6y": 3
       },
       "naver": {
-        "medianTotal": 287,
+        "medianTotal": 289,
         "trend": "하락",
         "available": true
       },
@@ -918,11 +2087,253 @@
         "Lustig-Barzelay, Yael, et al. \"Current Approaches in Periocular Rejuvenation: Our 6-year Experience.\" Aesthetic Plast Surg 50.7 (2026): 2433-2442."
       ],
       "chars": 3593,
+      "relatedLinks": [],
+      "templateCheck": {},
       "adCheck": {
         "ok": true,
         "count": 0,
         "hits": []
-      }
+      },
+      "audit": {
+        "score": 95,
+        "ok": true,
+        "checks": {
+          "questionTitle": true,
+          "answerFirst": true,
+          "questionHeadings": true,
+          "readableParagraphs": true,
+          "sourceDepth": true,
+          "imagePlan": true,
+          "internalLinks": false
+        },
+        "metrics": {
+          "questionHeadingCount": 9,
+          "paragraphCount": 36,
+          "medianParagraphChars": 84,
+          "sourceCount": 5,
+          "imageCount": 5,
+          "relatedLinkCount": 0
+        },
+        "issues": [
+          "관련 글 내부링크 후보가 없습니다."
+        ],
+        "note": "내부 품질 점검용 휴리스틱이며 네이버·구글·LLM의 실제 노출 알고리즘 점수를 의미하지 않습니다."
+      },
+      "evidenceQa": {
+        "score": 47,
+        "level": "limited mix",
+        "ok": false,
+        "counts": {
+          "total": 16,
+          "systematicOrMeta": 0,
+          "trialOrComparative": 0,
+          "recent5y": 16,
+          "withAbstract": 14,
+          "pubmed": 14
+        },
+        "warnings": [
+          "최근 systematic review/meta-analysis가 포함되지 않았습니다.",
+          "비교연구 또는 임상시험 근거가 확인되지 않았습니다."
+        ],
+        "topEvidence": [
+          {
+            "title": "Lower Eyelid Fat Pad Transfer and Upper Eyelid Blepharoplasty for Simultaneous Correction of Tear Trough and Sunken Upper Eyelid Deformities.",
+            "year": "2026",
+            "kind": "other clinical literature",
+            "tier": 2,
+            "source": "pubmed",
+            "hasAbstract": true,
+            "citations": null
+          },
+          {
+            "title": "Multimodal Management of Sunken Upper Eyelid: A Retrospective Study of 94 Cases Focusing on Orbital Septal Fat Deficiency, Autologous Fat Transplantation, and Simultaneous Correction of Comorbidities.",
+            "year": "2026",
+            "kind": "other clinical literature",
+            "tier": 2,
+            "source": "pubmed",
+            "hasAbstract": true,
+            "citations": null
+          },
+          {
+            "title": "Efficacy and Outcomes of Pedicled Upper Orbital Fat Fascia Flap Transposition Using 3D Facial Scanning: A Retrospective Study.",
+            "year": "2026",
+            "kind": "other clinical literature",
+            "tier": 2,
+            "source": "pubmed",
+            "hasAbstract": true,
+            "citations": null
+          },
+          {
+            "title": "Redefining the Direct Brow Lift: The Key Role of Raising the ROOF.",
+            "year": "2026",
+            "kind": "other clinical literature",
+            "tier": 2,
+            "source": "pubmed",
+            "hasAbstract": true,
+            "citations": null
+          },
+          {
+            "title": "Current Approaches in Periocular Rejuvenation: Our 6-year Experience.",
+            "year": "2026",
+            "kind": "other clinical literature",
+            "tier": 2,
+            "source": "pubmed",
+            "hasAbstract": true,
+            "citations": null
+          }
+        ],
+        "note": "내부 문헌 구성 점검용 휴리스틱이며 개별 연구의 비뚤림 위험·간접성·불일치·비정밀성을 평가하는 GRADE가 아닙니다."
+      },
+      "repairCheck": {}
+    },
+    {
+      "key": "implant_free_nose",
+      "area": "코",
+      "topic": "무보형물 코성형",
+      "score": 32,
+      "reasons": [
+        "검색량 9위",
+        "전년 대비 -48% (분야 평균 -37%)",
+        "기존 글 2,013건",
+        "리뷰·메타분석 22편",
+        "최근 1년 논문 27편"
+      ],
+      "evidence": {
+        "recent1y": 27,
+        "recent3y": 83,
+        "reviews6y": 22
+      },
+      "naver": {
+        "medianTotal": 2013,
+        "trend": "하락",
+        "available": true
+      },
+      "paperCount": 24,
+      "draftedAt": "2026-09-20T07:28:03.048374+09:00",
+      "titles": [
+        "무보형물 코성형, 실리콘 없이 콧대도 높일 수 있나요?",
+        "무보형물 코성형, 귀연골을 넣어도 해당하나요?",
+        "무보형물 코성형, 원래 코에 있는 연골만으로 가능할까요?"
+      ],
+      "body": "실리콘을 쓰지 않아도 연골로 콧대를 높일 수 있습니다. 다만 원하는 높이와 필요한 연골의 양에 따라 방법이 달라집니다. 저는 콧대 높이뿐 아니라 코끝의 지지력과 피부 여유를 함께 살핍니다. 같은 높이를 원해도 현재 코의 구조에 따라 가능한 범위가 달라져요.\n\n무보형물은 코에 아무것도 넣지 않는다는 뜻인가요?\n\n‘무보형물’이라는 말만으로 수술 내용을 알기는 어렵습니다. 보통 실리콘 같은 인공 보형물을 사용하지 않는다는 의미로 씁니다. 내 몸에서 얻은 자가연골(autologous cartilage)을 옮겨 넣는 수술도 여기에 포함될 수 있습니다.\n\n코의 위쪽은 뼈가, 아래쪽은 주로 연골이 형태를 받칩니다. 가운데 벽인 비중격(nasal septum)도 지지 구조의 일부입니다. 콧대를 채우는 일과 코끝을 받치는 일은 목적이 다르죠.\n\n해부학 설명 뒤 | 코뼈·비중격·코끝 연골의 위치를 표시한 단면도 | 코는 부위마다 지지 구조가 달라 교정 방법도 달라집니다.\n\n상담에서는 무엇을 보고 가능 여부를 판단하나요?\n\n저는 먼저 ‘콧대가 낮다’는 말이 어느 부위를 뜻하는지 확인합니다. 콧대 전체의 높이가 부족한지, 코끝이 낮아 그렇게 보이는지 나눠 봅니다. 콧대는 그대로 두고 코끝만 조절하는 계획도 가능합니다.\n\n그다음 피부 두께와 여유, 연골의 모양과 지지력을 살핍니다. 이전 수술이 있다면 남아 있는 연골과 흉터 상태도 확인해야 합니다. 원하는 모양과 사용할 수 있는 조직을 함께 놓고 계획을 세우는 거예요.\n\n상담 설명 뒤 | 콧대와 코끝을 각각 표시한 옆모습 도식 | 원하는 변화가 콧대인지 코끝인지 먼저 구분합니다.\n\n연골로 어디까지 바꿀 수 있나요?\n\n연골을 이용해 콧대에 높이를 더하거나 코끝을 받칠 수 있습니다. 기존 연골의 위치와 모양을 조절하는 방법도 있습니다. 다만 피부가 덮을 수 있는 범위와 지지 구조를 함께 고려해야 합니다.\n\n‘연골을 많이 넣으면 원하는 만큼 높아지나요?’라는 질문에는 선을 그어 설명합니다. 재료의 양만으로 가능한 높이가 정해지지는 않습니다. 피부가 팽팽한 코에서는 목표 높이나 길이를 낮춰 잡아야 할 수도 있습니다.\n\n귀연골과 갈비연골은 언제 고려하나요?\n\n코 안의 비중격연골(septal cartilage)은 필요한 양을 얻으면서 지지 구조를 남길 수 있는지 살핍니다. 귀에서 얻는 귀연골(auricular cartilage)은 곡면과 탄성을 고려해 사용합니다. 저는 재료 이름보다 어느 부위에 어떤 역할로 쓸지를 먼저 설명합니다.\n\n더 많은 양이나 지지 재료가 필요하면 갈비연골(costal cartilage)을 고려할 수 있습니다. 콧대를 높이는 데도 쓰이지만, 휘어짐을 고려한 설계가 필요합니다. 여러 층으로 구성하는 방법도 문헌에 소개되어 있습니다.\n\n잘게 자른 연골(diced cartilage)은 콧대의 윤곽을 채우고 다듬는 선택지입니다. 단단한 지지대를 만드는 목적과는 구분해야 합니다. 모양을 조절하기 편해도 표면이 고르지 않거나 일부가 흡수될 가능성은 있습니다.\n\n재료 설명 뒤 | 비중격·귀·갈비의 위치와 연골의 사용 목적을 연결한 도식 | 연골은 필요한 양과 형태, 지지 목적에 맞춰 선택합니다.\n\n회복과 부작용은 무엇까지 생각해야 하나요?\n\n자가조직을 쓴다는 이유로 회복이 짧다고 단정할 수는 없습니다. 코에서 교정한 범위와 연골을 얻은 부위를 함께 봐야 합니다. 붓기와 통증, 절개 부위의 흉터도 설명에 포함합니다.\n\n연골을 넣은 뒤에는 감염이나 위치 변화가 생길 수 있습니다. 윤곽이 드러나거나 휘어짐, 일부 흡수(resorption)가 나타날 가능성도 있습니다. 잘게 자른 연골을 다룬 문헌에서는 과도한 높이와 콧대의 불규칙함이 재수술 이유로 보고됐습니다.\n\n이 결과를 모든 무보형물 수술의 위험도로 옮겨 말할 수는 없습니다. 사용한 연골과 가공 방법, 교정 부위가 서로 다르기 때문입니다. 회복 일정 역시 ‘무보형물’이라는 이름만으로 정하기 어렵습니다.\n\n재료와 유지에 관해 자주 묻는 것은 무엇인가요?\n\nQ. 제 연골을 새로 떼지 않고 원래 코에 있는 연골만으로도 되나요?\n기존 연골의 모양과 위치를 조절하는 것만으로 계획할 수 있는 경우도 있습니다. 다만 높이나 지지력을 더해야 한다면 추가 연골이 필요할 수 있어요. 저는 원하는 변화가 재배치만으로 가능한지부터 구분합니다.\n\nQ. 자가조직만 쓰면 시간이 지나면서 높이가 줄어들 수도 있나요?\n옮겨 넣은 조직이 일부 흡수되면 높이나 윤곽이 달라질 수 있습니다. 그렇다고 모든 연골이 같은 정도로 줄어드는 것은 아닙니다. 재료와 사용 방법을 구분해서 설명해야 합니다.\n\nQ. 무보형물에 기증연골이나 인공 재료가 포함되는지 어떻게 확인하나요?\n‘콧대와 코끝에 각각 무엇을 넣나요?’라고 재료명을 물어보세요. 다른 사람에게서 기증받은 동종연골(allogeneic cartilage)은 내 연골과 구분해야 합니다. 흡수성 인공 지지 재료를 함께 쓰는지도 확인할 항목입니다.\n\n신선동결 기증연골(fresh frozen cartilage)을 검토한 문헌도 있습니다. 다만 자가 갈비연골과 직접 비교할 수 있는 연구는 제한적이었습니다. 이 결과만으로 기증연골과 자가연골의 장기 결과가 같다고 단정하기는 어렵습니다.\n\n수술을 결정할 때 무엇을 기억하면 될까요?\n\n제가 계획을 설명할 때 중심에 두는 것은 바꿀 부위와 그 부위를 받칠 방법입니다. ‘무보형물인가’에서 한 걸음 더 나아가, 어디에 어떤 조직을 왜 쓰는지 확인해 보세요. 현재 구조에서 가능한 변화와 추가 조직 채취의 부담을 함께 이해하는 것이 선택의 기준입니다.\n\n참고문헌\n\n- Suh MK. [Cosmetic Augmentation Rhinoplasty for East Asians](https://pubmed.ncbi.nlm.nih.gov/34579840/). Facial Plast Surg Clin North Am. 2021;29(4):589-609.\n- Ledo TO, et al. [Outcome of Free Diced Cartilage Grafts in Rhinoplasty: A Systematic Review](https://pubmed.ncbi.nlm.nih.gov/32886948/). Facial Plast Surg. 2021;37(1):117-121.\n- Kadhum M, et al. [Fresh Frozen Cartilage in Rhinoplasty Surgery: A Systematic Review of Outcomes](https://pubmed.ncbi.nlm.nih.gov/38528125/). Aesthetic Plast Surg. 2024;48(17):3269-3275.\n\n지정 기본 교과서: 서만군. 아시아인 코성형술 아틀라스. 1판. 군자출판사; 2025. 이번 초안에서는 교과서 본문을 직접 확인하지 않아 세부 결론의 근거로 사용하지 않았습니다.\n\n작성자 | 성형외과 전문의 facereader\n전문분야 | 눈성형•코성형•안면거상\n\n본 글은 성형외과 전문의가 의학 문헌과 실제 임상 경험을 바탕으로 직접 작성합니다.\n내용의 이해를 돕기 위해 일부 삽화 및 설명 이미지는 AI를 활용하여 제작하였습니다.\n궁금하신 점이나 추가로 알고 싶은 내용이 있다면 댓글로 남겨주세요. 확인 후 가능한 범위에서 답변드리겠습니다.",
+      "tags": [
+        "무보형물코성형",
+        "무보형물코수술",
+        "자가연골",
+        "비중격연골",
+        "귀연골",
+        "갈비연골",
+        "콧대성형",
+        "코끝성형",
+        "코성형재료",
+        "FaceReader"
+      ],
+      "images": [],
+      "sources": [
+        "서만군. 아시아인 코성형술 아틀라스. 1판. 군자출판사; 2025.",
+        "Kadhum, Murtaza, et al. \"Fresh Frozen Cartilage in Rhinoplasty Surgery: A Systematic Review of Outcomes.\" Aesthetic Plast Surg 48.17 (2024): 3269-3275.",
+        "Suh, Man-Koon. \"Cosmetic Augmentation Rhinoplasty for East Asians.\" Facial Plast Surg Clin North Am 29.4 (2021): 589-609.",
+        "Ledo, Taynara Oliveira, et al. \"Outcome of Free Diced Cartilage Grafts in Rhinoplasty: A Systematic Review.\" Facial Plast Surg 37.1 (2021): 117-121."
+      ],
+      "chars": 3550,
+      "relatedLinks": [],
+      "templateCheck": {},
+      "adCheck": {
+        "ok": true,
+        "count": 0,
+        "hits": []
+      },
+      "audit": {
+        "score": 85,
+        "ok": true,
+        "checks": {
+          "questionTitle": true,
+          "answerFirst": true,
+          "questionHeadings": true,
+          "readableParagraphs": true,
+          "sourceDepth": true,
+          "imagePlan": false,
+          "internalLinks": false
+        },
+        "metrics": {
+          "questionHeadingCount": 10,
+          "paragraphCount": 33,
+          "medianParagraphChars": 109,
+          "sourceCount": 3,
+          "imageCount": 0,
+          "relatedLinkCount": 0
+        },
+        "issues": [
+          "해부·수술과정·비교를 설명할 이미지 기획을 2개 이상 두는 것을 검토하세요.",
+          "관련 글 내부링크 후보가 없습니다."
+        ],
+        "note": "내부 품질 점검용 휴리스틱이며 네이버·구글·LLM의 실제 노출 알고리즘 점수를 의미하지 않습니다."
+      },
+      "evidenceQa": {
+        "score": 60,
+        "level": "moderate mix",
+        "ok": true,
+        "counts": {
+          "total": 24,
+          "systematicOrMeta": 1,
+          "trialOrComparative": 0,
+          "recent5y": 24,
+          "withAbstract": 19,
+          "pubmed": 19
+        },
+        "warnings": [
+          "비교연구 또는 임상시험 근거가 확인되지 않았습니다."
+        ],
+        "topEvidence": [
+          {
+            "title": "Outcome of Free Diced Cartilage Grafts in Rhinoplasty: A Systematic Review.",
+            "year": "2021",
+            "kind": "systematic/meta-analysis",
+            "tier": 4,
+            "source": "pubmed",
+            "hasAbstract": true,
+            "citations": null
+          },
+          {
+            "title": "Camouflage Techniques in Secondary Rhinoplasty.",
+            "year": "2026",
+            "kind": "review",
+            "tier": 2,
+            "source": "pubmed",
+            "hasAbstract": true,
+            "citations": null
+          },
+          {
+            "title": "Outcomes and complications of autologous versus alloplastic grafts in augmentation rhinoplasty: A systematic review of studies from 2000 to 2024.",
+            "year": "2026",
+            "kind": "review",
+            "tier": 2,
+            "source": "pubmed",
+            "hasAbstract": true,
+            "citations": null
+          },
+          {
+            "title": "Correction of nostril contour with a recoil graft inserted through a lateral approach.",
+            "year": "2026",
+            "kind": "other clinical literature",
+            "tier": 2,
+            "source": "pubmed",
+            "hasAbstract": true,
+            "citations": null
+          },
+          {
+            "title": "Microbiological Evaluation of Cartilage Grafts Stored in Gentamicin-Diluted Saline During Rhinoplasty.",
+            "year": "2026",
+            "kind": "other clinical literature",
+            "tier": 2,
+            "source": "pubmed",
+            "hasAbstract": true,
+            "citations": null
+          }
+        ],
+        "note": "내부 문헌 구성 점검용 휴리스틱이며 개별 연구의 비뚤림 위험·간접성·불일치·비정밀성을 평가하는 GRADE가 아닙니다."
+      },
+      "repairCheck": {}
     },
     {
       "key": "rib_cartilage_rhinoplasty",
@@ -930,8 +2341,8 @@
       "topic": "늑연골 코성형 (갈비뼈연골)",
       "score": 31,
       "reasons": [
-        "검색량 13위",
-        "기존 글 2,768건",
+        "검색량 15위",
+        "기존 글 2,794건",
         "리뷰·메타분석 36편",
         "최근 1년 논문 69편",
         "연구가 활발해지는 중"
@@ -942,11 +2353,11 @@
         "reviews6y": 36
       },
       "naver": {
-        "medianTotal": 2768,
+        "medianTotal": 2794,
         "trend": null,
         "available": true
       },
-      "paperCount": 24,
+      "paperCount": 23,
       "draftedAt": "2026-09-07T12:51:07.673224+09:00",
       "titles": [
         "늑연골 코성형, 언제 갈비뼈연골을 선택하나요?",
@@ -982,6 +2393,8 @@
         "Suh, Man-Koon. \"Cosmetic Augmentation Rhinoplasty for East Asians.\" Facial Plast Surg Clin North Am 29.4 (2021): 589-609."
       ],
       "chars": 4481,
+      "relatedLinks": [],
+      "templateCheck": {},
       "adCheck": {
         "ok": false,
         "count": 1,
@@ -994,17 +2407,108 @@
             "context": "…를 하지 않는다는 점입니다. 그래서 흉터와 채취 부위 통증이 없습니다. 결과 자체는 어떨까요. 방사선 조사를 거친 기…"
           }
         ]
-      }
+      },
+      "audit": {
+        "score": 95,
+        "ok": true,
+        "checks": {
+          "questionTitle": true,
+          "answerFirst": true,
+          "questionHeadings": true,
+          "readableParagraphs": true,
+          "sourceDepth": true,
+          "imagePlan": true,
+          "internalLinks": false
+        },
+        "metrics": {
+          "questionHeadingCount": 10,
+          "paragraphCount": 42,
+          "medianParagraphChars": 85,
+          "sourceCount": 5,
+          "imageCount": 5,
+          "relatedLinkCount": 0
+        },
+        "issues": [
+          "관련 글 내부링크 후보가 없습니다."
+        ],
+        "note": "내부 품질 점검용 휴리스틱이며 네이버·구글·LLM의 실제 노출 알고리즘 점수를 의미하지 않습니다."
+      },
+      "evidenceQa": {
+        "score": 46,
+        "level": "limited mix",
+        "ok": false,
+        "counts": {
+          "total": 23,
+          "systematicOrMeta": 0,
+          "trialOrComparative": 0,
+          "recent5y": 23,
+          "withAbstract": 18,
+          "pubmed": 20
+        },
+        "warnings": [
+          "최근 systematic review/meta-analysis가 포함되지 않았습니다.",
+          "비교연구 또는 임상시험 근거가 확인되지 않았습니다."
+        ],
+        "topEvidence": [
+          {
+            "title": "Outcomes and complications of autologous versus alloplastic grafts in augmentation rhinoplasty: A systematic review of studies from 2000 to 2024.",
+            "year": "2026",
+            "kind": "review",
+            "tier": 2,
+            "source": "pubmed",
+            "hasAbstract": true,
+            "citations": null
+          },
+          {
+            "title": "A Hybrid Auricular Cartilage-ePTFE Technique for Limited Nasal Lengthening and Augmentation in Selected Primary Han Chinese Rhinoplasty.",
+            "year": "2026",
+            "kind": "other clinical literature",
+            "tier": 2,
+            "source": "pubmed",
+            "hasAbstract": true,
+            "citations": null
+          },
+          {
+            "title": "Septal Perforation Repair Improves Olfaction and Mucociliary Clearance: A Prospective Study.",
+            "year": "2026",
+            "kind": "other clinical literature",
+            "tier": 2,
+            "source": "pubmed",
+            "hasAbstract": true,
+            "citations": null
+          },
+          {
+            "title": "Different Preparations of Cadaveric Costal Cartilage Compared to Autologous Rib Cartilage in Rhinoplasty: A Systematic Review and Meta-Analysis.",
+            "year": "2026",
+            "kind": "other clinical literature",
+            "tier": 2,
+            "source": "pubmed",
+            "hasAbstract": true,
+            "citations": 0
+          },
+          {
+            "title": "Measurement of the Composition and Warping Tendencies of Costal Cartilage Grafts: Allograft Rib for Use in Rhinoplasty.",
+            "year": "2026",
+            "kind": "other clinical literature",
+            "tier": 2,
+            "source": "pubmed",
+            "hasAbstract": false,
+            "citations": null
+          }
+        ],
+        "note": "내부 문헌 구성 점검용 휴리스틱이며 개별 연구의 비뚤림 위험·간접성·불일치·비정밀성을 평가하는 GRADE가 아닙니다."
+      },
+      "repairCheck": {}
     },
     {
       "key": "nostril_shape",
       "area": "코",
       "topic": "콧구멍 비대칭·콧구멍 모양 교정",
-      "score": 29,
+      "score": 31,
       "reasons": [
-        "검색량 11위",
-        "전년 대비 -44% (분야 평균 -35%)",
-        "기존 글 1,928건",
+        "검색량 12위",
+        "전년 대비 -44% (분야 평균 -37%)",
+        "기존 글 1,941건",
         "리뷰·메타분석 6편",
         "최근 1년 논문 28편",
         "연구가 활발해지는 중"
@@ -1015,7 +2519,7 @@
         "reviews6y": 6
       },
       "naver": {
-        "medianTotal": 1928,
+        "medianTotal": 1941,
         "trend": "하락",
         "available": true
       },
@@ -1058,20 +2562,112 @@
         "Caropreso, Carlos Alberto, et al. \"The Slice Extension Graft: A Cartilage-Preserving Modification of the Septal Extension Graft.\" Facial Plast Surg (2026)."
       ],
       "chars": 4726,
+      "relatedLinks": [],
+      "templateCheck": {},
       "adCheck": {
         "ok": true,
         "count": 0,
         "hits": []
-      }
+      },
+      "audit": {
+        "score": 95,
+        "ok": true,
+        "checks": {
+          "questionTitle": true,
+          "answerFirst": true,
+          "questionHeadings": true,
+          "readableParagraphs": true,
+          "sourceDepth": true,
+          "imagePlan": true,
+          "internalLinks": false
+        },
+        "metrics": {
+          "questionHeadingCount": 13,
+          "paragraphCount": 40,
+          "medianParagraphChars": 79,
+          "sourceCount": 8,
+          "imageCount": 5,
+          "relatedLinkCount": 0
+        },
+        "issues": [
+          "관련 글 내부링크 후보가 없습니다."
+        ],
+        "note": "내부 품질 점검용 휴리스틱이며 네이버·구글·LLM의 실제 노출 알고리즘 점수를 의미하지 않습니다."
+      },
+      "evidenceQa": {
+        "score": 79,
+        "level": "strong mix",
+        "ok": true,
+        "counts": {
+          "total": 18,
+          "systematicOrMeta": 2,
+          "trialOrComparative": 0,
+          "recent5y": 17,
+          "withAbstract": 18,
+          "pubmed": 18
+        },
+        "warnings": [
+          "비교연구 또는 임상시험 근거가 확인되지 않았습니다."
+        ],
+        "topEvidence": [
+          {
+            "title": "Postoperative Outcomes of Local Skin Flaps Used in Oncologic Reconstructive Surgery of the Nasal Ala: A Systematic Review.",
+            "year": "2021",
+            "kind": "systematic/meta-analysis",
+            "tier": 4,
+            "source": "pubmed",
+            "hasAbstract": true,
+            "citations": null
+          },
+          {
+            "title": "Nasal Obstruction and Rhinoplasty: A Focused Literature Review.",
+            "year": "2020",
+            "kind": "systematic/meta-analysis",
+            "tier": 4,
+            "source": "pubmed",
+            "hasAbstract": true,
+            "citations": null
+          },
+          {
+            "title": "Structural Nasal Tip Grafting: Anatomy, Evaluation, and Technique Selection for Durable Aesthetic and Functional Outcomes.",
+            "year": "2026",
+            "kind": "review",
+            "tier": 2,
+            "source": "pubmed",
+            "hasAbstract": true,
+            "citations": null
+          },
+          {
+            "title": "Correction of nostril contour with a recoil graft inserted through a lateral approach.",
+            "year": "2026",
+            "kind": "other clinical literature",
+            "tier": 2,
+            "source": "pubmed",
+            "hasAbstract": true,
+            "citations": null
+          },
+          {
+            "title": "The Effect of Nostril Retainer Use on Nostril Aperture Symmetry After Primary Aesthetic Rhinoplasty.",
+            "year": "2026",
+            "kind": "observational study",
+            "tier": 2,
+            "source": "pubmed",
+            "hasAbstract": true,
+            "citations": null
+          }
+        ],
+        "note": "내부 문헌 구성 점검용 휴리스틱이며 개별 연구의 비뚤림 위험·간접성·불일치·비정밀성을 평가하는 GRADE가 아닙니다."
+      },
+      "repairCheck": {}
     },
     {
       "key": "nasal_osteotomy",
       "area": "코",
       "topic": "넓은 코·코뼈 절골술",
-      "score": 27,
+      "score": 28,
       "reasons": [
-        "검색량 15위",
-        "기존 글 1,197건",
+        "검색량 17위",
+        "기존 글 1,202건",
         "리뷰·메타분석 10편",
         "최근 1년 논문 11편"
       ],
@@ -1081,7 +2677,7 @@
         "reviews6y": 10
       },
       "naver": {
-        "medianTotal": 1197,
+        "medianTotal": 1202,
         "trend": null,
         "available": true
       },
@@ -1121,21 +2717,113 @@
         "Jang, Yong Ju, and Hyun Moon. \"Special Consideration in Rhinoplasty for Deformed Nose of East Asians.\" Facial Plast Surg Clin North Am 29.4 (2021): 611-624."
       ],
       "chars": 3932,
+      "relatedLinks": [],
+      "templateCheck": {},
       "adCheck": {
         "ok": true,
         "count": 0,
         "hits": []
-      }
+      },
+      "audit": {
+        "score": 95,
+        "ok": true,
+        "checks": {
+          "questionTitle": true,
+          "answerFirst": true,
+          "questionHeadings": true,
+          "readableParagraphs": true,
+          "sourceDepth": true,
+          "imagePlan": true,
+          "internalLinks": false
+        },
+        "metrics": {
+          "questionHeadingCount": 10,
+          "paragraphCount": 39,
+          "medianParagraphChars": 80,
+          "sourceCount": 5,
+          "imageCount": 5,
+          "relatedLinkCount": 0
+        },
+        "issues": [
+          "관련 글 내부링크 후보가 없습니다."
+        ],
+        "note": "내부 품질 점검용 휴리스틱이며 네이버·구글·LLM의 실제 노출 알고리즘 점수를 의미하지 않습니다."
+      },
+      "evidenceQa": {
+        "score": 75,
+        "level": "strong mix",
+        "ok": true,
+        "counts": {
+          "total": 22,
+          "systematicOrMeta": 4,
+          "trialOrComparative": 0,
+          "recent5y": 22,
+          "withAbstract": 17,
+          "pubmed": 17
+        },
+        "warnings": [
+          "비교연구 또는 임상시험 근거가 확인되지 않았습니다."
+        ],
+        "topEvidence": [
+          {
+            "title": "Methods of Lateral Osteotomy in Rhinoplasty: An Updated Systematic Review and Meta-Analysis of Randomised Controlled Trials.",
+            "year": "2026",
+            "kind": "systematic/meta-analysis",
+            "tier": 4,
+            "source": "pubmed",
+            "hasAbstract": true,
+            "citations": null
+          },
+          {
+            "title": "Dorsal preservation versus dorsal reduction rhinoplasty techniques for aesthetic and functional outcomes: a systematic review and meta-analysis.",
+            "year": "2025",
+            "kind": "systematic/meta-analysis",
+            "tier": 4,
+            "source": "pubmed",
+            "hasAbstract": true,
+            "citations": null
+          },
+          {
+            "title": "Complications Associated with Rhinoplasty: An Umbrella Review of Meta-analyses.",
+            "year": "2022",
+            "kind": "systematic/meta-analysis",
+            "tier": 4,
+            "source": "pubmed",
+            "hasAbstract": true,
+            "citations": null
+          },
+          {
+            "title": "Method of Lateral Osteotomy to Reduce Eyelid Edema and Ecchymosis After Rhinoplasty: A Meta-analysis.",
+            "year": "2021",
+            "kind": "systematic/meta-analysis",
+            "tier": 4,
+            "source": "pubmed",
+            "hasAbstract": true,
+            "citations": null
+          },
+          {
+            "title": "Structural Nasal Tip Grafting: Anatomy, Evaluation, and Technique Selection for Durable Aesthetic and Functional Outcomes.",
+            "year": "2026",
+            "kind": "review",
+            "tier": 2,
+            "source": "pubmed",
+            "hasAbstract": true,
+            "citations": null
+          }
+        ],
+        "note": "내부 문헌 구성 점검용 휴리스틱이며 개별 연구의 비뚤림 위험·간접성·불일치·비정밀성을 평가하는 GRADE가 아닙니다."
+      },
+      "repairCheck": {}
     },
     {
       "key": "cat_eye_lift",
       "area": "눈",
       "topic": "눈꼬리 올리기(고양이눈 수술)",
-      "score": 21,
+      "score": 23,
       "reasons": [
-        "검색량 17위",
-        "전년 대비 -45% (분야 평균 -35%)",
-        "기존 글 375건",
+        "검색량 18위",
+        "전년 대비 -45% (분야 평균 -37%)",
+        "기존 글 376건",
         "리뷰·메타분석 2편",
         "최근 1년 논문 10편",
         "연구가 활발해지는 중"
@@ -1146,7 +2834,7 @@
         "reviews6y": 2
       },
       "naver": {
-        "medianTotal": 375,
+        "medianTotal": 376,
         "trend": "하락",
         "available": true
       },
@@ -1184,73 +2872,104 @@
         "Lv, Ying, et al. \"OOM-ORL-ROOF Composite Flap Suspension (ORRCS) to the Lateral Orbital Thickening for Lateral Hooding.\" Aesthetic Plast Surg (2026)."
       ],
       "chars": 3657,
+      "relatedLinks": [],
+      "templateCheck": {},
       "adCheck": {
         "ok": true,
         "count": 0,
         "hits": []
-      }
-    },
-    {
-      "key": "open_vs_closed",
-      "area": "코",
-      "topic": "절개(개방) 코성형과 비절개(폐쇄) 코성형",
-      "score": 19,
-      "reasons": [
-        "검색량 16위",
-        "전년 대비 -94% (분야 평균 -35%)",
-        "기존 글 1,286건",
-        "리뷰·메타분석 20편",
-        "최근 1년 논문 53편",
-        "연구가 활발해지는 중"
-      ],
-      "evidence": {
-        "recent1y": 53,
-        "recent3y": 118,
-        "reviews6y": 20
       },
-      "naver": {
-        "medianTotal": 1286,
-        "trend": "하락",
-        "available": true
-      },
-      "paperCount": 22,
-      "draftedAt": "2026-09-08T21:49:39.665806+09:00",
-      "titles": [
-        "코성형 절개와 비절개, 무엇을 보고 정하나요?",
-        "절개 코성형과 비절개 코성형, 결과가 많이 다른가요?",
-        "비절개 코성형, 회복은 어디까지 빨라지나요?"
-      ],
-      "body": "코끝을 얼마나 바꿔야 하느냐가 갈림길입니다. 코끝 연골의 위치와 모양을 크게 옮겨야 하면 저는 절개(개방)를 택합니다. 콧대 라인 정리나 제한된 코끝 보완이면 비절개(폐쇄)로도 충분합니다.\n\n수술 방법을 먼저 정해 놓고 코를 거기에 맞추는 게 아닙니다. 코를 먼저 보고 방법이 따라옵니다. 상담에서 제가 시간을 가장 많이 쓰는 대목이 여기입니다.\n\n\"절개하면 흉터 남는다던데요.\" 이 말씀을 정말 자주 듣습니다.\n\n## 절개 코성형과 비절개 코성형은 어디가 다른가요?\n\n칼이 지나가는 길이 다릅니다. 절개는 콧구멍 안쪽 절개에 더해 콧기둥(columella) 피부를 가로로 한 번 끊습니다. 비절개는 콧구멍 안쪽에서만 접근하고, 콧기둥 피부는 건드리지 않습니다.\n\n차이는 흉터 하나가 아니에요. 코끝 피부와 그 아래 연부조직을 통째로 들어 올리느냐, 그대로 덮어 둔 채 안에서 작업하느냐의 차이입니다.\n\n절개는 코 구조물 전체를 눈으로 보면서 다룹니다. 비절개는 좁은 창을 통해, 만져지는 감각과 계측에 더 기대어 다룹니다.\n\n## 비절개가 회복이 빠른 데는 이유가 있나요?\n\n피부-연부조직 덮개(skin-soft tissue envelope)와 코를 붙잡고 있는 인대들을 그대로 두기 때문입니다. 들어 올리지 않으면 그만큼 붓기가 덜 잡히고, 조직이 아무는 과정도 짧아집니다.\n\n관련 문헌에서도 비절개 접근의 이점으로 부종 감소, 외부 흉터 회피, 코끝 지지력 손실이 적다는 점, 그리고 반흔 조직과 구축 형성이 덜하다는 점을 듭니다.\n\n제가 수술한 환자들을 직접 본 경험상, 코끝 붓기가 빠지는 속도에서 차이를 가장 뚜렷하게 느낍니다. 다만 이건 평균의 이야기예요. 사람마다 다릅니다.\n\n## 수술방에서 저는 무엇을 보고 절개와 비절개를 정하나요?\n\n세 가지를 순서대로 확인합니다.\n\n1. 코끝 연골의 좌우 비대칭입니다. 눈으로 봐서 한쪽이 눌려 있거나 방향이 다르면 저는 절개 쪽으로 기웁니다. 좌우를 나란히 놓고 비교해야 잡히는 문제이기 때문입니다.\n\n2. 코끝을 얼마나 올릴 것인가입니다. 코끝을 크게 세우려면 비중격연골에 지지대를 세우고 단단히 고정해야 합니다. 고정력이 필요한 만큼 시야가 필요합니다.\n\n3. 코끝 피부 두께입니다. 두꺼운 피부는 안에서 만든 모양을 덮어 버립니다. 이런 코는 구조를 더 확실히 만들어야 해서 절개가 유리한 경우가 많습니다.\n\n반대로 콧대만 정리하고 코끝은 조금만 다듬으면 되는 코. 좌우가 이미 잘 맞는 코. 이런 코를 굳이 열지는 않습니다.\n\n이해를 돕기 위해 그림으로 정리해 보면 아래와 같습니다.\n\n## 절개와 비절개, 장단점은 어떻게 다른가요?\n\n| | 절개(개방) | 비절개(폐쇄) |\n|---|---|---|\n| 시야 | 구조물 전체를 직접 봅니다 | 좁은 창으로 제한됩니다 |\n| 외부 흉터 | 콧기둥에 가로선이 남습니다 | 없습니다 |\n| 붓기 | 상대적으로 오래갑니다 | 상대적으로 덜합니다 |\n| 좌우 대칭 교정 | 유리합니다 | 제한이 있습니다 |\n| 코끝 큰 변화 | 유리합니다 | 어렵습니다 |\n| 수술 시간 | 더 걸립니다 | 더 짧은 편입니다 |\n\n문헌에서는 구조를 보존하는 비절개 기법이 개방 수술과 비슷한 미용적·기능적 결과를 내면서 수술 시간과 합병증이 더 적었다고 보고합니다.\n\n여기서 놓치면 안 되는 단어가 '적절히 선택된 환자'입니다. 아무 코나 그렇다는 뜻이 아니에요.\n\n## 어떤 코에 절개를 권하고, 어떤 코에는 권하지 않나요?\n\n절개를 권하는 쪽은 이렇습니다. 코끝이 뭉툭하면서 좌우가 눈에 띄게 어긋난 코. 코끝을 많이 올려야 하는 코. 갈비연골 같은 큰 이식을 써야 하는 코. 재수술이라 안쪽 구조가 이미 흐트러진 코.\n\n비절개가 잘 맞는 쪽은 이렇습니다. 콧대 라인 위주의 교정. 좌우 균형이 원래 괜찮은 코. 흉터를 정말 피하고 싶고, 대신 변화 폭이 작아도 받아들일 수 있는 분.\n\n권하지 않는 경우도 말씀드릴게요. 큰 변화를 원하면서 절개는 싫다고 하시는 경우입니다. 이건 방법의 문제가 아니라 기대치의 문제라서, 저는 무리해서 맞춰 드리지 않습니다.\n\n그리고 타고난 것 중에는 수술로 못 바꾸는 것도 있습니다. 피부 두께가 그렇습니다. 두꺼운 피부를 얇게 만드는 데는 한계가 있어요. 코끝 윤곽이 또렷하게 드러나는 정도는 결국 그 피부가 정합니다. 반면 코끝 높이, 콧대 라인, 콧볼 너비는 수술로 다룰 수 있는 영역입니다.\n\n## 회복은 어떤 순서로 지나가나요?\n\n시간 순서로 짚어 드립니다.\n\n72시간까지가 붓기와 멍의 정점입니다. 머리를 높이고 지내시는 게 좋습니다.\n\n1주 전후로 고정물을 제거합니다. 절개하신 분은 이때 콧기둥 봉합사도 함께 뽑습니다.\n\n2주쯤 되면 겉으로 티가 많이 줄어듭니다. 다만 코끝은 아직 부어 있습니다.\n\n4주 이후 가벼운 운동을 시작해 볼 수 있습니다. 다만 코에 충격이 갈 만한 활동은 더 기다리셔야 합니다.\n\n코끝 최종 모양은 몇 개월에 걸쳐 자리를 잡습니다. 절개한 코가 더 오래 걸리는 편입니다.\n\n## 상담에서는 무엇을 물어보면 좋을까요?\n\n그대로 쓰실 수 있는 질문을 드립니다.\n\n\"제 코는 왜 이 방법이어야 하나요?\" 답이 구체적이어야 합니다.\n\n\"코끝 연골 좌우가 어떤 상태인가요?\"\n\n\"어떤 연골을 어디서 가져오나요?\"\n\n\"제 피부 두께로는 어디까지 보이게 만들 수 있나요?\"\n\n부작용도 정직하게 짚겠습니다. 감염, 출혈, 비대칭, 이식 연골의 흡수나 변형, 코막힘, 코끝 감각 저하가 있습니다. 드물지만 피부 혈류가 막혀 피부가 손상되는 경우도 보고됩니다.\n\n문헌에서는 이 피부 괴사의 위험 인자로 흡연과 재수술 상황을 듭니다. 코끝을 과하게 얇게 만드는 조작, 지나치게 꽉 조이는 고정과 테이핑도 함께 언급됩니다. 그래서 저는 흡연하시는 분께 금연을 이렇게 안내드리고, 재수술에서는 특히 조심스럽게 접근합니다.\n\n효과는 사람마다 다릅니다. 같은 수술을 해도 피부와 연골이 다르면 결과도 달라집니다.\n\n## 자주 묻는 질문\n\nQ. 콧기둥 절개 흉터는 얼마나 남고 언제 없어지나요?\n콧기둥을 가로지르는 짧은 선으로 남습니다. 완전히 없어지지는 않습니다. 초반 몇 주는 붉게 도드라지다가, 몇 개월에 걸쳐 색이 옅어지고 평평해집니다. 정면에서는 잘 보이지 않는 위치이고, 아래에서 올려다볼 때 확인되는 정도입니다. 흉터 체질이거나 흡연을 하시면 경과가 달라질 수 있어 상담에서 미리 말씀해 주세요.\n\nQ. 재수술도 비절개로 할 수 있나요?\n가능한 경우가 있습니다. 문헌에서도 개방 접근이 재수술의 주류이지만, 적절히 선택된 환자에서는 비절개가 여전히 유용한 선택지라고 설명합니다. 제 기준은 이렇습니다. 손볼 부분이 한 군데로 좁혀지고, 코끝 지지 구조가 아직 버텨 주고 있으면 비절개를 고려합니다. 반대로 구조가 무너져 있거나 반흔이 넓게 자리 잡았다면 열고 확인하는 편이 안전합니다.\n\nQ. 비절개로 하면 모양이 덜 정확하게 나오나요?\n적응증이 맞으면 그렇지 않습니다. 다만 정확도를 얻는 방식이 다릅니다. 절개는 보고 맞추고, 비절개는 계측과 촉지로 맞춥니다. 그래서 좌우 비대칭 교정처럼 두 쪽을 나란히 비교해야 하는 작업에서는 비절개가 불리합니다. 이런 코에 비절개를 밀어붙이면 결과가 아쉬워집니다.\n\n## 정리하면 무엇을 기억하면 될까요?\n\n절개와 비절개는 우열이 아니라 적응증의 문제입니다. 코끝을 크게 바꾸거나 좌우를 맞춰야 하면 절개가, 변화 폭이 제한적이면 비절개가 유리합니다. 흉터와 회복만 놓고 방법을 먼저 고르면 정작 원하던 모양에서 멀어질 수 있습니다. 본인 코의 연골 상태와 피부 두께를 직접 확인받고, 담당 의료진과 충분히 상의해 결정하시길 권합니다.",
-      "tags": [
-        "#코성형",
-        "#절개코성형",
-        "#비절개코성형",
-        "#폐쇄접근코성형",
-        "#개방접근코성형",
-        "#코끝성형",
-        "#코재수술",
-        "#콧기둥흉터",
-        "#코성형회복",
-        "#코성형상담"
-      ],
-      "images": [
-        "③ 판단 기준 단락 뒤 | 절개(콧기둥 가로 절개 + 콧구멍 안쪽)와 비절개(콧구멍 안쪽만)의 절개선 위치를 나란히 표시한 도해",
-        "② 구조 설명 단락 | 코끝 연골, 비중격연골, 피부-연부조직 덮개의 층 구조를 보여 주는 단면 그림",
-        "⑤ 적합한 환자 단락 | 코끝 피부 두께에 따라 연골 윤곽이 드러나는 정도가 달라지는 것을 비교한 모식도",
-        "⑥ 회복 순서 단락 | 72시간 / 1주 / 2주 / 4주 / 수개월로 나눈 회복 경과 타임라인 그래픽"
-      ],
-      "sources": [
-        "서만군. 아시아인 코성형술 아틀라스. 1판. 군자출판사; 2025.",
-        "Shomorony, Andre, and Oren Friedman. \"Endonasal Secondary Rhinoplasty Techniques.\" Facial Plast Surg Clin North Am 34.2 (2026): 229-236.",
-        "Shah, Anil, and Onyekachi Ezinna Nnabue. \"Structural Rhinoplasty through the Endonasal Approach.\" Facial Plast Surg 41.6 (2025): 734-740.",
-        "Ferzli, George, et al. \"Skin Necrosis Following Rhinoplasty: A Review and Proposed Strategy on Identifying High-Risk Patients.\" Facial Plast Surg 37.4 (2021): 543-549."
-      ],
-      "chars": 3715,
-      "adCheck": {
+      "audit": {
+        "score": 95,
         "ok": true,
-        "count": 0,
-        "hits": []
-      }
+        "checks": {
+          "questionTitle": true,
+          "answerFirst": true,
+          "questionHeadings": true,
+          "readableParagraphs": true,
+          "sourceDepth": true,
+          "imagePlan": true,
+          "internalLinks": false
+        },
+        "metrics": {
+          "questionHeadingCount": 10,
+          "paragraphCount": 34,
+          "medianParagraphChars": 91,
+          "sourceCount": 3,
+          "imageCount": 5,
+          "relatedLinkCount": 0
+        },
+        "issues": [
+          "관련 글 내부링크 후보가 없습니다."
+        ],
+        "note": "내부 품질 점검용 휴리스틱이며 네이버·구글·LLM의 실제 노출 알고리즘 점수를 의미하지 않습니다."
+      },
+      "evidenceQa": {
+        "score": 49,
+        "level": "limited mix",
+        "ok": false,
+        "counts": {
+          "total": 14,
+          "systematicOrMeta": 0,
+          "trialOrComparative": 0,
+          "recent5y": 13,
+          "withAbstract": 14,
+          "pubmed": 14
+        },
+        "warnings": [
+          "최근 systematic review/meta-analysis가 포함되지 않았습니다.",
+          "비교연구 또는 임상시험 근거가 확인되지 않았습니다."
+        ],
+        "topEvidence": [
+          {
+            "title": "Perceptions of Femininity: Exploring the Influence of Eyelid Morphology and Periocular Features on Facial Feminization.",
+            "year": "2026",
+            "kind": "other clinical literature",
+            "tier": 2,
+            "source": "pubmed",
+            "hasAbstract": true,
+            "citations": null
+          },
+          {
+            "title": "Distraction in anterior plagiocephaly: technique, risks, and long-term results.",
+            "year": "2026",
+            "kind": "other clinical literature",
+            "tier": 2,
+            "source": "pubmed",
+            "hasAbstract": true,
+            "citations": null
+          },
+          {
+            "title": "Surgical Outcomes of Transconjunctival Entropion Repair for Lower Eyelid Involutional Entropion: A Retrospective Case Series.",
+            "year": "2026",
+            "kind": "other clinical literature",
+            "tier": 2,
+            "source": "pubmed",
+            "hasAbstract": true,
+            "citations": null
+          },
+          {
+            "title": "OOM-ORL-ROOF Composite Flap Suspension (ORRCS) to the Lateral Orbital Thickening for Lateral Hooding.",
+            "year": "2026",
+            "kind": "other clinical literature",
+            "tier": 2,
+            "source": "pubmed",
+            "hasAbstract": true,
+            "citations": null
+          },
+          {
+            "title": "Periorbital Structural and Functional Modulation Following Liquid-Type Polycaprolactone Treatment: A Pilot Study.",
+            "year": "2026",
+            "kind": "other clinical literature",
+            "tier": 2,
+            "source": "pubmed",
+            "hasAbstract": true,
+            "citations": null
+          }
+        ],
+        "note": "내부 문헌 구성 점검용 휴리스틱이며 개별 연구의 비뚤림 위험·간접성·불일치·비정밀성을 평가하는 GRADE가 아닙니다."
+      },
+      "repairCheck": {}
     },
     {
       "key": "long_nose",
@@ -1258,20 +2977,20 @@
       "topic": "긴 코 · 처진 코끝 교정",
       "score": 17,
       "reasons": [
-        "검색량 19위",
-        "전년 대비 -69% (분야 평균 -35%)",
-        "기존 글 971건",
+        "검색량 20위",
+        "전년 대비 -69% (분야 평균 -37%)",
+        "기존 글 979건",
         "리뷰·메타분석 6편",
-        "최근 1년 논문 22편",
+        "최근 1년 논문 23편",
         "연구가 활발해지는 중"
       ],
       "evidence": {
-        "recent1y": 22,
-        "recent3y": 49,
+        "recent1y": 23,
+        "recent3y": 50,
         "reviews6y": 6
       },
       "naver": {
-        "medianTotal": 971,
+        "medianTotal": 979,
         "trend": "하락",
         "available": true
       },
@@ -1314,12 +3033,102 @@
         "Omer, Goran Latif, et al. \"Intermediate alar resection: Precision technique for nasal tip aesthetics.\" JPRAS Open 50 (2026): 365-374."
       ],
       "chars": 4182,
+      "relatedLinks": [],
+      "templateCheck": {},
       "adCheck": {
         "ok": true,
         "count": 0,
         "hits": []
-      }
+      },
+      "audit": {
+        "score": 95,
+        "ok": true,
+        "checks": {
+          "questionTitle": true,
+          "answerFirst": true,
+          "questionHeadings": true,
+          "readableParagraphs": true,
+          "sourceDepth": true,
+          "imagePlan": true,
+          "internalLinks": false
+        },
+        "metrics": {
+          "questionHeadingCount": 11,
+          "paragraphCount": 39,
+          "medianParagraphChars": 89,
+          "sourceCount": 8,
+          "imageCount": 5,
+          "relatedLinkCount": 0
+        },
+        "issues": [
+          "관련 글 내부링크 후보가 없습니다."
+        ],
+        "note": "내부 품질 점검용 휴리스틱이며 네이버·구글·LLM의 실제 노출 알고리즘 점수를 의미하지 않습니다."
+      },
+      "evidenceQa": {
+        "score": 100,
+        "level": "strong mix",
+        "ok": true,
+        "counts": {
+          "total": 17,
+          "systematicOrMeta": 2,
+          "trialOrComparative": 2,
+          "recent5y": 17,
+          "withAbstract": 17,
+          "pubmed": 17
+        },
+        "warnings": [],
+        "topEvidence": [
+          {
+            "title": "Comparative Outcomes of Septal Extension versus Columellar Strut Grafts for Nasal Tip Stabilization and Positioning in Rhinoplasty: A Systematic Review and Meta-analysis.",
+            "year": "2026",
+            "kind": "systematic/meta-analysis",
+            "tier": 4,
+            "source": "pubmed",
+            "hasAbstract": true,
+            "citations": null
+          },
+          {
+            "title": "Evaluating the Role of Septal Extension Grafts in Enhancing Nasal Tip Projection and Support: A Systematic Review and Meta-Analysis.",
+            "year": "2026",
+            "kind": "systematic/meta-analysis",
+            "tier": 4,
+            "source": "pubmed",
+            "hasAbstract": true,
+            "citations": null
+          },
+          {
+            "title": "Long-Term Durability of Tip Projection and Rotation with Strut Columella and Septal Extension Graft in Rhinoplasty: A 6-Month and 1-Year Follow-Up.",
+            "year": "2026",
+            "kind": "randomized trial",
+            "tier": 4,
+            "source": "pubmed",
+            "hasAbstract": true,
+            "citations": null
+          },
+          {
+            "title": "Comparison of Nasal Tip Projection and Rotational Stability between Structural Rhinoplasty with Strut Graft and Preservation Rhinoplasty with Pitanguy Ligament Graft.",
+            "year": "2026",
+            "kind": "clinical/comparative study",
+            "tier": 3,
+            "source": "pubmed",
+            "hasAbstract": true,
+            "citations": null
+          },
+          {
+            "title": "The Delta Graft: Rethinking 3D Tip Architecture for Predictable Form and Function.",
+            "year": "2026",
+            "kind": "review",
+            "tier": 2,
+            "source": "pubmed",
+            "hasAbstract": true,
+            "citations": null
+          }
+        ],
+        "note": "내부 문헌 구성 점검용 휴리스틱이며 개별 연구의 비뚤림 위험·간접성·불일치·비정밀성을 평가하는 GRADE가 아닙니다."
+      },
+      "repairCheck": {}
     }
   ],
-  "notice": "점수는 근거가 풍부하고 덜 포화된 주제를 앞세우기 위한 내부 지표입니다. 네이버의 실제 노출 알고리즘은 공개되어 있지 않습니다. 의료광고 자가점검은 기계적 점검이며 법률 자문이나 사전심의를 대체하지 않습니다."
+  "notice": "점수는 근거가 풍부하고 덜 포화된 주제를 앞세우기 위한 내부 지표입니다. 네이버의 실제 노출 알고리즘은 공개되어 있지 않습니다. QA 실패 초안은 검증 문헌 범위 안에서 최소 자동수정 후 재검사합니다."
 }
