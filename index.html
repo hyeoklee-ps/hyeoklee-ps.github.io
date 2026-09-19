@@ -1790,8 +1790,11 @@
   var PENDING_KEY = "blogWorkbench.topicRequestId";
   var refreshTimer = 0;
   var refreshWaited = 0;
+  var refreshStartedAt = 0;
   var POLL_MS = 6000;
-  var GIVE_UP_MS = 30 * 60 * 1000;   // 맥이 이보다 오래 걸리면 포기하고 안내한다
+  // discover(최대 15분) + 초안 작성(최대 60분) + 배포 시간을 고려한다.
+  // 단순 누적 폴링 시간이 아니라 실제 요청 시각부터의 경과시간을 잰다.
+  var GIVE_UP_MS = 90 * 60 * 1000;
   var MAC_ASLEEP_MS = 8 * 60 * 1000; // 이때까지 시작도 안 하면 맥이 꺼진 것으로 본다
 
   function refreshBusy(on, message){
@@ -1804,8 +1807,34 @@
     if(refreshTimer) clearTimeout(refreshTimer);
     refreshTimer = 0;
     refreshWaited = 0;
+    refreshStartedAt = 0;
     try{ localStorage.removeItem(PENDING_KEY); } catch(e){}
     refreshBusy(false);
+  }
+
+  function savePending(id){
+    refreshStartedAt = Date.now();
+    try{
+      localStorage.setItem(PENDING_KEY, JSON.stringify({
+        id: id || "1",
+        startedAt: refreshStartedAt
+      }));
+    } catch(e){}
+  }
+
+  function readPending(){
+    var raw;
+    try{ raw = localStorage.getItem(PENDING_KEY); } catch(e){ raw = null; }
+    if(!raw) return null;
+    try{
+      var parsed = JSON.parse(raw);
+      if(parsed && typeof parsed === "object"){
+        return { id: parsed.id || "1", startedAt: Number(parsed.startedAt) || 0 };
+      }
+    } catch(e){}
+    // 예전 버전은 요청 ID만 저장했다. 시작 시각을 알 수 없는 표시는
+    // 실제 작업 여부와 무관하게 영구 잠금이 될 수 있으므로 낡은 것으로 본다.
+    return { id: raw, startedAt: 0 };
   }
 
   /* 맥이 실제로 뺀 주제만 이 기기의 숨김 목록에서 지운다. 이제 pool.json 자체에
@@ -1843,7 +1872,9 @@
       return;
     }
 
-    refreshWaited += POLL_MS;
+    refreshWaited = refreshStartedAt
+      ? Math.max(0, Date.now() - refreshStartedAt)
+      : refreshWaited + POLL_MS;
     if(refreshWaited > GIVE_UP_MS){
       stopWatching();
       inboxNote.textContent =
@@ -1874,7 +1905,7 @@
       });
       if(!res.ok) throw new Error("http " + res.status);
       var req = await res.json();
-      try{ localStorage.setItem(PENDING_KEY, req.id || "1"); } catch(e){}
+      savePending(req.id);
     } catch(err){
       refreshBusy(false);
       inboxNote.textContent =
@@ -1889,9 +1920,17 @@
 
   /* 페이지를 다시 열었을 때 진행 중인 요청이 있으면 이어서 지켜본다. */
   (function resumeRefresh(){
-    var id;
-    try{ id = localStorage.getItem(PENDING_KEY); } catch(e){ id = null; }
-    if(!id) return;
+    var pending = readPending();
+    if(!pending) return;
+    var elapsed = pending.startedAt ? Date.now() - pending.startedAt : Infinity;
+    if(elapsed > GIVE_UP_MS){
+      stopWatching();
+      inboxNote.textContent =
+        "이전 요청의 잠금 표시를 해제했습니다. 맥이 작업 중이 아니면 다시 요청할 수 있습니다.";
+      return;
+    }
+    refreshStartedAt = pending.startedAt;
+    refreshWaited = Math.max(0, elapsed);
     refreshBusy(true, "지난 요청의 결과를 확인하는 중…");
     refreshTimer = setTimeout(pollRefresh, 500);
   })();
