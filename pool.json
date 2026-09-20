@@ -1,27 +1,27 @@
 {
-  "updated": "2026-09-20T07:24:55.519808+09:00",
+  "updated": "2026-09-20T09:19:19.884283+09:00",
   "topicCount": 20,
   "topics": [
     {
       "key": "revision_nose",
       "area": "코",
       "topic": "코 재수술 · 구축",
-      "score": 75,
+      "score": 74,
       "reasons": [
         "검색량 1위",
-        "전년 대비 -35% (분야 평균 -37%)",
-        "기존 글 46,138건",
+        "전년 대비 -35% (분야 평균 -36%)",
+        "기존 글 46,139건",
         "리뷰·메타분석 356편",
         "최근 1년 논문 474편",
         "연구가 활발해지는 중"
       ],
       "evidence": {
         "recent1y": 474,
-        "recent3y": 1078,
+        "recent3y": 1077,
         "reviews6y": 356
       },
       "naver": {
-        "medianTotal": 46138,
+        "medianTotal": 46139,
         "trend": "하락",
         "available": true
       },
@@ -166,7 +166,7 @@
       "score": 64,
       "reasons": [
         "검색량 3위",
-        "전년 대비 -33% (분야 평균 -37%)",
+        "전년 대비 -33% (분야 평균 -36%)",
         "기존 글 8,364건",
         "리뷰·메타분석 5편",
         "최근 1년 논문 20편"
@@ -323,7 +323,7 @@
       "score": 59,
       "reasons": [
         "검색량 6위",
-        "전년 대비 -26% (분야 평균 -37%)",
+        "전년 대비 -26% (분야 평균 -36%)",
         "기존 글 7,383건",
         "리뷰·메타분석 4편",
         "최근 1년 논문 6편"
@@ -486,7 +486,7 @@
       "score": 59,
       "reasons": [
         "검색량 5위",
-        "전년 대비 -37% (분야 평균 -37%)",
+        "전년 대비 -37% (분야 평균 -36%)",
         "기존 글 1,497건",
         "리뷰·메타분석 16편",
         "최근 1년 논문 42편",
@@ -640,10 +640,10 @@
       "key": "epicanthoplasty",
       "area": "눈",
       "topic": "앞트임 · 뒤트임",
-      "score": 59,
+      "score": 58,
       "reasons": [
         "검색량 2위",
-        "전년 대비 -47% (분야 평균 -37%)",
+        "전년 대비 -47% (분야 평균 -36%)",
         "기존 글 36,174건",
         "리뷰·메타분석 31편",
         "최근 1년 논문 44편"
@@ -799,8 +799,8 @@
       "score": 53,
       "reasons": [
         "검색량 8위",
-        "전년 대비 -17% (분야 평균 -37%)",
-        "기존 글 5,682건",
+        "전년 대비 -17% (분야 평균 -36%)",
+        "기존 글 5,683건",
         "리뷰·메타분석 12편",
         "최근 1년 논문 30편",
         "연구가 활발해지는 중"
@@ -811,7 +811,7 @@
         "reviews6y": 12
       },
       "naver": {
-        "medianTotal": 5682,
+        "medianTotal": 5683,
         "trend": "하락",
         "available": true
       },
@@ -955,10 +955,10 @@
       "key": "bulbous_nose",
       "area": "코",
       "topic": "복코 수술",
-      "score": 48,
+      "score": 47,
       "reasons": [
         "검색량 4위",
-        "전년 대비 -49% (분야 평균 -37%)",
+        "전년 대비 -49% (분야 평균 -36%)",
         "기존 글 8,351건",
         "리뷰·메타분석 15편",
         "최근 1년 논문 17편",
@@ -1107,7 +1107,7 @@
       "score": 43,
       "reasons": [
         "검색량 10위",
-        "전년 대비 -23% (분야 평균 -37%)",
+        "전년 대비 -23% (분야 평균 -36%)",
         "기존 글 1,976건",
         "리뷰·메타분석 1편"
       ],
@@ -1254,10 +1254,10 @@
       "key": "eye_asymmetry",
       "area": "눈",
       "topic": "짝눈 · 눈 좌우 비대칭 교정",
-      "score": 40,
+      "score": 39,
       "reasons": [
         "검색량 7위",
-        "전년 대비 -45% (분야 평균 -37%)",
+        "전년 대비 -45% (분야 평균 -36%)",
         "기존 글 19,172건",
         "리뷰·메타분석 10편",
         "최근 1년 논문 34편"
@@ -1415,7 +1415,7 @@
       "score": 38,
       "reasons": [
         "검색량 14위",
-        "전년 대비 +110% (분야 평균 -37%)",
+        "전년 대비 +110% (분야 평균 -36%)",
         "기존 글 339건",
         "리뷰·메타분석 5편",
         "최근 1년 논문 3편"
@@ -1572,8 +1572,8 @@
       "score": 37,
       "reasons": [
         "검색량 19위",
-        "전년 대비 -5% (분야 평균 -37%)",
-        "기존 글 8,263건",
+        "전년 대비 -5% (분야 평균 -36%)",
+        "기존 글 8,262건",
         "리뷰·메타분석 14편",
         "최근 1년 논문 30편",
         "연구가 활발해지는 중"
@@ -1584,7 +1584,7 @@
         "reviews6y": 14
       },
       "naver": {
-        "medianTotal": 8263,
+        "medianTotal": 8262,
         "trend": "보합",
         "available": true
       },
@@ -1727,7 +1727,7 @@
       "score": 35,
       "reasons": [
         "검색량 13위",
-        "전년 대비 -36% (분야 평균 -37%)",
+        "전년 대비 -36% (분야 평균 -36%)",
         "기존 글 201건",
         "리뷰·메타분석 9편",
         "최근 1년 논문 18편",
@@ -1872,10 +1872,10 @@
       "key": "saddle_nose",
       "area": "코",
       "topic": "안장코·함몰코 교정",
-      "score": 35,
+      "score": 34,
       "reasons": [
         "검색량 11위",
-        "전년 대비 -47% (분야 평균 -37%)",
+        "전년 대비 -47% (분야 평균 -36%)",
         "기존 글 87건",
         "리뷰·메타분석 15편",
         "최근 1년 논문 18편"
@@ -2035,7 +2035,7 @@
       "score": 33,
       "reasons": [
         "검색량 16위",
-        "전년 대비 -32% (분야 평균 -37%)",
+        "전년 대비 -32% (분야 평균 -36%)",
         "기존 글 289건",
         "리뷰·메타분석 3편",
         "최근 1년 논문 13편",
@@ -2174,155 +2174,6 @@
           },
           {
             "title": "Current Approaches in Periocular Rejuvenation: Our 6-year Experience.",
-            "year": "2026",
-            "kind": "other clinical literature",
-            "tier": 2,
-            "source": "pubmed",
-            "hasAbstract": true,
-            "citations": null
-          }
-        ],
-        "note": "내부 문헌 구성 점검용 휴리스틱이며 개별 연구의 비뚤림 위험·간접성·불일치·비정밀성을 평가하는 GRADE가 아닙니다."
-      },
-      "repairCheck": {}
-    },
-    {
-      "key": "implant_free_nose",
-      "area": "코",
-      "topic": "무보형물 코성형",
-      "score": 32,
-      "reasons": [
-        "검색량 9위",
-        "전년 대비 -48% (분야 평균 -37%)",
-        "기존 글 2,013건",
-        "리뷰·메타분석 22편",
-        "최근 1년 논문 27편"
-      ],
-      "evidence": {
-        "recent1y": 27,
-        "recent3y": 83,
-        "reviews6y": 22
-      },
-      "naver": {
-        "medianTotal": 2013,
-        "trend": "하락",
-        "available": true
-      },
-      "paperCount": 24,
-      "draftedAt": "2026-09-20T07:28:03.048374+09:00",
-      "titles": [
-        "무보형물 코성형, 실리콘 없이 콧대도 높일 수 있나요?",
-        "무보형물 코성형, 귀연골을 넣어도 해당하나요?",
-        "무보형물 코성형, 원래 코에 있는 연골만으로 가능할까요?"
-      ],
-      "body": "실리콘을 쓰지 않아도 연골로 콧대를 높일 수 있습니다. 다만 원하는 높이와 필요한 연골의 양에 따라 방법이 달라집니다. 저는 콧대 높이뿐 아니라 코끝의 지지력과 피부 여유를 함께 살핍니다. 같은 높이를 원해도 현재 코의 구조에 따라 가능한 범위가 달라져요.\n\n무보형물은 코에 아무것도 넣지 않는다는 뜻인가요?\n\n‘무보형물’이라는 말만으로 수술 내용을 알기는 어렵습니다. 보통 실리콘 같은 인공 보형물을 사용하지 않는다는 의미로 씁니다. 내 몸에서 얻은 자가연골(autologous cartilage)을 옮겨 넣는 수술도 여기에 포함될 수 있습니다.\n\n코의 위쪽은 뼈가, 아래쪽은 주로 연골이 형태를 받칩니다. 가운데 벽인 비중격(nasal septum)도 지지 구조의 일부입니다. 콧대를 채우는 일과 코끝을 받치는 일은 목적이 다르죠.\n\n해부학 설명 뒤 | 코뼈·비중격·코끝 연골의 위치를 표시한 단면도 | 코는 부위마다 지지 구조가 달라 교정 방법도 달라집니다.\n\n상담에서는 무엇을 보고 가능 여부를 판단하나요?\n\n저는 먼저 ‘콧대가 낮다’는 말이 어느 부위를 뜻하는지 확인합니다. 콧대 전체의 높이가 부족한지, 코끝이 낮아 그렇게 보이는지 나눠 봅니다. 콧대는 그대로 두고 코끝만 조절하는 계획도 가능합니다.\n\n그다음 피부 두께와 여유, 연골의 모양과 지지력을 살핍니다. 이전 수술이 있다면 남아 있는 연골과 흉터 상태도 확인해야 합니다. 원하는 모양과 사용할 수 있는 조직을 함께 놓고 계획을 세우는 거예요.\n\n상담 설명 뒤 | 콧대와 코끝을 각각 표시한 옆모습 도식 | 원하는 변화가 콧대인지 코끝인지 먼저 구분합니다.\n\n연골로 어디까지 바꿀 수 있나요?\n\n연골을 이용해 콧대에 높이를 더하거나 코끝을 받칠 수 있습니다. 기존 연골의 위치와 모양을 조절하는 방법도 있습니다. 다만 피부가 덮을 수 있는 범위와 지지 구조를 함께 고려해야 합니다.\n\n‘연골을 많이 넣으면 원하는 만큼 높아지나요?’라는 질문에는 선을 그어 설명합니다. 재료의 양만으로 가능한 높이가 정해지지는 않습니다. 피부가 팽팽한 코에서는 목표 높이나 길이를 낮춰 잡아야 할 수도 있습니다.\n\n귀연골과 갈비연골은 언제 고려하나요?\n\n코 안의 비중격연골(septal cartilage)은 필요한 양을 얻으면서 지지 구조를 남길 수 있는지 살핍니다. 귀에서 얻는 귀연골(auricular cartilage)은 곡면과 탄성을 고려해 사용합니다. 저는 재료 이름보다 어느 부위에 어떤 역할로 쓸지를 먼저 설명합니다.\n\n더 많은 양이나 지지 재료가 필요하면 갈비연골(costal cartilage)을 고려할 수 있습니다. 콧대를 높이는 데도 쓰이지만, 휘어짐을 고려한 설계가 필요합니다. 여러 층으로 구성하는 방법도 문헌에 소개되어 있습니다.\n\n잘게 자른 연골(diced cartilage)은 콧대의 윤곽을 채우고 다듬는 선택지입니다. 단단한 지지대를 만드는 목적과는 구분해야 합니다. 모양을 조절하기 편해도 표면이 고르지 않거나 일부가 흡수될 가능성은 있습니다.\n\n재료 설명 뒤 | 비중격·귀·갈비의 위치와 연골의 사용 목적을 연결한 도식 | 연골은 필요한 양과 형태, 지지 목적에 맞춰 선택합니다.\n\n회복과 부작용은 무엇까지 생각해야 하나요?\n\n자가조직을 쓴다는 이유로 회복이 짧다고 단정할 수는 없습니다. 코에서 교정한 범위와 연골을 얻은 부위를 함께 봐야 합니다. 붓기와 통증, 절개 부위의 흉터도 설명에 포함합니다.\n\n연골을 넣은 뒤에는 감염이나 위치 변화가 생길 수 있습니다. 윤곽이 드러나거나 휘어짐, 일부 흡수(resorption)가 나타날 가능성도 있습니다. 잘게 자른 연골을 다룬 문헌에서는 과도한 높이와 콧대의 불규칙함이 재수술 이유로 보고됐습니다.\n\n이 결과를 모든 무보형물 수술의 위험도로 옮겨 말할 수는 없습니다. 사용한 연골과 가공 방법, 교정 부위가 서로 다르기 때문입니다. 회복 일정 역시 ‘무보형물’이라는 이름만으로 정하기 어렵습니다.\n\n재료와 유지에 관해 자주 묻는 것은 무엇인가요?\n\nQ. 제 연골을 새로 떼지 않고 원래 코에 있는 연골만으로도 되나요?\n기존 연골의 모양과 위치를 조절하는 것만으로 계획할 수 있는 경우도 있습니다. 다만 높이나 지지력을 더해야 한다면 추가 연골이 필요할 수 있어요. 저는 원하는 변화가 재배치만으로 가능한지부터 구분합니다.\n\nQ. 자가조직만 쓰면 시간이 지나면서 높이가 줄어들 수도 있나요?\n옮겨 넣은 조직이 일부 흡수되면 높이나 윤곽이 달라질 수 있습니다. 그렇다고 모든 연골이 같은 정도로 줄어드는 것은 아닙니다. 재료와 사용 방법을 구분해서 설명해야 합니다.\n\nQ. 무보형물에 기증연골이나 인공 재료가 포함되는지 어떻게 확인하나요?\n‘콧대와 코끝에 각각 무엇을 넣나요?’라고 재료명을 물어보세요. 다른 사람에게서 기증받은 동종연골(allogeneic cartilage)은 내 연골과 구분해야 합니다. 흡수성 인공 지지 재료를 함께 쓰는지도 확인할 항목입니다.\n\n신선동결 기증연골(fresh frozen cartilage)을 검토한 문헌도 있습니다. 다만 자가 갈비연골과 직접 비교할 수 있는 연구는 제한적이었습니다. 이 결과만으로 기증연골과 자가연골의 장기 결과가 같다고 단정하기는 어렵습니다.\n\n수술을 결정할 때 무엇을 기억하면 될까요?\n\n제가 계획을 설명할 때 중심에 두는 것은 바꿀 부위와 그 부위를 받칠 방법입니다. ‘무보형물인가’에서 한 걸음 더 나아가, 어디에 어떤 조직을 왜 쓰는지 확인해 보세요. 현재 구조에서 가능한 변화와 추가 조직 채취의 부담을 함께 이해하는 것이 선택의 기준입니다.\n\n참고문헌\n\n- Suh MK. [Cosmetic Augmentation Rhinoplasty for East Asians](https://pubmed.ncbi.nlm.nih.gov/34579840/). Facial Plast Surg Clin North Am. 2021;29(4):589-609.\n- Ledo TO, et al. [Outcome of Free Diced Cartilage Grafts in Rhinoplasty: A Systematic Review](https://pubmed.ncbi.nlm.nih.gov/32886948/). Facial Plast Surg. 2021;37(1):117-121.\n- Kadhum M, et al. [Fresh Frozen Cartilage in Rhinoplasty Surgery: A Systematic Review of Outcomes](https://pubmed.ncbi.nlm.nih.gov/38528125/). Aesthetic Plast Surg. 2024;48(17):3269-3275.\n\n지정 기본 교과서: 서만군. 아시아인 코성형술 아틀라스. 1판. 군자출판사; 2025. 이번 초안에서는 교과서 본문을 직접 확인하지 않아 세부 결론의 근거로 사용하지 않았습니다.\n\n작성자 | 성형외과 전문의 facereader\n전문분야 | 눈성형•코성형•안면거상\n\n본 글은 성형외과 전문의가 의학 문헌과 실제 임상 경험을 바탕으로 직접 작성합니다.\n내용의 이해를 돕기 위해 일부 삽화 및 설명 이미지는 AI를 활용하여 제작하였습니다.\n궁금하신 점이나 추가로 알고 싶은 내용이 있다면 댓글로 남겨주세요. 확인 후 가능한 범위에서 답변드리겠습니다.",
-      "tags": [
-        "무보형물코성형",
-        "무보형물코수술",
-        "자가연골",
-        "비중격연골",
-        "귀연골",
-        "갈비연골",
-        "콧대성형",
-        "코끝성형",
-        "코성형재료",
-        "FaceReader"
-      ],
-      "images": [],
-      "sources": [
-        "서만군. 아시아인 코성형술 아틀라스. 1판. 군자출판사; 2025.",
-        "Kadhum, Murtaza, et al. \"Fresh Frozen Cartilage in Rhinoplasty Surgery: A Systematic Review of Outcomes.\" Aesthetic Plast Surg 48.17 (2024): 3269-3275.",
-        "Suh, Man-Koon. \"Cosmetic Augmentation Rhinoplasty for East Asians.\" Facial Plast Surg Clin North Am 29.4 (2021): 589-609.",
-        "Ledo, Taynara Oliveira, et al. \"Outcome of Free Diced Cartilage Grafts in Rhinoplasty: A Systematic Review.\" Facial Plast Surg 37.1 (2021): 117-121."
-      ],
-      "chars": 3550,
-      "relatedLinks": [],
-      "templateCheck": {},
-      "adCheck": {
-        "ok": true,
-        "count": 0,
-        "hits": []
-      },
-      "audit": {
-        "score": 85,
-        "ok": true,
-        "checks": {
-          "questionTitle": true,
-          "answerFirst": true,
-          "questionHeadings": true,
-          "readableParagraphs": true,
-          "sourceDepth": true,
-          "imagePlan": false,
-          "internalLinks": false
-        },
-        "metrics": {
-          "questionHeadingCount": 10,
-          "paragraphCount": 33,
-          "medianParagraphChars": 109,
-          "sourceCount": 3,
-          "imageCount": 0,
-          "relatedLinkCount": 0
-        },
-        "issues": [
-          "해부·수술과정·비교를 설명할 이미지 기획을 2개 이상 두는 것을 검토하세요.",
-          "관련 글 내부링크 후보가 없습니다."
-        ],
-        "note": "내부 품질 점검용 휴리스틱이며 네이버·구글·LLM의 실제 노출 알고리즘 점수를 의미하지 않습니다."
-      },
-      "evidenceQa": {
-        "score": 60,
-        "level": "moderate mix",
-        "ok": true,
-        "counts": {
-          "total": 24,
-          "systematicOrMeta": 1,
-          "trialOrComparative": 0,
-          "recent5y": 24,
-          "withAbstract": 19,
-          "pubmed": 19
-        },
-        "warnings": [
-          "비교연구 또는 임상시험 근거가 확인되지 않았습니다."
-        ],
-        "topEvidence": [
-          {
-            "title": "Outcome of Free Diced Cartilage Grafts in Rhinoplasty: A Systematic Review.",
-            "year": "2021",
-            "kind": "systematic/meta-analysis",
-            "tier": 4,
-            "source": "pubmed",
-            "hasAbstract": true,
-            "citations": null
-          },
-          {
-            "title": "Camouflage Techniques in Secondary Rhinoplasty.",
-            "year": "2026",
-            "kind": "review",
-            "tier": 2,
-            "source": "pubmed",
-            "hasAbstract": true,
-            "citations": null
-          },
-          {
-            "title": "Outcomes and complications of autologous versus alloplastic grafts in augmentation rhinoplasty: A systematic review of studies from 2000 to 2024.",
-            "year": "2026",
-            "kind": "review",
-            "tier": 2,
-            "source": "pubmed",
-            "hasAbstract": true,
-            "citations": null
-          },
-          {
-            "title": "Correction of nostril contour with a recoil graft inserted through a lateral approach.",
-            "year": "2026",
-            "kind": "other clinical literature",
-            "tier": 2,
-            "source": "pubmed",
-            "hasAbstract": true,
-            "citations": null
-          },
-          {
-            "title": "Microbiological Evaluation of Cartilage Grafts Stored in Gentamicin-Diluted Saline During Rhinoplasty.",
             "year": "2026",
             "kind": "other clinical literature",
             "tier": 2,
@@ -2501,13 +2352,162 @@
       "repairCheck": {}
     },
     {
+      "key": "implant_free_nose",
+      "area": "코",
+      "topic": "무보형물 코성형",
+      "score": 31,
+      "reasons": [
+        "검색량 9위",
+        "전년 대비 -48% (분야 평균 -36%)",
+        "기존 글 2,013건",
+        "리뷰·메타분석 22편",
+        "최근 1년 논문 27편"
+      ],
+      "evidence": {
+        "recent1y": 27,
+        "recent3y": 83,
+        "reviews6y": 22
+      },
+      "naver": {
+        "medianTotal": 2013,
+        "trend": "하락",
+        "available": true
+      },
+      "paperCount": 24,
+      "draftedAt": "2026-09-20T07:28:03.048374+09:00",
+      "titles": [
+        "무보형물 코성형, 실리콘 없이 콧대도 높일 수 있나요?",
+        "무보형물 코성형, 귀연골을 넣어도 해당하나요?",
+        "무보형물 코성형, 원래 코에 있는 연골만으로 가능할까요?"
+      ],
+      "body": "실리콘을 쓰지 않아도 연골로 콧대를 높일 수 있습니다. 다만 원하는 높이와 필요한 연골의 양에 따라 방법이 달라집니다. 저는 콧대 높이뿐 아니라 코끝의 지지력과 피부 여유를 함께 살핍니다. 같은 높이를 원해도 현재 코의 구조에 따라 가능한 범위가 달라져요.\n\n무보형물은 코에 아무것도 넣지 않는다는 뜻인가요?\n\n‘무보형물’이라는 말만으로 수술 내용을 알기는 어렵습니다. 보통 실리콘 같은 인공 보형물을 사용하지 않는다는 의미로 씁니다. 내 몸에서 얻은 자가연골(autologous cartilage)을 옮겨 넣는 수술도 여기에 포함될 수 있습니다.\n\n코의 위쪽은 뼈가, 아래쪽은 주로 연골이 형태를 받칩니다. 가운데 벽인 비중격(nasal septum)도 지지 구조의 일부입니다. 콧대를 채우는 일과 코끝을 받치는 일은 목적이 다르죠.\n\n해부학 설명 뒤 | 코뼈·비중격·코끝 연골의 위치를 표시한 단면도 | 코는 부위마다 지지 구조가 달라 교정 방법도 달라집니다.\n\n상담에서는 무엇을 보고 가능 여부를 판단하나요?\n\n저는 먼저 ‘콧대가 낮다’는 말이 어느 부위를 뜻하는지 확인합니다. 콧대 전체의 높이가 부족한지, 코끝이 낮아 그렇게 보이는지 나눠 봅니다. 콧대는 그대로 두고 코끝만 조절하는 계획도 가능합니다.\n\n그다음 피부 두께와 여유, 연골의 모양과 지지력을 살핍니다. 이전 수술이 있다면 남아 있는 연골과 흉터 상태도 확인해야 합니다. 원하는 모양과 사용할 수 있는 조직을 함께 놓고 계획을 세우는 거예요.\n\n상담 설명 뒤 | 콧대와 코끝을 각각 표시한 옆모습 도식 | 원하는 변화가 콧대인지 코끝인지 먼저 구분합니다.\n\n연골로 어디까지 바꿀 수 있나요?\n\n연골을 이용해 콧대에 높이를 더하거나 코끝을 받칠 수 있습니다. 기존 연골의 위치와 모양을 조절하는 방법도 있습니다. 다만 피부가 덮을 수 있는 범위와 지지 구조를 함께 고려해야 합니다.\n\n‘연골을 많이 넣으면 원하는 만큼 높아지나요?’라는 질문에는 선을 그어 설명합니다. 재료의 양만으로 가능한 높이가 정해지지는 않습니다. 피부가 팽팽한 코에서는 목표 높이나 길이를 낮춰 잡아야 할 수도 있습니다.\n\n귀연골과 갈비연골은 언제 고려하나요?\n\n코 안의 비중격연골(septal cartilage)은 필요한 양을 얻으면서 지지 구조를 남길 수 있는지 살핍니다. 귀에서 얻는 귀연골(auricular cartilage)은 곡면과 탄성을 고려해 사용합니다. 저는 재료 이름보다 어느 부위에 어떤 역할로 쓸지를 먼저 설명합니다.\n\n더 많은 양이나 지지 재료가 필요하면 갈비연골(costal cartilage)을 고려할 수 있습니다. 콧대를 높이는 데도 쓰이지만, 휘어짐을 고려한 설계가 필요합니다. 여러 층으로 구성하는 방법도 문헌에 소개되어 있습니다.\n\n잘게 자른 연골(diced cartilage)은 콧대의 윤곽을 채우고 다듬는 선택지입니다. 단단한 지지대를 만드는 목적과는 구분해야 합니다. 모양을 조절하기 편해도 표면이 고르지 않거나 일부가 흡수될 가능성은 있습니다.\n\n재료 설명 뒤 | 비중격·귀·갈비의 위치와 연골의 사용 목적을 연결한 도식 | 연골은 필요한 양과 형태, 지지 목적에 맞춰 선택합니다.\n\n회복과 부작용은 무엇까지 생각해야 하나요?\n\n자가조직을 쓴다는 이유로 회복이 짧다고 단정할 수는 없습니다. 코에서 교정한 범위와 연골을 얻은 부위를 함께 봐야 합니다. 붓기와 통증, 절개 부위의 흉터도 설명에 포함합니다.\n\n연골을 넣은 뒤에는 감염이나 위치 변화가 생길 수 있습니다. 윤곽이 드러나거나 휘어짐, 일부 흡수(resorption)가 나타날 가능성도 있습니다. 잘게 자른 연골을 다룬 문헌에서는 과도한 높이와 콧대의 불규칙함이 재수술 이유로 보고됐습니다.\n\n이 결과를 모든 무보형물 수술의 위험도로 옮겨 말할 수는 없습니다. 사용한 연골과 가공 방법, 교정 부위가 서로 다르기 때문입니다. 회복 일정 역시 ‘무보형물’이라는 이름만으로 정하기 어렵습니다.\n\n재료와 유지에 관해 자주 묻는 것은 무엇인가요?\n\nQ. 제 연골을 새로 떼지 않고 원래 코에 있는 연골만으로도 되나요?\n기존 연골의 모양과 위치를 조절하는 것만으로 계획할 수 있는 경우도 있습니다. 다만 높이나 지지력을 더해야 한다면 추가 연골이 필요할 수 있어요. 저는 원하는 변화가 재배치만으로 가능한지부터 구분합니다.\n\nQ. 자가조직만 쓰면 시간이 지나면서 높이가 줄어들 수도 있나요?\n옮겨 넣은 조직이 일부 흡수되면 높이나 윤곽이 달라질 수 있습니다. 그렇다고 모든 연골이 같은 정도로 줄어드는 것은 아닙니다. 재료와 사용 방법을 구분해서 설명해야 합니다.\n\nQ. 무보형물에 기증연골이나 인공 재료가 포함되는지 어떻게 확인하나요?\n‘콧대와 코끝에 각각 무엇을 넣나요?’라고 재료명을 물어보세요. 다른 사람에게서 기증받은 동종연골(allogeneic cartilage)은 내 연골과 구분해야 합니다. 흡수성 인공 지지 재료를 함께 쓰는지도 확인할 항목입니다.\n\n신선동결 기증연골(fresh frozen cartilage)을 검토한 문헌도 있습니다. 다만 자가 갈비연골과 직접 비교할 수 있는 연구는 제한적이었습니다. 이 결과만으로 기증연골과 자가연골의 장기 결과가 같다고 단정하기는 어렵습니다.\n\n수술을 결정할 때 무엇을 기억하면 될까요?\n\n제가 계획을 설명할 때 중심에 두는 것은 바꿀 부위와 그 부위를 받칠 방법입니다. ‘무보형물인가’에서 한 걸음 더 나아가, 어디에 어떤 조직을 왜 쓰는지 확인해 보세요. 현재 구조에서 가능한 변화와 추가 조직 채취의 부담을 함께 이해하는 것이 선택의 기준입니다.\n\n참고문헌\n\n- Suh MK. [Cosmetic Augmentation Rhinoplasty for East Asians](https://pubmed.ncbi.nlm.nih.gov/34579840/). Facial Plast Surg Clin North Am. 2021;29(4):589-609.\n- Ledo TO, et al. [Outcome of Free Diced Cartilage Grafts in Rhinoplasty: A Systematic Review](https://pubmed.ncbi.nlm.nih.gov/32886948/). Facial Plast Surg. 2021;37(1):117-121.\n- Kadhum M, et al. [Fresh Frozen Cartilage in Rhinoplasty Surgery: A Systematic Review of Outcomes](https://pubmed.ncbi.nlm.nih.gov/38528125/). Aesthetic Plast Surg. 2024;48(17):3269-3275.\n\n지정 기본 교과서: 서만군. 아시아인 코성형술 아틀라스. 1판. 군자출판사; 2025. 이번 초안에서는 교과서 본문을 직접 확인하지 않아 세부 결론의 근거로 사용하지 않았습니다.\n\n작성자 | 성형외과 전문의 facereader\n전문분야 | 눈성형•코성형•안면거상\n\n본 글은 성형외과 전문의가 의학 문헌과 실제 임상 경험을 바탕으로 직접 작성합니다.\n내용의 이해를 돕기 위해 일부 삽화 및 설명 이미지는 AI를 활용하여 제작하였습니다.\n궁금하신 점이나 추가로 알고 싶은 내용이 있다면 댓글로 남겨주세요. 확인 후 가능한 범위에서 답변드리겠습니다.",
+      "tags": [
+        "무보형물코성형",
+        "무보형물코수술",
+        "자가연골",
+        "비중격연골",
+        "귀연골",
+        "갈비연골",
+        "콧대성형",
+        "코끝성형",
+        "코성형재료",
+        "FaceReader"
+      ],
+      "images": [],
+      "sources": [
+        "서만군. 아시아인 코성형술 아틀라스. 1판. 군자출판사; 2025.",
+        "Kadhum, Murtaza, et al. \"Fresh Frozen Cartilage in Rhinoplasty Surgery: A Systematic Review of Outcomes.\" Aesthetic Plast Surg 48.17 (2024): 3269-3275.",
+        "Suh, Man-Koon. \"Cosmetic Augmentation Rhinoplasty for East Asians.\" Facial Plast Surg Clin North Am 29.4 (2021): 589-609.",
+        "Ledo, Taynara Oliveira, et al. \"Outcome of Free Diced Cartilage Grafts in Rhinoplasty: A Systematic Review.\" Facial Plast Surg 37.1 (2021): 117-121."
+      ],
+      "chars": 3550,
+      "relatedLinks": [],
+      "templateCheck": {},
+      "adCheck": {
+        "ok": true,
+        "count": 0,
+        "hits": []
+      },
+      "audit": {
+        "score": 85,
+        "ok": true,
+        "checks": {
+          "questionTitle": true,
+          "answerFirst": true,
+          "questionHeadings": true,
+          "readableParagraphs": true,
+          "sourceDepth": true,
+          "imagePlan": false,
+          "internalLinks": false
+        },
+        "metrics": {
+          "questionHeadingCount": 10,
+          "paragraphCount": 33,
+          "medianParagraphChars": 109,
+          "sourceCount": 3,
+          "imageCount": 0,
+          "relatedLinkCount": 0
+        },
+        "issues": [
+          "해부·수술과정·비교를 설명할 이미지 기획을 2개 이상 두는 것을 검토하세요.",
+          "관련 글 내부링크 후보가 없습니다."
+        ],
+        "note": "내부 품질 점검용 휴리스틱이며 네이버·구글·LLM의 실제 노출 알고리즘 점수를 의미하지 않습니다."
+      },
+      "evidenceQa": {
+        "score": 60,
+        "level": "moderate mix",
+        "ok": true,
+        "counts": {
+          "total": 24,
+          "systematicOrMeta": 1,
+          "trialOrComparative": 0,
+          "recent5y": 24,
+          "withAbstract": 19,
+          "pubmed": 19
+        },
+        "warnings": [
+          "비교연구 또는 임상시험 근거가 확인되지 않았습니다."
+        ],
+        "topEvidence": [
+          {
+            "title": "Outcome of Free Diced Cartilage Grafts in Rhinoplasty: A Systematic Review.",
+            "year": "2021",
+            "kind": "systematic/meta-analysis",
+            "tier": 4,
+            "source": "pubmed",
+            "hasAbstract": true,
+            "citations": null
+          },
+          {
+            "title": "Camouflage Techniques in Secondary Rhinoplasty.",
+            "year": "2026",
+            "kind": "review",
+            "tier": 2,
+            "source": "pubmed",
+            "hasAbstract": true,
+            "citations": null
+          },
+          {
+            "title": "Outcomes and complications of autologous versus alloplastic grafts in augmentation rhinoplasty: A systematic review of studies from 2000 to 2024.",
+            "year": "2026",
+            "kind": "review",
+            "tier": 2,
+            "source": "pubmed",
+            "hasAbstract": true,
+            "citations": null
+          },
+          {
+            "title": "Correction of nostril contour with a recoil graft inserted through a lateral approach.",
+            "year": "2026",
+            "kind": "other clinical literature",
+            "tier": 2,
+            "source": "pubmed",
+            "hasAbstract": true,
+            "citations": null
+          },
+          {
+            "title": "Microbiological Evaluation of Cartilage Grafts Stored in Gentamicin-Diluted Saline During Rhinoplasty.",
+            "year": "2026",
+            "kind": "other clinical literature",
+            "tier": 2,
+            "source": "pubmed",
+            "hasAbstract": true,
+            "citations": null
+          }
+        ],
+        "note": "내부 문헌 구성 점검용 휴리스틱이며 개별 연구의 비뚤림 위험·간접성·불일치·비정밀성을 평가하는 GRADE가 아닙니다."
+      },
+      "repairCheck": {}
+    },
+    {
       "key": "nostril_shape",
       "area": "코",
       "topic": "콧구멍 비대칭·콧구멍 모양 교정",
       "score": 31,
       "reasons": [
         "검색량 12위",
-        "전년 대비 -44% (분야 평균 -37%)",
+        "전년 대비 -44% (분야 평균 -36%)",
         "기존 글 1,941건",
         "리뷰·메타분석 6편",
         "최근 1년 논문 28편",
@@ -2819,10 +2819,10 @@
       "key": "cat_eye_lift",
       "area": "눈",
       "topic": "눈꼬리 올리기(고양이눈 수술)",
-      "score": 23,
+      "score": 22,
       "reasons": [
         "검색량 18위",
-        "전년 대비 -45% (분야 평균 -37%)",
+        "전년 대비 -45% (분야 평균 -36%)",
         "기존 글 376건",
         "리뷰·메타분석 2편",
         "최근 1년 논문 10편",
@@ -2978,7 +2978,7 @@
       "score": 17,
       "reasons": [
         "검색량 20위",
-        "전년 대비 -69% (분야 평균 -37%)",
+        "전년 대비 -69% (분야 평균 -36%)",
         "기존 글 979건",
         "리뷰·메타분석 6편",
         "최근 1년 논문 23편",
