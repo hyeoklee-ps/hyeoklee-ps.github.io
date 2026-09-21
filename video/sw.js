@@ -7,7 +7,7 @@
  *
  *   배포할 때마다 CACHE 값을 올려주세요.
  */
-const CACHE = 'vw-v12';
+const CACHE = 'vw-v13';
 
 const SHELL = ['./', './index.html', './manifest.webmanifest'];
 
@@ -19,7 +19,7 @@ self.addEventListener('install', (e) => {
 self.addEventListener('activate', (e) => {
   e.waitUntil((async () => {
     const keys = await caches.keys();
-    await Promise.all(keys.filter((k) => k !== CACHE).map((k) => caches.delete(k)));
+    await Promise.all(keys.filter((k) => k.startsWith('vw-') && k !== CACHE).map((k) => caches.delete(k)));
     await self.clients.claim();
   })());
 });

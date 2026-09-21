@@ -1,0 +1,15 @@
+영상 작업대 기본 자산 안내
+
+폰트: SIL Open Font License 1.1
+Jua: fonts/OFL.txt
+Black Han Sans: fonts/blackhansans-OFL.txt
+Do Hyeon: fonts/dohyeon-OFL.txt
+Gaegu: fonts/gaegu-OFL.txt
+Nanum Pen Script: fonts/nanumpenscript-OFL.txt
+공식 배포 출처: https://github.com/google/fonts/tree/main/ofl
+폰트 파일 자체의 재배포에는 각 라이선스의 조건이 적용됩니다.
+
+기본 BGM: src/media/builtinMusic.js의 수학적 발진기로 생성하는 오리지널 루프입니다.
+외부 녹음, 샘플팩, 기존 곡의 악보/멜로디를 사용하지 않습니다.
+이 프로젝트에서 생성한 기본 루프는 영상에 자유롭게 포함하도록 제공됩니다.
+사용자가 직접 불러오는 음악은 해당 음원의 이용 조건을 따릅니다.
