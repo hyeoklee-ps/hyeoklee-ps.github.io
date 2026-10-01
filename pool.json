@@ -472,6 +472,157 @@
       "repairCheck": {}
     },
     {
+      "key": "revision_facelift",
+      "area": "리프팅",
+      "topic": "안면거상 재수술",
+      "score": 40,
+      "reasons": [
+        "검색량 10위",
+        "전년 대비 -10% (분야 평균 -39%)",
+        "기존 글 30,746건",
+        "리뷰·메타분석 3편",
+        "최근 1년 논문 4편",
+        "연구가 활발해지는 중"
+      ],
+      "evidence": {
+        "recent1y": 4,
+        "recent3y": 5,
+        "reviews6y": 3
+      },
+      "naver": {
+        "medianTotal": 30746,
+        "trend": "보합",
+        "available": true
+      },
+      "paperCount": 14,
+      "draftedAt": "2026-10-01T14:25:15.968997+09:00",
+      "titles": [
+        "안면거상 재수술, 다시 처졌을 때 언제 고려해야 할까요?",
+        "안면거상 재수술, 첫 수술과 무엇이 달라질까요?",
+        "안면거상 재수술, 흉터와 유착이 있어도 가능한가요?"
+      ],
+      "body": "다시 처졌다는 이유만으로 곧바로 수술을 정하지는 않습니다. 노화로 새롭게 느슨해진 것인지, 첫 수술에서 남은 문제인지부터 구분해야 합니다. 피부 여유와 흉터, 표재근건막계(superficial musculoaponeurotic system, SMAS)의 상태에 따라 수술 범위가 달라집니다.\n\n어떤 경우에 다시 수술을 검토할까요?\n\n턱선과 목선이 다시 흐려졌거나, 활경근(platysma) 띠가 도드라진 경우를 먼저 살핍니다. 턱밑 볼륨이 남아 있거나 악하선(submandibular gland)이 처져 보이는 것도 재수술 상담의 흔한 이유입니다.\n\n첫 수술 뒤 평균 9~12년 무렵에 재수술을 받은 연구들이 있습니다. 다른 단일 의사 연구에서는 평균 간격이 10.7년이었습니다. 그러나 이 숫자는 수술 시점을 정하는 기준이 아닙니다. 실제 결정은 현재 변형과 조직 상태를 보고 내립니다.\n\n재수술은 왜 더 까다로울까요?\n\n첫 수술을 거치면 해부학적 층이 이전과 같지 않습니다. SMAS가 얇고 섬세해질 수 있고, 섬유화(fibrosis)와 유착(adhesion) 때문에 원래의 박리면이 흐려지기도 합니다. 피부의 혈류도 기존 절개와 박리 범위에 영향을 받습니다.\n\n즉, 처음 수술할 때의 지도를 그대로 적용하기 어렵습니다. 저는 어느 층이 남아 있는지, 조직이 실제로 움직이는지를 확인한 뒤 계획을 세웁니다. 절개를 다시 이용할 수 있는지도 함께 판단합니다.\n\n(그림: 첫 수술 전 조직층과 재수술에서 유착된 조직층의 차이)\n\n상담에서는 무엇을 먼저 확인할까요?\n\n먼저 환자분이 말하는 “다시 처짐”을 부위별로 나눕니다. 볼과 턱선의 하강인지, 목의 활경근 띠인지, 턱밑 지방이나 악하선 윤곽인지 구별합니다. 얼굴이 당겨 보이거나 좌우가 다른 경우에는 재발과 별개의 문제일 수 있습니다.\n\n이전 수술의 시기와 방법도 중요합니다. 절개 위치, 감각 변화, 안면 움직임의 차이, 상처 회복 과정도 확인합니다. 가능하다면 과거 수술기록은 재수술 범위를 정하는 데 도움이 됩니다.\n\n수술로 다시 바꿀 수 있는 범위는 어디까지일까요?\n\n늘어진 피부와 움직일 수 있는 SMAS, 활경근은 상태에 따라 다시 정리할 수 있습니다. 턱선과 목선의 구조적 느슨함도 수술 대상이 될 수 있어요. 다만 실제로 조절할 수 있는 양은 남은 조직의 두께와 혈류에 좌우됩니다.\n\n반면 피부 자체의 얇아짐이나 잔주름, 모든 비대칭을 거상만으로 바꾸기는 어렵습니다. 흉터가 이미 넓어졌거나 귀 주변 모양이 변했다면 교정을 함께 검토할 수 있지만, 흔적이 완전히 사라진다고 설명하지는 않습니다.\n\n(그림: 피부 처짐, SMAS 이완, 활경근 띠, 턱밑 볼륨을 구분한 모식도)\n\n어떤 수술 방법을 고르게 될까요?\n\n조직의 질이 허용되면 SMAS 아래층을 다시 박리하는 방법을 검토할 수 있습니다. 반면 깊은 박리의 부담이 크다고 판단되면 SMAS 주름잡기(SMAS plication)처럼 비교적 보존적인 방법이 더 적절할 수 있습니다. 특정 술식이 모든 재수술에 우선하는 것은 아닙니다.\n\n목에서는 활경근을 다시 정리하는 방법이 흔히 보고됐습니다. 턱밑 볼륨이나 악하선 처짐이 원인이라면 그 구조를 따로 평가해야 합니다. 악하선 축소는 체계적 문헌고찰에 포함된 환자의 13%에서 시행됐지만, 한 연구에만 자세히 기술되어 적응증과 위험을 일반화하기 어렵습니다.\n\n회복과 부작용은 어떻게 봐야 할까요?\n\n재수술은 흉터 조직과 달라진 박리면을 다루기 때문에 회복 양상이 첫 수술과 같지 않을 수 있습니다. 부기, 멍, 감각 저하, 장액종(seroma), 혈종, 피부 회복 지연을 설명해야 합니다. 일시적인 안면신경 기능 저하도 보고됐습니다.\n\n체계적 문헌고찰에서 코호트 연구의 전체 합병증 비율은 2.0~21.1%로 폭이 컸습니다. 일시적 안면신경 손상은 일부 연구에서 11.9%까지 보고됐습니다. 연구마다 대상과 기록 방식이 달라 개인의 위험도로 그대로 적용할 수는 없습니다.\n\n재수술군과 첫 수술군의 합병증이 비슷했다는 연구도 있습니다. 다만 이는 재수술이 단순하다는 뜻이 아니에요. 현재 근거는 주로 후향적 연구와 증례군에 기반하며, 객관적 결과 평가도 충분하지 않습니다.\n\n(그림: 귀 주변 절개선과 혈종·감각 변화 등 확인해야 할 회복 항목)\n\n자주 묻는 질문에서 무엇을 특히 확인해야 할까요?\n\nQ. 첫 안면거상 후 다시 처졌다면 유지인대까지 다시 박리해야 하나요?\n\n유지인대(retaining ligaments) 박리가 항상 필요한 것은 아닙니다. 처짐의 위치와 이전 박리 범위, 남은 조직의 이동성을 확인해 결정합니다. 깊은 층을 다시 다루는 이득보다 조직 손상 위험이 크다면 범위를 줄일 수 있습니다.\n\nQ. 이미 박리된 스마스층을 재수술 때 다시 당겨도 안전한가요?\n\nSMAS의 두께와 유착 정도가 충분히 확인되어야 합니다. 조직이 견딜 수 있으면 재박리나 재고정을 고려하고, 얇고 단단하게 유착됐다면 주름잡기 등 다른 방식을 선택할 수 있습니다. 안전성은 술식 이름보다 실제 해부 상태에 더 크게 좌우됩니다.\n\nQ. 안면신경 손상이나 감각 저하가 의심되면 재수술 전에 어떤 검사가 필요한가요?\n\n먼저 표정근 움직임과 감각 범위를 진찰하고, 증상이 시작된 시점과 변화를 확인합니다. 지속되거나 원인이 분명하지 않다면 신경 기능을 평가하는 추가 검사를 관련 진료과와 상의할 수 있습니다. 평가가 끝나기 전에는 서둘러 재수술 범위를 정하지 않습니다.\n\n마지막으로 어떤 기준을 기억해야 할까요?\n\n재수술의 핵심은 더 강하게 당기는 데 있지 않습니다. 무엇이 다시 처졌고, 어느 조직이 안전하게 움직일 수 있는지를 구분하는 일이 먼저입니다. 저는 이전 수술의 흔적과 현재 해부 상태를 함께 본 뒤 가능한 변화와 남을 한계를 나누어 설명합니다.\n\n참고문헌\n\n1. Revision Neck Lift Surgery: A Systematic Review of Indications, Techniques, and Outcomes. PMID: 41673281.\n2. Challenges and complications in secondary rhytidectomies, a systematic review. PMID: 42382704.\n3. Revision Facelift and Neck Lift. PMID: 34121944.\n4. Interval to Secondary Facelift: A Match-Cohort Analysis of Interval Time, Technique, and Complications. PMID: 42741888.\n5. Jacono AA. The Art and Science of Extended Deep Plane Facelifting and Complementary Facial Rejuvenation Procedures. Quality Medical Publishing; 2021.\n\n작성자 | 성형외과 전문의 facereader\n전문분야 | 눈성형•코성형•안면거상\n\n본 글은 성형외과 전문의가 의학 문헌과 실제 임상 경험을 바탕으로 직접 작성합니다.\n내용의 이해를 돕기 위해 일부 삽화 및 설명 이미지는 AI를 활용하여 제작하였습니다.\n궁금하신 점이나 추가로 알고 싶은 내용이 있다면 댓글로 남겨주세요. 확인 후 가능한 범위에서 답변드리겠습니다.",
+      "tags": [
+        "안면거상재수술",
+        "이차안면거상",
+        "재수술상담",
+        "안면거상",
+        "목거상",
+        "스마스거상",
+        "활경근",
+        "턱선처짐",
+        "안면거상부작용",
+        "얼굴리프팅"
+      ],
+      "images": [],
+      "sources": [
+        "Jacono AA. The Art and Science of Extended Deep Plane Facelifting and Complementary Facial Rejuvenation Procedures. Quality Medical Publishing; 2021.",
+        "Şibar, Serhat, et al. \"Revision Neck Lift Surgery: A Systematic Review of Indications, Techniques, and Outcomes.\" Aesthetic Plast Surg 50.9 (2026): 3298-3306.",
+        "Saad, Charbel, et al. \"Challenges and complications in secondary rhytidectomies, a systematic review.\" JPRAS Open 51 (2026): 82-91.",
+        "Dibbs, Rami P, et al. \"Revision Facelift and Neck Lift.\" Semin Plast Surg 35.2 (2021): 88-97.",
+        "Mandelbaum, Max, et al. \"Interval to Secondary Facelift: A Match-Cohort Analysis of Interval Time, Technique, and Complications.\" Aesthet Surg J (2026)."
+      ],
+      "chars": 3554,
+      "relatedLinks": [],
+      "templateCheck": {},
+      "adCheck": {
+        "ok": true,
+        "count": 0,
+        "hits": []
+      },
+      "audit": {
+        "score": 85,
+        "ok": true,
+        "checks": {
+          "questionTitle": true,
+          "answerFirst": true,
+          "questionHeadings": true,
+          "readableParagraphs": true,
+          "sourceDepth": true,
+          "imagePlan": false,
+          "internalLinks": false
+        },
+        "metrics": {
+          "questionHeadingCount": 11,
+          "paragraphCount": 36,
+          "medianParagraphChars": 109,
+          "sourceCount": 4,
+          "imageCount": 0,
+          "relatedLinkCount": 0
+        },
+        "issues": [
+          "해부·수술과정·비교를 설명할 이미지 기획을 2개 이상 두는 것을 검토하세요.",
+          "관련 글 내부링크 후보가 없습니다."
+        ],
+        "note": "내부 품질 점검용 휴리스틱이며 네이버·구글·LLM의 실제 노출 알고리즘 점수를 의미하지 않습니다."
+      },
+      "evidenceQa": {
+        "score": 60,
+        "level": "moderate mix",
+        "ok": true,
+        "counts": {
+          "total": 14,
+          "systematicOrMeta": 1,
+          "trialOrComparative": 1,
+          "recent5y": 14,
+          "withAbstract": 6,
+          "pubmed": 6
+        },
+        "warnings": [
+          "초록이 있는 문헌 비율이 낮아 본문 작성 근거가 제한적입니다."
+        ],
+        "topEvidence": [
+          {
+            "title": "Revision Neck Lift Surgery: A Systematic Review of Indications, Techniques, and Outcomes.",
+            "year": "2026",
+            "kind": "systematic/meta-analysis",
+            "tier": 4,
+            "source": "pubmed",
+            "hasAbstract": true,
+            "citations": null
+          },
+          {
+            "title": "Our 40 Years' Experience on Face and Neck Lift Procedures with High-SMAS Flap Techniques: How to Manage Secondary and Tertiary Surgeries.",
+            "year": "2025",
+            "kind": "clinical/comparative study",
+            "tier": 3,
+            "source": "pubmed",
+            "hasAbstract": true,
+            "citations": null
+          },
+          {
+            "title": "Challenges and complications in secondary rhytidectomies, a systematic review.",
+            "year": "2026",
+            "kind": "review",
+            "tier": 2,
+            "source": "pubmed",
+            "hasAbstract": true,
+            "citations": null
+          },
+          {
+            "title": "Interval to Secondary Facelift: A Match-Cohort Analysis of Interval Time, Technique, and Complications.",
+            "year": "2026",
+            "kind": "other clinical literature",
+            "tier": 2,
+            "source": "pubmed",
+            "hasAbstract": true,
+            "citations": null
+          },
+          {
+            "title": "Thirty Years of Deep Plane Facelifts: Characterizing Outcomes and Longevity.",
+            "year": "2026",
+            "kind": "other clinical literature",
+            "tier": 2,
+            "source": "pubmed",
+            "hasAbstract": true,
+            "citations": null
+          }
+        ],
+        "note": "내부 문헌 구성 점검용 휴리스틱이며 개별 연구의 비뚤림 위험·간접성·불일치·비정밀성을 평가하는 GRADE가 아닙니다."
+      },
+      "repairCheck": {}
+    },
+    {
       "key": "nasal_implant_removal",
       "area": "코",
       "topic": "코 보형물 제거",
