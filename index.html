@@ -601,7 +601,7 @@
   .automation-review-guide{ margin:0 0 12px; color:var(--ink-soft); font-size:12.5px; line-height:1.6; }
   .automation-images{ display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:12px; }
   .automation-image{ padding:10px; border:1px solid var(--line); border-radius:9px; background:var(--paper); }
-  .automation-image img{ display:block; width:100%; aspect-ratio:1/1; object-fit:cover; border-radius:7px; background:#fff; }
+  .automation-image img{ display:block; width:100%; aspect-ratio:1/1; object-fit:contain; border-radius:7px; background:#fff; cursor:zoom-in; }
   .automation-image strong{ display:block; margin:8px 0 3px; font-size:13px; }
   .automation-image p{ margin:0 0 7px; color:var(--ink-soft); font-size:12px; line-height:1.5; }
   .automation-image textarea{ width:100%; min-height:62px; resize:vertical; padding:7px; border:1px solid var(--line); border-radius:7px; font:inherit; font-size:12px; }
@@ -609,6 +609,20 @@
   .automation-image-actions a,.automation-image-actions button,.automation-upload{ border:1px solid var(--line); border-radius:7px; background:var(--paper); color:var(--ink); padding:6px 8px; font:inherit; font-size:12px; font-weight:700; cursor:pointer; text-decoration:none; }
   .automation-use{ display:flex; align-items:center; gap:6px; margin-top:8px; font-size:12px; }
   .automation-save{ width:100%; margin-top:12px; }
+  .automation-lightbox{
+    position:fixed; inset:0; z-index:10000; display:flex; align-items:center; justify-content:center;
+    padding:60px 16px 20px; background:rgba(0,0,0,.9); cursor:zoom-out;
+  }
+  .automation-lightbox img{
+    display:block; max-width:100%; max-height:calc(100dvh - 80px); width:auto; height:auto;
+    object-fit:contain; border-radius:9px; background:#fff; cursor:default;
+  }
+  .automation-lightbox-close{
+    position:fixed; top:max(12px,env(safe-area-inset-top)); right:max(14px,env(safe-area-inset-right));
+    width:42px; height:42px; border:1px solid rgba(255,255,255,.5); border-radius:999px;
+    background:rgba(0,0,0,.55); color:#fff; font:700 27px/1 sans-serif; cursor:pointer;
+  }
+  body.automation-lightbox-open{ overflow:hidden; }
   .inbox-status{
     display:flex; align-items:center; gap:10px; flex-wrap:wrap;
     margin:-10px 0 16px; padding:9px 12px; border-radius:9px;
@@ -1753,6 +1767,35 @@
       "지정하지 않은 부분은 최대한 유지하고, 이미지 안에는 글자·숫자·라벨·워터마크를 넣지 마세요.\n\n" +
       (item.instruction || "의학적으로 자연스럽고 이해하기 쉽게 다듬어 주세요.");
   }
+  function openAutomationImage(src, alt){
+    var layer = document.createElement("div");
+    layer.className = "automation-lightbox";
+    layer.setAttribute("role", "dialog");
+    layer.setAttribute("aria-modal", "true");
+    layer.setAttribute("aria-label", "확대 이미지");
+    var close = document.createElement("button");
+    close.type = "button";
+    close.className = "automation-lightbox-close";
+    close.setAttribute("aria-label", "확대 이미지 닫기");
+    close.textContent = "×";
+    var image = document.createElement("img");
+    image.src = src;
+    image.alt = alt || "확대 이미지";
+    layer.appendChild(close);
+    layer.appendChild(image);
+    function dismiss(){
+      document.removeEventListener("keydown", onKey);
+      document.body.classList.remove("automation-lightbox-open");
+      layer.remove();
+    }
+    function onKey(event){ if(event.key === "Escape") dismiss(); }
+    close.addEventListener("click", dismiss);
+    layer.addEventListener("click", function(event){ if(event.target === layer) dismiss(); });
+    document.addEventListener("keydown", onKey);
+    document.body.appendChild(layer);
+    document.body.classList.add("automation-lightbox-open");
+    close.focus();
+  }
   function renderAutomationReview(t, card, job, token){
     var old = card.querySelector(".automation-review");
     if(old) old.remove();
@@ -1765,11 +1808,13 @@
     var grid = wrap.querySelector(".automation-images");
     (job.images || []).forEach(function(item){
       var box = document.createElement("article");
+      var isThumbnail = item.role === "thumbnail" || item.anchor === "본문 첫 문단 앞";
+      var imageLabel = isThumbnail ? "썸네일" : "이미지 " + item.slot;
       box.className = "automation-image";
       box.dataset.slot = item.slot;
       box.dataset.url = item.selectedUrl || item.initialUrl || "";
-      box.innerHTML = '<img alt="설명 이미지 ' + item.slot + '" src="' + escapeHtml(AUTOMATION_ORIGIN + box.dataset.url) + '">' +
-        '<strong>이미지 ' + item.slot + '</strong>' +
+      box.innerHTML = '<img alt="' + escapeHtml(imageLabel) + '" title="눌러서 크게 보기" tabindex="0" role="button" src="' + escapeHtml(AUTOMATION_ORIGIN + box.dataset.url) + '">' +
+        '<strong>' + escapeHtml(imageLabel) + '</strong>' +
         '<p>' + escapeHtml(item.anchor || "관련 설명 뒤") + '</p>' +
         '<textarea aria-label="이미지 ' + item.slot + ' 캡션">' + escapeHtml(item.caption || "") + '</textarea>' +
         '<div class="automation-image-actions">' +
@@ -1779,6 +1824,14 @@
           '<label class="automation-upload">수정본 넣기<input type="file" accept="image/png,image/jpeg,image/webp" hidden></label>' +
         '</div>' +
         '<label class="automation-use"><input type="checkbox" checked> 이 이미지를 본문에 사용</label>';
+      var preview = box.querySelector("img");
+      preview.addEventListener("click", function(){ openAutomationImage(preview.src, preview.alt); });
+      preview.addEventListener("keydown", function(event){
+        if(event.key === "Enter" || event.key === " "){
+          event.preventDefault();
+          openAutomationImage(preview.src, preview.alt);
+        }
+      });
       box.querySelector('[data-image-act="prompt"]').addEventListener("click", function(e){
         copyText(imageEditPrompt(item), e.currentTarget, "수정 요청문 복사됨");
       });
