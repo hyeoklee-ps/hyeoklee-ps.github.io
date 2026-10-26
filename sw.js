@@ -1,5 +1,5 @@
 /* Offline cache for the toolkit. Bump CACHE when index.html changes. */
-const CACHE = "blog-workbench-v41";
+const CACHE = "blog-workbench-v42";
 const ASSETS = ["./", "./index.html", "./manifest.webmanifest", "./icon-192.png", "./icon-512.png", "./face-reader-content-template.json", "./FACE_READER_PROMPT.md"];
 
 self.addEventListener("install", (e) => {
@@ -25,7 +25,7 @@ self.addEventListener("fetch", (e) => {
     e.respondWith(fetch(req).catch(() => new Response("", { status: 200 })));
     return;
   }
-  // The topic pool is refreshed weekly and everything else here is cache-first.
+  // The topic pool changes when the user requests a new list; everything else here is cache-first.
   // Serving a stale pool would be worse than showing none, so JSON data files
   // are network-first, falling back to cache only when offline.
   if (new URL(req.url).pathname.endsWith(".json")) {

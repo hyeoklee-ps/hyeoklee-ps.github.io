@@ -596,6 +596,19 @@
   .automation-state.show{ display:block; }
   .automation-state.error{ background:var(--warn-soft); color:var(--warn); }
   .automation-state.saved{ background:var(--good-soft); color:var(--good); }
+  .automation-review{ margin-top:12px; padding:12px; border:1px solid var(--line); border-radius:10px; background:var(--paper-sunken); }
+  .automation-review h4{ margin:0 0 5px; font-size:15px; }
+  .automation-review-guide{ margin:0 0 12px; color:var(--ink-soft); font-size:12.5px; line-height:1.6; }
+  .automation-images{ display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:12px; }
+  .automation-image{ padding:10px; border:1px solid var(--line); border-radius:9px; background:var(--paper); }
+  .automation-image img{ display:block; width:100%; aspect-ratio:1/1; object-fit:cover; border-radius:7px; background:#fff; }
+  .automation-image strong{ display:block; margin:8px 0 3px; font-size:13px; }
+  .automation-image p{ margin:0 0 7px; color:var(--ink-soft); font-size:12px; line-height:1.5; }
+  .automation-image textarea{ width:100%; min-height:62px; resize:vertical; padding:7px; border:1px solid var(--line); border-radius:7px; font:inherit; font-size:12px; }
+  .automation-image-actions{ display:flex; gap:6px; flex-wrap:wrap; margin-top:8px; }
+  .automation-image-actions a,.automation-image-actions button,.automation-upload{ border:1px solid var(--line); border-radius:7px; background:var(--paper); color:var(--ink); padding:6px 8px; font:inherit; font-size:12px; font-weight:700; cursor:pointer; text-decoration:none; }
+  .automation-use{ display:flex; align-items:center; gap:6px; margin-top:8px; font-size:12px; }
+  .automation-save{ width:100%; margin-top:12px; }
   .inbox-status{
     display:flex; align-items:center; gap:10px; flex-wrap:wrap;
     margin:-10px 0 16px; padding:9px 12px; border-radius:9px;
@@ -1667,9 +1680,11 @@
 
      버튼은 원고 전문을 서버로 보내지 않는다. topicKey와 선택한 제목 번호, 현재
      워터마크 설정만 요청함에 넣는다. Mac은 배포된 pool.json에서 같은 원고를 찾아
-     이미지 생성 → 표/강조/이미지/캡션 → 카테고리/태그 → 임시저장을 처리한다.
+     ChatGPT 내장 이미지 생성으로 첫 시안을 준비한다. 사용자가 시안을 내려받아
+     수정본을 다시 넣은 뒤에만 표/강조/이미지/캡션/카테고리/태그를 임시저장한다.
      ---------------------------------------------------------------- */
   var AUTOMATION_API = "https://blog-diagram-api.dlgur007.workers.dev/api/automation-request";
+  var AUTOMATION_ORIGIN = "https://blog-diagram-api.dlgur007.workers.dev";
   var AUTOMATION_JOBS_KEY = "blogWorkbench.automationJobs";
   var automationTimers = {};
 
@@ -1680,10 +1695,14 @@
   function writeAutomationJobs(jobs){
     try{ localStorage.setItem(AUTOMATION_JOBS_KEY, JSON.stringify(jobs)); } catch(e){}
   }
-  function rememberAutomationJob(topicKey, id){
+  function rememberAutomationJob(topicKey, job){
     var jobs = readAutomationJobs();
-    jobs[topicKey] = id;
+    jobs[topicKey] = { id:job.id, token:job.clientToken || "" };
     writeAutomationJobs(jobs);
+  }
+  function automationRecord(topicKey){
+    var value = readAutomationJobs()[topicKey];
+    return typeof value === "string" ? {id:value, token:""} : value;
   }
   function automationState(card, status, message){
     var btn = card.querySelector('.auto-btn');
@@ -1691,10 +1710,15 @@
     if(!btn || !line) return;
     btn.classList.remove("running", "saved");
     line.classList.remove("error", "saved");
-    if(status === "pending" || status === "running"){
+    if(status === "pending" || status === "running" || status === "pending_save" || status === "saving"){
       btn.classList.add("running");
       btn.disabled = true;
-      btn.textContent = status === "pending" ? "대기 중…" : "자동화 중…";
+      btn.textContent = status === "pending" || status === "pending_save" ? "대기 중…" : "자동화 중…";
+    } else if(status === "review"){
+      btn.classList.add("saved");
+      btn.disabled = true;
+      btn.textContent = "이미지 검토";
+      line.classList.add("saved");
     } else if(status === "done"){
       btn.classList.add("saved");
       btn.disabled = true;
@@ -1716,7 +1740,102 @@
     delete jobs[topicKey];
     writeAutomationJobs(jobs);
   }
-  function pollAutomation(t, card, id){
+  function fileAsBase64(file){
+    return new Promise(function(resolve,reject){
+      var reader = new FileReader();
+      reader.onload = function(){ resolve(String(reader.result || "").split(",",2)[1] || ""); };
+      reader.onerror = function(){ reject(new Error("이미지를 읽지 못했습니다.")); };
+      reader.readAsDataURL(file);
+    });
+  }
+  function imageEditPrompt(item){
+    return "첨부한 이미지를 성형외과 환자 교육용 블로그 이미지로 수정해 주세요. " +
+      "지정하지 않은 부분은 최대한 유지하고, 이미지 안에는 글자·숫자·라벨·워터마크를 넣지 마세요.\n\n" +
+      (item.instruction || "의학적으로 자연스럽고 이해하기 쉽게 다듬어 주세요.");
+  }
+  function renderAutomationReview(t, card, job, token){
+    var old = card.querySelector(".automation-review");
+    if(old) old.remove();
+    var wrap = document.createElement("section");
+    wrap.className = "automation-review";
+    wrap.innerHTML = '<h4>첫 이미지 시안</h4>' +
+      '<p class="automation-review-guide">원본을 내려받아 ChatGPT에 올리고 원하는 부분을 수정하세요. 완성된 이미지는 각 칸의 <b>수정본 넣기</b>로 다시 올린 뒤 마지막 버튼을 누르면 워터마크와 함께 네이버 임시저장에 들어갑니다.</p>' +
+      '<div class="automation-images"></div>' +
+      '<button type="button" class="btn automation-save">선택한 이미지로 네이버 임시저장 만들기</button>';
+    var grid = wrap.querySelector(".automation-images");
+    (job.images || []).forEach(function(item){
+      var box = document.createElement("article");
+      box.className = "automation-image";
+      box.dataset.slot = item.slot;
+      box.dataset.url = item.selectedUrl || item.initialUrl || "";
+      box.innerHTML = '<img alt="설명 이미지 ' + item.slot + '" src="' + escapeHtml(AUTOMATION_ORIGIN + box.dataset.url) + '">' +
+        '<strong>이미지 ' + item.slot + '</strong>' +
+        '<p>' + escapeHtml(item.anchor || "관련 설명 뒤") + '</p>' +
+        '<textarea aria-label="이미지 ' + item.slot + ' 캡션">' + escapeHtml(item.caption || "") + '</textarea>' +
+        '<div class="automation-image-actions">' +
+          '<a href="' + escapeHtml(AUTOMATION_ORIGIN + (item.initialUrl || item.selectedUrl) + '?download=1') + '">원본 다운로드</a>' +
+          '<button type="button" data-image-act="prompt">수정 요청문 복사</button>' +
+          '<a href="https://chatgpt.com/" target="_blank" rel="noopener">ChatGPT 열기</a>' +
+          '<label class="automation-upload">수정본 넣기<input type="file" accept="image/png,image/jpeg,image/webp" hidden></label>' +
+        '</div>' +
+        '<label class="automation-use"><input type="checkbox" checked> 이 이미지를 본문에 사용</label>';
+      box.querySelector('[data-image-act="prompt"]').addEventListener("click", function(e){
+        copyText(imageEditPrompt(item), e.currentTarget, "수정 요청문 복사됨");
+      });
+      box.querySelector('input[type="file"]').addEventListener("change", async function(e){
+        var file = e.target.files && e.target.files[0];
+        if(!file) return;
+        var label = e.target.closest(".automation-upload");
+        label.textContent = "올리는 중…";
+        try{
+          var base64 = await fileAsBase64(file);
+          var res = await fetch(AUTOMATION_API + "/image", {
+            method:"POST", headers:{"content-type":"application/json"},
+            body:JSON.stringify({ id:job.id, token:token, slot:item.slot, kind:"final",
+              mimeType:file.type || "image/png", base64:base64, anchor:item.anchor,
+              caption:box.querySelector("textarea").value, instruction:item.instruction })
+          });
+          var data = await res.json().catch(function(){ return null; });
+          if(!res.ok) throw new Error(data && data.error && data.error.message || "수정본을 올리지 못했습니다.");
+          renderAutomationReview(t, card, data.job, token);
+          automationState(card, "review", "수정본을 반영했습니다. 다른 이미지도 수정하거나 임시저장을 진행하세요.");
+        } catch(err){
+          automationState(card, "review", err.message || "수정본을 올리지 못했습니다.");
+          renderAutomationReview(t, card, job, token);
+        }
+      });
+      grid.appendChild(box);
+    });
+    wrap.querySelector(".automation-save").addEventListener("click", async function(e){
+      var btn = e.currentTarget;
+      btn.disabled = true;
+      btn.textContent = "임시저장 요청 중…";
+      var images = Array.from(wrap.querySelectorAll(".automation-image")).map(function(box){
+        return { slot:Number(box.dataset.slot), selectedUrl:box.dataset.url,
+          caption:box.querySelector("textarea").value,
+          use:box.querySelector('.automation-use input').checked };
+      });
+      try{
+        var res = await fetch(AUTOMATION_API + "/save", {
+          method:"POST", headers:{"content-type":"application/json"},
+          body:JSON.stringify({ id:job.id, token:token, images:images })
+        });
+        var data = await res.json().catch(function(){ return null; });
+        if(!res.ok) throw new Error(data && data.error && data.error.message || "임시저장을 요청하지 못했습니다.");
+        wrap.remove();
+        automationState(card, data.status, data.note);
+        pollAutomation(t, card, {id:job.id, token:token});
+      } catch(err){
+        btn.disabled = false;
+        btn.textContent = "선택한 이미지로 네이버 임시저장 만들기";
+        automationState(card, "review", err.message || "임시저장을 요청하지 못했습니다.");
+      }
+    });
+    var state = card.querySelector(".automation-state");
+    state.insertAdjacentElement("afterend", wrap);
+  }
+  function pollAutomation(t, card, record){
+    var id = record.id;
     if(!card.dataset.automationWatcher)
       card.dataset.automationWatcher = Math.random().toString(36).slice(2);
     var watchKey = id + ":" + card.dataset.automationWatcher;
@@ -1736,7 +1855,9 @@
         return;
       }
       automationState(card, job.status, job.note || "자동화를 처리하는 중입니다.");
-      if(job.status === "pending" || job.status === "running"){
+      if(job.status === "review"){
+        renderAutomationReview(t, card, job, record.token || "");
+      } else if(job.status === "pending" || job.status === "running" || job.status === "pending_save" || job.status === "saving"){
         automationTimers[watchKey] = setTimeout(poll, 7000);
       } else if(job.status === "error"){
         clearAutomationJob(t.key);
@@ -1745,10 +1866,10 @@
     automationTimers[watchKey] = setTimeout(poll, 150);
   }
   function resumeAutomationForCard(t, card){
-    var id = readAutomationJobs()[t.key];
-    if(!id) return;
+    var record = automationRecord(t.key);
+    if(!record || !record.id) return;
     automationState(card, "running", "이전에 요청한 자동화 상태를 확인하는 중입니다.");
-    pollAutomation(t, card, id);
+    pollAutomation(t, card, record);
   }
   async function requestAutomation(t, card, btn){
     var picked = card.querySelector('.title-opt input:checked');
@@ -1771,9 +1892,9 @@
       if(!res.ok || !job || !job.id){
         throw new Error(job && job.error && job.error.message || "요청을 보내지 못했습니다.");
       }
-      rememberAutomationJob(t.key, job.id);
+      rememberAutomationJob(t.key, job);
       automationState(card, job.status, job.note || "Mac이 작업을 가져가길 기다리는 중입니다.");
-      pollAutomation(t, card, job.id);
+      pollAutomation(t, card, {id:job.id, token:job.clientToken || ""});
     } catch(err){
       automationState(card, "error", err.message || "자동화 요청을 보내지 못했습니다.");
     }
