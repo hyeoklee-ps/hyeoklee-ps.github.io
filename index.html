@@ -578,13 +578,24 @@
     opacity:0; transform:translateY(-6px);
     transition:opacity .18s ease, transform .18s ease;
   }
-  .done-btn, .drop-btn{
+  .auto-btn, .done-btn, .drop-btn{
     background:none; border:1px solid var(--line); border-radius:999px;
     color:var(--ink-faint); font-family:inherit; font-size:12px; font-weight:600;
     padding:4px 11px; cursor:pointer; flex:none;
   }
+  .auto-btn{ border-color:var(--accent); color:var(--accent-strong); }
+  .auto-btn.running{ background:var(--accent-soft); cursor:wait; }
+  .auto-btn.saved{ border-color:var(--good); color:var(--good); }
   .done-btn:hover{ border-color:var(--good); color:var(--good); }
   .drop-btn:hover{ border-color:var(--warn); color:var(--warn); }
+  .automation-state{
+    display:none; margin:10px 0 0; padding:9px 11px; border-radius:8px;
+    background:var(--accent-soft); color:var(--accent-strong);
+    font-size:12.5px; line-height:1.55;
+  }
+  .automation-state.show{ display:block; }
+  .automation-state.error{ background:var(--warn-soft); color:var(--warn); }
+  .automation-state.saved{ background:var(--good-soft); color:var(--good); }
   .inbox-status{
     display:flex; align-items:center; gap:10px; flex-wrap:wrap;
     margin:-10px 0 16px; padding:9px 12px; border-radius:9px;
@@ -1007,7 +1018,7 @@
               <div class="field">
                 <label for="wmText">문구</label>
                 <input type="text" id="wmText" name="wmText" autocomplete="off" autocapitalize="none"
-                  enterkeyhint="done" value="© my blog" />
+                  enterkeyhint="done" value="© facereader_ps" />
               </div>
               <div class="row2">
                 <div class="field">
@@ -1474,6 +1485,10 @@
   var FACE_READER_SIGNATURE = "작성자 | 성형외과 전문의 facereader\n전문분야 | 눈성형•코성형•안면거상\n\n본 글은 성형외과 전문의가 의학 문헌과 실제 임상 경험을 바탕으로 직접 작성합니다.\n내용의 이해를 돕기 위해 일부 삽화 및 설명 이미지는 AI를 활용하여 제작하였습니다.\n궁금하신 점이나 추가로 알고 싶은 내용이 있다면 댓글로 남겨주세요. 확인 후 가능한 범위에서 답변드리겠습니다.";
   function draftFullText(body, sources){
     var text = String(body || "").trim();
+    // 생성 원고의 참고문헌 뒤에는 이미지 제작 메모와 서명이 붙어 있다. 화면용
+    // sources와 실제 이미지를 따로 쓰므로 이 내부 메모를 본문에 노출하지 않는다.
+    // 참고문헌도 아래에서 한 번만 다시 붙인다.
+    text = text.replace(/\n#{2,3}\s*참고\s*문헌[\s\S]*$/i, "").trim();
     // Only remove the known trailing author block; preserve unrelated body text.
     text = text.replace(/(?:^|\n)작성자\s*\|\s*(?:Face Reader · 성형외과 전문의|성형외과 전문의 facereader)\s*\n전문분야\s*\|[^\n]*(?:\n\s*\n(?:본 글은[^\n]*)(?:\n내용의 이해를[^\n]*)?(?:\n궁금하신 점이나[^\n]*)?)?\s*$/, "").trim();
     var list = sources || [];
@@ -1587,6 +1602,7 @@
     card.innerHTML =
       '<div class="topic-head">' +
         '<div class="draft-badges">' + badges.join("") +
+          '<button type="button" class="auto-btn" data-act="auto">⚙ 자동화</button>' +
           '<button type="button" class="done-btn" data-act="done">✓ 썼음</button>' +
           '<button type="button" class="drop-btn" data-act="drop">✕ 삭제</button>' +
         "</div>" +
@@ -1597,6 +1613,7 @@
         "</div>" +
         ((t.reasons || []).length
           ? '<p class="topic-why">' + escapeHtml(t.reasons.join(" · ")) + "</p>" : "") +
+        '<p class="automation-state" aria-live="polite"></p>' +
         '<button type="button" class="btn topic-open">이 주제로 쓰기</button>' +
       "</div>";
 
@@ -1624,6 +1641,8 @@
         copyText(picked ? picked.value : "", btn, "제목 복사됨");
       } else if(btn.dataset.act === "body"){
         copyText(draftBodyPlain(t.body, t.sources), btn, "본문+참고문헌 복사됨");
+      } else if(btn.dataset.act === "auto"){
+        requestAutomation(t, card, btn);
       } else if(btn.dataset.act === "done"){
         hideTopic(t, "wrote", card);
       } else if(btn.dataset.act === "drop"){
@@ -1638,7 +1657,126 @@
       if(lbl) lbl.classList.add("sel");
     });
 
+    resumeAutomationForCard(t, card);
+
     return card;
+  }
+
+  /* ----------------------------------------------------------------
+     선택 원고 자동화
+
+     버튼은 원고 전문을 서버로 보내지 않는다. topicKey와 선택한 제목 번호, 현재
+     워터마크 설정만 요청함에 넣는다. Mac은 배포된 pool.json에서 같은 원고를 찾아
+     이미지 생성 → 표/강조/이미지/캡션 → 카테고리/태그 → 임시저장을 처리한다.
+     ---------------------------------------------------------------- */
+  var AUTOMATION_API = "https://blog-diagram-api.dlgur007.workers.dev/api/automation-request";
+  var AUTOMATION_JOBS_KEY = "blogWorkbench.automationJobs";
+  var automationTimers = {};
+
+  function readAutomationJobs(){
+    try{ return JSON.parse(localStorage.getItem(AUTOMATION_JOBS_KEY) || "{}") || {}; }
+    catch(e){ return {}; }
+  }
+  function writeAutomationJobs(jobs){
+    try{ localStorage.setItem(AUTOMATION_JOBS_KEY, JSON.stringify(jobs)); } catch(e){}
+  }
+  function rememberAutomationJob(topicKey, id){
+    var jobs = readAutomationJobs();
+    jobs[topicKey] = id;
+    writeAutomationJobs(jobs);
+  }
+  function automationState(card, status, message){
+    var btn = card.querySelector('.auto-btn');
+    var line = card.querySelector('.automation-state');
+    if(!btn || !line) return;
+    btn.classList.remove("running", "saved");
+    line.classList.remove("error", "saved");
+    if(status === "pending" || status === "running"){
+      btn.classList.add("running");
+      btn.disabled = true;
+      btn.textContent = status === "pending" ? "대기 중…" : "자동화 중…";
+    } else if(status === "done"){
+      btn.classList.add("saved");
+      btn.disabled = true;
+      btn.textContent = "✓ 임시저장 완료";
+      line.classList.add("saved");
+    } else if(status === "error"){
+      btn.disabled = false;
+      btn.textContent = "↻ 다시 자동화";
+      line.classList.add("error");
+    } else {
+      btn.disabled = false;
+      btn.textContent = "⚙ 자동화";
+    }
+    line.textContent = message || "";
+    line.classList.toggle("show", !!message);
+  }
+  function clearAutomationJob(topicKey){
+    var jobs = readAutomationJobs();
+    delete jobs[topicKey];
+    writeAutomationJobs(jobs);
+  }
+  function pollAutomation(t, card, id){
+    if(!card.dataset.automationWatcher)
+      card.dataset.automationWatcher = Math.random().toString(36).slice(2);
+    var watchKey = id + ":" + card.dataset.automationWatcher;
+    if(automationTimers[watchKey]) return;
+    async function poll(){
+      delete automationTimers[watchKey];
+      // 페이지 이동으로 이 카드가 교체됐으면 새 카드가 자기 감시를 시작한다.
+      if(!document.documentElement.contains(card)) return;
+      var job;
+      try{
+        var res = await fetch(AUTOMATION_API + "?id=" + encodeURIComponent(id), { cache:"no-store" });
+        if(!res.ok) throw new Error("http " + res.status);
+        job = await res.json();
+      } catch(err){
+        automationState(card, "running", "진행 상태를 다시 확인하는 중입니다. 화면을 닫아도 작업은 계속됩니다.");
+        automationTimers[watchKey] = setTimeout(poll, 10000);
+        return;
+      }
+      automationState(card, job.status, job.note || "자동화를 처리하는 중입니다.");
+      if(job.status === "pending" || job.status === "running"){
+        automationTimers[watchKey] = setTimeout(poll, 7000);
+      } else if(job.status === "error"){
+        clearAutomationJob(t.key);
+      }
+    }
+    automationTimers[watchKey] = setTimeout(poll, 150);
+  }
+  function resumeAutomationForCard(t, card){
+    var id = readAutomationJobs()[t.key];
+    if(!id) return;
+    automationState(card, "running", "이전에 요청한 자동화 상태를 확인하는 중입니다.");
+    pollAutomation(t, card, id);
+  }
+  async function requestAutomation(t, card, btn){
+    var picked = card.querySelector('.title-opt input:checked');
+    var titles = t.titles || [];
+    var titleIndex = picked ? titles.indexOf(picked.value) + 1 : 1;
+    if(titleIndex < 1) titleIndex = 1;
+    automationState(card, "pending", "자동화 요청을 보내는 중입니다.");
+    try{
+      // 워터마크 탭에서 마지막으로 쓰던 수치를 그대로 보낸다. 저장된 로고가 너무
+      // 크면 Worker가 텍스트 워터마크로 안전하게 되돌린다.
+      var watermark = typeof snapshot === "function" ? snapshot() : {
+        type:"text", text:"© facereader_ps", mode:"single", position:"bottom-right",
+        scale:12, opacity:55, padding:4, color:"#ffffff", weight:"600"
+      };
+      var res = await fetch(AUTOMATION_API, {
+        method:"POST", headers:{"content-type":"application/json"},
+        body:JSON.stringify({ topicKey:t.key, titleIndex:titleIndex, watermark:watermark })
+      });
+      var job = await res.json().catch(function(){ return null; });
+      if(!res.ok || !job || !job.id){
+        throw new Error(job && job.error && job.error.message || "요청을 보내지 못했습니다.");
+      }
+      rememberAutomationJob(t.key, job.id);
+      automationState(card, job.status, job.note || "Mac이 작업을 가져가길 기다리는 중입니다.");
+      pollAutomation(t, card, job.id);
+    } catch(err){
+      automationState(card, "error", err.message || "자동화 요청을 보내지 못했습니다.");
+    }
   }
 
   /* 주제 하나를 목록에서 뺀다. 카드가 사라지면 그 자리는 다음 순위 주제가 곧바로
@@ -2598,7 +2736,7 @@
 
   var settings = {
     type: "text",
-    text: "© my blog",
+    text: "© facereader_ps",
     font: "'IBM Plex Sans KR',sans-serif",
     weight: "600",
     color: "#ffffff",
