@@ -1699,6 +1699,7 @@
      ---------------------------------------------------------------- */
   var AUTOMATION_API = "https://blog-diagram-api.dlgur007.workers.dev/api/automation-request";
   var AUTOMATION_ORIGIN = "https://blog-diagram-api.dlgur007.workers.dev";
+  var CHATGPT_IMAGE_PROJECT_URL = "https://chatgpt.com/g/g-p-6adc0112a6808191a6711cfa153c1826/project";
   var AUTOMATION_JOBS_KEY = "blogWorkbench.automationJobs";
   var automationTimers = {};
 
@@ -1820,7 +1821,7 @@
         '<div class="automation-image-actions">' +
           '<a href="' + escapeHtml(AUTOMATION_ORIGIN + (item.initialUrl || item.selectedUrl) + '?download=1') + '">원본 다운로드</a>' +
           '<button type="button" data-image-act="prompt">수정 요청문 복사</button>' +
-          '<a href="https://chatgpt.com/" target="_blank" rel="noopener">ChatGPT 열기</a>' +
+          '<a href="' + CHATGPT_IMAGE_PROJECT_URL + '">블로그 이미지 제작실 열기</a>' +
           '<label class="automation-upload">수정본 넣기<input type="file" accept="image/png,image/jpeg,image/webp" hidden></label>' +
         '</div>' +
         '<label class="automation-use"><input type="checkbox" checked> 이 이미지를 본문에 사용</label>';
