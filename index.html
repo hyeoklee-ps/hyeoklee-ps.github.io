@@ -1695,7 +1695,32 @@
   var AUTOMATION_ORIGIN = "https://blog-diagram-api.dlgur007.workers.dev";
   var CHATGPT_IMAGE_PROJECT_URL = "https://chatgpt.com/g/g-p-6adc0112a6808191a6711cfa153c1826/project";
   var AUTOMATION_JOBS_KEY = "blogWorkbench.automationJobs";
+  var AUTOMATION_IMAGE_CHOICES_KEY = "blogWorkbench.automationImageChoices";
   var automationTimers = {};
+
+  function readAutomationImageChoices(jobId){
+    try{
+      var all = JSON.parse(localStorage.getItem(AUTOMATION_IMAGE_CHOICES_KEY) || "{}");
+      return all && typeof all[jobId] === "object" ? all[jobId] : {};
+    } catch(e){ return {}; }
+  }
+  function rememberAutomationImageChoice(jobId, slot, patch){
+    try{
+      var all = JSON.parse(localStorage.getItem(AUTOMATION_IMAGE_CHOICES_KEY) || "{}");
+      if(!all || typeof all !== "object") all = {};
+      var choices = all[jobId] && typeof all[jobId] === "object" ? all[jobId] : {};
+      choices[slot] = Object.assign({}, choices[slot] || {}, patch);
+      all[jobId] = choices;
+      localStorage.setItem(AUTOMATION_IMAGE_CHOICES_KEY, JSON.stringify(all));
+    } catch(e){}
+  }
+  function clearAutomationImageChoices(jobId){
+    try{
+      var all = JSON.parse(localStorage.getItem(AUTOMATION_IMAGE_CHOICES_KEY) || "{}");
+      delete all[jobId];
+      localStorage.setItem(AUTOMATION_IMAGE_CHOICES_KEY, JSON.stringify(all));
+    } catch(e){}
+  }
 
   function readAutomationJobs(){
     try{ return JSON.parse(localStorage.getItem(AUTOMATION_JOBS_KEY) || "{}") || {}; }
@@ -1801,8 +1826,12 @@
       '<div class="automation-images"></div>' +
       '<button type="button" class="btn automation-save">선택한 이미지로 네이버 임시저장 만들기</button>';
     var grid = wrap.querySelector(".automation-images");
+    var savedChoices = readAutomationImageChoices(job.id);
     (job.images || []).forEach(function(item){
       var box = document.createElement("article");
+      var savedChoice = savedChoices[item.slot] || {};
+      var useImage = typeof savedChoice.use === "boolean" ? savedChoice.use : item.use !== false;
+      var caption = typeof savedChoice.caption === "string" ? savedChoice.caption : item.caption || "";
       var isThumbnail = item.role === "thumbnail" || item.anchor === "본문 첫 문단 앞";
       var imageLabel = isThumbnail ? "썸네일" : "이미지 " + item.slot;
       box.className = "automation-image";
@@ -1811,14 +1840,20 @@
       box.innerHTML = '<img alt="' + escapeHtml(imageLabel) + '" title="눌러서 크게 보기" tabindex="0" role="button" src="' + escapeHtml(AUTOMATION_ORIGIN + box.dataset.url) + '">' +
         '<strong>' + escapeHtml(imageLabel) + '</strong>' +
         '<p>' + escapeHtml(item.anchor || "관련 설명 뒤") + '</p>' +
-        '<textarea aria-label="이미지 ' + item.slot + ' 캡션">' + escapeHtml(item.caption || "") + '</textarea>' +
+        '<textarea aria-label="이미지 ' + item.slot + ' 캡션">' + escapeHtml(caption) + '</textarea>' +
         '<div class="automation-image-actions">' +
           '<a href="' + escapeHtml(AUTOMATION_ORIGIN + (item.initialUrl || item.selectedUrl) + '?download=1') + '">원본 다운로드</a>' +
           '<button type="button" data-image-act="prompt">수정 요청문 복사</button>' +
           '<a href="' + CHATGPT_IMAGE_PROJECT_URL + '">블로그 이미지 제작실 열기</a>' +
           '<label class="automation-upload">수정본 넣기<input type="file" accept="image/png,image/jpeg,image/webp" hidden></label>' +
         '</div>' +
-        '<label class="automation-use"><input type="checkbox" checked> 이 이미지를 본문에 사용</label>';
+        '<label class="automation-use"><input type="checkbox"' + (useImage ? ' checked' : '') + '> 이 이미지를 본문에 사용</label>';
+      box.querySelector("textarea").addEventListener("input", function(event){
+        rememberAutomationImageChoice(job.id, item.slot, {caption:event.target.value});
+      });
+      box.querySelector('.automation-use input').addEventListener("change", function(event){
+        rememberAutomationImageChoice(job.id, item.slot, {use:event.target.checked});
+      });
       var preview = box.querySelector("img");
       preview.addEventListener("click", function(){ openAutomationImage(preview.src, preview.alt); });
       preview.addEventListener("keydown", function(event){
@@ -1870,6 +1905,7 @@
         });
         var data = await res.json().catch(function(){ return null; });
         if(!res.ok) throw new Error(data && data.error && data.error.message || "임시저장을 요청하지 못했습니다.");
+        clearAutomationImageChoices(job.id);
         wrap.remove();
         automationState(card, data.status, data.note);
         pollAutomation(t, card, {id:job.id, token:token});
