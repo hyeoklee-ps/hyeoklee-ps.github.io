@@ -434,6 +434,7 @@
 
   .draft-actions{ display:flex; gap:8px; flex-wrap:wrap; }
   .draft-actions .btn{ flex:1 1 140px; padding:12px 10px; font-size:14px; }
+  .draft-actions .manual-image-btn{ flex-basis:100%; }
 
   .draft-body{
     border-top:1px solid var(--line); padding:14px 16px; background:var(--paper);
@@ -442,12 +443,12 @@
   }
   .draft-body.open{ max-height:none; }
   .draft-body h4{
-    margin:16px 0 6px; font-size:14.5px; font-weight:700; color:var(--accent-strong);
+    margin:16px 0; font-size:14.5px; font-weight:400; color:var(--ink);
   }
   .draft-body h4:first-child{ margin-top:0; }
   /* 상담 질문 코너의 Q 줄. 본문은 pre-wrap 이라 블록 요소를 끼우면 줄간격이
      흐트러지므로, 줄바꿈을 건드리지 않는 인라인 요소로만 강조한다. */
-  .draft-body .faq-q{ color:var(--accent-strong); font-weight:700; }
+  .draft-body .faq-q{ color:var(--ink); font-weight:400; }
   .draft-more{
     width:100%; border:none; border-top:1px solid var(--line); background:var(--paper-sunken);
     color:var(--ink-soft); font-family:inherit; font-size:13px; font-weight:600;
@@ -597,6 +598,9 @@
   .automation-state.error{ background:var(--warn-soft); color:var(--warn); }
   .automation-state.saved{ background:var(--good-soft); color:var(--good); }
   .automation-review{ margin-top:12px; padding:12px; border:1px solid var(--line); border-radius:10px; background:var(--paper-sunken); }
+  .manual-image-state{ margin:10px 0 0; color:var(--ink-soft); font-size:12.5px; line-height:1.55; }
+  .manual-image-state.error{ color:var(--warn); }
+  .manual-image-result:empty{ display:none; }
   .automation-review h4{ margin:0 0 5px; font-size:15px; }
   .automation-review-guide{ margin:0 0 12px; color:var(--ink-soft); font-size:12.5px; line-height:1.6; }
   .automation-images{ display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:12px; }
@@ -1522,8 +1526,8 @@
       var m = /^\s*#{2,3}\s+(.*)$/.exec(line);
       if(m) return "<h4>" + escapeHtml(m[1]) + "</h4>";
       var q = /^\s*Q\s*[.\uFF0E:]\s*(.+)$/.exec(line);
-      if(q) return '<b class="faq-q">Q. ' + escapeHtml(q[1]) + "</b>";
-      if(/^\[참고 문헌\]$/.test(line.trim())) return '<b class="faq-q">' + escapeHtml(line) + "</b>";
+      if(q) return '<span class="faq-q">Q. ' + escapeHtml(q[1]) + "</span>";
+      if(/^\[참고 문헌\]$/.test(line.trim())) return '<strong>' + escapeHtml(line) + "</strong>";
       return escapeHtml(line);
     }).join("\n");
   }
@@ -1576,8 +1580,9 @@
       (titles ? '<h4>제목 고르기</h4><div class="title-pick">' + titles + "</div>" : "") +
       '<div class="draft-actions">' +
         '<button type="button" class="btn" data-act="title">제목 복사</button>' +
-        '<button type="button" class="btn" data-act="body">본문 복사 (참고문헌 포함)</button>' +
-      "</div></div>";
+        '<button type="button" class="btn" data-act="body">본문 복사</button>' +
+        '<button type="button" class="btn manual-image-btn" data-act="images">이미지 생성</button>' +
+      '</div><p class="manual-image-state" aria-live="polite"></p><div class="manual-image-result"></div></div>';
 
     html += '<div class="draft-body">' + draftBodyHtml(d.body, d.sources) + "</div>" +
             '<button type="button" class="draft-more">전체 보기</button>';
@@ -1646,6 +1651,7 @@
         card.classList.add("open");
         openBtn.remove();
         card.insertAdjacentHTML("beforeend", draftHtml(t));
+        resumeManualImagesForCard(t, card);
         return;
       }
       var more = e.target.closest(".draft-more");
@@ -1664,6 +1670,8 @@
         copyText(draftBodyPlain(t.body, t.sources), btn, "본문+참고문헌 복사됨");
       } else if(btn.dataset.act === "auto"){
         requestAutomation(t, card, btn);
+      } else if(btn.dataset.act === "images"){
+        requestManualImages(t, card, btn);
       } else if(btn.dataset.act === "done"){
         hideTopic(t, "wrote", card);
       } else if(btn.dataset.act === "drop"){
@@ -1768,6 +1776,16 @@
     }
     line.textContent = message || "";
     line.classList.toggle("show", !!message);
+  }
+  function manualImageState(card, status, message){
+    var btn = card.querySelector('.manual-image-btn');
+    var line = card.querySelector('.manual-image-state');
+    if(!btn || !line) return;
+    var busy = status === "pending" || status === "running";
+    btn.disabled = busy;
+    btn.textContent = busy ? "이미지 생성 중…" : status === "review" ? "이미지 다시 보기" : "이미지 생성";
+    line.textContent = message || "";
+    line.classList.toggle("error", status === "error");
   }
   function clearAutomationJob(topicKey){
     var jobs = readAutomationJobs();
@@ -1918,11 +1936,48 @@
     var state = card.querySelector(".automation-state");
     state.insertAdjacentElement("afterend", wrap);
   }
-  function pollAutomation(t, card, record){
+  function renderManualImageReview(card, job){
+    var host = card.querySelector('.manual-image-result');
+    if(!host) return;
+    host.innerHTML = '<section class="automation-review"><h4>생성된 이미지</h4>' +
+      '<p class="automation-review-guide">원본을 내려받아 블로그에 직접 넣거나, ChatGPT 블로그 이미지 제작실에서 수정하세요.</p>' +
+      '<div class="automation-images"></div></section>';
+    var grid = host.querySelector('.automation-images');
+    (job.images || []).forEach(function(item){
+      if(!item.selectedUrl && !item.initialUrl) return;
+      var box = document.createElement('article');
+      var isThumbnail = item.role === 'thumbnail' || item.anchor === '본문 첫 문단 앞';
+      var label = isThumbnail ? '썸네일' : '이미지 ' + item.slot;
+      var imageUrl = AUTOMATION_ORIGIN + (item.selectedUrl || item.initialUrl);
+      box.className = 'automation-image';
+      box.innerHTML = '<img alt="' + escapeHtml(label) + '" title="눌러서 크게 보기" tabindex="0" role="button" src="' + escapeHtml(imageUrl) + '">' +
+        '<strong>' + escapeHtml(label) + '</strong>' +
+        '<p>' + escapeHtml(item.anchor || '관련 설명 뒤') + '</p>' +
+        '<p>' + escapeHtml(item.caption || '') + '</p>' +
+        '<div class="automation-image-actions">' +
+          '<a href="' + escapeHtml(imageUrl + '?download=1') + '">원본 다운로드</a>' +
+          '<button type="button" data-image-act="prompt">수정 요청문 복사</button>' +
+          '<a href="' + CHATGPT_IMAGE_PROJECT_URL + '" target="_blank" rel="noopener">ChatGPT 열기</a>' +
+        '</div>';
+      var preview = box.querySelector('img');
+      preview.addEventListener('click', function(){ openAutomationImage(preview.src, preview.alt); });
+      preview.addEventListener('keydown', function(event){
+        if(event.key === 'Enter' || event.key === ' '){
+          event.preventDefault();
+          openAutomationImage(preview.src, preview.alt);
+        }
+      });
+      box.querySelector('[data-image-act="prompt"]').addEventListener('click', function(event){
+        copyText(imageEditPrompt(item), event.currentTarget, '수정 요청문 복사됨');
+      });
+      grid.appendChild(box);
+    });
+  }
+  function pollAutomation(t, card, record, mode){
     var id = record.id;
     if(!card.dataset.automationWatcher)
       card.dataset.automationWatcher = Math.random().toString(36).slice(2);
-    var watchKey = id + ":" + card.dataset.automationWatcher;
+    var watchKey = id + ":" + card.dataset.automationWatcher + ":" + (mode || "full");
     if(automationTimers[watchKey]) return;
     async function poll(){
       delete automationTimers[watchKey];
@@ -1934,17 +1989,18 @@
         if(!res.ok) throw new Error("http " + res.status);
         job = await res.json();
       } catch(err){
-        automationState(card, "running", "진행 상태를 다시 확인하는 중입니다. 화면을 닫아도 작업은 계속됩니다.");
+        (mode === 'images_only' ? manualImageState : automationState)(card, "running", "진행 상태를 다시 확인하는 중입니다. 화면을 닫아도 작업은 계속됩니다.");
         automationTimers[watchKey] = setTimeout(poll, 10000);
         return;
       }
-      automationState(card, job.status, job.note || "자동화를 처리하는 중입니다.");
+      (mode === 'images_only' ? manualImageState : automationState)(card, job.status, job.note || "자동화를 처리하는 중입니다.");
       if(job.status === "review"){
-        renderAutomationReview(t, card, job, record.token || "");
+        if(mode === 'images_only') renderManualImageReview(card, job);
+        else renderAutomationReview(t, card, job, record.token || "");
       } else if(job.status === "pending" || job.status === "running" || job.status === "pending_save" || job.status === "saving"){
         automationTimers[watchKey] = setTimeout(poll, 7000);
       } else if(job.status === "error"){
-        clearAutomationJob(t.key);
+        clearAutomationJob(mode === 'images_only' ? t.key + '::images' : t.key);
       }
     }
     automationTimers[watchKey] = setTimeout(poll, 150);
@@ -1954,6 +2010,33 @@
     if(!record || !record.id) return;
     automationState(card, "running", "이전에 요청한 자동화 상태를 확인하는 중입니다.");
     pollAutomation(t, card, record);
+  }
+  function resumeManualImagesForCard(t, card){
+    var record = automationRecord(t.key + '::images');
+    if(!record || !record.id) return;
+    manualImageState(card, 'running', '이미지 생성 상태를 확인하는 중입니다.');
+    pollAutomation(t, card, record, 'images_only');
+  }
+  async function requestManualImages(t, card, btn){
+    var picked = card.querySelector('.title-opt input:checked');
+    var titles = t.titles || [];
+    var titleIndex = picked ? titles.indexOf(picked.value) + 1 : 1;
+    if(titleIndex < 1) titleIndex = 1;
+    manualImageState(card, 'pending', '이미지 생성 요청을 보내는 중입니다.');
+    try{
+      var res = await fetch(AUTOMATION_API, {
+        method:'POST', headers:{'content-type':'application/json'},
+        body:JSON.stringify({topicKey:t.key, titleIndex:titleIndex, mode:'images_only'})
+      });
+      var job = await res.json().catch(function(){ return null; });
+      if(!res.ok || !job || !job.id)
+        throw new Error(job && job.error && job.error.message || '이미지 생성을 요청하지 못했습니다.');
+      rememberAutomationJob(t.key + '::images', job);
+      manualImageState(card, job.status, job.note || 'Mac이 이미지 생성을 시작하길 기다리는 중입니다.');
+      pollAutomation(t, card, {id:job.id, token:job.clientToken || ''}, 'images_only');
+    } catch(err){
+      manualImageState(card, 'error', err.message || '이미지 생성을 요청하지 못했습니다.');
+    }
   }
   async function requestAutomation(t, card, btn){
     var picked = card.querySelector('.title-opt input:checked');
