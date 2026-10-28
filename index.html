@@ -436,6 +436,25 @@
   .draft-actions .btn{ flex:1 1 140px; padding:12px 10px; font-size:14px; }
   .draft-actions .manual-image-btn{ flex-basis:100%; }
 
+  .regen-controls{ display:flex; align-items:center; gap:12px; flex-wrap:wrap; margin-bottom:16px; }
+  .regen-controls .hint{ margin:0; }
+  .regen-list{ display:grid; gap:10px; }
+  .regen-card{ border:1px solid var(--line); border-radius:10px; padding:14px 16px; background:var(--paper); }
+  .regen-row{ display:flex; align-items:flex-start; gap:12px; justify-content:space-between; flex-wrap:wrap; }
+  .regen-title{ margin:0; font-size:15px; font-weight:700; line-height:1.5; }
+  .regen-num{ color:var(--accent-strong); font-family:"IBM Plex Mono",monospace; margin-right:7px; }
+  .regen-actions{ display:flex; align-items:center; flex-wrap:wrap; gap:7px; }
+  .regen-actions .btn{ padding:7px 10px; font-size:12px; }
+  .regen-actions select{ background:var(--paper-raised); color:var(--ink); border:1px solid var(--line); border-radius:6px; padding:7px; font:inherit; font-size:12px; }
+  .regen-detail{ margin-top:14px; border-top:1px solid var(--line); padding-top:14px; }
+  .regen-detail-title{ font-size:17px; font-weight:700; margin:0 0 12px; }
+  .regen-body{ white-space:pre-wrap; line-height:1.8; font-size:14px; overflow-wrap:anywhere; }
+  .regen-files{ display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:12px; margin-top:16px; }
+  .regen-file{ border:1px solid var(--line); border-radius:8px; padding:10px; background:var(--paper-raised); }
+  .regen-file img{ display:block; width:100%; aspect-ratio:4/3; object-fit:contain; background:var(--paper-sunken); border-radius:5px; }
+  .regen-file p{ font-size:12px; line-height:1.5; }
+  .regen-error{ color:var(--warn); }
+
   .draft-body{
     border-top:1px solid var(--line); padding:14px 16px; background:var(--paper);
     font-size:14.5px; line-height:1.75; white-space:pre-wrap; word-break:break-word;
@@ -795,6 +814,7 @@
 
   <nav class="tabs" role="tablist">
     <button class="tab active" data-tab="inbox" role="tab" aria-selected="true">추천 주제</button>
+    <button class="tab" data-tab="regen" role="tab" aria-selected="false">재생미용 연재</button>
     <button class="tab" data-tab="wm" role="tab" aria-selected="false">워터마크</button>
     <button class="tab" data-tab="trend" role="tab" aria-selected="false">검색어 트렌드</button>
   </nav>
@@ -817,6 +837,17 @@
       </div>
       <div id="inboxList"></div>
       <p class="inbox-note" id="inboxNote"></p>
+    </section>
+
+    <!-- Existing topic pool and Naver automation are independent of this series. -->
+    <section id="panel-regen" class="panel">
+      <h2 class="section-title">재생미용 연재</h2>
+      <div class="regen-controls">
+        <button type="button" class="btn" id="regenNextBtn">다음 2편 생성</button>
+        <p class="hint">누를 때마다 미작성 원고 2편만 준비합니다. 발행은 자동으로 진행되지 않습니다.</p>
+      </div>
+      <p id="regenStatus" class="hint" role="status" aria-live="polite"></p>
+      <div id="regenList" class="regen-list"></div>
     </section>
 
     <!-- ============ TABLE BUILDER ============ -->
@@ -1425,6 +1456,7 @@
   var tabs = document.querySelectorAll(".tab");
   var panels = {
     inbox: document.getElementById("panel-inbox"),
+    regen: document.getElementById("panel-regen"),
     trend: document.getElementById("panel-trend"),
     seo: document.getElementById("panel-seo"),
     check: document.getElementById("panel-check"),
@@ -4926,6 +4958,7 @@
 })();
 </script>
 
+<script src="regenerative.js"></script>
 <script>
 /* The service worker is cache-first, which is what makes the app open
    instantly offline — but it also means an installed copy will serve last
