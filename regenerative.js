@@ -138,7 +138,7 @@
       var redo = el("button", "btn ghost", ep.status === "unwritten" ? "이 편 생성" : "재생성");
       redo.type = "button";
       redo.disabled = !!busy;
-      redo.setAttribute("aria-label", ep.number + "편 재생성");
+      redo.setAttribute("aria-label", ep.number + (ep.status === "unwritten" ? "편 생성" : "편 재생성"));
       redo.addEventListener("click", function(){generate({number:ep.number});});
       actions.appendChild(redo);
       row.appendChild(actions);
