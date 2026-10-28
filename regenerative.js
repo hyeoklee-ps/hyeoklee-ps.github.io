@@ -22,7 +22,7 @@
   }
   function safeFile(url){ return /^\/files\/regenerative\/[a-z0-9_-]+\/(?:image-[1-5]\.jpg|images\.zip)$/i.test(url || ""); }
   async function api(path, body){
-    var response = await fetch(API + path, body === undefined
+    var response = await fetch(API + (path || ""), body === undefined
       ? {cache:"no-store"}
       : {method:"POST", headers:{"content-type":"application/json"}, body:JSON.stringify(body)});
     var value = await response.json().catch(function(){ return {}; });
